@@ -74,7 +74,7 @@ const AddMember = () => {
       <InputTextColumn field="description" icon={"icon-edit-24"} />
       <InputRow>
         <InputTextColumn
-          field="memberNo"
+          field="cardNo"
           type="number"
           fullRow={false}
           icon={"icon-personalcard4"}

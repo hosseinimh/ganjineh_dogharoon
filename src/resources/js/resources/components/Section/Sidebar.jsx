@@ -15,6 +15,12 @@ const menuItems = {
     icon: "icon-category4",
     label: strings.dashboard,
   },
+  ERRORS: {
+    page: "Errors",
+    path: `${BASE_PATH}/errors`,
+    icon: "icon-category4",
+    label: strings.errors,
+  },
   BANKS: {
     page: "Banks",
     path: `${BASE_PATH}/banks`,
@@ -44,6 +50,12 @@ const menuItems = {
     path: `${BASE_PATH}/members`,
     icon: "icon-personalcard",
     label: strings.members,
+  },
+  MEMBER_RELATIONS: {
+    page: "MemberRelations",
+    path: `${BASE_PATH}/member_relations`,
+    icon: "icon-personalcard",
+    label: strings.memberRelations,
   },
   NOTIFICATIONS: {
     page: "Notifications",
@@ -116,6 +128,7 @@ function Sidebar() {
       <ul>
         {renderMenuItem(menuItems.DASHBOARD)}
         {renderMenuItem(menuItems.MEMBERS)}
+        {renderMenuItem(menuItems.MEMBER_RELATIONS)}
       </ul>
     </>
   );
@@ -136,11 +149,15 @@ function Sidebar() {
     <>
       <div className="menu-title">{strings.systemItems}</div>
       <ul>
+        {renderMenuItem(menuItems.NOTIFICATIONS)}
         {userState?.user?.role === USER_ROLES.ADMINISTRATOR && (
           <>{renderMenuItem(menuItems.USERS)}</>
         )}
         {renderMenuItem(menuItems.EDIT_PROFILE)}
         {renderMenuItem(menuItems.CHANGE_PASSWORD_PROFILE)}
+        {userState?.user?.role === USER_ROLES.ADMINISTRATOR && (
+          <>{renderMenuItem(menuItems.ERRORS)}</>
+        )}
         <li>
           <CustomLink onClick={onLogout} className="danger">
             <i className="icon-logout"></i>

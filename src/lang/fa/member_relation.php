@@ -11,6 +11,7 @@ return [
     'family_max' => $maxStringMessage('نام خانوادگی', 50),
     'national_no_required' => $requiredMessage('شماره ملی'),
     'national_no_digits' => $digitsMessage('شماره ملی'),
+    'national_no_unique' => 'این شماره ملی قبلا ثبت شده است.',
     'identity_no_required' => $requiredMessage('شماره شناسنامه'),
     'identity_no_numeric' => $numericMessage('شماره شناسنامه'),
     'identity_no_gte' => $gteNumericMessage('شماره شناسنامه', 0),

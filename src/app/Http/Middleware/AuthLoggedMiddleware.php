@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use App\Constants\ErrorCode;
 use App\Constants\Role;
+use App\Constants\Theme;
 use Closure;
 use Illuminate\Http\Request;
 
@@ -27,7 +28,10 @@ class AuthLoggedMiddleware
                 throw new \Exception(__('user.not_authorized'));
             }
         } catch (\Exception $e) {
-            return response()->json(['_result' => '0', '_error' => $e->getMessage(), '_errorCode' => ErrorCode::USER_NOT_AUTHORIZED], 200);
+            if ($request->expectsJson()) {
+                return response()->json(['_result' => '0', '_error' => $e->getMessage(), '_errorCode' => ErrorCode::USER_NOT_AUTHORIZED], 200);
+            }
+            return redirect(Theme::BASE_URL);
         }
 
         return $next($request);

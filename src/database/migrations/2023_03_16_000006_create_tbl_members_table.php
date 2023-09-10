@@ -30,6 +30,7 @@ return new class extends Migration
             $table->string('address');
             $table->text('description');
             $table->unsignedBigInteger('member_no')->unique();
+            $table->unsignedBigInteger('card_no')->unique();
             $table->timestamps();
             $table->softDeletes();
 

@@ -13,6 +13,13 @@ export class MemberRelation extends Entity {
     });
   }
 
+  async getAll(_pn = 1, _pi = PAGE_ITEMS) {
+    return await this.handlePost(`${BASE_URL}/u/member_relations`, {
+      _pn,
+      _pi,
+    });
+  }
+
   async get(id) {
     return await this.handlePost(`${BASE_URL}/u/member_relations/show/${id}`);
   }
@@ -20,6 +27,12 @@ export class MemberRelation extends Entity {
   async getWithRelationships(id) {
     return await this.handlePost(
       `${BASE_URL}/u/member_relations/show_w_relationships/${id}`
+    );
+  }
+
+  async getWithVillages(id) {
+    return await this.handlePost(
+      `${BASE_URL}/u/member_relations/show_w_villages/${id}`
     );
   }
 

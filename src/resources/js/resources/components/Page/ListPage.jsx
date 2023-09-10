@@ -8,10 +8,11 @@ import { general as strings } from "../../../constants/strings/fa";
 const ListPage = ({
   pageUtils,
   children,
-  table,
+  renderTopList = null,
   hasAdd = true,
   backUrl = null,
-  renderTopList = null,
+  renderButtons = null,
+  table,
 }) => {
   const navigate = useNavigate();
   const layoutState = useSelector((state) => state.layoutReducer);
@@ -22,7 +23,7 @@ const ListPage = ({
         {renderTopList && (
           <div style={{ margin: "1rem 0" }}>{renderTopList()}</div>
         )}
-        {(hasAdd || backUrl) && (
+        {(hasAdd || backUrl || renderButtons) && (
           <div style={{ margin: "1rem" }}>
             {hasAdd && (
               <button
@@ -46,6 +47,7 @@ const ListPage = ({
                 {strings.back}
               </button>
             )}
+            {renderButtons ? renderButtons() : <></>}
           </div>
         )}
         {children}

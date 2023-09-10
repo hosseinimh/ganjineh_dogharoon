@@ -40,6 +40,7 @@ class UpdateMemberRelationRequest extends FormRequest
             'family.max' => __('member_relation.family_max'),
             'national_no.required' => __('member_relation.national_no_required'),
             'national_no.digits' => __('member_relation.national_no_digits'),
+            'national_no.unique' => __('member_relation.national_no_unique'),
             'identity_no.required' => __('member_relation.identity_no_required'),
             'identity_no.numeric' => __('member_relation.identity_no_numeric'),
             'identity_no.gte' => __('member_relation.identity_no_gte'),

@@ -6,6 +6,7 @@ use App\Constants\Theme;
 use App\Http\Controllers\Administrator\BankController;
 use App\Http\Controllers\Administrator\CountryController;
 use App\Http\Controllers\Administrator\DashboardController;
+use App\Http\Controllers\Administrator\ErrorController;
 use App\Http\Controllers\Administrator\MemberController;
 use App\Http\Controllers\Administrator\MemberRelationController;
 use App\Http\Controllers\Administrator\NotificationController;
@@ -15,7 +16,7 @@ use App\Http\Controllers\Administrator\VillageController;
 use App\Http\Controllers\User\BankController as UserBankController;
 use App\Http\Controllers\User\CountryController as UserCountryController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
-use App\Http\Controllers\User\ErrorController;
+use App\Http\Controllers\User\ErrorController as UserErrorController;
 use App\Http\Controllers\User\MemberController as UserMemberController;
 use App\Http\Controllers\User\MemberRelationController as UserMemberRelationController;
 use App\Http\Controllers\User\NotificationController as UserNotificationController;
@@ -24,6 +25,7 @@ use App\Http\Controllers\User\UserController as UserUserController;
 use App\Http\Controllers\User\VillageController as UserVillageController;
 use App\Http\Resources\Bank\BankResource;
 use App\Http\Resources\Country\CountryResource;
+use App\Http\Resources\Error\ErrorResource;
 use App\Http\Resources\Member\MemberResource;
 use App\Http\Resources\MemberRelation\MemberRelationResource;
 use App\Http\Resources\Notification\NotificationResource;
@@ -35,6 +37,7 @@ use App\Packages\JsonResponse;
 use App\Packages\Notification;
 use App\Services\BankService;
 use App\Services\CountryService;
+use App\Services\ErrorService;
 use App\Services\MemberRelationService;
 use App\Services\MemberService;
 use App\Services\NotificationService;
@@ -69,6 +72,10 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind(ErrorController::class, function ($app) {
             return new ErrorController(new JsonResponse(ErrorResource::class), $app->make(ErrorService::class));
+        });
+
+        $this->app->bind(UserErrorController::class, function ($app) {
+            return new UserErrorController(new JsonResponse(ErrorResource::class), $app->make(ErrorService::class));
         });
 
         $this->app->bind(DashboardController::class, function ($app) {

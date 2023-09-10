@@ -20,11 +20,12 @@ class MemberResource extends JsonResource
             'postalCode' => intval($this->postal_code),
             'gender' => intval($this->gender),
             'villageId' => intval($this->village_id),
+            'villageName' => $this->village_name ?? '',
             'tel' => $this->tel ?? '',
             'mobile' => $this->mobile ?? '',
             'address' => $this->address ?? '',
             'description' => $this->description ?? '',
-            'memberNo' => intval($this->member_no),
+            'cardNo' => intval($this->card_no),
             'memberRelationsCount' => intval($this->member_relations_count),
         ];
     }

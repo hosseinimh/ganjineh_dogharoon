@@ -13,7 +13,7 @@ const addMemberSchema = yup.object().shape({
   name: nameValidator(yup.string(), strings.name, 2, 50),
   family: nameValidator(yup.string(), strings.family, 2, 50),
   nationalNo: nationalNoValidator(yup.string(), strings.nationalNo),
-  identityNo: numberValidator(yup.number(), strings.identityNo, 1, 1000000),
+  identityNo: numberValidator(yup.number(), strings.identityNo, 0, 1000000),
   fatherName: nameValidator(yup.string(), strings.fatherName, 2, 50),
   birthDate: dateValidator(yup.string(), strings.birthDate),
   membershipDate: dateValidator(yup.string(), strings.membershipDate),
@@ -36,7 +36,7 @@ const addMemberSchema = yup.object().shape({
     300,
     false
   ),
-  memberNo: numberValidator(yup.number(), strings.memberNo, 1, null, true),
+  cardNo: numberValidator(yup.number(), strings.cardNo, 1, null, true),
 });
 
 export default addMemberSchema;

@@ -88,7 +88,7 @@ export class PageUtils extends BasePageUtils {
     this.useForm.setValue("mobile", result.item.mobile);
     this.useForm.setValue("address", result.item.address);
     this.useForm.setValue("description", result.item.description);
-    this.useForm.setValue("memberNo", result.item.memberNo);
+    this.useForm.setValue("cardNo", result.item.cardNo);
   }
 
   async onSubmit(data) {
@@ -108,7 +108,7 @@ export class PageUtils extends BasePageUtils {
       data.mobile,
       data.address,
       data.description,
-      data.memberNo
+      data.cardNo
     );
     super.onModifySubmit(promise);
   }

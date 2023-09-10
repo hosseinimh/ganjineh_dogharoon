@@ -1015,7 +1015,7 @@ input[type="radio"] ~ span.error {
 }
 .dropdown-menu ul li a {
   color: var(--text);
-  padding: 2px 1.25rem;
+  padding: 0.5rem 1.25rem;
   display: block;
   line-height: 1.775rem;
   text-align: right;

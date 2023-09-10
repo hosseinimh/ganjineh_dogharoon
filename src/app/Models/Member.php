@@ -27,5 +27,6 @@ class Member extends Model
         'address',
         'description',
         'member_no',
+        'card_no',
     ];
 }

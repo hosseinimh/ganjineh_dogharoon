@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 import { general as strings } from "../../../constants/strings/fa";
+import utils from "../../../utils/Utils";
 
 const TableFooter = ({ columnsCount, pageUtils }) => {
   const layoutState = useSelector((state) => state.layoutReducer);
@@ -98,7 +99,7 @@ const TableFooter = ({ columnsCount, pageUtils }) => {
             </li>
           </ul>
           <span className="mx-20">
-            {pageState?.props?.itemsCount} {strings.records}
+            {utils.addCommas(pageState?.props?.itemsCount)} {strings.records}
           </span>
         </nav>
       </td>

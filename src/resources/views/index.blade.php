@@ -19,7 +19,7 @@
     <title>{{ __('general._title') }}</title>
     @php
     try {
-    $filename = 'assets/css/style.css';
+    $filename = 'assets/css/style_rtl.css';
     $fileModified = substr(md5(filemtime($filename)), 0, 6);
     } catch (\Exception) {
     $fileModified = '';

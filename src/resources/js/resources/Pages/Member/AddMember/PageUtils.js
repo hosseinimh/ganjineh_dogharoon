@@ -82,7 +82,7 @@ export class PageUtils extends BasePageUtils {
       data.mobile,
       data.address,
       data.description,
-      data.memberNo
+      data.cardNo
     );
     super.onModifySubmit(promise);
   }

@@ -32,7 +32,7 @@ class StoreMemberRequest extends FormRequest
             'mobile' => 'max:50',
             'address' => 'max:300',
             'description' => 'max:300',
-            'member_no' => 'required|numeric|gt:0|unique:tbl_members',
+            'card_no' => 'required|numeric|gt:0|unique:tbl_members',
         ];
     }
 
@@ -66,10 +66,10 @@ class StoreMemberRequest extends FormRequest
             'mobile.max' => __('member.mobile_max'),
             'address.max' => __('member.address_max'),
             'description.max' => __('member.description_max'),
-            'member_no.required' => __('member.member_no_required'),
-            'member_no.numeric' => __('member.member_no_numeric'),
-            'member_no.gt' => __('member.member_no_gt'),
-            'member_no.unique' => __('member.member_no_unique'),
+            'card_no.required' => __('member.card_no_required'),
+            'card_no.numeric' => __('member.card_no_numeric'),
+            'card_no.gt' => __('member.card_no_gt'),
+            'card_no.unique' => __('member.card_no_unique'),
         ];
     }
 }

@@ -8,6 +8,7 @@ use App\Facades\Notification;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\ChangePasswordRequest;
 use App\Http\Requests\User\LoginUserRequest as LoginRequest;
+use App\Http\Requests\User\RequestTokenUserRequest;
 use App\Packages\JsonResponse;
 use App\Services\UserService;
 use Illuminate\Http\JsonResponse as HttpJsonResponse;
@@ -39,6 +40,15 @@ class UserController extends Controller
     public function loginByGoogle(): RedirectResponse
     {
         return Socialite::driver('google')->redirect();
+    }
+
+    public function requestToken(RequestTokenUserRequest $request): HttpJsonResponse
+    {
+        $token = auth()->user()->createToken($request->token)->accessToken->token;
+        if ($token) {
+            return $this->onItem($token);
+        }
+        return $this->onError();
     }
 
     public function logout(): HttpJsonResponse

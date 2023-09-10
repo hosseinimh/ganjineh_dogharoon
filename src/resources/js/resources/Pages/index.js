@@ -1,4 +1,5 @@
 import Dashboard from "./Dashboard";
+import Errors from "./Error/Errors";
 import Login from "./User/Login";
 import AddUser from "./User/AddUser";
 import EditCurrentUser from "./User/EditUser/EditCurrentUser";
@@ -22,12 +23,15 @@ import Members from "./Member/Members";
 import AddMember from "./Member/AddMember";
 import EditMember from "./Member/EditMember";
 import MemberRelations from "./MemberRelation/MemberRelations";
+import MemberRelationsAll from "./MemberRelation/MemberRelationsAll";
 import AddMemberRelation from "./MemberRelation/AddMemberRelation";
 import EditMemberRelation from "./MemberRelation/EditMemberRelation";
 import Notifications from "./Notification/Notifications";
+import ChangeMemberRelationToMember from "./TransferMember/ChangeMemberRelationToMember";
 
 export {
   Dashboard,
+  Errors,
   Login,
   AddUser,
   EditCurrentUser,
@@ -51,7 +55,9 @@ export {
   AddMember,
   EditMember,
   MemberRelations,
+  MemberRelationsAll,
   AddMemberRelation,
   EditMemberRelation,
   Notifications,
+  ChangeMemberRelationToMember,
 };

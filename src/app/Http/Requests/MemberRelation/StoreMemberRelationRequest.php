@@ -22,7 +22,7 @@ class StoreMemberRelationRequest extends FormRequest
         return [
             'name' => 'required|min:2|max:50',
             'family' => 'required|min:2|max:50',
-            'national_no' => 'required|digits:10',
+            'national_no' => 'required|digits:10|unique:tbl_members',
             'identity_no' => 'required|numeric|gte:0|lt:1000000',
             'birth_date' => 'required|numeric|gte:13000101',
             'description' => 'max:300',
@@ -40,6 +40,7 @@ class StoreMemberRelationRequest extends FormRequest
             'family.max' => __('member_relation.family_max'),
             'national_no.required' => __('member_relation.national_no_required'),
             'national_no.digits' => __('member_relation.national_no_digits'),
+            'national_no.unique' => __('member_relation.national_no_unique'),
             'identity_no.required' => __('member_relation.identity_no_required'),
             'identity_no.numeric' => __('member_relation.identity_no_numeric'),
             'identity_no.gte' => __('member_relation.identity_no_gte'),

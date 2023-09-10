@@ -3,6 +3,7 @@
 use App\Http\Controllers\Administrator\BankController;
 use App\Http\Controllers\Administrator\CountryController;
 use App\Http\Controllers\Administrator\DashboardController;
+use App\Http\Controllers\Administrator\ErrorController;
 use App\Http\Controllers\Administrator\MemberController;
 use App\Http\Controllers\Administrator\MemberRelationController;
 use App\Http\Controllers\Administrator\RelationshipController;
@@ -18,6 +19,8 @@ Route::middleware(['cors'])->group(function () {
 // 'administrator' type users
 Route::middleware(['auth:sanctum', 'auth.administrator'])->group(function () {
     Route::post('dashboard', [DashboardController::class, 'index']);
+
+    Route::post('errors', [ErrorController::class, 'index']);
 
     Route::post('users', [UserController::class, 'index']);
     Route::post('users/show/{model}', [UserController::class, 'show']);
@@ -39,6 +42,7 @@ Route::middleware(['auth:sanctum', 'auth.administrator'])->group(function () {
 
     Route::post('members/store/{village}', [MemberController::class, 'store']);
     Route::post('members/update/{model}/{village}', [MemberController::class, 'update']);
+    Route::post('members/change_member_relation_to_member/{relationModel}/{village}', [MemberController::class, 'changeMemberRelationToMember']);
 
     Route::post('member_relations/store/{member}/{relationship}', [MemberRelationController::class, 'store']);
     Route::post('member_relations/update/{model}/{relationship}', [MemberRelationController::class, 'update']);

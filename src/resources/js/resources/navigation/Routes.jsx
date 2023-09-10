@@ -32,6 +32,10 @@ const renderAuthRoutes = () => (
       element={<Pages.MemberRelations />}
     />
     <Route
+      path={`${BASE_PATH}/member_relations`}
+      element={<Pages.MemberRelationsAll />}
+    />
+    <Route
       path={`${BASE_PATH}/notifications`}
       element={<Pages.Notifications />}
     />
@@ -50,6 +54,7 @@ const renderAuthRoutes = () => (
 
 const renderAdministratorRoutes = () => (
   <>
+    <Route path={`${BASE_PATH}/errors`} element={<Pages.Errors />} />
     <Route path={`${BASE_PATH}/banks/add`} element={<Pages.AddBank />} />
     <Route
       path={`${BASE_PATH}/banks/edit/:bankId`}
@@ -85,6 +90,10 @@ const renderAdministratorRoutes = () => (
     <Route
       path={`${BASE_PATH}/member_relations/edit/:memberRelationId`}
       element={<Pages.EditMemberRelation />}
+    />
+    <Route
+      path={`${BASE_PATH}/transfer/change_member_relation_to_member/:memberRelationId`}
+      element={<Pages.ChangeMemberRelationToMember />}
     />
     <Route
       path={`${BASE_PATH}/users/change_password/:userId`}

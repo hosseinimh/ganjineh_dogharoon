@@ -1,9 +1,16 @@
-import { BASE_URL } from "../../constants";
+import { BASE_URL, PAGE_ITEMS } from "../../constants";
 import Entity from "./Entity";
 
 export class Error extends Entity {
   constructor() {
     super();
+  }
+
+  async getPaginate(_pn = 1, _pi = PAGE_ITEMS) {
+    return await this.handlePost(`${BASE_URL}/a/errors`, {
+      _pn,
+      _pi,
+    });
   }
 
   async store(error, errorInfo) {

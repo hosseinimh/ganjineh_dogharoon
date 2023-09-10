@@ -17,18 +17,17 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('family');
-            $table->string('national_no');
+            $table->string('national_no')->unique();
             $table->string('identity_no');
             $table->string('birth_date');
             $table->unsignedTinyInteger('gender');
             $table->unsignedBigInteger('relationship_id');
             $table->text('description');
-            $table->unsignedBigInteger('member_id');
+            $table->unsignedBigInteger('member_no');
             $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('relationship_id')->references('id')->on('tbl_relationships');
-            $table->foreign('member_id')->references('id')->on('tbl_members');
         });
     }
 

@@ -11,6 +11,7 @@ import addCountrySchema from "./Country/AddCountrySchema";
 import editCountrySchema from "./Country/EditCountrySchema";
 import addRelationshipSchema from "./Relationship/AddRelationshipSchema";
 import editRelationshipSchema from "./Relationship/EditRelationshipSchema";
+import searchMemberSchema from "./Member/SearchMemberSchema";
 import addMemberSchema from "./Member/AddMemberSchema";
 import editMemberSchema from "./Member/EditMemberSchema";
 import addMemberRelationSchema from "./MemberRelation/AddMemberRelationSchema";
@@ -30,6 +31,7 @@ export {
   editCountrySchema,
   addRelationshipSchema,
   editRelationshipSchema,
+  searchMemberSchema,
   addMemberSchema,
   editMemberSchema,
   addMemberRelationSchema,

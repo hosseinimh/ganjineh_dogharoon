@@ -14,13 +14,15 @@ const MemberRelations = () => {
   const userState = useSelector((state) => state.userReducer);
   const pageState = useSelector((state) => state.pageReducer);
   const columnsCount =
-    userState?.user?.role === USER_ROLES.ADMINISTRATOR ? 4 : 3;
+    userState?.user?.role === USER_ROLES.ADMINISTRATOR ? 6 : 5;
   const pageUtils = new PageUtils();
 
   const renderHeader = () => (
     <tr>
       <th>{strings.nameFamily}</th>
       <th style={{ width: "100px" }}>{strings.nationalNo}</th>
+      <th style={{ width: "100px" }}>{strings.identityNo}</th>
+      <th style={{ width: "100px" }}>{strings.birthDate}</th>
       <th style={{ width: "100px" }}>{strings.relationship}</th>
       {userState?.user?.role === USER_ROLES.ADMINISTRATOR && (
         <th style={{ width: "150px" }}>{general.actions}</th>
@@ -29,28 +31,44 @@ const MemberRelations = () => {
   );
 
   const renderItems = () => {
-    const children = pageState?.props?.items?.map((item) => (
-      <React.Fragment key={item.id}>
-        <tr>
-          <td>{`${item.name} ${item.family}`}</td>
-          <td>{item.nationalNo}</td>
-          <td>{item.relationshipName}</td>
-          {userState?.user?.role === USER_ROLES.ADMINISTRATOR && (
-            <td>
-              <button
-                type="button"
-                className="btn btn-primary mx-5"
-                onClick={() => pageUtils.onEdit(item)}
-                title={general.edit}
-                disabled={layoutState?.loading}
-              >
-                {general.edit}
-              </button>
-            </td>
-          )}
-        </tr>
-      </React.Fragment>
-    ));
+    const children = pageState?.props?.items?.map((item) => {
+      let birthDate = item.birthDate;
+      if (item.birthDate?.length === 6) {
+        birthDate = `${item.birthDate.substring(
+          0,
+          2
+        )}/${item.birthDate.substring(2, 4)}/${item.birthDate.substring(4, 6)}`;
+      } else if (item.birthDate?.length === 8) {
+        birthDate = `${item.birthDate.substring(
+          0,
+          4
+        )}/${item.birthDate.substring(4, 6)}/${item.birthDate.substring(6, 8)}`;
+      }
+      return (
+        <React.Fragment key={item.id}>
+          <tr>
+            <td>{`${item.name} ${item.family}`}</td>
+            <td>{item.nationalNo}</td>
+            <td>{item.identityNo}</td>
+            <td>{birthDate}</td>
+            <td>{item.relationshipName}</td>
+            {userState?.user?.role === USER_ROLES.ADMINISTRATOR && (
+              <td>
+                <button
+                  type="button"
+                  className="btn btn-primary mx-5"
+                  onClick={() => pageUtils.onEdit(item)}
+                  title={general.edit}
+                  disabled={layoutState?.loading}
+                >
+                  {general.edit}
+                </button>
+              </td>
+            )}
+          </tr>
+        </React.Fragment>
+      );
+    });
 
     return <TableItems columnsCount={columnsCount}>{children}</TableItems>;
   };

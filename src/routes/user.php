@@ -27,6 +27,8 @@ Route::middleware(['auth:sanctum', 'auth.user'])->group(function () {
 
 // 'user' | 'administrator' type users
 Route::middleware(['auth:sanctum', 'auth.logged'])->group(function () {
+    Route::post('users/request_token', [UserController::class, 'requestToken']);
+
     Route::post('villages', [VillageController::class, 'index']);
     Route::post('villages/all', [VillageController::class, 'showAll']);
     Route::post('villages/show/{model}', [VillageController::class, 'show']);
@@ -47,9 +49,11 @@ Route::middleware(['auth:sanctum', 'auth.logged'])->group(function () {
     Route::post('members/show_w_villages/{model}', [MemberController::class, 'showWithVillages']);
     Route::post('members/show_w_relationships/{model}', [MemberController::class, 'showWithRelationships']);
 
+    Route::post('member_relations', [MemberRelationController::class, 'all']);
     Route::post('member_relations/{member}', [MemberRelationController::class, 'index']);
     Route::post('member_relations/show/{model}', [MemberRelationController::class, 'show']);
     Route::post('member_relations/show_w_relationships/{model}', [MemberRelationController::class, 'showWithRelationships']);
+    Route::post('member_relations/show_w_villages/{model}', [MemberRelationController::class, 'showWithVillages']);
 
     Route::post('notifications', [NotificationController::class, 'index']);
     Route::post('notifications/review', [NotificationController::class, 'review']);

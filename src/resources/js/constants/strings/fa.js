@@ -1,8 +1,8 @@
-export const layout = { brand: "گنجینه دوغارون" };
+export const layout = { brand: "شرکت تعاونی مرزنشینان گنجینه دوغارون" };
 
 export const general = {
-  brand: "گنجینه دوغارون",
-  brandLogo: "گنجینه دوغارون",
+  brand: "شرکت تعاونی مرزنشینان گنجینه دوغارون",
+  brandLogo: "شرکت تعاونی مرزنشینان گنجینه دوغارون",
   locale: "fa-IR",
   add: "افزودن",
   edit: "ویرایش",
@@ -26,6 +26,7 @@ export const general = {
   up: "بالا",
   down: "پایین",
   file: "فایل ضمیمه",
+  print: "چاپ",
   currency: "تومان",
   itemNotFound: "آیتم یافت نشد.",
   noDataFound: "داده‌ای برای نمایش وجود ندارد.",
@@ -87,18 +88,19 @@ export const header = {
 };
 
 export const footer = {
-  text: "Copyright © گنجینه دوغارون",
-  version: "داشبورد گنجینه دوغارون - نسخه: 1.0.0",
+  text: "Copyright © شرکت تعاونی مرزنشینان گنجینه دوغارون",
+  version: "داشبورد شرکت تعاونی مرزنشینان گنجینه دوغارون - نسخه: 1.0.0",
 };
 
 export const notAuthPages = {
-  _title: "گنجینه دوغارون",
-  _subTitle: "شرکت تعاونی گنجینه دوغارون",
+  _title: "شرکت تعاونی مرزنشینان گنجینه دوغارون",
+  _subTitle: "شرکت تعاونی مرزنشینان گنجینه دوغارون",
 };
 
 export const loginUserPage = {
   _title: "ورود به حساب کاربری",
-  _subTitle: "جهت استفاده از امکانات گنجینه دوغارون وارد حساب کاربری خود شوید.",
+  _subTitle:
+    "جهت استفاده از امکانات شرکت تعاونی مرزنشینان گنجینه دوغارون وارد حساب کاربری خود شوید.",
   username: "نام کاربری",
   usernamePlaceholder: "نام کاربری",
   password: "کلمه عبور",
@@ -114,6 +116,7 @@ export const loginUserPage = {
 export const sidebar = {
   mainItems: "منوی اصلی",
   dashboard: "داشبورد",
+  errors: "خطاها",
   quickItems: "دسترسی سریع",
   baseItems: "اطلاعات پایه",
   banks: "بانک‌ها",
@@ -121,6 +124,7 @@ export const sidebar = {
   villages: "روستاها",
   relationships: "روابط خویشاوندی",
   members: "سهام‌داران",
+  memberRelations: "افراد تحت تکفل",
   systemItems: "امکانات",
   users: "کاربران",
   notifications: "اعلان‌ها",
@@ -134,6 +138,13 @@ export const sidebar = {
 export const dashboardPage = {
   _title: "داشبورد",
   _subTitle: "سامانه در یک نگاه",
+};
+
+export const errorsPage = {
+  _title: "خطاها",
+  _subTitle: "فهرست خطاهای رخ داده در سامانه",
+  message: "متن خطا",
+  date: "تاریخ",
 };
 
 export const usersPage = {
@@ -258,7 +269,7 @@ export const addBankPage = {
   _subTitle: "مشخصات بانک جدید را وارد نمایید.",
   name: "بانک",
   namePlaceholder: "بانک",
-  submitted: "افزودن بانک با موفقیت انجام گردید.",
+  submitted: "افزودن بانک با موفقیت انجام شد.",
 };
 
 export const editBankPage = {
@@ -266,7 +277,7 @@ export const editBankPage = {
   _subTitle: "مشخصات بانک تعریف شده را ویرایش نمایید.",
   name: "بانک",
   namePlaceholder: "بانک",
-  submitted: "ویرایش بانک با موفقیت انجام گردید.",
+  submitted: "ویرایش بانک با موفقیت انجام شد.",
 };
 
 export const countriesPage = {
@@ -281,7 +292,7 @@ export const addCountryPage = {
   _subTitle: "مشخصات کشور جدید را وارد نمایید.",
   name: "کشور",
   namePlaceholder: "کشور",
-  submitted: "افزودن مشخصات کشور با موفقیت انجام گردید.",
+  submitted: "افزودن مشخصات کشور با موفقیت انجام شد.",
 };
 
 export const editCountryPage = {
@@ -289,7 +300,7 @@ export const editCountryPage = {
   _subTitle: "مشخصات کشور تعریف شده را ویرایش نمایید.",
   name: "کشور",
   namePlaceholder: "کشور",
-  submitted: "ویرایش مشخصات کشور با موفقیت انجام گردید.",
+  submitted: "ویرایش مشخصات کشور با موفقیت انجام شد.",
 };
 
 export const districts = {
@@ -312,7 +323,7 @@ export const addVillagePage = {
   district: "بخش",
   name: "روستا",
   namePlaceholder: "روستا",
-  submitted: "افزودن روستا با موفقیت انجام گردید.",
+  submitted: "افزودن روستا با موفقیت انجام شد.",
 };
 
 export const editVillagePage = {
@@ -321,7 +332,7 @@ export const editVillagePage = {
   district: "بخش",
   name: "روستا",
   namePlaceholder: "روستا",
-  submitted: "ویرایش روستا با موفقیت انجام گردید.",
+  submitted: "ویرایش روستا با موفقیت انجام شد.",
 };
 
 export const relationshipsPage = {
@@ -336,7 +347,7 @@ export const addRelationshipPage = {
   _subTitle: "یک رابطه خویشاوندی جدید تعریف نمایید.",
   name: "رابطه خویشاوندی",
   namePlaceholder: "رابطه خویشاوندی",
-  submitted: "افزودن رابطه خویشاوندی با موفقیت انجام گردید.",
+  submitted: "افزودن رابطه خویشاوندی با موفقیت انجام شد.",
 };
 
 export const editRelationshipPage = {
@@ -344,7 +355,7 @@ export const editRelationshipPage = {
   _subTitle: "رابطه خویشاوندی تعریف شده را ویرایش نمایید.",
   name: "رابطه خویشاوندی",
   namePlaceholder: "رابطه خویشاوندی",
-  submitted: "ویرایش رابطه خویشاوندی با موفقیت انجام گردید.",
+  submitted: "ویرایش رابطه خویشاوندی با موفقیت انجام شد.",
 };
 
 export const membersPage = {
@@ -352,14 +363,24 @@ export const membersPage = {
   _subTitle: "فهرست سهام‌داران شرکت",
   village: "روستا",
   allVillages: "همه روستاها",
-  nameFamily: "نام / نام خانوادگی",
-  nameFamilyPlaceholder: "نام / نام خانوادگی",
+  name: "نام",
+  namePlaceholder: "نام",
+  family: "نام خانوادگی",
+  familyPlaceholder: "نام خانوادگی",
   nationalNo: "شماره ملی",
   nationalNoPlaceholder: "شماره ملی",
-  memberNo: "شماره عضویت",
-  memberNoPlaceholder: "شماره عضویت",
-  memberRelationsCount: "تعداد افراد خانوار",
-  memberRelations: "افراد وابسته",
+  allMembersCount: "تعداد سرپرست خانوار",
+  allMemberRelationsCount: "تعداد افراد تحت تکفل",
+  allCount: "تعداد کل افراد",
+  nameFamily: "نام / نام خانوادگی",
+  identityNo: "شماره شناسنامه",
+  birthDate: "تاریخ تولد",
+  fatherName: "نام پدر",
+  cardNo: "شماره کارت",
+  cardNoPlaceholder: "شماره کارت",
+  memberRelations: "افراد تحت تکفل",
+  printWithMobile: "چاپ با شماره همراه",
+  printWithoutMobile: "چاپ بدون شماره همراه",
   add: "افزودن سهام‌دار",
 };
 
@@ -392,14 +413,116 @@ export const addMemberPage = {
   addressPlaceholder: "آدرس",
   description: "توضیحات",
   descriptionPlaceholder: "توضیحات",
-  memberNo: "شماره عضویت",
-  memberNoPlaceholder: "شماره عضویت",
+  cardNo: "شماره کارت",
+  cardNoPlaceholder: "شماره کارت",
   noVillagesFound: "هیچ روستایی ثبت نشده است.",
-  submitted: "افزودن مشخصات سهام‌دار با موفقیت انجام گردید.",
+  submitted: "افزودن مشخصات سهام‌دار با موفقیت انجام شد.",
 };
 
 export const editMemberPage = {
   _title: "ویرایش مشخصات سهام‌دار",
+  _subTitle: "مشخصات سهام‌دار را وارد نمایید.",
+  name: "نام",
+  namePlaceholder: "نام",
+  family: "نام خانوادگی",
+  familyPlaceholder: "نام خانوادگی",
+  nationalNo: "شماره ملی",
+  nationalNoPlaceholder: "شماره ملی",
+  identityNo: "شماره شناسنامه",
+  identityNoPlaceholder: "شماره شناسنامه",
+  fatherName: "نام پدر",
+  fatherNamePlaceholder: "نام پدر",
+  birthDate: "تاریخ تولد",
+  birthDatePlaceholder: "تاریخ تولد",
+  membershipDate: "تاریخ عضویت",
+  membershipDatePlaceholder: "تاریخ عضویت",
+  postalCode: "کد پستی",
+  postalCodePlaceholder: "کد پستی",
+  gender: "جنسیت",
+  village: "روستا",
+  tel: "شماره تلفن",
+  telPlaceholder: "شماره تلفن",
+  mobile: "شماره همراه",
+  mobilePlaceholder: "شماره همراه",
+  address: "آدرس",
+  addressPlaceholder: "آدرس",
+  description: "توضیحات",
+  descriptionPlaceholder: "توضیحات",
+  cardNo: "شماره کارت",
+  cardNoPlaceholder: "شماره کارت",
+  noVillagesFound: "هیچ روستایی ثبت نشده است.",
+  submitted: "ویرایش مشخصات سهام‌دار با موفقیت انجام شد.",
+};
+
+export const memberRelationsPage = {
+  _title: "مشخصات افراد تحت تکفل سهام‌دار",
+  _subTitle: "فهرست مشخصات افراد تحت تکفل سهام‌دار",
+  nameFamily: "نام / نام خانوادگی",
+  nationalNo: "شماره ملی",
+  identityNo: "شماره شناسنامه",
+  birthDate: "تاریخ تولد",
+  relationship: "رابطه خویشاوندی",
+  add: "افزودن فرد تحت تکفل",
+};
+
+export const addMemberRelationPage = {
+  _title: "افزودن مشخصات فرد تحت تکفل",
+  _subTitle: "مشخصات فرد تحت تکفل سهام‌دار را وارد نمایید.",
+  name: "نام",
+  namePlaceholder: "نام",
+  family: "نام خانوادگی",
+  familyPlaceholder: "نام خانوادگی",
+  nationalNo: "شماره ملی",
+  nationalNoPlaceholder: "شماره ملی",
+  identityNo: "شماره شناسنامه",
+  identityNoPlaceholder: "شماره شناسنامه",
+  birthDate: "تاریخ تولد",
+  birthDatePlaceholder: "تاریخ تولد",
+  gender: "جنسیت",
+  relationship: "رابطه خویشاوندی",
+  description: "توضیحات",
+  descriptionPlaceholder: "توضیحات",
+  noRelationshipsFound: "هیچ رابطه خویشاوندی‌ای ثبت نشده است.",
+  submitted: "افزودن مشخصات فرد تحت تکفل سهام‌دار با موفقیت انجام شد.",
+};
+
+export const editMemberRelationPage = {
+  _title: "ویرایش مشخصات فرد تحت تکفل",
+  _subTitle: "مشخصات فرد تحت تکفل سهام‌دار را وارد نمایید.",
+  name: "نام",
+  namePlaceholder: "نام",
+  family: "نام خانوادگی",
+  familyPlaceholder: "نام خانوادگی",
+  nationalNo: "شماره ملی",
+  nationalNoPlaceholder: "شماره ملی",
+  identityNo: "شماره شناسنامه",
+  identityNoPlaceholder: "شماره شناسنامه",
+  birthDate: "تاریخ تولد",
+  birthDatePlaceholder: "تاریخ تولد",
+  gender: "جنسیت",
+  relationship: "رابطه خویشاوندی",
+  description: "توضیحات",
+  descriptionPlaceholder: "توضیحات",
+  noRelationshipsFound: "هیچ رابطه خویشاوندی‌ای ثبت نشده است.",
+  submitted: "ویرایش مشخصات فرد تحت تکفل سهام‌دار با موفقیت انجام شد.",
+};
+
+export const memberRelationsAllPage = {
+  _title: "مشخصات افراد تحت تکفل",
+  _subTitle: "فهرست مشخصات افراد تحت تکفل",
+  nameFamily: "نام / نام خانوادگی",
+  memberNameFamily: "نام / نام خانوادگی / شماره ملی سرپرست",
+  nationalNo: "شماره ملی",
+  identityNo: "شماره شناسنامه",
+  birthDate: "تاریخ تولد",
+  relationship: "رابطه خویشاوندی",
+  transfer: "انتقال",
+  transferAsMember: "به عنوان سرپرست",
+  transferAsMemberRelation: "به عنوان تحت تکفل",
+};
+
+export const changeMemberRelationToMemberPage = {
+  _title: "انتقال فرد تحت تکفل به عنوان سهام‌دار جدید",
   _subTitle: "مشخصات سهام‌دار جدید را وارد نمایید.",
   name: "نام",
   namePlaceholder: "نام",
@@ -427,59 +550,9 @@ export const editMemberPage = {
   addressPlaceholder: "آدرس",
   description: "توضیحات",
   descriptionPlaceholder: "توضیحات",
-  memberNo: "شماره عضویت",
-  memberNoPlaceholder: "شماره عضویت",
+  cardNo: "شماره کارت",
+  cardNoPlaceholder: "شماره کارت",
+  maxCardNo: "آخرین شماره کارت صادره",
   noVillagesFound: "هیچ روستایی ثبت نشده است.",
-  submitted: "ویرایش مشخصات سهام‌دار با موفقیت انجام گردید.",
-};
-
-export const memberRelationsPage = {
-  _title: "مشخصات افراد وابسته به سهام‌دار",
-  _subTitle: "فهرست مشخصات افراد وابسته به سهام‌دار",
-  nameFamily: "نام / نام خانوادگی",
-  nationalNo: "شماره ملی",
-  relationship: "رابطه خویشاوندی",
-  add: "افزودن فرد وابسته",
-};
-
-export const addMemberRelationPage = {
-  _title: "افزودن مشخصات فرد وابسته",
-  _subTitle: "مشخصات فرد وابسته به سهام‌دار را وارد نمایید.",
-  name: "نام",
-  namePlaceholder: "نام",
-  family: "نام خانوادگی",
-  familyPlaceholder: "نام خانوادگی",
-  nationalNo: "شماره ملی",
-  nationalNoPlaceholder: "شماره ملی",
-  identityNo: "شماره شناسنامه",
-  identityNoPlaceholder: "شماره شناسنامه",
-  birthDate: "تاریخ تولد",
-  birthDatePlaceholder: "تاریخ تولد",
-  gender: "جنسیت",
-  relationship: "رابطه خویشاوندی",
-  description: "توضیحات",
-  descriptionPlaceholder: "توضیحات",
-  noRelationshipsFound: "هیچ رابطه خویشاوندی‌ای ثبت نشده است.",
-  submitted: "افزودن مشخصات فرد وابسته به سهام‌دار با موفقیت انجام گردید.",
-};
-
-export const editMemberRelationPage = {
-  _title: "ویرایش مشخصات فرد وابسته",
-  _subTitle: "مشخصات فرد وابسته به سهام‌دار را وارد نمایید.",
-  name: "نام",
-  namePlaceholder: "نام",
-  family: "نام خانوادگی",
-  familyPlaceholder: "نام خانوادگی",
-  nationalNo: "شماره ملی",
-  nationalNoPlaceholder: "شماره ملی",
-  identityNo: "شماره شناسنامه",
-  identityNoPlaceholder: "شماره شناسنامه",
-  birthDate: "تاریخ تولد",
-  birthDatePlaceholder: "تاریخ تولد",
-  gender: "جنسیت",
-  relationship: "رابطه خویشاوندی",
-  description: "توضیحات",
-  descriptionPlaceholder: "توضیحات",
-  noRelationshipsFound: "هیچ رابطه خویشاوندی‌ای ثبت نشده است.",
-  submitted: "ویرایش مشخصات فرد وابسته به سهام‌دار با موفقیت انجام گردید.",
+  submitted: "افزودن مشخصات سهام‌دار با موفقیت انجام شد.",
 };

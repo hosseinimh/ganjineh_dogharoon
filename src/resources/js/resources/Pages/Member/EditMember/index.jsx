@@ -109,7 +109,7 @@ const EditMember = () => {
       <InputTextColumn field="description" showLabel icon={"icon-edit-24"} />
       <InputRow>
         <InputTextColumn
-          field="memberNo"
+          field="cardNo"
           type="number"
           fullRow={false}
           showLabel

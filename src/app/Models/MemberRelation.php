@@ -20,6 +20,7 @@ class MemberRelation extends Model
         'gender',
         'relationship_id',
         'description',
+        'member_no',
         'member_id',
     ];
 }

@@ -22,7 +22,7 @@ class UpdateMemberRequest extends FormRequest
         return [
             'name' => 'required|min:2|max:50',
             'family' => 'required|min:2|max:50',
-            'national_no' => 'required|digits:10|unique:tbl_members',
+            'national_no' => 'required|digits:10',
             'identity_no' => 'required|numeric|gte:0|lt:1000000',
             'father_name' => 'required|min:2|max:50',
             'birth_date' => 'required|numeric|gte:13000101',
@@ -32,7 +32,7 @@ class UpdateMemberRequest extends FormRequest
             'mobile' => 'max:50',
             'address' => 'max:300',
             'description' => 'max:300',
-            'member_no' => 'required|numeric|gt:0|unique:tbl_members',
+            'card_no' => 'required|numeric|gt:0',
         ];
     }
 
@@ -66,10 +66,10 @@ class UpdateMemberRequest extends FormRequest
             'mobile.max' => __('member.mobile_max'),
             'address.max' => __('member.address_max'),
             'description.max' => __('member.description_max'),
-            'member_no.required' => __('member.member_no_required'),
-            'member_no.numeric' => __('member.member_no_numeric'),
-            'member_no.gt' => __('member.member_no_gt'),
-            'member_no.unique' => __('member.member_no_unique'),
+            'card_no.required' => __('member.card_no_required'),
+            'card_no.numeric' => __('member.card_no_numeric'),
+            'card_no.gt' => __('member.card_no_gt'),
+            'card_no.unique' => __('member.card_no_unique'),
         ];
     }
 }
