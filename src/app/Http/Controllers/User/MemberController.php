@@ -14,7 +14,6 @@ use App\Services\MemberRelationService;
 use App\Services\MemberService;
 use App\Services\RelationshipService;
 use App\Services\VillageService;
-use DateTime;
 use Illuminate\Http\JsonResponse as HttpJsonResponse;
 
 class MemberController extends Controller

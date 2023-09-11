@@ -30,4 +30,9 @@ class MemberRelationController extends Controller
         $gender = in_array($request->gender, [1, 2]) ? $request->gender : 1;
         return $this->onUpdate($this->service->update($model, $request->name, $request->family, $request->national_no, $request->identity_no, $request->birth_date, $gender, $relationship->id, $request->description));
     }
+
+    public function changeMember(Model $model, Member $member): HttpJsonResponse
+    {
+        return $this->onUpdate($this->service->changeMember($model, $member->id));
+    }
 }

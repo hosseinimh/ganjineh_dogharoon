@@ -11,61 +11,63 @@ export const SET_DROP_DOWN_ELEMENT_ACTION = "SET_DROP_DOWN_ELEMENT_ACTION";
 export const SET_SHOWN_MODAL_ACTION = "SET_SHOWN_MODAL_ACTION";
 
 export const setLoadingAction = (loading) => async (dispatch) => {
-  dispatch({
-    type: SET_LOADING_ACTION,
-    payload: loading,
-  });
+    dispatch({
+        type: SET_LOADING_ACTION,
+        payload: loading,
+    });
 };
 
 export const setSizeAction = (width, height) => async (dispatch) => {
-  dispatch({
-    type: SET_SIZE_ACTION,
-    payload: { width, height },
-  });
+    dispatch({
+        type: SET_SIZE_ACTION,
+        payload: { width, height },
+    });
 };
 
 export const setThemeAction = (theme) => async (dispatch) => {
-  let t = themes.find((tm) => tm.name === theme);
-  if (!t) {
-    return;
-  }
-  utils.setTheme(t);
-  dispatch({
-    type: SET_THEME_ACTION,
-    payload: t,
-  });
+    let t = themes.find((tm) => tm.name === theme);
+    if (!t) {
+        return;
+    }
+    utils.setTheme(t);
+    dispatch({
+        type: SET_THEME_ACTION,
+        payload: t,
+    });
 };
 
 export const setNotificationsAction = (notifications) => async (dispatch) => {
-  dispatch({
-    type: SET_NOTIFICATIONS_ACTION,
-    payload: notifications,
-  });
+    dispatch({
+        type: SET_NOTIFICATIONS_ACTION,
+        payload: notifications,
+    });
 };
 
 export const toggleSidebarAction = () => async (dispatch) => {
-  dispatch({
-    type: TOGGLE_SIDEBAR_ACTION,
-  });
+    dispatch({
+        type: TOGGLE_SIDEBAR_ACTION,
+    });
 };
 
 export const setSidebarPropsAction = (props) => async (dispatch) => {
-  dispatch({
-    type: SET_SIDEBAR_PROPS_ACTION,
-    payload: props,
-  });
+    dispatch({
+        type: SET_SIDEBAR_PROPS_ACTION,
+        payload: props,
+    });
 };
 
 export const setDropDownElementAction = (element) => async (dispatch) => {
-  dispatch({
-    type: SET_DROP_DOWN_ELEMENT_ACTION,
-    payload: element,
-  });
+    dispatch({
+        type: SET_DROP_DOWN_ELEMENT_ACTION,
+        payload: element,
+    });
 };
 
-export const setShownModalAction = (modal) => async (dispatch) => {
-  dispatch({
-    type: SET_SHOWN_MODAL_ACTION,
-    payload: modal,
-  });
-};
+export const setShownModalAction =
+    (modal, props = null) =>
+    async (dispatch) => {
+        dispatch({
+            type: SET_SHOWN_MODAL_ACTION,
+            payload: { modal, props },
+        });
+    };

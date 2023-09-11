@@ -92,6 +92,14 @@ class MemberRelationService
         return $model->update($data);
     }
 
+    public function changeMember(Model $model, int $memberId): bool
+    {
+        $data = [
+            'member_id' => $memberId,
+        ];
+        return $model->update($data);
+    }
+
     public function count(int $memberId): int
     {
         return Model::where('member_id', $memberId)->count();

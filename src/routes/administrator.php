@@ -46,4 +46,5 @@ Route::middleware(['auth:sanctum', 'auth.administrator'])->group(function () {
 
     Route::post('member_relations/store/{member}/{relationship}', [MemberRelationController::class, 'store']);
     Route::post('member_relations/update/{model}/{relationship}', [MemberRelationController::class, 'update']);
+    Route::post('member_relations/change_member/{model}/{member}', [MemberRelationController::class, 'changeMember']);
 });
