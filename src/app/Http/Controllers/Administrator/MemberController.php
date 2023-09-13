@@ -36,4 +36,9 @@ class MemberController extends Controller
         $gender = in_array($request->gender, [1, 2]) ? $request->gender : 1;
         return $this->onStore($this->service->changeMemberRelationToMember($relationModel, $request->name, $request->family, $request->national_no, $request->identity_no, $request->father_name, $request->birth_date, $request->membership_date, $request->postal_code, $gender, $village->id, $request->tel, $request->mobile, $request->address, $request->description, $request->card_no));
     }
+
+    public function delete(Model $model): HttpJsonResponse
+    {
+        return $this->onDelete($this->service->delete($model));
+    }
 }

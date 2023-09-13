@@ -23,4 +23,9 @@ class MemberRelation extends Model
         'member_no',
         'member_id',
     ];
+
+    public function mmeber()
+    {
+        return $this->belongsTo(Member::class);
+    }
 }

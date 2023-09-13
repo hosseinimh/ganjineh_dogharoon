@@ -170,6 +170,12 @@ class MemberService
         return null;
     }
 
+    public function delete(Model $model): bool
+    {
+        $this->throwIfHasMemberRelation($model);
+        return $model->delete();
+    }
+
     public function count(int|null $villageId, string|null $name, string|null $family, string|null $nationalNo, int|null $cardNo): int
     {
         $query = Model::query();
@@ -218,5 +224,13 @@ class MemberService
             return;
         }
         throw new Exception(__('member.card_no_unique'), ErrorCode::CUSTOM_ERROR);
+    }
+
+    private function throwIfHasMemberRelation(Model $model)
+    {
+        if ($model->memberRelations->count() === 0) {
+            return;
+        }
+        throw new Exception(__('member.has_member_relations'), ErrorCode::CUSTOM_ERROR);
     }
 }

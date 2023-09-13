@@ -51,4 +51,5 @@ return [
     'mobile' => 'موبایل',
     'member_relations_count' => 'افراد تحت تکفل',
     'village' => 'روستا',
+    'has_member_relations' => 'سهام‌دار دارای افراد تحت تکفل است.',
 ];

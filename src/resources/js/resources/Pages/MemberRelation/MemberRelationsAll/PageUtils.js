@@ -33,19 +33,19 @@ export class PageUtils extends BasePageUtils {
         }
     }
 
+    async fillForm() {
+        const promise = this.entity.getAll(
+            this.pageState.props?.pageNumber ?? 1
+        );
+        super.fillForm(promise);
+    }
+
     transferToMemberAction({ id }) {
         if (utils.isId(id)) {
             this.navigate(
                 `${BASE_PATH}/transfer/change_member_relation_to_member/${id}`
             );
         }
-    }
-
-    async fillForm() {
-        const promise = this.entity.getAll(
-            this.pageState.props?.pageNumber ?? 1
-        );
-        super.fillForm(promise);
     }
 
     showTransferToNewMemberModal(e, item) {

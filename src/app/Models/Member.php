@@ -29,4 +29,9 @@ class Member extends Model
         'member_no',
         'card_no',
     ];
+
+    public function memberRelations()
+    {
+        return $this->hasMany(MemberRelation::class);
+    }
 }

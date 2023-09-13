@@ -157,4 +157,8 @@ export class Member extends Entity {
             }
         );
     }
+
+    async delete(id) {
+        return await this.handlePost(`${BASE_URL}/a/members/delete/${id}`);
+    }
 }

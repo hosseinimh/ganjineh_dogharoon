@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { setShownModalAction } from "../../../state/layout/layoutActions";
+import { MODAL_RESULT } from "../../../constants";
 
 const Modal = ({
     id,
@@ -9,7 +10,7 @@ const Modal = ({
     children,
     footer = null,
     onClose = null,
-    closeModal = undefined,
+    modalResult = undefined,
 }) => {
     const layoutState = useSelector((state) => state.layoutReducer);
     const dispatch = useDispatch();
@@ -23,10 +24,14 @@ const Modal = ({
     }, [layoutState?.shownModal?.modal]);
 
     useEffect(() => {
-        if (closeModal === true) {
+        if (
+            [MODAL_RESULT.OK, MODAL_RESULT.CANCEL, MODAL_RESULT.CLOSE].includes(
+                modalResult
+            )
+        ) {
             hideModal();
         }
-    }, [closeModal]);
+    }, [modalResult]);
 
     const showModal = () => {
         const element = document.querySelector(`#${id}`);

@@ -37,6 +37,7 @@ export const general = {
     fallbackError: "خطایی در نمایش صفحه مورد نظر رخ داد.",
     fallbackReturnHome: "بازگشت به داشبورد مدیریت",
     copiedToClipboard: ":item کپی شد!",
+    removeMessage: "آیا مطمئن به حذف این آیتم می‌باشید؟",
 };
 
 export const utils = {
@@ -396,6 +397,8 @@ export const membersPage = {
     printWithMobile: "چاپ با شماره همراه",
     printWithoutMobile: "چاپ بدون شماره همراه",
     add: "افزودن سهام‌دار",
+    removeMessageTitle: "آیا مطمئن به حذف اطلاعات این سهام‌دار می‌باشید؟",
+    submitted: "حذف اطلاعات سهام‌دار با موفقیت انجام شد.",
 };
 
 export const addMemberPage = {
@@ -477,6 +480,9 @@ export const memberRelationsPage = {
     birthDate: "تاریخ تولد",
     relationship: "رابطه خویشاوندی",
     add: "افزودن فرد تحت تکفل",
+    transfer: "انتقال",
+    transferAsMember: "به عنوان سرپرست",
+    transferAsMemberRelation: "تغییر سرپرست",
 };
 
 export const addMemberRelationPage = {

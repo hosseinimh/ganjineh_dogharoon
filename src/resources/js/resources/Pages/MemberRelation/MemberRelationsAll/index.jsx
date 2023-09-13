@@ -99,9 +99,18 @@ const MemberRelationsAll = () => {
                                     {general.edit}
                                 </button>
                                 <button
+                                    type="button"
+                                    className="btn btn-primary mx-5"
+                                    onClick={() => pageUtils.onEdit(item)}
+                                    title={general.remove}
+                                    disabled={layoutState?.loading}
+                                >
+                                    {general.remove}
+                                </button>
+                                <button
                                     id={`transfer-${item.id}`}
                                     type="button"
-                                    className="btn btn-primary btn-dropdown mx-rdir-10"
+                                    className="btn btn-primary btn-dropdown mx-5"
                                     onClick={(e) =>
                                         toggleTransfer(e, `transfer-${item.id}`)
                                     }
