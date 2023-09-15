@@ -35,7 +35,9 @@ class MemberController extends Controller
         $members = MemberResource::collection($this->service->getPaginate($villageId, $name, $family, $nationalNo, $cardNo, $request->_pn, $request->_pi));
         $villages = VillageResource::collection($villageService->getAll());
         $memberRelationsCount = $memberRelationService->countInMembers($villageId, $name, $family, $nationalNo, $cardNo);
-        return $this->onItems(['items' => $members, 'villages' => $villages, 'memberRelationsCount' => $memberRelationsCount], $this->service->count($villageId, $name, $family, $nationalNo, $cardNo));
+        $relationshipService = new RelationshipService();
+        $relationships = $request->_pn === 1 ? RelationshipResource::collection($relationshipService->getAll()) : null;
+        return $this->onItems(['items' => $members, 'villages' => $villages, 'memberRelationsCount' => $memberRelationsCount, 'relationships' => $relationships], $this->service->count($villageId, $name, $family, $nationalNo, $cardNo));
     }
 
     public function show(Model $model): HttpJsonResponse

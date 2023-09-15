@@ -119,17 +119,11 @@ export class Member extends Entity {
         );
     }
 
-    async changeMemberRelationToMemnber(
+    async transferMemberRelationToMemnber(
         memberRelationId,
-        name,
-        family,
-        nationalNo,
-        identityNo,
         fatherName,
-        birthDate,
         membershiphDate,
         postalCode,
-        gender,
         villageId,
         tel,
         mobile,
@@ -138,17 +132,11 @@ export class Member extends Entity {
         cardNo
     ) {
         return await this.handlePost(
-            `${BASE_URL}/a/members/change_member_relation_to_member/${memberRelationId}/${villageId}`,
+            `${BASE_URL}/a/members/transfer_member_relation_to_member/${memberRelationId}/${villageId}`,
             {
-                name,
-                family,
-                national_no: nationalNo,
-                identity_no: identityNo,
                 father_name: fatherName,
-                birth_date: birthDate,
                 membership_date: membershiphDate,
                 postal_code: postalCode,
-                gender,
                 tel,
                 mobile,
                 address,

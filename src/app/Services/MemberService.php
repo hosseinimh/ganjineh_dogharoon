@@ -3,9 +3,11 @@
 namespace App\Services;
 
 use App\Constants\ErrorCode;
+use App\Facades\Helper;
 use App\Models\Error;
 use App\Models\Member as Model;
 use App\Models\MemberRelation;
+use DateTime;
 use Exception;
 use Illuminate\Support\Facades\DB;
 
@@ -51,7 +53,7 @@ class MemberService
             $query->where('card_no', $cardNo);
         }
         return $query->leftJoin('tbl_member_relations', 'tbl_members.id', '=', 'tbl_member_relations.member_id')->leftJoin('tbl_villages', 'tbl_members.village_id', '=', 'tbl_villages.id')
-            ->selectRaw('tbl_members.*,count(tbl_member_relations.id) as member_relations_count,tbl_villages.name as village_name')
+            ->selectRaw('tbl_members.*,count(tbl_member_relations.id) as member_relations_count,tbl_villages.name as village_name')->whereNull('tbl_member_relations.deleted_at')
             ->groupBy('tbl_members.id')->orderBy('tbl_members.family', 'ASC')->orderBy('tbl_members.name', 'ASC')->orderBy('tbl_members.id', 'ASC')->skip(($page - 1) * $pageItems)->take($pageItems)->get();
     }
 
@@ -80,7 +82,7 @@ class MemberService
             $query->where('card_no', $cardNo);
         }
         return $query->leftJoin('tbl_member_relations', 'tbl_members.id', '=', 'tbl_member_relations.member_id')->leftJoin('tbl_villages', 'tbl_members.village_id', '=', 'tbl_villages.id')
-            ->selectRaw('tbl_members.*,count(tbl_member_relations.id) as member_relations_count,tbl_villages.name as village_name')
+            ->selectRaw('tbl_members.*,count(tbl_member_relations.id) as member_relations_count,tbl_villages.name as village_name')->whereNull('tbl_member_relations.deleted_at')
             ->groupBy('tbl_members.id')->orderBy('tbl_members.family', 'ASC')->orderBy('tbl_members.name', 'ASC')->orderBy('tbl_members.id', 'ASC')->get();
     }
 
@@ -139,20 +141,48 @@ class MemberService
         return $model->update($data);
     }
 
-    public function changeMemberRelationToMember(MemberRelation $relationModel, string $name, string $family, string $nationalNo, int $identityNo, string $fatherName, string $birthDate, string $membershipDate, int|null $postalCode, int $gender, int $villageId, string|null $tel, string|null $mobile, string|null $address, string|null $description, int $cardNo): mixed
+    public function changeMemberToMemberRelation(Model $model, int $memberId, string $name, string $family, string $nationalNo, int $identityNo, string $birthDate, int $gender, int $relationshipId, string|null $description): mixed
     {
+        $this->throwIfNationalNoNotUnique($nationalNo);
         $birthDate = substr($birthDate, 0, 4) . "/" . substr($birthDate, 4, 2) . "/" . substr($birthDate, 6);
-        $membershipDate = substr($membershipDate, 0, 4) . "/" . substr($membershipDate, 4, 2) . "/" . substr($membershipDate, 6);
         $data = [
             'name' => $name,
             'family' => $family,
             'national_no' => $nationalNo,
             'identity_no' => $identityNo,
-            'father_name' => $fatherName,
             'birth_date' => $birthDate,
+            'gender' => $gender,
+            'relationship_id' => $relationshipId,
+            'description' => $description ?? '',
+            'member_id' => $memberId,
+        ];
+        $model = Model::create($data);
+
+        return $model ?? null;
+    }
+
+    public function transferMemberRelationToMember(MemberRelation $relationModel, string $fatherName, string $membershipDate, int|null $postalCode, int $villageId, string|null $tel, string|null $mobile, string|null $address, string|null $description, int $cardNo): mixed
+    {
+        $this->throwIfNationalNoNotUnique($relationModel->national_no);
+        $membershipDate = substr($membershipDate, 0, 4) . "/" . substr($membershipDate, 4, 2) . "/" . substr($membershipDate, 6);
+        $description = $description . '
+
+----
+
+' . __('member.transfer_member_relation_to_member_description');
+        $description = str_replace(':field_1', $relationModel->member->name . ' ' . $relationModel->member->family, $description);
+        $description = str_replace(':field_2', $relationModel->member->national_no, $description);
+        $description = str_replace(':field_3', Helper::faDate3(date("Y-m-d H:i:s")), $description);
+        $data = [
+            'name' => $relationModel->name,
+            'family' => $relationModel->family,
+            'national_no' => $relationModel->national_no,
+            'identity_no' => $relationModel->identity_no,
+            'father_name' => $fatherName,
+            'birth_date' => $relationModel->birth_date,
             'membership_date' => $membershipDate,
             'postal_code' => $postalCode ?? '',
-            'gender' => $gender,
+            'gender' => $relationModel->gender,
             'village_id' => $villageId,
             'tel' => $tel ?? '',
             'mobile' => $mobile ?? '',

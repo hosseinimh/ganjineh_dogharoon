@@ -5,10 +5,15 @@ import { easeOutQuint } from "es6-easings";
 
 import {
     CustomLink,
+    InputRow,
+    InputSelectColumn,
+    InputTextColumn,
     ListPage,
+    PromptModal,
+    SearchBox,
     TableFooter,
     TableItems,
-    TransferToNewMemberModal,
+    TransferMemberRelationToNewMemberModal,
 } from "../../../components";
 import { PageUtils } from "./PageUtils";
 import {
@@ -27,7 +32,7 @@ const MemberRelationsAll = () => {
         userState?.user?.role === USER_ROLES.ADMINISTRATOR ? 7 : 6;
     const pageUtils = new PageUtils();
 
-    const toggleTransfer = (e, id) => {
+    const toggleActions = (e, id) => {
         e.stopPropagation();
         const element = document.querySelector(`#${id}`).lastChild;
         if (layoutState?.dropDownElement) {
@@ -44,6 +49,46 @@ const MemberRelationsAll = () => {
         });
     };
 
+    const renderSearch = () => (
+        <SearchBox
+            pageUtils={pageUtils}
+            onSubmit={pageUtils.onSubmit}
+            onReset={pageUtils.onReset}
+        >
+            <InputRow>
+                <InputSelectColumn
+                    field="village"
+                    items={pageUtils?.pageState?.props?.villages}
+                    fullRow={false}
+                />
+                <InputTextColumn
+                    field="name"
+                    fullRow={false}
+                    icon={"icon-personalcard4"}
+                />
+                <InputTextColumn
+                    field="family"
+                    fullRow={false}
+                    icon={"icon-personalcard4"}
+                />
+            </InputRow>
+            <InputRow>
+                <InputTextColumn
+                    field="nationalNo"
+                    textAlign="left"
+                    fullRow={false}
+                    icon={"icon-personalcard4"}
+                />
+                <InputTextColumn
+                    field="cardNo"
+                    textAlign="left"
+                    fullRow={false}
+                    icon={"icon-personalcard4"}
+                />
+            </InputRow>
+        </SearchBox>
+    );
+
     const renderHeader = () => (
         <tr>
             <th>{strings.nameFamily}</th>
@@ -53,7 +98,7 @@ const MemberRelationsAll = () => {
             <th style={{ width: "100px" }}>{strings.birthDate}</th>
             <th style={{ width: "100px" }}>{strings.relationship}</th>
             {userState?.user?.role === USER_ROLES.ADMINISTRATOR && (
-                <th style={{ width: "150px" }}>{general.actions}</th>
+                <th style={{ width: "100px" }}>{general.actions}</th>
             )}
         </tr>
     );
@@ -90,35 +135,17 @@ const MemberRelationsAll = () => {
                         {userState?.user?.role === USER_ROLES.ADMINISTRATOR && (
                             <td>
                                 <button
-                                    type="button"
-                                    className="btn btn-primary mx-5"
-                                    onClick={() => pageUtils.onEdit(item)}
-                                    title={general.edit}
-                                    disabled={layoutState?.loading}
-                                >
-                                    {general.edit}
-                                </button>
-                                <button
-                                    type="button"
-                                    className="btn btn-primary mx-5"
-                                    onClick={() => pageUtils.onEdit(item)}
-                                    title={general.remove}
-                                    disabled={layoutState?.loading}
-                                >
-                                    {general.remove}
-                                </button>
-                                <button
-                                    id={`transfer-${item.id}`}
+                                    id={`actions-${item.id}`}
                                     type="button"
                                     className="btn btn-primary btn-dropdown mx-5"
                                     onClick={(e) =>
-                                        toggleTransfer(e, `transfer-${item.id}`)
+                                        toggleActions(e, `actions-${item.id}`)
                                     }
                                     disabled={layoutState?.loading}
                                 >
                                     <div className="d-flex">
                                         <span className="grow-1 mx-rdir-10">
-                                            {strings.transfer}
+                                            {general.actions}
                                         </span>
                                         <div className="icon">
                                             <i className="icon-arrow-down5"></i>
@@ -129,25 +156,60 @@ const MemberRelationsAll = () => {
                                             <li>
                                                 <CustomLink
                                                     onClick={() =>
-                                                        pageUtils.transferToMemberAction(
-                                                            item
-                                                        )
+                                                        pageUtils.onEdit(item)
+                                                    }
+                                                    disabled={
+                                                        layoutState?.loading
                                                     }
                                                 >
-                                                    {strings.transferAsMember}
+                                                    {general.edit}
                                                 </CustomLink>
                                             </li>
                                             <li>
                                                 <CustomLink
                                                     onClick={(e) =>
-                                                        pageUtils.showTransferToNewMemberModal(
+                                                        pageUtils.onRemove(
                                                             e,
                                                             item
                                                         )
                                                     }
                                                 >
+                                                    {general.remove}
+                                                </CustomLink>
+                                            </li>
+                                            <li>
+                                                <div className="line-gr"></div>
+                                            </li>
+                                            <li>
+                                                <CustomLink
+                                                    onClick={() =>
+                                                        pageUtils.transferMemberRelationToMemberAction(
+                                                            item
+                                                        )
+                                                    }
+                                                    disabled={
+                                                        layoutState?.loading
+                                                    }
+                                                >
                                                     {
-                                                        strings.transferAsMemberRelation
+                                                        strings.transferMemberRelationToMember
+                                                    }
+                                                </CustomLink>
+                                            </li>
+                                            <li>
+                                                <CustomLink
+                                                    onClick={(e) =>
+                                                        pageUtils.transferMemberRelationToNewMemberModal(
+                                                            e,
+                                                            item
+                                                        )
+                                                    }
+                                                    disabled={
+                                                        layoutState?.loading
+                                                    }
+                                                >
+                                                    {
+                                                        strings.transferMemberRelationToNewMember
                                                     }
                                                 </CustomLink>
                                             </li>
@@ -173,8 +235,10 @@ const MemberRelationsAll = () => {
             pageUtils={pageUtils}
             table={{ renderHeader, renderItems, renderFooter }}
             hasAdd={false}
+            renderTopList={renderSearch}
         >
-            <TransferToNewMemberModal />
+            <TransferMemberRelationToNewMemberModal />
+            <PromptModal />
         </ListPage>
     );
 };

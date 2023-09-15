@@ -4,7 +4,10 @@ import { MemberRelation as Entity } from "../../../../http/entities";
 import { BasePageUtils } from "../../../../utils/BasePageUtils";
 import { BASE_PATH, MESSAGE_TYPES } from "../../../../constants";
 import utils from "../../../../utils/Utils";
-import { memberRelationsPage as strings } from "../../../../constants/strings/fa";
+import {
+    general,
+    memberRelationsPage as strings,
+} from "../../../../constants/strings/fa";
 import {
     setPagePropsAction,
     setPageTitleAction,
@@ -24,6 +27,9 @@ export class PageUtils extends BasePageUtils {
             action: null,
         };
         this.callbackUrl = `${BASE_PATH}/members`;
+        this.handlePromptSubmit = this.handlePromptSubmit.bind(this);
+        this.handleTransferMemberRelationToNewMemberSubmit =
+            this.handleTransferMemberRelationToNewMemberSubmit.bind(this);
     }
 
     onLoad() {
@@ -32,8 +38,22 @@ export class PageUtils extends BasePageUtils {
         this.fillForm(this.pageState.params);
     }
 
+    onRemove(e, item) {
+        e.stopPropagation();
+        this.promptItem = item;
+        this.dispatch(
+            setShownModalAction("promptModal", {
+                title: strings.removeMessageTitle,
+                description: `${item.name} ${item.family} - ${item.nationalNo}`,
+                submitTitle: general.yes,
+                cancelTitle: general.no,
+                onSubmit: this.handlePromptSubmit,
+            })
+        );
+    }
+
     navigateIfNotValidateParams() {
-        this.navigateIfNotValidId(this.pageState.params.memberId);
+        this.navigateIfNotValidId(this.pageState?.params?.memberId);
     }
 
     addAction() {
@@ -43,7 +63,6 @@ export class PageUtils extends BasePageUtils {
     }
 
     editAction({ id }) {
-        console.log(`${BASE_PATH}/member_relations/edit/${id}`);
         if (utils.isId(id)) {
             this.navigate(`${BASE_PATH}/member_relations/edit/${id}`);
         }
@@ -85,28 +104,36 @@ export class PageUtils extends BasePageUtils {
         this.navigate(this.callbackUrl);
     }
 
-    transferToMemberAction({ id }) {
+    transferMemberRelationToMemberAction({ id }) {
         if (utils.isId(id)) {
             this.navigate(
-                `${BASE_PATH}/transfer/change_member_relation_to_member/${id}`
+                `${BASE_PATH}/member/transfer_member_relation_to_member/${id}`
             );
         }
     }
 
-    showTransferToNewMemberModal(e, item) {
+    handlePromptSubmit(result) {
+        if (result === true) {
+            const promise = this.entity.delete(this.promptItem?.id);
+            super.onSelfSubmit(promise);
+        }
+    }
+
+    transferMemberRelationToNewMemberModal(e, item) {
         e.stopPropagation();
+        this.transferItem = item;
         this.dispatch(
-            setShownModalAction("transferToNewMemberModal", {
+            setShownModalAction("transferMemberRelationToNewMemberModal", {
                 memberRelation: item,
-                onCloseModal: this.onCloseModal,
+                onSubmit: this.handleTransferMemberRelationToNewMemberSubmit,
             })
         );
     }
 
-    onCloseModal(result) {
+    handleTransferMemberRelationToNewMemberSubmit(result) {
         if (result === true) {
             this.dispatch(setPagePropsAction(this.initialPageProps));
-            this.fillForm();
+            this.fillForm({ memberId: this.transferItem?.memberId });
         }
     }
 }

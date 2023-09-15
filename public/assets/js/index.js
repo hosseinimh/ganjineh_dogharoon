@@ -4578,7 +4578,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "addUserPage": () => (/* binding */ addUserPage),
 /* harmony export */   "addVillagePage": () => (/* binding */ addVillagePage),
 /* harmony export */   "banksPage": () => (/* binding */ banksPage),
-/* harmony export */   "changeMemberRelationToMemberPage": () => (/* binding */ changeMemberRelationToMemberPage),
 /* harmony export */   "changePasswordUserPage": () => (/* binding */ changePasswordUserPage),
 /* harmony export */   "countriesPage": () => (/* binding */ countriesPage),
 /* harmony export */   "dashboardPage": () => (/* binding */ dashboardPage),
@@ -4607,7 +4606,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "profileModal": () => (/* binding */ profileModal),
 /* harmony export */   "relationshipsPage": () => (/* binding */ relationshipsPage),
 /* harmony export */   "sidebar": () => (/* binding */ sidebar),
-/* harmony export */   "transferToNewMemberModal": () => (/* binding */ transferToNewMemberModal),
+/* harmony export */   "transferMemberRelationToMemberPage": () => (/* binding */ transferMemberRelationToMemberPage),
+/* harmony export */   "transferMemberRelationToNewMemberModal": () => (/* binding */ transferMemberRelationToNewMemberModal),
+/* harmony export */   "transferMemberToMemberRelationModal": () => (/* binding */ transferMemberToMemberRelationModal),
 /* harmony export */   "usersPage": () => (/* binding */ usersPage),
 /* harmony export */   "utils": () => (/* binding */ utils),
 /* harmony export */   "validation": () => (/* binding */ validation),
@@ -4838,19 +4839,6 @@ var profileModal = {
   familyModal: "نام خانوادگی",
   mobileModal: "موبایل"
 };
-var transferToNewMemberModal = {
-  _title: "تغییر سرپرست",
-  members: "سهام‌داران (10 رکورد اخیر)",
-  nameTransferModal: "نام",
-  nameTransferModalPlaceholder: "نام",
-  familyTransferModal: "نام خانوادگی",
-  familyTransferModalPlaceholder: "نام خانوادگی",
-  nationalNoTransferModal: "شماره ملی",
-  nationalNoTransferModalPlaceholder: "شماره ملی",
-  cardNoTransferModal: "شماره کارت",
-  cardNoTransferModalPlaceholder: "شماره کارت",
-  namdeFamilyTransferModal: "نام و نام خانوادگی"
-};
 var genderTypes = {
   male: "مرد",
   female: "زن"
@@ -4874,14 +4862,14 @@ var banksPage = {
 };
 var addBankPage = {
   _title: "افزودن بانک",
-  _subTitle: "مشخصات بانک جدید را وارد نمایید.",
+  _subTitle: "مشخصات بانک جدید را وارد کنید.",
   name: "بانک",
   namePlaceholder: "بانک",
   submitted: "افزودن بانک با موفقیت انجام شد."
 };
 var editBankPage = {
   _title: "ویرایش بانک",
-  _subTitle: "مشخصات بانک تعریف شده را ویرایش نمایید.",
+  _subTitle: "مشخصات بانک تعریف شده را ویرایش کنید.",
   name: "بانک",
   namePlaceholder: "بانک",
   submitted: "ویرایش بانک با موفقیت انجام شد."
@@ -4894,14 +4882,14 @@ var countriesPage = {
 };
 var addCountryPage = {
   _title: "افزودن کشور",
-  _subTitle: "مشخصات کشور جدید را وارد نمایید.",
+  _subTitle: "مشخصات کشور جدید را وارد کنید.",
   name: "کشور",
   namePlaceholder: "کشور",
   submitted: "افزودن مشخصات کشور با موفقیت انجام شد."
 };
 var editCountryPage = {
   _title: "ویرایش کشور",
-  _subTitle: "مشخصات کشور تعریف شده را ویرایش نمایید.",
+  _subTitle: "مشخصات کشور تعریف شده را ویرایش کنید.",
   name: "کشور",
   namePlaceholder: "کشور",
   submitted: "ویرایش مشخصات کشور با موفقیت انجام شد."
@@ -4920,7 +4908,7 @@ var villagesPage = {
 };
 var addVillagePage = {
   _title: "افزودن روستا",
-  _subTitle: "مشخصات روستای جدید را وارد نمایید.",
+  _subTitle: "مشخصات روستای جدید را وارد کنید.",
   district: "بخش",
   name: "روستا",
   namePlaceholder: "روستا",
@@ -4928,7 +4916,7 @@ var addVillagePage = {
 };
 var editVillagePage = {
   _title: "ویرایش روستا",
-  _subTitle: "مشخصات روستا را ویرایش نمایید.",
+  _subTitle: "مشخصات روستا را ویرایش کنید.",
   district: "بخش",
   name: "روستا",
   namePlaceholder: "روستا",
@@ -4942,14 +4930,14 @@ var relationshipsPage = {
 };
 var addRelationshipPage = {
   _title: "افزودن رابطه خویشاوندی",
-  _subTitle: "یک رابطه خویشاوندی جدید تعریف نمایید.",
+  _subTitle: "یک رابطه خویشاوندی جدید تعریف کنید.",
   name: "رابطه خویشاوندی",
   namePlaceholder: "رابطه خویشاوندی",
   submitted: "افزودن رابطه خویشاوندی با موفقیت انجام شد."
 };
 var editRelationshipPage = {
   _title: "ویرایش رابطه خویشاوندی",
-  _subTitle: "رابطه خویشاوندی تعریف شده را ویرایش نمایید.",
+  _subTitle: "رابطه خویشاوندی تعریف شده را ویرایش کنید.",
   name: "رابطه خویشاوندی",
   namePlaceholder: "رابطه خویشاوندی",
   submitted: "ویرایش رابطه خویشاوندی با موفقیت انجام شد."
@@ -4978,12 +4966,13 @@ var membersPage = {
   printWithMobile: "چاپ با شماره همراه",
   printWithoutMobile: "چاپ بدون شماره همراه",
   add: "افزودن سهام‌دار",
+  transferMemberToMemberRelation: "انتقال به تحت کفالت سهام‌دار",
   removeMessageTitle: "آیا مطمئن به حذف اطلاعات این سهام‌دار می‌باشید؟",
   submitted: "حذف اطلاعات سهام‌دار با موفقیت انجام شد."
 };
 var addMemberPage = {
   _title: "افزودن مشخصات سهام‌دار",
-  _subTitle: "مشخصات سهام‌دار جدید را وارد نمایید.",
+  _subTitle: "مشخصات سهام‌دار جدید را وارد کنید.",
   name: "نام",
   namePlaceholder: "نام",
   family: "نام خانوادگی",
@@ -5017,7 +5006,7 @@ var addMemberPage = {
 };
 var editMemberPage = {
   _title: "ویرایش مشخصات سهام‌دار",
-  _subTitle: "مشخصات سهام‌دار را وارد نمایید.",
+  _subTitle: "مشخصات سهام‌دار را وارد کنید.",
   name: "نام",
   namePlaceholder: "نام",
   family: "نام خانوادگی",
@@ -5059,12 +5048,14 @@ var memberRelationsPage = {
   relationship: "رابطه خویشاوندی",
   add: "افزودن فرد تحت تکفل",
   transfer: "انتقال",
-  transferAsMember: "به عنوان سرپرست",
-  transferAsMemberRelation: "تغییر سرپرست"
+  transferMemberRelationToMember: "انتقال به عنوان سهام‌دار جدید",
+  transferMemberRelationToNewMember: "تغییر سرپرست",
+  removeMessageTitle: "آیا مطمئن به حذف اطلاعات این فرد تحت تکفل می‌باشید؟",
+  submitted: "حذف اطلاعات فرد تحت تکفل با موفقیت انجام شد."
 };
 var addMemberRelationPage = {
   _title: "افزودن مشخصات فرد تحت تکفل",
-  _subTitle: "مشخصات فرد تحت تکفل سهام‌دار را وارد نمایید.",
+  _subTitle: "مشخصات فرد تحت تکفل سهام‌دار را وارد کنید.",
   name: "نام",
   namePlaceholder: "نام",
   family: "نام خانوادگی",
@@ -5084,7 +5075,7 @@ var addMemberRelationPage = {
 };
 var editMemberRelationPage = {
   _title: "ویرایش مشخصات فرد تحت تکفل",
-  _subTitle: "مشخصات فرد تحت تکفل سهام‌دار را وارد نمایید.",
+  _subTitle: "مشخصات فرد تحت تکفل سهام‌دار را وارد کنید.",
   name: "نام",
   namePlaceholder: "نام",
   family: "نام خانوادگی",
@@ -5105,19 +5096,30 @@ var editMemberRelationPage = {
 var memberRelationsAllPage = {
   _title: "مشخصات افراد تحت تکفل",
   _subTitle: "فهرست مشخصات افراد تحت تکفل",
+  village: "روستا",
+  allVillages: "همه روستاها",
+  name: "نام",
+  namePlaceholder: "نام",
+  family: "نام خانوادگی",
+  familyPlaceholder: "نام خانوادگی",
+  nationalNo: "شماره ملی",
+  nationalNoPlaceholder: "شماره ملی",
+  cardNo: "شماره کارت",
+  cardNoPlaceholder: "شماره کارت",
   nameFamily: "نام و نام خانوادگی",
   memberNameFamily: "نام و نام خانوادگی - شماره ملی سرپرست",
-  nationalNo: "شماره ملی",
   identityNo: "شماره شناسنامه",
   birthDate: "تاریخ تولد",
   relationship: "رابطه خویشاوندی",
   transfer: "انتقال",
-  transferAsMember: "به عنوان سرپرست",
-  transferAsMemberRelation: "تغییر سرپرست"
+  transferMemberRelationToMember: "انتقال به عنوان سهام‌دار جدید",
+  transferMemberRelationToNewMember: "تغییر سرپرست",
+  removeMessageTitle: "آیا مطمئن به حذف اطلاعات این فرد تحت تکفل می‌باشید؟",
+  submitted: "حذف اطلاعات فرد تحت تکفل با موفقیت انجام شد."
 };
-var changeMemberRelationToMemberPage = {
+var transferMemberRelationToMemberPage = {
   _title: "انتقال فرد تحت تکفل به عنوان سهام‌دار جدید",
-  _subTitle: "مشخصات سهام‌دار جدید را وارد نمایید.",
+  _subTitle: "مشخصات سهام‌دار جدید را وارد کنید.",
   name: "نام",
   namePlaceholder: "نام",
   family: "نام خانوادگی",
@@ -5148,7 +5150,34 @@ var changeMemberRelationToMemberPage = {
   cardNoPlaceholder: "شماره کارت",
   maxCardNo: "آخرین شماره کارت صادره",
   noVillagesFound: "هیچ روستایی ثبت نشده است.",
-  submitted: "افزودن مشخصات سهام‌دار با موفقیت انجام شد."
+  submitted: "انتقال مشخصات سهام‌دار با موفقیت انجام شد."
+};
+var transferMemberToMemberRelationModal = {
+  _title: "انتقال سرپرست به تحت کفالت",
+  members: "سهام‌داران (10 رکورد اخیر)",
+  nameTransferModal: "نام",
+  nameTransferModalPlaceholder: "نام",
+  familyTransferModal: "نام خانوادگی",
+  familyTransferModalPlaceholder: "نام خانوادگی",
+  nationalNoTransferModal: "شماره ملی",
+  nationalNoTransferModalPlaceholder: "شماره ملی",
+  cardNoTransferModal: "شماره کارت",
+  cardNoTransferModalPlaceholder: "شماره کارت",
+  relationship: "رابطه خویشاوندی",
+  namdeFamilyTransferModal: "نام و نام خانوادگی"
+};
+var transferMemberRelationToNewMemberModal = {
+  _title: "تغییر سرپرست",
+  members: "سهام‌داران (10 رکورد اخیر)",
+  nameTransferModal: "نام",
+  nameTransferModalPlaceholder: "نام",
+  familyTransferModal: "نام خانوادگی",
+  familyTransferModalPlaceholder: "نام خانوادگی",
+  nationalNoTransferModal: "شماره ملی",
+  nationalNoTransferModalPlaceholder: "شماره ملی",
+  cardNoTransferModal: "شماره کارت",
+  cardNoTransferModalPlaceholder: "شماره کارت",
+  namdeFamilyTransferModal: "نام و نام خانوادگی"
 };
 
 /***/ }),
@@ -6192,23 +6221,17 @@ var Member = /*#__PURE__*/function (_Entity) {
       return update;
     }()
   }, {
-    key: "changeMemberRelationToMemnber",
+    key: "transferMemberRelationToMemnber",
     value: function () {
-      var _changeMemberRelationToMemnber = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(memberRelationId, name, family, nationalNo, identityNo, fatherName, birthDate, membershiphDate, postalCode, gender, villageId, tel, mobile, address, description, cardNo) {
+      var _transferMemberRelationToMemnber = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(memberRelationId, fatherName, membershiphDate, postalCode, villageId, tel, mobile, address, description, cardNo) {
         return _regeneratorRuntime().wrap(function _callee7$(_context7) {
           while (1) switch (_context7.prev = _context7.next) {
             case 0:
               _context7.next = 2;
-              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/members/change_member_relation_to_member/").concat(memberRelationId, "/").concat(villageId), {
-                name: name,
-                family: family,
-                national_no: nationalNo,
-                identity_no: identityNo,
+              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/members/transfer_member_relation_to_member/").concat(memberRelationId, "/").concat(villageId), {
                 father_name: fatherName,
-                birth_date: birthDate,
                 membership_date: membershiphDate,
                 postal_code: postalCode,
-                gender: gender,
                 tel: tel,
                 mobile: mobile,
                 address: address,
@@ -6223,10 +6246,10 @@ var Member = /*#__PURE__*/function (_Entity) {
           }
         }, _callee7, this);
       }));
-      function changeMemberRelationToMemnber(_x40, _x41, _x42, _x43, _x44, _x45, _x46, _x47, _x48, _x49, _x50, _x51, _x52, _x53, _x54, _x55) {
-        return _changeMemberRelationToMemnber.apply(this, arguments);
+      function transferMemberRelationToMemnber(_x40, _x41, _x42, _x43, _x44, _x45, _x46, _x47, _x48, _x49) {
+        return _transferMemberRelationToMemnber.apply(this, arguments);
       }
-      return changeMemberRelationToMemnber;
+      return transferMemberRelationToMemnber;
     }()
   }, {
     key: "delete",
@@ -6245,7 +6268,7 @@ var Member = /*#__PURE__*/function (_Entity) {
           }
         }, _callee8, this);
       }));
-      function _delete(_x56) {
+      function _delete(_x50) {
         return _delete2.apply(this, arguments);
       }
       return _delete;
@@ -6327,17 +6350,22 @@ var MemberRelation = /*#__PURE__*/function (_Entity) {
   }, {
     key: "getAll",
     value: function () {
-      var _getAll = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+      var _getAll = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(villageId, name, family, nationalNo, cardNo) {
         var _pn,
           _pi,
           _args2 = arguments;
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
-              _pn = _args2.length > 0 && _args2[0] !== undefined ? _args2[0] : 1;
-              _pi = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : _constants__WEBPACK_IMPORTED_MODULE_0__.PAGE_ITEMS;
+              _pn = _args2.length > 5 && _args2[5] !== undefined ? _args2[5] : 1;
+              _pi = _args2.length > 6 && _args2[6] !== undefined ? _args2[6] : _constants__WEBPACK_IMPORTED_MODULE_0__.PAGE_ITEMS;
               _context2.next = 4;
               return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/u/member_relations"), {
+                village_id: villageId,
+                name: name,
+                family: family,
+                national_no: nationalNo,
+                card_no: cardNo,
                 _pn: _pn,
                 _pi: _pi
               });
@@ -6349,7 +6377,7 @@ var MemberRelation = /*#__PURE__*/function (_Entity) {
           }
         }, _callee2, this);
       }));
-      function getAll() {
+      function getAll(_x2, _x3, _x4, _x5, _x6) {
         return _getAll.apply(this, arguments);
       }
       return getAll;
@@ -6371,7 +6399,7 @@ var MemberRelation = /*#__PURE__*/function (_Entity) {
           }
         }, _callee3, this);
       }));
-      function get(_x2) {
+      function get(_x7) {
         return _get.apply(this, arguments);
       }
       return get;
@@ -6393,7 +6421,7 @@ var MemberRelation = /*#__PURE__*/function (_Entity) {
           }
         }, _callee4, this);
       }));
-      function getWithRelationships(_x3) {
+      function getWithRelationships(_x8) {
         return _getWithRelationships.apply(this, arguments);
       }
       return getWithRelationships;
@@ -6415,7 +6443,7 @@ var MemberRelation = /*#__PURE__*/function (_Entity) {
           }
         }, _callee5, this);
       }));
-      function getWithVillages(_x4) {
+      function getWithVillages(_x9) {
         return _getWithVillages.apply(this, arguments);
       }
       return getWithVillages;
@@ -6445,7 +6473,7 @@ var MemberRelation = /*#__PURE__*/function (_Entity) {
           }
         }, _callee6, this);
       }));
-      function store(_x5, _x6, _x7, _x8, _x9, _x10, _x11, _x12, _x13) {
+      function store(_x10, _x11, _x12, _x13, _x14, _x15, _x16, _x17, _x18) {
         return _store.apply(this, arguments);
       }
       return store;
@@ -6475,20 +6503,20 @@ var MemberRelation = /*#__PURE__*/function (_Entity) {
           }
         }, _callee7, this);
       }));
-      function update(_x14, _x15, _x16, _x17, _x18, _x19, _x20, _x21, _x22) {
+      function update(_x19, _x20, _x21, _x22, _x23, _x24, _x25, _x26, _x27) {
         return _update.apply(this, arguments);
       }
       return update;
     }()
   }, {
-    key: "changeMember",
+    key: "transferMemberRelationToNewMember",
     value: function () {
-      var _changeMember = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(id, memberId) {
+      var _transferMemberRelationToNewMember = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(id, memberId) {
         return _regeneratorRuntime().wrap(function _callee8$(_context8) {
           while (1) switch (_context8.prev = _context8.next) {
             case 0:
               _context8.next = 2;
-              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/member_relations/change_member/").concat(id, "/").concat(memberId));
+              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/member_relations/transfer_member_relation_to_new_member/").concat(id, "/").concat(memberId));
             case 2:
               return _context8.abrupt("return", _context8.sent);
             case 3:
@@ -6497,10 +6525,54 @@ var MemberRelation = /*#__PURE__*/function (_Entity) {
           }
         }, _callee8, this);
       }));
-      function changeMember(_x23, _x24) {
-        return _changeMember.apply(this, arguments);
+      function transferMemberRelationToNewMember(_x28, _x29) {
+        return _transferMemberRelationToNewMember.apply(this, arguments);
       }
-      return changeMember;
+      return transferMemberRelationToNewMember;
+    }()
+  }, {
+    key: "transferMemberToMemberRelation",
+    value: function () {
+      var _transferMemberToMemberRelation = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(id, memberId, relationId) {
+        return _regeneratorRuntime().wrap(function _callee9$(_context9) {
+          while (1) switch (_context9.prev = _context9.next) {
+            case 0:
+              _context9.next = 2;
+              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/member_relations/transfer_member_to_member_relation/").concat(id, "/").concat(memberId, "/").concat(relationId));
+            case 2:
+              return _context9.abrupt("return", _context9.sent);
+            case 3:
+            case "end":
+              return _context9.stop();
+          }
+        }, _callee9, this);
+      }));
+      function transferMemberToMemberRelation(_x30, _x31, _x32) {
+        return _transferMemberToMemberRelation.apply(this, arguments);
+      }
+      return transferMemberToMemberRelation;
+    }()
+  }, {
+    key: "delete",
+    value: function () {
+      var _delete2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(id) {
+        return _regeneratorRuntime().wrap(function _callee10$(_context10) {
+          while (1) switch (_context10.prev = _context10.next) {
+            case 0:
+              _context10.next = 2;
+              return this.handlePost("".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.BASE_URL, "/a/member_relations/delete/").concat(id));
+            case 2:
+              return _context10.abrupt("return", _context10.sent);
+            case 3:
+            case "end":
+              return _context10.stop();
+          }
+        }, _callee10, this);
+      }));
+      function _delete(_x33) {
+        return _delete2.apply(this, arguments);
+      }
+      return _delete;
     }()
   }]);
   return MemberRelation;
@@ -7775,7 +7847,7 @@ var Banks = function Banks() {
         children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_4__.banksPage.name
       }), (userState === null || userState === void 0 ? void 0 : (_userState$user2 = userState.user) === null || _userState$user2 === void 0 ? void 0 : _userState$user2.role) === _constants__WEBPACK_IMPORTED_MODULE_5__.USER_ROLES.ADMINISTRATOR && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
         style: {
-          width: "150px"
+          width: "100px"
         },
         children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_4__.general.actions
       })]
@@ -8302,7 +8374,7 @@ var Countries = function Countries() {
         children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_4__.countriesPage.name
       }), (userState === null || userState === void 0 ? void 0 : (_userState$user2 = userState.user) === null || _userState$user2 === void 0 ? void 0 : _userState$user2.role) === _constants__WEBPACK_IMPORTED_MODULE_5__.USER_ROLES.ADMINISTRATOR && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
         style: {
-          width: "150px"
+          width: "100px"
         },
         children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_4__.general.actions
       })]
@@ -8884,15 +8956,20 @@ var Errors = function Errors() {
   var renderItems = function renderItems() {
     var _pageState$props, _pageState$props$item;
     var children = pageState === null || pageState === void 0 ? void 0 : (_pageState$props = pageState.props) === null || _pageState$props === void 0 ? void 0 : (_pageState$props$item = _pageState$props.items) === null || _pageState$props$item === void 0 ? void 0 : _pageState$props$item.map(function (item) {
-      var _utils$getTimezoneDat = _utils_Utils__WEBPACK_IMPORTED_MODULE_5__["default"].getTimezoneDate(item.createdAt, "fa-IR"),
+      var _utils$getTimezoneDat = _utils_Utils__WEBPACK_IMPORTED_MODULE_5__["default"].getTimezoneDate(item.createdAt, _constants_strings_fa__WEBPACK_IMPORTED_MODULE_4__.general.locale),
         date = _utils$getTimezoneDat.date,
         time = _utils$getTimezoneDat.time;
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("tr", {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
             children: "".concat(item.message.substring(0, 100), " ...")
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-            children: "".concat(time, " ").concat(date)
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("td", {
+            className: "d-flex-wrap just-around",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+              children: date
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+              children: time
+            })]
           })]
         })
       }, item.id);
@@ -9452,10 +9529,9 @@ var EditMemberRelation = function EditMemberRelation() {
         className: "text",
         children: pageUtils === null || pageUtils === void 0 ? void 0 : (_pageUtils$pageState2 = pageUtils.pageState) === null || _pageUtils$pageState2 === void 0 ? void 0 : (_pageUtils$pageState3 = _pageUtils$pageState2.props) === null || _pageUtils$pageState3 === void 0 ? void 0 : (_pageUtils$pageState4 = _pageUtils$pageState3.item) === null || _pageUtils$pageState4 === void 0 ? void 0 : _pageUtils$pageState4.birthDate
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components__WEBPACK_IMPORTED_MODULE_1__.InputTextColumn, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components__WEBPACK_IMPORTED_MODULE_1__.InputTextAreaColumn, {
       field: "description",
-      showLabel: true,
-      icon: "icon-edit-24"
+      showLabel: true
     })]
   });
 };
@@ -9483,6 +9559,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _state_layout_layoutActions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../state/layout/layoutActions */ "./resources/js/state/layout/layoutActions.js");
 /* harmony import */ var _state_page_pageActions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../state/page/pageActions */ "./resources/js/state/page/pageActions.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
@@ -9523,7 +9605,8 @@ var PageUtils = /*#__PURE__*/function (_BasePageUtils) {
       items: null,
       action: null
     };
-    _this.onCloseModal = _this.onCloseModal.bind(_assertThisInitialized(_this));
+    _this.handlePromptSubmit = _this.handlePromptSubmit.bind(_assertThisInitialized(_this));
+    _this.handleTransferMemberRelationToNewMemberSubmit = _this.handleTransferMemberRelationToNewMemberSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
   _createClass(PageUtils, [{
@@ -9531,6 +9614,19 @@ var PageUtils = /*#__PURE__*/function (_BasePageUtils) {
     value: function onLoad() {
       _get(_getPrototypeOf(PageUtils.prototype), "onLoad", this).call(this);
       this.fillForm(this.pageState.params);
+    }
+  }, {
+    key: "onRemove",
+    value: function onRemove(e, item) {
+      e.stopPropagation();
+      this.promptItem = item;
+      this.dispatch((0,_state_layout_layoutActions__WEBPACK_IMPORTED_MODULE_5__.setShownModalAction)("promptModal", {
+        title: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_4__.memberRelationsAllPage.removeMessageTitle,
+        description: "".concat(item.name, " ").concat(item.family, " - ").concat(item.nationalNo),
+        submitTitle: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_4__.general.yes,
+        cancelTitle: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_4__.general.no,
+        onSubmit: this.handlePromptSubmit
+      }));
     }
   }, {
     key: "editAction",
@@ -9544,14 +9640,26 @@ var PageUtils = /*#__PURE__*/function (_BasePageUtils) {
     key: "fillForm",
     value: function () {
       var _fillForm = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var _this$pageState$props, _this$pageState$props2;
-        var promise;
+        var _data$name, _data$family, _this$pageState$props, _this$pageState$props2;
+        var data,
+          villageId,
+          nationalNo,
+          cardNo,
+          promise,
+          _args = arguments;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
-              promise = this.entity.getAll((_this$pageState$props = (_this$pageState$props2 = this.pageState.props) === null || _this$pageState$props2 === void 0 ? void 0 : _this$pageState$props2.pageNumber) !== null && _this$pageState$props !== void 0 ? _this$pageState$props : 1);
+              data = _args.length > 0 && _args[0] !== undefined ? _args[0] : null;
+              villageId = parseInt(data === null || data === void 0 ? void 0 : data.village);
+              villageId = isNaN(villageId) ? 0 : villageId;
+              nationalNo = parseInt(data === null || data === void 0 ? void 0 : data.nationalNo);
+              nationalNo = isNaN(nationalNo) || nationalNo < 0 ? null : data === null || data === void 0 ? void 0 : data.nationalNo;
+              cardNo = parseInt(data === null || data === void 0 ? void 0 : data.cardNo);
+              cardNo = isNaN(cardNo) || cardNo < 0 ? 0 : cardNo;
+              promise = this.entity.getAll(villageId, (_data$name = data === null || data === void 0 ? void 0 : data.name) !== null && _data$name !== void 0 ? _data$name : null, (_data$family = data === null || data === void 0 ? void 0 : data.family) !== null && _data$family !== void 0 ? _data$family : null, nationalNo, cardNo, (_this$pageState$props = (_this$pageState$props2 = this.pageState.props) === null || _this$pageState$props2 === void 0 ? void 0 : _this$pageState$props2.pageNumber) !== null && _this$pageState$props !== void 0 ? _this$pageState$props : 1);
               _get(_getPrototypeOf(PageUtils.prototype), "fillForm", this).call(this, promise);
-            case 2:
+            case 9:
             case "end":
               return _context.stop();
           }
@@ -9563,25 +9671,51 @@ var PageUtils = /*#__PURE__*/function (_BasePageUtils) {
       return fillForm;
     }()
   }, {
-    key: "transferToMemberAction",
-    value: function transferToMemberAction(_ref2) {
+    key: "propsIfOK",
+    value: function propsIfOK(result) {
+      try {
+        return {
+          items: result.items,
+          villages: [{
+            id: 0,
+            value: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_4__.memberRelationsAllPage.allVillages
+          }].concat(_toConsumableArray(result.villages.map(function (village) {
+            village.value = village.name;
+            return village;
+          }))),
+          itemsCount: result.count
+        };
+      } catch (_unused) {}
+    }
+  }, {
+    key: "transferMemberRelationToMemberAction",
+    value: function transferMemberRelationToMemberAction(_ref2) {
       var id = _ref2.id;
       if (_utils_Utils__WEBPACK_IMPORTED_MODULE_3__["default"].isId(id)) {
-        this.navigate("".concat(_constants__WEBPACK_IMPORTED_MODULE_2__.BASE_PATH, "/transfer/change_member_relation_to_member/").concat(id));
+        this.navigate("".concat(_constants__WEBPACK_IMPORTED_MODULE_2__.BASE_PATH, "/member/transfer_member_relation_to_member/").concat(id));
       }
     }
   }, {
-    key: "showTransferToNewMemberModal",
-    value: function showTransferToNewMemberModal(e, item) {
+    key: "handlePromptSubmit",
+    value: function handlePromptSubmit(result) {
+      if (result === true) {
+        var _this$promptItem;
+        var promise = this.entity["delete"]((_this$promptItem = this.promptItem) === null || _this$promptItem === void 0 ? void 0 : _this$promptItem.id);
+        _get(_getPrototypeOf(PageUtils.prototype), "onSelfSubmit", this).call(this, promise);
+      }
+    }
+  }, {
+    key: "transferMemberRelationToNewMemberModal",
+    value: function transferMemberRelationToNewMemberModal(e, item) {
       e.stopPropagation();
-      this.dispatch((0,_state_layout_layoutActions__WEBPACK_IMPORTED_MODULE_5__.setShownModalAction)("transferToNewMemberModal", {
+      this.dispatch((0,_state_layout_layoutActions__WEBPACK_IMPORTED_MODULE_5__.setShownModalAction)("transferMemberRelationToNewMemberModal", {
         memberRelation: item,
-        onCloseModal: this.onCloseModal
+        onSubmit: this.handleTransferMemberRelationToNewMemberSubmit
       }));
     }
   }, {
-    key: "onCloseModal",
-    value: function onCloseModal(result) {
+    key: "handleTransferMemberRelationToNewMemberSubmit",
+    value: function handleTransferMemberRelationToNewMemberSubmit(result) {
       if (result === true) {
         this.dispatch((0,_state_page_pageActions__WEBPACK_IMPORTED_MODULE_6__.setPagePropsAction)(this.initialPageProps));
         this.fillForm();
@@ -9640,7 +9774,7 @@ var MemberRelationsAll = function MemberRelationsAll() {
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   var columnsCount = (userState === null || userState === void 0 ? void 0 : (_userState$user = userState.user) === null || _userState$user === void 0 ? void 0 : _userState$user.role) === _constants__WEBPACK_IMPORTED_MODULE_7__.USER_ROLES.ADMINISTRATOR ? 7 : 6;
   var pageUtils = new _PageUtils__WEBPACK_IMPORTED_MODULE_5__.PageUtils();
-  var toggleTransfer = function toggleTransfer(e, id) {
+  var toggleActions = function toggleActions(e, id) {
     e.stopPropagation();
     var element = document.querySelector("#".concat(id)).lastChild;
     if (layoutState !== null && layoutState !== void 0 && layoutState.dropDownElement) {
@@ -9654,6 +9788,41 @@ var MemberRelationsAll = function MemberRelationsAll() {
     (0,es6_slide_up_down__WEBPACK_IMPORTED_MODULE_2__.slideDown)(element, {
       duration: 400,
       easing: es6_easings__WEBPACK_IMPORTED_MODULE_3__.easeOutQuint
+    });
+  };
+  var renderSearch = function renderSearch() {
+    var _pageUtils$pageState, _pageUtils$pageState$;
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_components__WEBPACK_IMPORTED_MODULE_4__.SearchBox, {
+      pageUtils: pageUtils,
+      onSubmit: pageUtils.onSubmit,
+      onReset: pageUtils.onReset,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_components__WEBPACK_IMPORTED_MODULE_4__.InputRow, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.InputSelectColumn, {
+          field: "village",
+          items: pageUtils === null || pageUtils === void 0 ? void 0 : (_pageUtils$pageState = pageUtils.pageState) === null || _pageUtils$pageState === void 0 ? void 0 : (_pageUtils$pageState$ = _pageUtils$pageState.props) === null || _pageUtils$pageState$ === void 0 ? void 0 : _pageUtils$pageState$.villages,
+          fullRow: false
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.InputTextColumn, {
+          field: "name",
+          fullRow: false,
+          icon: "icon-personalcard4"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.InputTextColumn, {
+          field: "family",
+          fullRow: false,
+          icon: "icon-personalcard4"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_components__WEBPACK_IMPORTED_MODULE_4__.InputRow, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.InputTextColumn, {
+          field: "nationalNo",
+          textAlign: "left",
+          fullRow: false,
+          icon: "icon-personalcard4"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.InputTextColumn, {
+          field: "cardNo",
+          textAlign: "left",
+          fullRow: false,
+          icon: "icon-personalcard4"
+        })]
+      })]
     });
   };
   var renderHeader = function renderHeader() {
@@ -9688,7 +9857,7 @@ var MemberRelationsAll = function MemberRelationsAll() {
         children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.memberRelationsAllPage.relationship
       }), (userState === null || userState === void 0 ? void 0 : (_userState$user2 = userState.user) === null || _userState$user2 === void 0 ? void 0 : _userState$user2.role) === _constants__WEBPACK_IMPORTED_MODULE_7__.USER_ROLES.ADMINISTRATOR && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("th", {
         style: {
-          width: "150px"
+          width: "100px"
         },
         children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.general.actions
       })]
@@ -9718,38 +9887,20 @@ var MemberRelationsAll = function MemberRelationsAll() {
             children: birthDate
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("td", {
             children: item.relationshipName
-          }), (userState === null || userState === void 0 ? void 0 : (_userState$user3 = userState.user) === null || _userState$user3 === void 0 ? void 0 : _userState$user3.role) === _constants__WEBPACK_IMPORTED_MODULE_7__.USER_ROLES.ADMINISTRATOR && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("td", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("button", {
-              type: "button",
-              className: "btn btn-primary mx-5",
-              onClick: function onClick() {
-                return pageUtils.onEdit(item);
-              },
-              title: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.general.edit,
-              disabled: layoutState === null || layoutState === void 0 ? void 0 : layoutState.loading,
-              children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.general.edit
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("button", {
-              type: "button",
-              className: "btn btn-primary mx-5",
-              onClick: function onClick() {
-                return pageUtils.onEdit(item);
-              },
-              title: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.general.remove,
-              disabled: layoutState === null || layoutState === void 0 ? void 0 : layoutState.loading,
-              children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.general.remove
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("button", {
-              id: "transfer-".concat(item.id),
+          }), (userState === null || userState === void 0 ? void 0 : (_userState$user3 = userState.user) === null || _userState$user3 === void 0 ? void 0 : _userState$user3.role) === _constants__WEBPACK_IMPORTED_MODULE_7__.USER_ROLES.ADMINISTRATOR && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("td", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("button", {
+              id: "actions-".concat(item.id),
               type: "button",
               className: "btn btn-primary btn-dropdown mx-5",
               onClick: function onClick(e) {
-                return toggleTransfer(e, "transfer-".concat(item.id));
+                return toggleActions(e, "actions-".concat(item.id));
               },
               disabled: layoutState === null || layoutState === void 0 ? void 0 : layoutState.loading,
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
                 className: "d-flex",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
                   className: "grow-1 mx-rdir-10",
-                  children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.memberRelationsAllPage.transfer
+                  children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.general.actions
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
                   className: "icon",
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("i", {
@@ -9762,21 +9913,42 @@ var MemberRelationsAll = function MemberRelationsAll() {
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("li", {
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.CustomLink, {
                       onClick: function onClick() {
-                        return pageUtils.transferToMemberAction(item);
+                        return pageUtils.onEdit(item);
                       },
-                      children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.memberRelationsAllPage.transferAsMember
+                      disabled: layoutState === null || layoutState === void 0 ? void 0 : layoutState.loading,
+                      children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.general.edit
                     })
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("li", {
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.CustomLink, {
                       onClick: function onClick(e) {
-                        return pageUtils.showTransferToNewMemberModal(e, item);
+                        return pageUtils.onRemove(e, item);
                       },
-                      children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.memberRelationsAllPage.transferAsMemberRelation
+                      children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.general.remove
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("li", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+                      className: "line-gr"
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("li", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.CustomLink, {
+                      onClick: function onClick() {
+                        return pageUtils.transferMemberRelationToMemberAction(item);
+                      },
+                      disabled: layoutState === null || layoutState === void 0 ? void 0 : layoutState.loading,
+                      children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.memberRelationsAllPage.transferMemberRelationToMember
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("li", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.CustomLink, {
+                      onClick: function onClick(e) {
+                        return pageUtils.transferMemberRelationToNewMemberModal(e, item);
+                      },
+                      disabled: layoutState === null || layoutState === void 0 ? void 0 : layoutState.loading,
+                      children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.memberRelationsAllPage.transferMemberRelationToNewMember
                     })
                   })]
                 })
               })]
-            })]
+            })
           })]
         })
       }, item.id);
@@ -9792,7 +9964,7 @@ var MemberRelationsAll = function MemberRelationsAll() {
       pageUtils: pageUtils
     });
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.ListPage, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_components__WEBPACK_IMPORTED_MODULE_4__.ListPage, {
     pageUtils: pageUtils,
     table: {
       renderHeader: renderHeader,
@@ -9800,7 +9972,8 @@ var MemberRelationsAll = function MemberRelationsAll() {
       renderFooter: renderFooter
     },
     hasAdd: false,
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.TransferToNewMemberModal, {})
+    renderTopList: renderSearch,
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.TransferMemberRelationToNewMemberModal, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.PromptModal, {})]
   });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MemberRelationsAll);
@@ -9870,6 +10043,8 @@ var PageUtils = /*#__PURE__*/function (_BasePageUtils) {
       action: null
     };
     _this.callbackUrl = "".concat(_constants__WEBPACK_IMPORTED_MODULE_2__.BASE_PATH, "/members");
+    _this.handlePromptSubmit = _this.handlePromptSubmit.bind(_assertThisInitialized(_this));
+    _this.handleTransferMemberRelationToNewMemberSubmit = _this.handleTransferMemberRelationToNewMemberSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
   _createClass(PageUtils, [{
@@ -9880,9 +10055,23 @@ var PageUtils = /*#__PURE__*/function (_BasePageUtils) {
       this.fillForm(this.pageState.params);
     }
   }, {
+    key: "onRemove",
+    value: function onRemove(e, item) {
+      e.stopPropagation();
+      this.promptItem = item;
+      this.dispatch((0,_state_layout_layoutActions__WEBPACK_IMPORTED_MODULE_7__.setShownModalAction)("promptModal", {
+        title: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_4__.memberRelationsPage.removeMessageTitle,
+        description: "".concat(item.name, " ").concat(item.family, " - ").concat(item.nationalNo),
+        submitTitle: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_4__.general.yes,
+        cancelTitle: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_4__.general.no,
+        onSubmit: this.handlePromptSubmit
+      }));
+    }
+  }, {
     key: "navigateIfNotValidateParams",
     value: function navigateIfNotValidateParams() {
-      this.navigateIfNotValidId(this.pageState.params.memberId);
+      var _this$pageState, _this$pageState$param;
+      this.navigateIfNotValidId((_this$pageState = this.pageState) === null || _this$pageState === void 0 ? void 0 : (_this$pageState$param = _this$pageState.params) === null || _this$pageState$param === void 0 ? void 0 : _this$pageState$param.memberId);
     }
   }, {
     key: "addAction",
@@ -9893,7 +10082,6 @@ var PageUtils = /*#__PURE__*/function (_BasePageUtils) {
     key: "editAction",
     value: function editAction(_ref) {
       var id = _ref.id;
-      console.log("".concat(_constants__WEBPACK_IMPORTED_MODULE_2__.BASE_PATH, "/member_relations/edit/").concat(id));
       if (_utils_Utils__WEBPACK_IMPORTED_MODULE_3__["default"].isId(id)) {
         this.navigate("".concat(_constants__WEBPACK_IMPORTED_MODULE_2__.BASE_PATH, "/member_relations/edit/").concat(id));
       }
@@ -9939,28 +10127,41 @@ var PageUtils = /*#__PURE__*/function (_BasePageUtils) {
       this.navigate(this.callbackUrl);
     }
   }, {
-    key: "transferToMemberAction",
-    value: function transferToMemberAction(_ref2) {
+    key: "transferMemberRelationToMemberAction",
+    value: function transferMemberRelationToMemberAction(_ref2) {
       var id = _ref2.id;
       if (_utils_Utils__WEBPACK_IMPORTED_MODULE_3__["default"].isId(id)) {
-        this.navigate("".concat(_constants__WEBPACK_IMPORTED_MODULE_2__.BASE_PATH, "/transfer/change_member_relation_to_member/").concat(id));
+        this.navigate("".concat(_constants__WEBPACK_IMPORTED_MODULE_2__.BASE_PATH, "/member/transfer_member_relation_to_member/").concat(id));
       }
     }
   }, {
-    key: "showTransferToNewMemberModal",
-    value: function showTransferToNewMemberModal(e, item) {
+    key: "handlePromptSubmit",
+    value: function handlePromptSubmit(result) {
+      if (result === true) {
+        var _this$promptItem;
+        var promise = this.entity["delete"]((_this$promptItem = this.promptItem) === null || _this$promptItem === void 0 ? void 0 : _this$promptItem.id);
+        _get(_getPrototypeOf(PageUtils.prototype), "onSelfSubmit", this).call(this, promise);
+      }
+    }
+  }, {
+    key: "transferMemberRelationToNewMemberModal",
+    value: function transferMemberRelationToNewMemberModal(e, item) {
       e.stopPropagation();
-      this.dispatch((0,_state_layout_layoutActions__WEBPACK_IMPORTED_MODULE_7__.setShownModalAction)("transferToNewMemberModal", {
+      this.transferItem = item;
+      this.dispatch((0,_state_layout_layoutActions__WEBPACK_IMPORTED_MODULE_7__.setShownModalAction)("transferMemberRelationToNewMemberModal", {
         memberRelation: item,
-        onCloseModal: this.onCloseModal
+        onSubmit: this.handleTransferMemberRelationToNewMemberSubmit
       }));
     }
   }, {
-    key: "onCloseModal",
-    value: function onCloseModal(result) {
+    key: "handleTransferMemberRelationToNewMemberSubmit",
+    value: function handleTransferMemberRelationToNewMemberSubmit(result) {
       if (result === true) {
+        var _this$transferItem;
         this.dispatch((0,_state_page_pageActions__WEBPACK_IMPORTED_MODULE_5__.setPagePropsAction)(this.initialPageProps));
-        this.fillForm();
+        this.fillForm({
+          memberId: (_this$transferItem = this.transferItem) === null || _this$transferItem === void 0 ? void 0 : _this$transferItem.memberId
+        });
       }
     }
   }]);
@@ -10016,7 +10217,7 @@ var MemberRelations = function MemberRelations() {
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   var columnsCount = (userState === null || userState === void 0 ? void 0 : (_userState$user = userState.user) === null || _userState$user === void 0 ? void 0 : _userState$user.role) === _constants__WEBPACK_IMPORTED_MODULE_7__.USER_ROLES.ADMINISTRATOR ? 6 : 5;
   var pageUtils = new _PageUtils__WEBPACK_IMPORTED_MODULE_5__.PageUtils();
-  var toggleTransfer = function toggleTransfer(e, id) {
+  var toggleActions = function toggleActions(e, id) {
     e.stopPropagation();
     var element = document.querySelector("#".concat(id)).lastChild;
     if (layoutState !== null && layoutState !== void 0 && layoutState.dropDownElement) {
@@ -10059,7 +10260,7 @@ var MemberRelations = function MemberRelations() {
         children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.memberRelationsPage.relationship
       }), (userState === null || userState === void 0 ? void 0 : (_userState$user2 = userState.user) === null || _userState$user2 === void 0 ? void 0 : _userState$user2.role) === _constants__WEBPACK_IMPORTED_MODULE_7__.USER_ROLES.ADMINISTRATOR && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("th", {
         style: {
-          width: "150px"
+          width: "100px"
         },
         children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.general.actions
       })]
@@ -10087,29 +10288,20 @@ var MemberRelations = function MemberRelations() {
             children: birthDate
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("td", {
             children: item.relationshipName
-          }), (userState === null || userState === void 0 ? void 0 : (_userState$user3 = userState.user) === null || _userState$user3 === void 0 ? void 0 : _userState$user3.role) === _constants__WEBPACK_IMPORTED_MODULE_7__.USER_ROLES.ADMINISTRATOR && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("td", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("button", {
-              type: "button",
-              className: "btn btn-primary mx-5",
-              onClick: function onClick() {
-                return pageUtils.onEdit(item);
-              },
-              title: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.general.edit,
-              disabled: layoutState === null || layoutState === void 0 ? void 0 : layoutState.loading,
-              children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.general.edit
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("button", {
-              id: "transfer-".concat(item.id),
+          }), (userState === null || userState === void 0 ? void 0 : (_userState$user3 = userState.user) === null || _userState$user3 === void 0 ? void 0 : _userState$user3.role) === _constants__WEBPACK_IMPORTED_MODULE_7__.USER_ROLES.ADMINISTRATOR && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("td", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("button", {
+              id: "actions-".concat(item.id),
               type: "button",
               className: "btn btn-primary btn-dropdown mx-rdir-10",
               onClick: function onClick(e) {
-                return toggleTransfer(e, "transfer-".concat(item.id));
+                return toggleActions(e, "actions-".concat(item.id));
               },
               disabled: layoutState === null || layoutState === void 0 ? void 0 : layoutState.loading,
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
                 className: "d-flex",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
                   className: "grow-1 mx-rdir-10",
-                  children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.memberRelationsPage.transfer
+                  children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.general.actions
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
                   className: "icon",
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("i", {
@@ -10122,21 +10314,40 @@ var MemberRelations = function MemberRelations() {
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("li", {
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.CustomLink, {
                       onClick: function onClick() {
-                        return pageUtils.transferToMemberAction(item);
+                        return pageUtils.onEdit(item);
                       },
-                      children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.memberRelationsPage.transferAsMember
+                      disabled: layoutState === null || layoutState === void 0 ? void 0 : layoutState.loading,
+                      children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.general.edit
                     })
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("li", {
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.CustomLink, {
                       onClick: function onClick(e) {
-                        return pageUtils.showTransferToNewMemberModal(e, item);
+                        return pageUtils.onRemove(e, item);
                       },
-                      children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.memberRelationsPage.transferAsMemberRelation
+                      children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.general.remove
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("li", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+                      className: "line-gr"
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("li", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.CustomLink, {
+                      onClick: function onClick() {
+                        return pageUtils.transferMemberRelationToMemberAction(item);
+                      },
+                      children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.memberRelationsPage.transferMemberRelationToMember
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("li", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.CustomLink, {
+                      onClick: function onClick(e) {
+                        return pageUtils.transferMemberRelationToNewMemberModal(e, item);
+                      },
+                      children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.memberRelationsPage.transferMemberRelationToNewMember
                     })
                   })]
                 })
               })]
-            })]
+            })
           })]
         })
       }, item.id);
@@ -10152,7 +10363,7 @@ var MemberRelations = function MemberRelations() {
       pageUtils: pageUtils
     });
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.ListPage, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_components__WEBPACK_IMPORTED_MODULE_4__.ListPage, {
     pageUtils: pageUtils,
     table: {
       renderHeader: renderHeader,
@@ -10161,7 +10372,7 @@ var MemberRelations = function MemberRelations() {
     },
     hasAdd: (userState === null || userState === void 0 ? void 0 : (_userState$user4 = userState.user) === null || _userState$user4 === void 0 ? void 0 : _userState$user4.role) === _constants__WEBPACK_IMPORTED_MODULE_7__.USER_ROLES.ADMINISTRATOR,
     backUrl: "".concat(_constants__WEBPACK_IMPORTED_MODULE_7__.BASE_PATH, "/members"),
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.TransferToNewMemberModal, {})
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.TransferMemberRelationToNewMemberModal, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.PromptModal, {})]
   });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MemberRelations);
@@ -10575,6 +10786,7 @@ var PageUtils = /*#__PURE__*/function (_BasePageUtils) {
       this.dispatch((0,_state_page_pageActions__WEBPACK_IMPORTED_MODULE_7__.setPagePropsAction)({
         item: result.item
       }));
+      this.dispatch((0,_state_page_pageActions__WEBPACK_IMPORTED_MODULE_7__.setPageTitleAction)("".concat(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.editMemberPage._title, " [ ").concat(result.item.name, " ").concat(result.item.family, " - ").concat(result.item.nationalNo, " ]"), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.editMemberPage._subTitle));
       this.useForm.setValue("name", result.item.name);
       this.useForm.setValue("family", result.item.family);
       this.useForm.setValue("nationalNo", result.item.nationalNo);
@@ -10745,10 +10957,9 @@ var EditMember = function EditMember() {
       field: "address",
       showLabel: true,
       icon: "icon-location4"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components__WEBPACK_IMPORTED_MODULE_1__.InputTextColumn, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components__WEBPACK_IMPORTED_MODULE_1__.InputTextAreaColumn, {
       field: "description",
-      showLabel: true,
-      icon: "icon-edit-24"
+      showLabel: true
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_components__WEBPACK_IMPORTED_MODULE_1__.InputRow, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components__WEBPACK_IMPORTED_MODULE_1__.InputTextColumn, {
         field: "cardNo",
@@ -10779,7 +10990,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "PageUtils": () => (/* binding */ PageUtils)
 /* harmony export */ });
-/* harmony import */ var react_hook_form__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-hook-form */ "./node_modules/react-hook-form/dist/index.esm.mjs");
+/* harmony import */ var react_hook_form__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-hook-form */ "./node_modules/react-hook-form/dist/index.esm.mjs");
 /* harmony import */ var _hookform_resolvers_yup__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @hookform/resolvers/yup */ "./node_modules/@hookform/resolvers/yup/dist/yup.mjs");
 /* harmony import */ var _http_entities__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../http/entities */ "./resources/js/http/entities/index.js");
 /* harmony import */ var _utils_BasePageUtils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../utils/BasePageUtils */ "./resources/js/utils/BasePageUtils.js");
@@ -10788,6 +10999,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _constants_strings_fa__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../constants/strings/fa */ "./resources/js/constants/strings/fa.js");
 /* harmony import */ var _validations__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../validations */ "./resources/js/resources/validations/index.js");
 /* harmony import */ var _state_layout_layoutActions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../state/layout/layoutActions */ "./resources/js/state/layout/layoutActions.js");
+/* harmony import */ var _state_page_pageActions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../state/page/pageActions */ "./resources/js/state/page/pageActions.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -10821,13 +11033,14 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var PageUtils = /*#__PURE__*/function (_BasePageUtils) {
   _inherits(PageUtils, _BasePageUtils);
   var _super = _createSuper(PageUtils);
   function PageUtils() {
     var _this;
     _classCallCheck(this, PageUtils);
-    var form = (0,react_hook_form__WEBPACK_IMPORTED_MODULE_8__.useForm)({
+    var form = (0,react_hook_form__WEBPACK_IMPORTED_MODULE_9__.useForm)({
       resolver: (0,_hookform_resolvers_yup__WEBPACK_IMPORTED_MODULE_0__.yupResolver)(_validations__WEBPACK_IMPORTED_MODULE_6__.searchMemberSchema)
     });
     _this = _super.call(this, "Members", _constants_strings_fa__WEBPACK_IMPORTED_MODULE_5__.membersPage, form);
@@ -10837,9 +11050,11 @@ var PageUtils = /*#__PURE__*/function (_BasePageUtils) {
       item: null,
       items: null,
       villages: null,
+      relationships: null,
       action: null
     };
     _this.handlePromptSubmit = _this.handlePromptSubmit.bind(_assertThisInitialized(_this));
+    _this.handleTransferMemberToMemberRelationSubmit = _this.handleTransferMemberToMemberRelationSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
   _createClass(PageUtils, [{
@@ -10959,6 +11174,7 @@ var PageUtils = /*#__PURE__*/function (_BasePageUtils) {
     key: "propsIfOK",
     value: function propsIfOK(result) {
       try {
+        var _this$pageState, _this$pageState$props3;
         return {
           items: result.items,
           villages: [{
@@ -10969,9 +11185,24 @@ var PageUtils = /*#__PURE__*/function (_BasePageUtils) {
             return village;
           }))),
           itemsCount: result.count,
-          memberRelationsCount: result.memberRelationsCount
+          memberRelationsCount: result.memberRelationsCount,
+          relationships: result.relationships ? _toConsumableArray(result.relationships.map(function (relationship) {
+            relationship.value = relationship.name;
+            return relationship;
+          })) : (_this$pageState = this.pageState) === null || _this$pageState === void 0 ? void 0 : (_this$pageState$props3 = _this$pageState.props) === null || _this$pageState$props3 === void 0 ? void 0 : _this$pageState$props3.relationships
         };
       } catch (_unused) {}
+    }
+  }, {
+    key: "transferMemberToMemberRelationModal",
+    value: function transferMemberToMemberRelationModal(e, item) {
+      var _this$pageState2, _this$pageState2$prop;
+      e.stopPropagation();
+      this.dispatch((0,_state_layout_layoutActions__WEBPACK_IMPORTED_MODULE_7__.setShownModalAction)("transferMemberToMemberRelationModal", {
+        member: item,
+        relationships: (_this$pageState2 = this.pageState) === null || _this$pageState2 === void 0 ? void 0 : (_this$pageState2$prop = _this$pageState2.props) === null || _this$pageState2$prop === void 0 ? void 0 : _this$pageState2$prop.relationships,
+        onSubmit: this.handleTransferMemberToMemberRelationSubmit
+      }));
     }
   }, {
     key: "handlePromptSubmit",
@@ -10980,8 +11211,14 @@ var PageUtils = /*#__PURE__*/function (_BasePageUtils) {
         var _this$promptItem;
         var promise = this.entity["delete"]((_this$promptItem = this.promptItem) === null || _this$promptItem === void 0 ? void 0 : _this$promptItem.id);
         _get(_getPrototypeOf(PageUtils.prototype), "onSelfSubmit", this).call(this, promise);
-      } else {
-        console.log("false");
+      }
+    }
+  }, {
+    key: "handleTransferMemberToMemberRelationSubmit",
+    value: function handleTransferMemberToMemberRelationSubmit(result) {
+      if (result === true) {
+        this.dispatch((0,_state_page_pageActions__WEBPACK_IMPORTED_MODULE_8__.setPagePropsAction)(this.initialPageProps));
+        this.fillForm();
       }
     }
   }]);
@@ -11013,7 +11250,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../constants */ "./resources/js/constants/index.js");
 /* harmony import */ var _utils_Utils__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../utils/Utils */ "./resources/js/utils/Utils.js");
 /* harmony import */ var _state_layout_layoutActions__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../state/layout/layoutActions */ "./resources/js/state/layout/layoutActions.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _components_Modal_TransferMemberToMemberRelationModal__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../components/Modal/TransferMemberToMemberRelationModal */ "./resources/js/resources/components/Modal/TransferMemberToMemberRelationModal/index.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -11050,26 +11289,26 @@ var Members = function Members() {
   var pageUtils = new _PageUtils__WEBPACK_IMPORTED_MODULE_5__.PageUtils();
   var renderTopList = function renderTopList() {
     var _pageState$props, _pageState$props2, _pageState$props3, _pageState$props4, _pageState$props5, _pageState$props6, _pageState$props7, _pageState$props8;
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.Fragment, {
-      children: [renderSearch(), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.Fragment, {
+      children: [renderSearch(), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
         className: "d-flex mx-10 pd-20",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("span", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("span", {
           children: [_constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.membersPage.allMembersCount, ":"]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("span", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
           className: "text mx-5",
           children: pageState !== null && pageState !== void 0 && (_pageState$props = pageState.props) !== null && _pageState$props !== void 0 && _pageState$props.itemsCount ? _utils_Utils__WEBPACK_IMPORTED_MODULE_8__["default"].addCommas(pageState === null || pageState === void 0 ? void 0 : (_pageState$props2 = pageState.props) === null || _pageState$props2 === void 0 ? void 0 : _pageState$props2.itemsCount) : 0
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("span", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
           className: "mx-10"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("span", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("span", {
           children: [_constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.membersPage.allMemberRelationsCount, ":"]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("span", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
           className: "text mx-5",
           children: pageState !== null && pageState !== void 0 && (_pageState$props3 = pageState.props) !== null && _pageState$props3 !== void 0 && _pageState$props3.memberRelationsCount ? _utils_Utils__WEBPACK_IMPORTED_MODULE_8__["default"].addCommas(pageState === null || pageState === void 0 ? void 0 : (_pageState$props4 = pageState.props) === null || _pageState$props4 === void 0 ? void 0 : _pageState$props4.memberRelationsCount) : 0
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("span", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
           className: "mx-10"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("span", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("span", {
           children: [_constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.membersPage.allCount, ":"]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("span", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
           className: "text mx-5",
           children: pageState !== null && pageState !== void 0 && (_pageState$props5 = pageState.props) !== null && _pageState$props5 !== void 0 && _pageState$props5.itemsCount && pageState !== null && pageState !== void 0 && (_pageState$props6 = pageState.props) !== null && _pageState$props6 !== void 0 && _pageState$props6.memberRelationsCount ? _utils_Utils__WEBPACK_IMPORTED_MODULE_8__["default"].addCommas((pageState === null || pageState === void 0 ? void 0 : (_pageState$props7 = pageState.props) === null || _pageState$props7 === void 0 ? void 0 : _pageState$props7.itemsCount) + (pageState === null || pageState === void 0 ? void 0 : (_pageState$props8 = pageState.props) === null || _pageState$props8 === void 0 ? void 0 : _pageState$props8.memberRelationsCount)) : 0
         })]
@@ -11078,31 +11317,31 @@ var Members = function Members() {
   };
   var renderSearch = function renderSearch() {
     var _pageUtils$pageState, _pageUtils$pageState$;
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(_components__WEBPACK_IMPORTED_MODULE_4__.SearchBox, {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(_components__WEBPACK_IMPORTED_MODULE_4__.SearchBox, {
       pageUtils: pageUtils,
       onSubmit: pageUtils.onSubmit,
       onReset: pageUtils.onReset,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(_components__WEBPACK_IMPORTED_MODULE_4__.InputRow, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.InputSelectColumn, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(_components__WEBPACK_IMPORTED_MODULE_4__.InputRow, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.InputSelectColumn, {
           field: "village",
           items: pageUtils === null || pageUtils === void 0 ? void 0 : (_pageUtils$pageState = pageUtils.pageState) === null || _pageUtils$pageState === void 0 ? void 0 : (_pageUtils$pageState$ = _pageUtils$pageState.props) === null || _pageUtils$pageState$ === void 0 ? void 0 : _pageUtils$pageState$.villages,
           fullRow: false
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.InputTextColumn, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.InputTextColumn, {
           field: "name",
           fullRow: false,
           icon: "icon-personalcard4"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.InputTextColumn, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.InputTextColumn, {
           field: "family",
           fullRow: false,
           icon: "icon-personalcard4"
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(_components__WEBPACK_IMPORTED_MODULE_4__.InputRow, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.InputTextColumn, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(_components__WEBPACK_IMPORTED_MODULE_4__.InputRow, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.InputTextColumn, {
           field: "nationalNo",
           textAlign: "left",
           fullRow: false,
           icon: "icon-personalcard4"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.InputTextColumn, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.InputTextColumn, {
           field: "cardNo",
           textAlign: "left",
           fullRow: false,
@@ -11144,37 +11383,37 @@ var Members = function Members() {
     });
   };
   var renderButtons = function renderButtons() {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.Fragment, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("button", {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.Fragment, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("button", {
         id: "print",
         type: "button",
         className: "btn btn-primary btn-dropdown mx-rdir-10",
         onClick: function onClick(e) {
           return togglePrint(e);
         },
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
           className: "d-flex",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("span", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
             className: "grow-1 mx-rdir-10",
             children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.general.print
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
             className: "icon",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("i", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("i", {
               className: "icon-arrow-down5"
             })
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
           className: "dropdown-menu",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("ul", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("li", {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.CustomLink, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("ul", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("li", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.CustomLink, {
                 onClick: function onClick() {
                   return pageUtils.printWithMobileAction();
                 },
                 children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.membersPage.printWithMobile
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("li", {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.CustomLink, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("li", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.CustomLink, {
                 onClick: function onClick() {
                   return pageUtils.printWitouthMobileAction();
                 },
@@ -11188,45 +11427,45 @@ var Members = function Members() {
   };
   var renderHeader = function renderHeader() {
     var _userState$user2;
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("tr", {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("tr", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("th", {
         style: {
           width: "60px"
         },
         children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.membersPage.cardNo
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("th", {
         children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.membersPage.nameFamily
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("th", {
         style: {
           width: "100px"
         },
         children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.membersPage.nationalNo
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("th", {
         style: {
           width: "100px"
         },
         children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.membersPage.identityNo
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("th", {
         style: {
           width: "100px"
         },
         children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.membersPage.birthDate
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("th", {
         style: {
           width: "100px"
         },
         children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.membersPage.fatherName
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("th", {
         style: {
           width: "100px"
         },
         children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.membersPage.allMemberRelationsCount
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("th", {
         style: {
           width: "100px"
         },
         children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.membersPage.village
-      }), (userState === null || userState === void 0 ? void 0 : (_userState$user2 = userState.user) === null || _userState$user2 === void 0 ? void 0 : _userState$user2.role) === _constants__WEBPACK_IMPORTED_MODULE_7__.USER_ROLES.ADMINISTRATOR && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
+      }), (userState === null || userState === void 0 ? void 0 : (_userState$user2 = userState.user) === null || _userState$user2 === void 0 ? void 0 : _userState$user2.role) === _constants__WEBPACK_IMPORTED_MODULE_7__.USER_ROLES.ADMINISTRATOR && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("th", {
         style: {
           width: "100px"
         },
@@ -11244,26 +11483,26 @@ var Members = function Members() {
       } else if (((_item$birthDate2 = item.birthDate) === null || _item$birthDate2 === void 0 ? void 0 : _item$birthDate2.length) === 8) {
         birthDate = "".concat(item.birthDate.substring(0, 4), "/").concat(item.birthDate.substring(4, 6), "/").concat(item.birthDate.substring(6, 8));
       }
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("tr", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("td", {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("tr", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("td", {
             children: item.cardNo
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("td", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("td", {
             children: "".concat(item.name, " ").concat(item.family)
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("td", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("td", {
             children: item.nationalNo
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("td", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("td", {
             children: item.identityNo
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("td", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("td", {
             children: birthDate
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("td", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("td", {
             children: item.fatherName
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("td", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("td", {
             children: item.memberRelationsCount
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("td", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("td", {
             children: item.villageName
-          }), (userState === null || userState === void 0 ? void 0 : (_userState$user3 = userState.user) === null || _userState$user3 === void 0 ? void 0 : _userState$user3.role) === _constants__WEBPACK_IMPORTED_MODULE_7__.USER_ROLES.ADMINISTRATOR && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("td", {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("button", {
+          }), (userState === null || userState === void 0 ? void 0 : (_userState$user3 = userState.user) === null || _userState$user3 === void 0 ? void 0 : _userState$user3.role) === _constants__WEBPACK_IMPORTED_MODULE_7__.USER_ROLES.ADMINISTRATOR && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("td", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("button", {
               id: "actions-".concat(item.id),
               type: "button",
               className: "btn btn-primary btn-dropdown mx-rdir-10",
@@ -11271,44 +11510,56 @@ var Members = function Members() {
                 return toggleActions(e, "actions-".concat(item.id));
               },
               disabled: layoutState === null || layoutState === void 0 ? void 0 : layoutState.loading,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
                 className: "d-flex",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("span", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
                   className: "grow-1 mx-rdir-10",
                   children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.general.actions
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
                   className: "icon",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("i", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("i", {
                     className: "icon-arrow-down5"
                   })
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
                 className: "dropdown-menu dropdown-menu-end",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("ul", {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("li", {
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.CustomLink, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("ul", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("li", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.CustomLink, {
                       onClick: function onClick() {
                         return pageUtils.onEdit(item);
                       },
                       children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.general.edit
                     })
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("li", {
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.CustomLink, {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("li", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.CustomLink, {
                       onClick: function onClick(e) {
                         return pageUtils.onRemove(e, item);
                       },
                       children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.general.remove
                     })
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("li", {
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("li", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
                       className: "line-gr"
                     })
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("li", {
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.CustomLink, {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("li", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.CustomLink, {
                       onClick: function onClick() {
                         return pageUtils.onMemberRelations(item);
                       },
                       children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.membersPage.memberRelations
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("li", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                      className: "line-gr"
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("li", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.CustomLink, {
+                      onClick: function onClick(e) {
+                        return pageUtils.transferMemberToMemberRelationModal(e, item);
+                      },
+                      disabled: layoutState === null || layoutState === void 0 ? void 0 : layoutState.loading,
+                      children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.membersPage.transferMemberToMemberRelation
                     })
                   })]
                 })
@@ -11318,18 +11569,18 @@ var Members = function Members() {
         })
       }, item.id);
     });
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.TableItems, {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.TableItems, {
       columnsCount: columnsCount,
       children: children
     });
   };
   var renderFooter = function renderFooter() {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.TableFooter, {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.TableFooter, {
       columnsCount: columnsCount,
       pageUtils: pageUtils
     });
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.ListPage, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(_components__WEBPACK_IMPORTED_MODULE_4__.ListPage, {
     pageUtils: pageUtils,
     table: {
       renderHeader: renderHeader,
@@ -11339,10 +11590,373 @@ var Members = function Members() {
     hasAdd: (userState === null || userState === void 0 ? void 0 : (_userState$user4 = userState.user) === null || _userState$user4 === void 0 ? void 0 : _userState$user4.role) === _constants__WEBPACK_IMPORTED_MODULE_7__.USER_ROLES.ADMINISTRATOR,
     renderTopList: renderTopList,
     renderButtons: renderButtons,
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.PromptModal, {})
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components__WEBPACK_IMPORTED_MODULE_4__.PromptModal, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_Modal_TransferMemberToMemberRelationModal__WEBPACK_IMPORTED_MODULE_10__["default"], {})]
   });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Members);
+
+/***/ }),
+
+/***/ "./resources/js/resources/Pages/Member/TransferMemberRelationToMember/PageUtils.js":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/resources/Pages/Member/TransferMemberRelationToMember/PageUtils.js ***!
+  \*****************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "PageUtils": () => (/* binding */ PageUtils)
+/* harmony export */ });
+/* harmony import */ var react_hook_form__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-hook-form */ "./node_modules/react-hook-form/dist/index.esm.mjs");
+/* harmony import */ var _hookform_resolvers_yup__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @hookform/resolvers/yup */ "./node_modules/@hookform/resolvers/yup/dist/yup.mjs");
+/* harmony import */ var _http_entities__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../http/entities */ "./resources/js/http/entities/index.js");
+/* harmony import */ var _utils_BasePageUtils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../utils/BasePageUtils */ "./resources/js/utils/BasePageUtils.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../constants */ "./resources/js/constants/index.js");
+/* harmony import */ var _state_layout_layoutActions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../state/layout/layoutActions */ "./resources/js/state/layout/layoutActions.js");
+/* harmony import */ var _validations__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../validations */ "./resources/js/resources/validations/index.js");
+/* harmony import */ var _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../constants/strings/fa */ "./resources/js/constants/strings/fa.js");
+/* harmony import */ var _state_page_pageActions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../state/page/pageActions */ "./resources/js/state/page/pageActions.js");
+/* harmony import */ var _state_message_messageActions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../state/message/messageActions */ "./resources/js/state/message/messageActions.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _get() { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get.bind(); } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(arguments.length < 3 ? target : receiver); } return desc.value; }; } return _get.apply(this, arguments); }
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+
+
+
+
+
+var PageUtils = /*#__PURE__*/function (_BasePageUtils) {
+  _inherits(PageUtils, _BasePageUtils);
+  var _super = _createSuper(PageUtils);
+  function PageUtils() {
+    var _this;
+    _classCallCheck(this, PageUtils);
+    var form = (0,react_hook_form__WEBPACK_IMPORTED_MODULE_9__.useForm)({
+      resolver: (0,_hookform_resolvers_yup__WEBPACK_IMPORTED_MODULE_0__.yupResolver)(_validations__WEBPACK_IMPORTED_MODULE_5__.transferMemberRelationToMemberSchema)
+    });
+    _this = _super.call(this, "MemberRelations", _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.transferMemberRelationToMemberPage, form);
+    _this.entity = new _http_entities__WEBPACK_IMPORTED_MODULE_1__.MemberRelation();
+    _this.initialPageProps = {
+      item: null,
+      villages: null,
+      maxCardNo: 0
+    };
+    _this.callbackUrl = "".concat(_constants__WEBPACK_IMPORTED_MODULE_3__.BASE_PATH, "/members");
+    return _this;
+  }
+  _createClass(PageUtils, [{
+    key: "onLoad",
+    value: function onLoad() {
+      this.navigateIfNotValidateParams();
+      _get(_getPrototypeOf(PageUtils.prototype), "onLoad", this).call(this);
+      this.fillForm(this.pageState.params);
+    }
+  }, {
+    key: "navigateIfNotValidateParams",
+    value: function navigateIfNotValidateParams() {
+      this.navigateIfNotValidId(this.pageState.params.memberRelationId);
+    }
+  }, {
+    key: "fillForm",
+    value: function () {
+      var _fillForm = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(data) {
+        var result;
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+          while (1) switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              this.dispatch((0,_state_layout_layoutActions__WEBPACK_IMPORTED_MODULE_4__.setLoadingAction)(true));
+              _context.next = 4;
+              return this.fetchItem(data.memberRelationId);
+            case 4:
+              result = _context.sent;
+              this.navigateIfItemNotFound(result);
+              this.handleFetchResult(result);
+              _context.next = 11;
+              break;
+            case 9:
+              _context.prev = 9;
+              _context.t0 = _context["catch"](0);
+            case 11:
+              _context.prev = 11;
+              this.dispatch((0,_state_layout_layoutActions__WEBPACK_IMPORTED_MODULE_4__.setLoadingAction)(false));
+              return _context.finish(11);
+            case 14:
+            case "end":
+              return _context.stop();
+          }
+        }, _callee, this, [[0, 9, 11, 14]]);
+      }));
+      function fillForm(_x) {
+        return _fillForm.apply(this, arguments);
+      }
+      return fillForm;
+    }()
+  }, {
+    key: "fetchItem",
+    value: function () {
+      var _fetchItem = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(id) {
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+          while (1) switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return this.entity.getWithVillages(id);
+            case 2:
+              return _context2.abrupt("return", _context2.sent);
+            case 3:
+            case "end":
+              return _context2.stop();
+          }
+        }, _callee2, this);
+      }));
+      function fetchItem(_x2) {
+        return _fetchItem.apply(this, arguments);
+      }
+      return fetchItem;
+    }()
+  }, {
+    key: "handleFetchResult",
+    value: function handleFetchResult(result) {
+      if (result.villages.length > 0) {
+        this.dispatch((0,_state_page_pageActions__WEBPACK_IMPORTED_MODULE_7__.setPagePropsAction)({
+          villages: result.villages.map(function (village) {
+            village.value = village.name;
+            return village;
+          })
+        }));
+      } else {
+        this.dispatch((0,_state_message_messageActions__WEBPACK_IMPORTED_MODULE_8__.setMessageAction)(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.transferMemberRelationToMemberPage.noVillagesFound, _constants__WEBPACK_IMPORTED_MODULE_3__.MESSAGE_TYPES.ERROR, _constants__WEBPACK_IMPORTED_MODULE_3__.MESSAGE_CODES.ITEM_NOT_FOUND));
+      }
+      this.dispatch((0,_state_page_pageActions__WEBPACK_IMPORTED_MODULE_7__.setPagePropsAction)({
+        item: result.item,
+        maxCardNo: result.maxCardNo
+      }));
+      this.dispatch((0,_state_page_pageActions__WEBPACK_IMPORTED_MODULE_7__.setPageTitleAction)("".concat(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.transferMemberRelationToMemberPage._title, " [ ").concat(result.item.name, " ").concat(result.item.family, " - ").concat(result.item.nationalNo, " ]"), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.transferMemberRelationToMemberPage._subTitle));
+      this.useForm.setValue("name", result.item.name);
+      this.useForm.setValue("family", result.item.family);
+      this.useForm.setValue("nationalNo", result.item.nationalNo);
+      this.useForm.setValue("identityNo", result.item.identityNo);
+      this.useForm.setValue("fatherName", result.item.fatherName);
+      this.useForm.setValue("birthDate", result.item.birthDate);
+      this.useForm.setValue("membershipDate", result.item.membershipDate);
+      this.useForm.setValue("postalCode", result.item.postalCode);
+      this.useForm.setValue("gender", result.item.gender);
+      this.useForm.setValue("village", result.item.villageId);
+      this.useForm.setValue("tel", result.item.tel);
+      this.useForm.setValue("mobile", result.item.mobile);
+      this.useForm.setValue("address", result.item.address);
+      this.useForm.setValue("description", result.item.description);
+      this.useForm.setValue("cardNo", result.maxCardNo + 1);
+    }
+  }, {
+    key: "onSubmit",
+    value: function () {
+      var _onSubmit = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(data) {
+        var member, promise;
+        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+          while (1) switch (_context3.prev = _context3.next) {
+            case 0:
+              member = new _http_entities__WEBPACK_IMPORTED_MODULE_1__.Member();
+              promise = member.transferMemberRelationToMemnber(this.pageState.params.memberRelationId, data.fatherName, data.membershipDate.replaceAll("/", ""), data.postalCode, data.village, data.tel, data.mobile, data.address, data.description, data.cardNo);
+              _get(_getPrototypeOf(PageUtils.prototype), "onModifySubmit", this).call(this, promise);
+            case 3:
+            case "end":
+              return _context3.stop();
+          }
+        }, _callee3, this);
+      }));
+      function onSubmit(_x3) {
+        return _onSubmit.apply(this, arguments);
+      }
+      return onSubmit;
+    }()
+  }]);
+  return PageUtils;
+}(_utils_BasePageUtils__WEBPACK_IMPORTED_MODULE_2__.BasePageUtils);
+
+/***/ }),
+
+/***/ "./resources/js/resources/Pages/Member/TransferMemberRelationToMember/index.jsx":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/resources/Pages/Member/TransferMemberRelationToMember/index.jsx ***!
+  \**************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_responsive__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-responsive */ "./node_modules/react-responsive/dist/react-responsive.js");
+/* harmony import */ var react_responsive__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_responsive__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../components */ "./resources/js/resources/components/index.js");
+/* harmony import */ var _PageUtils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PageUtils */ "./resources/js/resources/Pages/Member/TransferMemberRelationToMember/PageUtils.js");
+/* harmony import */ var _Members__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Members */ "./resources/js/resources/Pages/Member/Members/index.jsx");
+/* harmony import */ var _constants_strings_fa__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../constants/strings/fa */ "./resources/js/constants/strings/fa.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+
+
+var TransferMemberRelationToMember = function TransferMemberRelationToMember() {
+  var _pageUtils$pageState, _pageUtils$pageState$, _pageUtils$pageState$2, _pageUtils$pageState2, _pageUtils$pageState3, _pageUtils$pageState4, _pageUtils$pageState5, _pageUtils$pageState6, _pageUtils$pageState7, _pageUtils$pageState8;
+  var pageUtils = new _PageUtils__WEBPACK_IMPORTED_MODULE_2__.PageUtils();
+  var isPCScreen = (0,react_responsive__WEBPACK_IMPORTED_MODULE_6__.useMediaQuery)({
+    query: "(min-width: 1224px)"
+  });
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_components__WEBPACK_IMPORTED_MODULE_1__.FormPage, {
+    pageUtils: pageUtils,
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_components__WEBPACK_IMPORTED_MODULE_1__.InputRow, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components__WEBPACK_IMPORTED_MODULE_1__.InputTextColumn, {
+        field: "name",
+        fullRow: false,
+        readOnly: true,
+        showLabel: true,
+        icon: "icon-personalcard4"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components__WEBPACK_IMPORTED_MODULE_1__.InputTextColumn, {
+        field: "family",
+        fullRow: false,
+        readOnly: true,
+        showLabel: true,
+        icon: "icon-personalcard4"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components__WEBPACK_IMPORTED_MODULE_1__.InputTextColumn, {
+        field: "nationalNo",
+        fullRow: false,
+        readOnly: true,
+        showLabel: true,
+        icon: "icon-personalcard4"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components__WEBPACK_IMPORTED_MODULE_1__.InputTextColumn, {
+        field: "identityNo",
+        fullRow: false,
+        readOnly: true,
+        type: "number",
+        showLabel: true,
+        icon: "icon-personalcard4"
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_components__WEBPACK_IMPORTED_MODULE_1__.InputRow, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components__WEBPACK_IMPORTED_MODULE_1__.InputTextColumn, {
+        field: "fatherName",
+        fullRow: false,
+        showLabel: true,
+        icon: "icon-personalcard4"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components__WEBPACK_IMPORTED_MODULE_1__.InputDatePickerColumn, {
+        field: "birthDate",
+        fullRow: false,
+        readOnly: true,
+        showLabel: true
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components__WEBPACK_IMPORTED_MODULE_1__.InputDatePickerColumn, {
+        field: "membershipDate",
+        fullRow: false,
+        showLabel: true
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components__WEBPACK_IMPORTED_MODULE_1__.InputTextColumn, {
+        field: "postalCode",
+        fullRow: false,
+        showLabel: true,
+        icon: "icon-support"
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_components__WEBPACK_IMPORTED_MODULE_1__.InputRow, {
+      containerStyle: {
+        marginBottom: "2rem"
+      },
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("span", {
+        style: {
+          marginLeft: "1rem"
+        },
+        children: [_constants_strings_fa__WEBPACK_IMPORTED_MODULE_4__.transferMemberRelationToMemberPage.birthDate, ":"]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+        className: "text",
+        children: pageUtils === null || pageUtils === void 0 ? void 0 : (_pageUtils$pageState = pageUtils.pageState) === null || _pageUtils$pageState === void 0 ? void 0 : (_pageUtils$pageState$ = _pageUtils$pageState.props) === null || _pageUtils$pageState$ === void 0 ? void 0 : (_pageUtils$pageState$2 = _pageUtils$pageState$.item) === null || _pageUtils$pageState$2 === void 0 ? void 0 : _pageUtils$pageState$2.birthDate
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("span", {
+        style: {
+          marginRight: "2rem",
+          marginLeft: "1rem"
+        },
+        children: [_constants_strings_fa__WEBPACK_IMPORTED_MODULE_4__.transferMemberRelationToMemberPage.membershipDate, ":"]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+        className: "text",
+        children: pageUtils === null || pageUtils === void 0 ? void 0 : (_pageUtils$pageState2 = pageUtils.pageState) === null || _pageUtils$pageState2 === void 0 ? void 0 : (_pageUtils$pageState3 = _pageUtils$pageState2.props) === null || _pageUtils$pageState3 === void 0 ? void 0 : (_pageUtils$pageState4 = _pageUtils$pageState3.item) === null || _pageUtils$pageState4 === void 0 ? void 0 : _pageUtils$pageState4.membershipDate
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_components__WEBPACK_IMPORTED_MODULE_1__.InputRow, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components__WEBPACK_IMPORTED_MODULE_1__.InputSelectColumn, {
+        field: "gender",
+        items: _Members__WEBPACK_IMPORTED_MODULE_3__.types,
+        fullRow: false,
+        readOnly: true,
+        showLabel: true
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components__WEBPACK_IMPORTED_MODULE_1__.InputSelectColumn, {
+        field: "village",
+        items: pageUtils === null || pageUtils === void 0 ? void 0 : (_pageUtils$pageState5 = pageUtils.pageState) === null || _pageUtils$pageState5 === void 0 ? void 0 : (_pageUtils$pageState6 = _pageUtils$pageState5.props) === null || _pageUtils$pageState6 === void 0 ? void 0 : _pageUtils$pageState6.villages,
+        fullRow: false,
+        showLabel: true
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components__WEBPACK_IMPORTED_MODULE_1__.InputTextColumn, {
+        field: "tel",
+        fullRow: false,
+        showLabel: true,
+        icon: "icon-call-calling"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components__WEBPACK_IMPORTED_MODULE_1__.InputTextColumn, {
+        field: "mobile",
+        fullRow: false,
+        showLabel: true,
+        icon: "icon-mobile"
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components__WEBPACK_IMPORTED_MODULE_1__.InputTextColumn, {
+      field: "address",
+      showLabel: true,
+      icon: "icon-location4"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components__WEBPACK_IMPORTED_MODULE_1__.InputTextAreaColumn, {
+      field: "description",
+      showLabel: true
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_components__WEBPACK_IMPORTED_MODULE_1__.InputRow, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components__WEBPACK_IMPORTED_MODULE_1__.InputTextColumn, {
+        field: "cardNo",
+        type: "number",
+        fullRow: false,
+        showLabel: true,
+        icon: "icon-personalcard4"
+      }), isPCScreen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+        style: {
+          flexGrow: "4"
+        }
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
+      className: "input-info",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("span", {
+        children: [_constants_strings_fa__WEBPACK_IMPORTED_MODULE_4__.transferMemberRelationToMemberPage.maxCardNo, ":"]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+        className: "text mx-10",
+        children: pageUtils === null || pageUtils === void 0 ? void 0 : (_pageUtils$pageState7 = pageUtils.pageState) === null || _pageUtils$pageState7 === void 0 ? void 0 : (_pageUtils$pageState8 = _pageUtils$pageState7.props) === null || _pageUtils$pageState8 === void 0 ? void 0 : _pageUtils$pageState8.maxCardNo
+      })]
+    })]
+  });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TransferMemberRelationToMember);
 
 /***/ }),
 
@@ -12098,7 +12712,7 @@ var Relationships = function Relationships() {
         children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_4__.relationshipsPage.name
       }), (userState === null || userState === void 0 ? void 0 : (_userState$user2 = userState.user) === null || _userState$user2 === void 0 ? void 0 : _userState$user2.role) === _constants__WEBPACK_IMPORTED_MODULE_5__.USER_ROLES.ADMINISTRATOR && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
         style: {
-          width: "150px"
+          width: "100px"
         },
         children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_4__.general.actions
       })]
@@ -12149,363 +12763,6 @@ var Relationships = function Relationships() {
   });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Relationships);
-
-/***/ }),
-
-/***/ "./resources/js/resources/Pages/TransferMember/ChangeMemberRelationToMember/PageUtils.js":
-/*!***********************************************************************************************!*\
-  !*** ./resources/js/resources/Pages/TransferMember/ChangeMemberRelationToMember/PageUtils.js ***!
-  \***********************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "PageUtils": () => (/* binding */ PageUtils)
-/* harmony export */ });
-/* harmony import */ var react_hook_form__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-hook-form */ "./node_modules/react-hook-form/dist/index.esm.mjs");
-/* harmony import */ var _hookform_resolvers_yup__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @hookform/resolvers/yup */ "./node_modules/@hookform/resolvers/yup/dist/yup.mjs");
-/* harmony import */ var _http_entities__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../http/entities */ "./resources/js/http/entities/index.js");
-/* harmony import */ var _utils_BasePageUtils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../utils/BasePageUtils */ "./resources/js/utils/BasePageUtils.js");
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../constants */ "./resources/js/constants/index.js");
-/* harmony import */ var _state_layout_layoutActions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../state/layout/layoutActions */ "./resources/js/state/layout/layoutActions.js");
-/* harmony import */ var _validations__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../validations */ "./resources/js/resources/validations/index.js");
-/* harmony import */ var _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../constants/strings/fa */ "./resources/js/constants/strings/fa.js");
-/* harmony import */ var _state_page_pageActions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../state/page/pageActions */ "./resources/js/state/page/pageActions.js");
-/* harmony import */ var _state_message_messageActions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../state/message/messageActions */ "./resources/js/state/message/messageActions.js");
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
-function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
-function _get() { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get.bind(); } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(arguments.length < 3 ? target : receiver); } return desc.value; }; } return _get.apply(this, arguments); }
-function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-
-
-
-
-
-
-
-
-
-var PageUtils = /*#__PURE__*/function (_BasePageUtils) {
-  _inherits(PageUtils, _BasePageUtils);
-  var _super = _createSuper(PageUtils);
-  function PageUtils() {
-    var _this;
-    _classCallCheck(this, PageUtils);
-    var form = (0,react_hook_form__WEBPACK_IMPORTED_MODULE_9__.useForm)({
-      resolver: (0,_hookform_resolvers_yup__WEBPACK_IMPORTED_MODULE_0__.yupResolver)(_validations__WEBPACK_IMPORTED_MODULE_5__.editMemberSchema)
-    });
-    _this = _super.call(this, "MemberRelations", _constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.changeMemberRelationToMemberPage, form);
-    _this.entity = new _http_entities__WEBPACK_IMPORTED_MODULE_1__.MemberRelation();
-    _this.initialPageProps = {
-      item: null,
-      villages: null,
-      maxCardNo: 0
-    };
-    _this.callbackUrl = "".concat(_constants__WEBPACK_IMPORTED_MODULE_3__.BASE_PATH, "/members");
-    return _this;
-  }
-  _createClass(PageUtils, [{
-    key: "onLoad",
-    value: function onLoad() {
-      this.navigateIfNotValidateParams();
-      _get(_getPrototypeOf(PageUtils.prototype), "onLoad", this).call(this);
-      this.fillForm(this.pageState.params);
-    }
-  }, {
-    key: "navigateIfNotValidateParams",
-    value: function navigateIfNotValidateParams() {
-      this.navigateIfNotValidId(this.pageState.params.memberRelationId);
-    }
-  }, {
-    key: "fillForm",
-    value: function () {
-      var _fillForm = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(data) {
-        var result;
-        return _regeneratorRuntime().wrap(function _callee$(_context) {
-          while (1) switch (_context.prev = _context.next) {
-            case 0:
-              _context.prev = 0;
-              this.dispatch((0,_state_layout_layoutActions__WEBPACK_IMPORTED_MODULE_4__.setLoadingAction)(true));
-              _context.next = 4;
-              return this.fetchItem(data.memberRelationId);
-            case 4:
-              result = _context.sent;
-              this.navigateIfItemNotFound(result);
-              this.handleFetchResult(result);
-              _context.next = 11;
-              break;
-            case 9:
-              _context.prev = 9;
-              _context.t0 = _context["catch"](0);
-            case 11:
-              _context.prev = 11;
-              this.dispatch((0,_state_layout_layoutActions__WEBPACK_IMPORTED_MODULE_4__.setLoadingAction)(false));
-              return _context.finish(11);
-            case 14:
-            case "end":
-              return _context.stop();
-          }
-        }, _callee, this, [[0, 9, 11, 14]]);
-      }));
-      function fillForm(_x) {
-        return _fillForm.apply(this, arguments);
-      }
-      return fillForm;
-    }()
-  }, {
-    key: "fetchItem",
-    value: function () {
-      var _fetchItem = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(id) {
-        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-          while (1) switch (_context2.prev = _context2.next) {
-            case 0:
-              _context2.next = 2;
-              return this.entity.getWithVillages(id);
-            case 2:
-              return _context2.abrupt("return", _context2.sent);
-            case 3:
-            case "end":
-              return _context2.stop();
-          }
-        }, _callee2, this);
-      }));
-      function fetchItem(_x2) {
-        return _fetchItem.apply(this, arguments);
-      }
-      return fetchItem;
-    }()
-  }, {
-    key: "handleFetchResult",
-    value: function handleFetchResult(result) {
-      if (result.villages.length > 0) {
-        this.dispatch((0,_state_page_pageActions__WEBPACK_IMPORTED_MODULE_7__.setPagePropsAction)({
-          villages: result.villages.map(function (village) {
-            village.value = village.name;
-            return village;
-          })
-        }));
-      } else {
-        this.dispatch((0,_state_message_messageActions__WEBPACK_IMPORTED_MODULE_8__.setMessageAction)(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_6__.changeMemberRelationToMemberPage.noVillagesFound, _constants__WEBPACK_IMPORTED_MODULE_3__.MESSAGE_TYPES.ERROR, _constants__WEBPACK_IMPORTED_MODULE_3__.MESSAGE_CODES.ITEM_NOT_FOUND));
-      }
-      this.dispatch((0,_state_page_pageActions__WEBPACK_IMPORTED_MODULE_7__.setPagePropsAction)({
-        item: result.item,
-        maxCardNo: result.maxCardNo
-      }));
-      this.useForm.setValue("name", result.item.name);
-      this.useForm.setValue("family", result.item.family);
-      this.useForm.setValue("nationalNo", result.item.nationalNo);
-      this.useForm.setValue("identityNo", result.item.identityNo);
-      this.useForm.setValue("fatherName", result.item.fatherName);
-      this.useForm.setValue("birthDate", result.item.birthDate);
-      this.useForm.setValue("membershipDate", result.item.membershipDate);
-      this.useForm.setValue("postalCode", result.item.postalCode);
-      this.useForm.setValue("gender", result.item.gender);
-      this.useForm.setValue("village", result.item.villageId);
-      this.useForm.setValue("tel", result.item.tel);
-      this.useForm.setValue("mobile", result.item.mobile);
-      this.useForm.setValue("address", result.item.address);
-      this.useForm.setValue("description", result.item.description);
-      this.useForm.setValue("cardNo", result.maxCardNo + 1);
-    }
-  }, {
-    key: "onSubmit",
-    value: function () {
-      var _onSubmit = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(data) {
-        var member, promise;
-        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
-          while (1) switch (_context3.prev = _context3.next) {
-            case 0:
-              member = new _http_entities__WEBPACK_IMPORTED_MODULE_1__.Member();
-              promise = member.changeMemberRelationToMemnber(this.pageState.params.memberRelationId, data.name, data.family, data.nationalNo, data.identityNo, data.fatherName, data.birthDate.replaceAll("/", ""), data.membershipDate.replaceAll("/", ""), data.postalCode, data.gender, data.village, data.tel, data.mobile, data.address, data.description, data.cardNo);
-              _get(_getPrototypeOf(PageUtils.prototype), "onModifySubmit", this).call(this, promise);
-            case 3:
-            case "end":
-              return _context3.stop();
-          }
-        }, _callee3, this);
-      }));
-      function onSubmit(_x3) {
-        return _onSubmit.apply(this, arguments);
-      }
-      return onSubmit;
-    }()
-  }]);
-  return PageUtils;
-}(_utils_BasePageUtils__WEBPACK_IMPORTED_MODULE_2__.BasePageUtils);
-
-/***/ }),
-
-/***/ "./resources/js/resources/Pages/TransferMember/ChangeMemberRelationToMember/index.jsx":
-/*!********************************************************************************************!*\
-  !*** ./resources/js/resources/Pages/TransferMember/ChangeMemberRelationToMember/index.jsx ***!
-  \********************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_responsive__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-responsive */ "./node_modules/react-responsive/dist/react-responsive.js");
-/* harmony import */ var react_responsive__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_responsive__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../components */ "./resources/js/resources/components/index.js");
-/* harmony import */ var _PageUtils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PageUtils */ "./resources/js/resources/Pages/TransferMember/ChangeMemberRelationToMember/PageUtils.js");
-/* harmony import */ var _Member_Members__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Member/Members */ "./resources/js/resources/Pages/Member/Members/index.jsx");
-/* harmony import */ var _constants_strings_fa__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../constants/strings/fa */ "./resources/js/constants/strings/fa.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-
-
-
-var ChangeMemberRelationToMember = function ChangeMemberRelationToMember() {
-  var _pageUtils$pageState, _pageUtils$pageState$, _pageUtils$pageState$2, _pageUtils$pageState2, _pageUtils$pageState3, _pageUtils$pageState4, _pageUtils$pageState5, _pageUtils$pageState6, _pageUtils$pageState7, _pageUtils$pageState8;
-  var pageUtils = new _PageUtils__WEBPACK_IMPORTED_MODULE_2__.PageUtils();
-  var isPCScreen = (0,react_responsive__WEBPACK_IMPORTED_MODULE_6__.useMediaQuery)({
-    query: "(min-width: 1224px)"
-  });
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_components__WEBPACK_IMPORTED_MODULE_1__.FormPage, {
-    pageUtils: pageUtils,
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_components__WEBPACK_IMPORTED_MODULE_1__.InputRow, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components__WEBPACK_IMPORTED_MODULE_1__.InputTextColumn, {
-        field: "name",
-        fullRow: false,
-        showLabel: true,
-        icon: "icon-personalcard4"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components__WEBPACK_IMPORTED_MODULE_1__.InputTextColumn, {
-        field: "family",
-        fullRow: false,
-        showLabel: true,
-        icon: "icon-personalcard4"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components__WEBPACK_IMPORTED_MODULE_1__.InputTextColumn, {
-        field: "nationalNo",
-        fullRow: false,
-        showLabel: true,
-        icon: "icon-personalcard4"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components__WEBPACK_IMPORTED_MODULE_1__.InputTextColumn, {
-        field: "identityNo",
-        fullRow: false,
-        type: "number",
-        showLabel: true,
-        icon: "icon-personalcard4"
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_components__WEBPACK_IMPORTED_MODULE_1__.InputRow, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components__WEBPACK_IMPORTED_MODULE_1__.InputTextColumn, {
-        field: "fatherName",
-        fullRow: false,
-        showLabel: true,
-        icon: "icon-personalcard4"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components__WEBPACK_IMPORTED_MODULE_1__.InputDatePickerColumn, {
-        field: "birthDate",
-        fullRow: false,
-        showLabel: true
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components__WEBPACK_IMPORTED_MODULE_1__.InputDatePickerColumn, {
-        field: "membershipDate",
-        fullRow: false,
-        showLabel: true
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components__WEBPACK_IMPORTED_MODULE_1__.InputTextColumn, {
-        field: "postalCode",
-        fullRow: false,
-        showLabel: true,
-        icon: "icon-support"
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_components__WEBPACK_IMPORTED_MODULE_1__.InputRow, {
-      containerStyle: {
-        marginBottom: "2rem"
-      },
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("span", {
-        style: {
-          marginLeft: "1rem"
-        },
-        children: [_constants_strings_fa__WEBPACK_IMPORTED_MODULE_4__.changeMemberRelationToMemberPage.birthDate, ":"]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-        className: "text",
-        children: pageUtils === null || pageUtils === void 0 ? void 0 : (_pageUtils$pageState = pageUtils.pageState) === null || _pageUtils$pageState === void 0 ? void 0 : (_pageUtils$pageState$ = _pageUtils$pageState.props) === null || _pageUtils$pageState$ === void 0 ? void 0 : (_pageUtils$pageState$2 = _pageUtils$pageState$.item) === null || _pageUtils$pageState$2 === void 0 ? void 0 : _pageUtils$pageState$2.birthDate
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("span", {
-        style: {
-          marginRight: "2rem",
-          marginLeft: "1rem"
-        },
-        children: [_constants_strings_fa__WEBPACK_IMPORTED_MODULE_4__.changeMemberRelationToMemberPage.membershipDate, ":"]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-        className: "text",
-        children: pageUtils === null || pageUtils === void 0 ? void 0 : (_pageUtils$pageState2 = pageUtils.pageState) === null || _pageUtils$pageState2 === void 0 ? void 0 : (_pageUtils$pageState3 = _pageUtils$pageState2.props) === null || _pageUtils$pageState3 === void 0 ? void 0 : (_pageUtils$pageState4 = _pageUtils$pageState3.item) === null || _pageUtils$pageState4 === void 0 ? void 0 : _pageUtils$pageState4.membershipDate
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_components__WEBPACK_IMPORTED_MODULE_1__.InputRow, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components__WEBPACK_IMPORTED_MODULE_1__.InputSelectColumn, {
-        field: "gender",
-        items: _Member_Members__WEBPACK_IMPORTED_MODULE_3__.types,
-        fullRow: false,
-        showLabel: true
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components__WEBPACK_IMPORTED_MODULE_1__.InputSelectColumn, {
-        field: "village",
-        items: pageUtils === null || pageUtils === void 0 ? void 0 : (_pageUtils$pageState5 = pageUtils.pageState) === null || _pageUtils$pageState5 === void 0 ? void 0 : (_pageUtils$pageState6 = _pageUtils$pageState5.props) === null || _pageUtils$pageState6 === void 0 ? void 0 : _pageUtils$pageState6.villages,
-        fullRow: false,
-        showLabel: true
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components__WEBPACK_IMPORTED_MODULE_1__.InputTextColumn, {
-        field: "tel",
-        fullRow: false,
-        showLabel: true,
-        icon: "icon-call-calling"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components__WEBPACK_IMPORTED_MODULE_1__.InputTextColumn, {
-        field: "mobile",
-        fullRow: false,
-        showLabel: true,
-        icon: "icon-mobile"
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components__WEBPACK_IMPORTED_MODULE_1__.InputTextColumn, {
-      field: "address",
-      showLabel: true,
-      icon: "icon-location4"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components__WEBPACK_IMPORTED_MODULE_1__.InputTextColumn, {
-      field: "description",
-      showLabel: true,
-      icon: "icon-edit-24"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_components__WEBPACK_IMPORTED_MODULE_1__.InputRow, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components__WEBPACK_IMPORTED_MODULE_1__.InputTextColumn, {
-        field: "cardNo",
-        type: "number",
-        fullRow: false,
-        showLabel: true,
-        icon: "icon-personalcard4"
-      }), isPCScreen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-        style: {
-          flexGrow: "4"
-        }
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
-      className: "input-info",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("span", {
-        children: [_constants_strings_fa__WEBPACK_IMPORTED_MODULE_4__.changeMemberRelationToMemberPage.maxCardNo, ":"]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-        className: "text mx-10",
-        children: pageUtils === null || pageUtils === void 0 ? void 0 : (_pageUtils$pageState7 = pageUtils.pageState) === null || _pageUtils$pageState7 === void 0 ? void 0 : (_pageUtils$pageState8 = _pageUtils$pageState7.props) === null || _pageUtils$pageState8 === void 0 ? void 0 : _pageUtils$pageState8.maxCardNo
-      })]
-    })]
-  });
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ChangeMemberRelationToMember);
 
 /***/ }),
 
@@ -14506,7 +14763,7 @@ var Villages = function Villages() {
         children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_4__.villagesPage.district
       }), (userState === null || userState === void 0 ? void 0 : (_userState$user2 = userState.user) === null || _userState$user2 === void 0 ? void 0 : _userState$user2.role) === _constants__WEBPACK_IMPORTED_MODULE_5__.USER_ROLES.ADMINISTRATOR && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
         style: {
-          width: "150px"
+          width: "100px"
         },
         children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_4__.general.actions
       })]
@@ -14575,12 +14832,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "AddBank": () => (/* reexport safe */ _Bank_AddBank__WEBPACK_IMPORTED_MODULE_13__["default"]),
 /* harmony export */   "AddCountry": () => (/* reexport safe */ _Country_AddCountry__WEBPACK_IMPORTED_MODULE_19__["default"]),
 /* harmony export */   "AddMember": () => (/* reexport safe */ _Member_AddMember__WEBPACK_IMPORTED_MODULE_22__["default"]),
-/* harmony export */   "AddMemberRelation": () => (/* reexport safe */ _MemberRelation_AddMemberRelation__WEBPACK_IMPORTED_MODULE_26__["default"]),
+/* harmony export */   "AddMemberRelation": () => (/* reexport safe */ _MemberRelation_AddMemberRelation__WEBPACK_IMPORTED_MODULE_27__["default"]),
 /* harmony export */   "AddRelationship": () => (/* reexport safe */ _Relationship_AddRelationship__WEBPACK_IMPORTED_MODULE_16__["default"]),
 /* harmony export */   "AddUser": () => (/* reexport safe */ _User_AddUser__WEBPACK_IMPORTED_MODULE_3__["default"]),
 /* harmony export */   "AddVillage": () => (/* reexport safe */ _Village_AddVillage__WEBPACK_IMPORTED_MODULE_10__["default"]),
 /* harmony export */   "Banks": () => (/* reexport safe */ _Bank_Banks__WEBPACK_IMPORTED_MODULE_12__["default"]),
-/* harmony export */   "ChangeMemberRelationToMember": () => (/* reexport safe */ _TransferMember_ChangeMemberRelationToMember__WEBPACK_IMPORTED_MODULE_29__["default"]),
 /* harmony export */   "ChangePasswordCurrentUser": () => (/* reexport safe */ _User_ChangePasswordUser_ChangePasswordCurrentUser__WEBPACK_IMPORTED_MODULE_6__["default"]),
 /* harmony export */   "ChangePasswordUser": () => (/* reexport safe */ _User_ChangePasswordUser_ChangePasswordUser__WEBPACK_IMPORTED_MODULE_7__["default"]),
 /* harmony export */   "Countries": () => (/* reexport safe */ _Country_Countries__WEBPACK_IMPORTED_MODULE_18__["default"]),
@@ -14589,17 +14845,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "EditCountry": () => (/* reexport safe */ _Country_EditCountry__WEBPACK_IMPORTED_MODULE_20__["default"]),
 /* harmony export */   "EditCurrentUser": () => (/* reexport safe */ _User_EditUser_EditCurrentUser__WEBPACK_IMPORTED_MODULE_4__["default"]),
 /* harmony export */   "EditMember": () => (/* reexport safe */ _Member_EditMember__WEBPACK_IMPORTED_MODULE_23__["default"]),
-/* harmony export */   "EditMemberRelation": () => (/* reexport safe */ _MemberRelation_EditMemberRelation__WEBPACK_IMPORTED_MODULE_27__["default"]),
+/* harmony export */   "EditMemberRelation": () => (/* reexport safe */ _MemberRelation_EditMemberRelation__WEBPACK_IMPORTED_MODULE_28__["default"]),
 /* harmony export */   "EditRelationship": () => (/* reexport safe */ _Relationship_EditRelationship__WEBPACK_IMPORTED_MODULE_17__["default"]),
 /* harmony export */   "EditUser": () => (/* reexport safe */ _User_EditUser_EditUser__WEBPACK_IMPORTED_MODULE_5__["default"]),
 /* harmony export */   "EditVillage": () => (/* reexport safe */ _Village_EditVillage__WEBPACK_IMPORTED_MODULE_11__["default"]),
 /* harmony export */   "Errors": () => (/* reexport safe */ _Error_Errors__WEBPACK_IMPORTED_MODULE_1__["default"]),
 /* harmony export */   "Login": () => (/* reexport safe */ _User_Login__WEBPACK_IMPORTED_MODULE_2__["default"]),
-/* harmony export */   "MemberRelations": () => (/* reexport safe */ _MemberRelation_MemberRelations__WEBPACK_IMPORTED_MODULE_24__["default"]),
-/* harmony export */   "MemberRelationsAll": () => (/* reexport safe */ _MemberRelation_MemberRelationsAll__WEBPACK_IMPORTED_MODULE_25__["default"]),
+/* harmony export */   "MemberRelations": () => (/* reexport safe */ _MemberRelation_MemberRelations__WEBPACK_IMPORTED_MODULE_25__["default"]),
+/* harmony export */   "MemberRelationsAll": () => (/* reexport safe */ _MemberRelation_MemberRelationsAll__WEBPACK_IMPORTED_MODULE_26__["default"]),
 /* harmony export */   "Members": () => (/* reexport safe */ _Member_Members__WEBPACK_IMPORTED_MODULE_21__["default"]),
-/* harmony export */   "Notifications": () => (/* reexport safe */ _Notification_Notifications__WEBPACK_IMPORTED_MODULE_28__["default"]),
+/* harmony export */   "Notifications": () => (/* reexport safe */ _Notification_Notifications__WEBPACK_IMPORTED_MODULE_29__["default"]),
 /* harmony export */   "Relationships": () => (/* reexport safe */ _Relationship_Relationships__WEBPACK_IMPORTED_MODULE_15__["default"]),
+/* harmony export */   "TransferMemberRelationToMember": () => (/* reexport safe */ _Member_TransferMemberRelationToMember__WEBPACK_IMPORTED_MODULE_24__["default"]),
 /* harmony export */   "Users": () => (/* reexport safe */ _User_Users__WEBPACK_IMPORTED_MODULE_8__["default"]),
 /* harmony export */   "Villages": () => (/* reexport safe */ _Village_Villages__WEBPACK_IMPORTED_MODULE_9__["default"])
 /* harmony export */ });
@@ -14627,12 +14884,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Member_Members__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./Member/Members */ "./resources/js/resources/Pages/Member/Members/index.jsx");
 /* harmony import */ var _Member_AddMember__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./Member/AddMember */ "./resources/js/resources/Pages/Member/AddMember/index.jsx");
 /* harmony import */ var _Member_EditMember__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./Member/EditMember */ "./resources/js/resources/Pages/Member/EditMember/index.jsx");
-/* harmony import */ var _MemberRelation_MemberRelations__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./MemberRelation/MemberRelations */ "./resources/js/resources/Pages/MemberRelation/MemberRelations/index.jsx");
-/* harmony import */ var _MemberRelation_MemberRelationsAll__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./MemberRelation/MemberRelationsAll */ "./resources/js/resources/Pages/MemberRelation/MemberRelationsAll/index.jsx");
-/* harmony import */ var _MemberRelation_AddMemberRelation__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./MemberRelation/AddMemberRelation */ "./resources/js/resources/Pages/MemberRelation/AddMemberRelation/index.jsx");
-/* harmony import */ var _MemberRelation_EditMemberRelation__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./MemberRelation/EditMemberRelation */ "./resources/js/resources/Pages/MemberRelation/EditMemberRelation/index.jsx");
-/* harmony import */ var _Notification_Notifications__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./Notification/Notifications */ "./resources/js/resources/Pages/Notification/Notifications/index.jsx");
-/* harmony import */ var _TransferMember_ChangeMemberRelationToMember__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./TransferMember/ChangeMemberRelationToMember */ "./resources/js/resources/Pages/TransferMember/ChangeMemberRelationToMember/index.jsx");
+/* harmony import */ var _Member_TransferMemberRelationToMember__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./Member/TransferMemberRelationToMember */ "./resources/js/resources/Pages/Member/TransferMemberRelationToMember/index.jsx");
+/* harmony import */ var _MemberRelation_MemberRelations__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./MemberRelation/MemberRelations */ "./resources/js/resources/Pages/MemberRelation/MemberRelations/index.jsx");
+/* harmony import */ var _MemberRelation_MemberRelationsAll__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./MemberRelation/MemberRelationsAll */ "./resources/js/resources/Pages/MemberRelation/MemberRelationsAll/index.jsx");
+/* harmony import */ var _MemberRelation_AddMemberRelation__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./MemberRelation/AddMemberRelation */ "./resources/js/resources/Pages/MemberRelation/AddMemberRelation/index.jsx");
+/* harmony import */ var _MemberRelation_EditMemberRelation__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./MemberRelation/EditMemberRelation */ "./resources/js/resources/Pages/MemberRelation/EditMemberRelation/index.jsx");
+/* harmony import */ var _Notification_Notifications__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./Notification/Notifications */ "./resources/js/resources/Pages/Notification/Notifications/index.jsx");
 
 
 
@@ -15225,7 +15482,9 @@ var InputDatePickerColumn = function InputDatePickerColumn(_ref) {
     _ref$showLabel = _ref.showLabel,
     showLabel = _ref$showLabel === void 0 ? false : _ref$showLabel,
     _ref$fullRow = _ref.fullRow,
-    fullRow = _ref$fullRow === void 0 ? true : _ref$fullRow;
+    fullRow = _ref$fullRow === void 0 ? true : _ref$fullRow,
+    _ref$readOnly = _ref.readOnly,
+    readOnly = _ref$readOnly === void 0 ? false : _ref$readOnly;
   var layoutState = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.layoutReducer;
   });
@@ -15306,7 +15565,7 @@ var InputDatePickerColumn = function InputDatePickerColumn(_ref) {
             },
             id: field,
             value: form === null || form === void 0 ? void 0 : form.getValues(field),
-            disabled: layoutState === null || layoutState === void 0 ? void 0 : layoutState.loading
+            disabled: (layoutState === null || layoutState === void 0 ? void 0 : layoutState.loading) || readOnly
           }), (messageState === null || messageState === void 0 ? void 0 : messageState.messageField) === field && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
             className: "error",
             children: messageState === null || messageState === void 0 ? void 0 : messageState.message
@@ -15744,7 +16003,9 @@ var InputSelectColumn = function InputSelectColumn(_ref) {
     _ref$showLabel = _ref.showLabel,
     showLabel = _ref$showLabel === void 0 ? false : _ref$showLabel,
     _ref$onChange = _ref.onChange,
-    onChange = _ref$onChange === void 0 ? null : _ref$onChange;
+    onChange = _ref$onChange === void 0 ? null : _ref$onChange,
+    _ref$readOnly = _ref.readOnly,
+    readOnly = _ref$readOnly === void 0 ? false : _ref$readOnly;
   var layoutState = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.layoutReducer;
   });
@@ -15841,7 +16102,7 @@ var InputSelectColumn = function InputSelectColumn(_ref) {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
           className: "select input-border ".concat((messageState === null || messageState === void 0 ? void 0 : messageState.messageField) === field ? "error mb-40" : "mb-30"),
           onClick: function onClick(e) {
-            return showList(e);
+            !readOnly && showList(e);
           },
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
             type: "text",
@@ -16014,8 +16275,8 @@ var InputTextAreaColumn = function InputTextAreaColumn(_ref) {
     showLabel = _ref.showLabel,
     _ref$fullRow = _ref.fullRow,
     fullRow = _ref$fullRow === void 0 ? true : _ref$fullRow,
-    _ref$readonly = _ref.readonly,
-    readonly = _ref$readonly === void 0 ? false : _ref$readonly,
+    _ref$readOnly = _ref.readOnly,
+    readOnly = _ref$readOnly === void 0 ? false : _ref$readOnly,
     _ref$value = _ref.value,
     value = _ref$value === void 0 ? null : _ref$value,
     _ref$inputStyle = _ref.inputStyle,
@@ -16077,7 +16338,7 @@ var InputTextAreaColumn = function InputTextAreaColumn(_ref) {
           }, inputStyle),
           placeholder: placeholder,
           disabled: layoutState === null || layoutState === void 0 ? void 0 : layoutState.loading,
-          readOnly: readonly
+          readOnly: readOnly
         })), (messageState === null || messageState === void 0 ? void 0 : messageState.messageField) === field && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
           className: "error",
           children: messageState === null || messageState === void 0 ? void 0 : messageState.message
@@ -16155,8 +16416,8 @@ var InputTextColumn = function InputTextColumn(_ref) {
     textAlign = _ref$textAlign === void 0 ? "" : _ref$textAlign,
     _ref$direction = _ref.direction,
     direction = _ref$direction === void 0 ? undefined : _ref$direction,
-    _ref$readonly = _ref.readonly,
-    readonly = _ref$readonly === void 0 ? false : _ref$readonly,
+    _ref$readOnly = _ref.readOnly,
+    readOnly = _ref$readOnly === void 0 ? false : _ref$readOnly,
     _ref$fullRow = _ref.fullRow,
     fullRow = _ref$fullRow === void 0 ? true : _ref$fullRow,
     _ref$inputContainerCl = _ref.inputContainerClassName,
@@ -16223,11 +16484,12 @@ var InputTextColumn = function InputTextColumn(_ref) {
         id: field.name
       }, field), {}, {
         placeholder: placeholder,
-        disabled: (layoutState === null || layoutState === void 0 ? void 0 : layoutState.loading) || readonly,
+        disabled: layoutState === null || layoutState === void 0 ? void 0 : layoutState.loading,
         type: type,
         className: inputClassName,
         style: _objectSpread({}, style),
-        autoComplete: "false"
+        autoComplete: "false",
+        readOnly: readOnly
       })), (messageState === null || messageState === void 0 ? void 0 : messageState.messageField) === field.name && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
         className: "error",
         children: messageState === null || messageState === void 0 ? void 0 : messageState.message
@@ -16253,7 +16515,7 @@ var InputTextColumn = function InputTextColumn(_ref) {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
         id: field,
         placeholder: placeholder,
-        disabled: (layoutState === null || layoutState === void 0 ? void 0 : layoutState.loading) || readonly,
+        disabled: (layoutState === null || layoutState === void 0 ? void 0 : layoutState.loading) || readOnly,
         type: type,
         className: inputClassName,
         style: _objectSpread({}, style),
@@ -16931,7 +17193,7 @@ function ProfileModal() {
     title: "".concat(userState === null || userState === void 0 ? void 0 : (_userState$user = userState.user) === null || _userState$user === void 0 ? void 0 : _userState$user.name, " ").concat(userState === null || userState === void 0 ? void 0 : (_userState$user2 = userState.user) === null || _userState$user2 === void 0 ? void 0 : _userState$user2.family, " - [ ").concat(userState === null || userState === void 0 ? void 0 : (_userState$user3 = userState.user) === null || _userState$user3 === void 0 ? void 0 : _userState$user3.username, " ]"),
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Input_InputTextColumn__WEBPACK_IMPORTED_MODULE_3__["default"], {
       field: "nameModal",
-      readonly: true,
+      readOnly: true,
       strings: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_4__.profileModal,
       showLabel: true,
       icon: "icon-user",
@@ -16941,7 +17203,7 @@ function ProfileModal() {
       }
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Input_InputTextColumn__WEBPACK_IMPORTED_MODULE_3__["default"], {
       field: "familyModal",
-      readonly: true,
+      readOnly: true,
       strings: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_4__.profileModal,
       showLabel: true,
       icon: "icon-user",
@@ -16951,7 +17213,7 @@ function ProfileModal() {
       }
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Input_InputTextColumn__WEBPACK_IMPORTED_MODULE_3__["default"], {
       field: "mobileModal",
-      readonly: true,
+      readOnly: true,
       strings: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_4__.profileModal,
       showLabel: true,
       textAlign: "left",
@@ -17056,10 +17318,10 @@ function PromptModal() {
 
 /***/ }),
 
-/***/ "./resources/js/resources/components/Modal/TransferToNewMemberModal/index.jsx":
-/*!************************************************************************************!*\
-  !*** ./resources/js/resources/components/Modal/TransferToNewMemberModal/index.jsx ***!
-  \************************************************************************************/
+/***/ "./resources/js/resources/components/Modal/TransferMemberRelationToNewMemberModal/index.jsx":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/resources/components/Modal/TransferMemberRelationToNewMemberModal/index.jsx ***!
+  \**************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -17070,15 +17332,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_hook_form__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-hook-form */ "./node_modules/react-hook-form/dist/index.esm.mjs");
+/* harmony import */ var react_hook_form__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-hook-form */ "./node_modules/react-hook-form/dist/index.esm.mjs");
 /* harmony import */ var _hookform_resolvers_yup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @hookform/resolvers/yup */ "./node_modules/@hookform/resolvers/yup/dist/yup.mjs");
 /* harmony import */ var _constants_strings_fa__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../constants/strings/fa */ "./resources/js/constants/strings/fa.js");
-/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../ */ "./resources/js/resources/components/index.js");
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../.. */ "./resources/js/resources/components/index.js");
 /* harmony import */ var _validations__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../validations */ "./resources/js/resources/validations/index.js");
 /* harmony import */ var _state_layout_layoutActions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../state/layout/layoutActions */ "./resources/js/state/layout/layoutActions.js");
 /* harmony import */ var _state_message_messageActions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../state/message/messageActions */ "./resources/js/state/message/messageActions.js");
 /* harmony import */ var _http_entities__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../http/entities */ "./resources/js/http/entities/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../constants */ "./resources/js/constants/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
@@ -17101,16 +17364,17 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function TransferToNewMemberModal() {
-  var _form$formState6, _layoutState$shownMod8, _layoutState$shownMod9, _layoutState$shownMod10, _layoutState$shownMod11, _layoutState$shownMod12, _layoutState$shownMod13;
+
+function TransferMemberRelationToNewMemberModal() {
+  var _form$formState6, _layoutState$shownMod12, _layoutState$shownMod13, _layoutState$shownMod14, _layoutState$shownMod15, _layoutState$shownMod16, _layoutState$shownMod17;
   var layoutState = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.layoutReducer;
   });
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(undefined),
     _useState2 = _slicedToArray(_useState, 2),
-    closeModal = _useState2[0],
-    setCloseModal = _useState2[1];
+    modalResult = _useState2[0],
+    setModalResult = _useState2[1];
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState4 = _slicedToArray(_useState3, 2),
     message = _useState4[0],
@@ -17119,8 +17383,8 @@ function TransferToNewMemberModal() {
     _useState6 = _slicedToArray(_useState5, 2),
     items = _useState6[0],
     setItems = _useState6[1];
-  var form = (0,react_hook_form__WEBPACK_IMPORTED_MODULE_10__.useForm)({
-    resolver: (0,_hookform_resolvers_yup__WEBPACK_IMPORTED_MODULE_2__.yupResolver)(_validations__WEBPACK_IMPORTED_MODULE_5__.transferToNewMemberSchema)
+  var form = (0,react_hook_form__WEBPACK_IMPORTED_MODULE_11__.useForm)({
+    resolver: (0,_hookform_resolvers_yup__WEBPACK_IMPORTED_MODULE_2__.yupResolver)(_validations__WEBPACK_IMPORTED_MODULE_5__.transferMemberRelationToNewMemberSchema)
   });
   var entity = new _http_entities__WEBPACK_IMPORTED_MODULE_8__.Member();
   var columnsCount = 3;
@@ -17132,15 +17396,26 @@ function TransferToNewMemberModal() {
       if (hasKeys) {
         var _form$formState4, _form$formState5;
         setMessage(form === null || form === void 0 ? void 0 : (_form$formState4 = form.formState) === null || _form$formState4 === void 0 ? void 0 : _form$formState4.errors[Object.keys(form === null || form === void 0 ? void 0 : (_form$formState5 = form.formState) === null || _form$formState5 === void 0 ? void 0 : _form$formState5.errors)[0]].message);
-        document.querySelector("#transferToNewMemberModal").querySelector(".modal-main").firstChild.scrollTo(0, 0);
+        document.querySelector("#transferMemberRelationToNewMemberModal").querySelector(".modal-main").firstChild.scrollTo(0, 0);
       }
     }
   }, [form === null || form === void 0 ? void 0 : (_form$formState6 = form.formState) === null || _form$formState6 === void 0 ? void 0 : _form$formState6.errors]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    if (closeModal === true) {
-      setCloseModal(undefined);
+    if (modalResult === _constants__WEBPACK_IMPORTED_MODULE_9__.MODAL_RESULT.OK) {
+      var _layoutState$shownMod, _layoutState$shownMod2;
+      if (typeof (layoutState === null || layoutState === void 0 ? void 0 : (_layoutState$shownMod = layoutState.shownModal) === null || _layoutState$shownMod === void 0 ? void 0 : (_layoutState$shownMod2 = _layoutState$shownMod.props) === null || _layoutState$shownMod2 === void 0 ? void 0 : _layoutState$shownMod2.onSubmit) === "function") {
+        var _layoutState$shownMod3, _layoutState$shownMod4;
+        layoutState === null || layoutState === void 0 ? void 0 : (_layoutState$shownMod3 = layoutState.shownModal) === null || _layoutState$shownMod3 === void 0 ? void 0 : (_layoutState$shownMod4 = _layoutState$shownMod3.props) === null || _layoutState$shownMod4 === void 0 ? void 0 : _layoutState$shownMod4.onSubmit(true);
+      }
+    } else if (modalResult === _constants__WEBPACK_IMPORTED_MODULE_9__.MODAL_RESULT.CANCEL) {
+      var _layoutState$shownMod5, _layoutState$shownMod6;
+      if (typeof (layoutState === null || layoutState === void 0 ? void 0 : (_layoutState$shownMod5 = layoutState.shownModal) === null || _layoutState$shownMod5 === void 0 ? void 0 : (_layoutState$shownMod6 = _layoutState$shownMod5.props) === null || _layoutState$shownMod6 === void 0 ? void 0 : _layoutState$shownMod6.onCancel) === "function") {
+        var _layoutState$shownMod7, _layoutState$shownMod8;
+        layoutState === null || layoutState === void 0 ? void 0 : (_layoutState$shownMod7 = layoutState.shownModal) === null || _layoutState$shownMod7 === void 0 ? void 0 : (_layoutState$shownMod8 = _layoutState$shownMod7.props) === null || _layoutState$shownMod8 === void 0 ? void 0 : _layoutState$shownMod8.onCancel();
+      }
     }
-  }, [closeModal]);
+    setModalResult(undefined);
+  }, [modalResult]);
   var onClose = function onClose() {
     setMessage(null);
     onReset();
@@ -17175,8 +17450,8 @@ function TransferToNewMemberModal() {
   }();
   var onSelect = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(memberId) {
-      var _layoutState$shownMod, _layoutState$shownMod2, _layoutState$shownMod3, _layoutState$shownMod4, _layoutState$shownMod5;
-      var memberRelation, _layoutState$shownMod6, _layoutState$shownMod7;
+      var _layoutState$shownMod9, _layoutState$shownMod10, _layoutState$shownMod11;
+      var memberRelation;
       return _regeneratorRuntime().wrap(function _callee2$(_context2) {
         while (1) switch (_context2.prev = _context2.next) {
           case 0:
@@ -17184,12 +17459,297 @@ function TransferToNewMemberModal() {
             dispatch((0,_state_message_messageActions__WEBPACK_IMPORTED_MODULE_7__.clearMessageAction)());
             memberRelation = new _http_entities__WEBPACK_IMPORTED_MODULE_8__.MemberRelation();
             _context2.next = 5;
-            return memberRelation.changeMember(layoutState === null || layoutState === void 0 ? void 0 : (_layoutState$shownMod = layoutState.shownModal) === null || _layoutState$shownMod === void 0 ? void 0 : (_layoutState$shownMod2 = _layoutState$shownMod.props) === null || _layoutState$shownMod2 === void 0 ? void 0 : (_layoutState$shownMod3 = _layoutState$shownMod2.memberRelation) === null || _layoutState$shownMod3 === void 0 ? void 0 : _layoutState$shownMod3.id, memberId);
+            return memberRelation.transferMemberRelationToNewMember(layoutState === null || layoutState === void 0 ? void 0 : (_layoutState$shownMod9 = layoutState.shownModal) === null || _layoutState$shownMod9 === void 0 ? void 0 : (_layoutState$shownMod10 = _layoutState$shownMod9.props) === null || _layoutState$shownMod10 === void 0 ? void 0 : (_layoutState$shownMod11 = _layoutState$shownMod10.memberRelation) === null || _layoutState$shownMod11 === void 0 ? void 0 : _layoutState$shownMod11.id, memberId);
           case 5:
             dispatch((0,_state_layout_layoutActions__WEBPACK_IMPORTED_MODULE_6__.setLoadingAction)(false));
-            setCloseModal(true);
-            if (typeof (layoutState === null || layoutState === void 0 ? void 0 : (_layoutState$shownMod4 = layoutState.shownModal) === null || _layoutState$shownMod4 === void 0 ? void 0 : (_layoutState$shownMod5 = _layoutState$shownMod4.props) === null || _layoutState$shownMod5 === void 0 ? void 0 : _layoutState$shownMod5.onCloseModal) === "function") {
-              layoutState === null || layoutState === void 0 ? void 0 : (_layoutState$shownMod6 = layoutState.shownModal) === null || _layoutState$shownMod6 === void 0 ? void 0 : (_layoutState$shownMod7 = _layoutState$shownMod6.props) === null || _layoutState$shownMod7 === void 0 ? void 0 : _layoutState$shownMod7.onCloseModal(true);
+            setModalResult(_constants__WEBPACK_IMPORTED_MODULE_9__.MODAL_RESULT.OK);
+          case 7:
+          case "end":
+            return _context2.stop();
+        }
+      }, _callee2);
+    }));
+    return function onSelect(_x3) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+  var onReset = function onReset() {
+    form.reset();
+    setItems(null);
+    document.querySelector("#transferMemberRelationToNewMemberModal").querySelector(".modal-main").firstChild.scrollTo(0, 0);
+  };
+  var renderSearch = function renderSearch() {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+      className: "block pd-20",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+        className: "field-title",
+        children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_3__.general.search
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(___WEBPACK_IMPORTED_MODULE_4__.InputRow, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(___WEBPACK_IMPORTED_MODULE_4__.InputTextColumn, {
+            field: "nameTransferModal",
+            strings: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_3__.transferMemberRelationToNewMemberModal,
+            useForm: form,
+            fullRow: false,
+            icon: "icon-personalcard4"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(___WEBPACK_IMPORTED_MODULE_4__.InputTextColumn, {
+            field: "familyTransferModal",
+            strings: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_3__.transferMemberRelationToNewMemberModal,
+            useForm: form,
+            fullRow: false,
+            icon: "icon-personalcard4"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(___WEBPACK_IMPORTED_MODULE_4__.InputRow, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(___WEBPACK_IMPORTED_MODULE_4__.InputTextColumn, {
+            field: "nationalNoTransferModal",
+            textAlign: "left",
+            strings: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_3__.transferMemberRelationToNewMemberModal,
+            useForm: form,
+            fullRow: false,
+            icon: "icon-personalcard4"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(___WEBPACK_IMPORTED_MODULE_4__.InputTextColumn, {
+            field: "cardNoTransferModal",
+            textAlign: "left",
+            strings: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_3__.transferMemberRelationToNewMemberModal,
+            useForm: form,
+            fullRow: false,
+            icon: "icon-personalcard4"
+          })]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+        className: "btns d-flex mt-10",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
+          className: "btn btn-primary mx-rdir-10",
+          type: "button",
+          disabled: layoutState === null || layoutState === void 0 ? void 0 : layoutState.loading,
+          title: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_3__.general.search,
+          onClick: form.handleSubmit(onSubmit),
+          children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_3__.general.search
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
+          className: "btn btn-border mx-rdir-10",
+          type: "button",
+          disabled: layoutState === null || layoutState === void 0 ? void 0 : layoutState.loading,
+          title: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_3__.general.reset,
+          onClick: onReset,
+          children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_3__.general.reset
+        })]
+      })]
+    });
+  };
+  var renderHeader = function renderHeader() {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("tr", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
+        children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_3__.transferMemberRelationToNewMemberModal.namdeFamilyTransferModal
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
+        style: {
+          maxWidth: "100px"
+        },
+        children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_3__.transferMemberRelationToNewMemberModal.nationalNoTransferModal
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
+        style: {
+          maxWidth: "100px"
+        },
+        children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_3__.transferMemberRelationToNewMemberModal.cardNoTransferModal
+      })]
+    });
+  };
+  var renderItems = function renderItems() {
+    var children = items === null || items === void 0 ? void 0 : items.map(function (item) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("tr", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("td", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(___WEBPACK_IMPORTED_MODULE_4__.CustomLink, {
+              onClick: function onClick() {
+                return onSelect(item.id);
+              },
+              children: "".concat(item.name, " ").concat(item.family)
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("td", {
+            children: item.nationalNo
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("td", {
+            children: item.cardNo
+          })]
+        })
+      }, item.id);
+    });
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(___WEBPACK_IMPORTED_MODULE_4__.TableItems, {
+      columnsCount: columnsCount,
+      children: children
+    });
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(___WEBPACK_IMPORTED_MODULE_4__.Modal, {
+    id: "transferMemberRelationToNewMemberModal",
+    title: "".concat(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_3__.transferMemberRelationToNewMemberModal._title, " - [ ").concat(layoutState === null || layoutState === void 0 ? void 0 : (_layoutState$shownMod12 = layoutState.shownModal) === null || _layoutState$shownMod12 === void 0 ? void 0 : (_layoutState$shownMod13 = _layoutState$shownMod12.props) === null || _layoutState$shownMod13 === void 0 ? void 0 : (_layoutState$shownMod14 = _layoutState$shownMod13.memberRelation) === null || _layoutState$shownMod14 === void 0 ? void 0 : _layoutState$shownMod14.name, " ").concat(layoutState === null || layoutState === void 0 ? void 0 : (_layoutState$shownMod15 = layoutState.shownModal) === null || _layoutState$shownMod15 === void 0 ? void 0 : (_layoutState$shownMod16 = _layoutState$shownMod15.props) === null || _layoutState$shownMod16 === void 0 ? void 0 : (_layoutState$shownMod17 = _layoutState$shownMod16.memberRelation) === null || _layoutState$shownMod17 === void 0 ? void 0 : _layoutState$shownMod17.family, " ]"),
+    onClose: onClose,
+    modalResult: modalResult,
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(___WEBPACK_IMPORTED_MODULE_4__.AlertMessage, {
+      message: message
+    }), renderSearch(), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("h3", {
+      className: "mt-20 mx-20 text",
+      children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_3__.transferMemberRelationToNewMemberModal.members
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+      className: "block",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(___WEBPACK_IMPORTED_MODULE_4__.Table, {
+        renderHeader: renderHeader,
+        renderItems: renderItems
+      })
+    })]
+  });
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TransferMemberRelationToNewMemberModal);
+
+/***/ }),
+
+/***/ "./resources/js/resources/components/Modal/TransferMemberToMemberRelationModal/index.jsx":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/resources/components/Modal/TransferMemberToMemberRelationModal/index.jsx ***!
+  \***********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_hook_form__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-hook-form */ "./node_modules/react-hook-form/dist/index.esm.mjs");
+/* harmony import */ var _hookform_resolvers_yup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @hookform/resolvers/yup */ "./node_modules/@hookform/resolvers/yup/dist/yup.mjs");
+/* harmony import */ var _constants_strings_fa__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../constants/strings/fa */ "./resources/js/constants/strings/fa.js");
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../.. */ "./resources/js/resources/components/index.js");
+/* harmony import */ var _validations__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../validations */ "./resources/js/resources/validations/index.js");
+/* harmony import */ var _state_layout_layoutActions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../state/layout/layoutActions */ "./resources/js/state/layout/layoutActions.js");
+/* harmony import */ var _state_message_messageActions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../state/message/messageActions */ "./resources/js/state/message/messageActions.js");
+/* harmony import */ var _http_entities__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../http/entities */ "./resources/js/http/entities/index.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../constants */ "./resources/js/constants/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+function TransferMemberToMemberRelationModal() {
+  var _form$formState6, _layoutState$shownMod12, _layoutState$shownMod13, _layoutState$shownMod14, _layoutState$shownMod15, _layoutState$shownMod16, _layoutState$shownMod17, _layoutState$shownMod18, _layoutState$shownMod19, _layoutState$shownMod20, _layoutState$shownMod21, _layoutState$shownMod22;
+  var layoutState = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.layoutReducer;
+  });
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(undefined),
+    _useState2 = _slicedToArray(_useState, 2),
+    modalResult = _useState2[0],
+    setModalResult = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState4 = _slicedToArray(_useState3, 2),
+    message = _useState4[0],
+    setMessage = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState6 = _slicedToArray(_useState5, 2),
+    items = _useState6[0],
+    setItems = _useState6[1];
+  var form = (0,react_hook_form__WEBPACK_IMPORTED_MODULE_11__.useForm)({
+    resolver: (0,_hookform_resolvers_yup__WEBPACK_IMPORTED_MODULE_2__.yupResolver)(_validations__WEBPACK_IMPORTED_MODULE_5__.transferMemberToMemberRelationSchema)
+  });
+  var entity = new _http_entities__WEBPACK_IMPORTED_MODULE_8__.Member();
+  var columnsCount = 3;
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var _form$formState, _form$formState2;
+    if (_typeof(form === null || form === void 0 ? void 0 : (_form$formState = form.formState) === null || _form$formState === void 0 ? void 0 : _form$formState.errors) === "object" && form !== null && form !== void 0 && (_form$formState2 = form.formState) !== null && _form$formState2 !== void 0 && _form$formState2.errors) {
+      var _form$formState3;
+      var hasKeys = !!Object.keys(form === null || form === void 0 ? void 0 : (_form$formState3 = form.formState) === null || _form$formState3 === void 0 ? void 0 : _form$formState3.errors).length;
+      if (hasKeys) {
+        var _form$formState4, _form$formState5;
+        setMessage(form === null || form === void 0 ? void 0 : (_form$formState4 = form.formState) === null || _form$formState4 === void 0 ? void 0 : _form$formState4.errors[Object.keys(form === null || form === void 0 ? void 0 : (_form$formState5 = form.formState) === null || _form$formState5 === void 0 ? void 0 : _form$formState5.errors)[0]].message);
+        document.querySelector("#transferMemberToMemberRelationModal").querySelector(".modal-main").firstChild.scrollTo(0, 0);
+      }
+    }
+  }, [form === null || form === void 0 ? void 0 : (_form$formState6 = form.formState) === null || _form$formState6 === void 0 ? void 0 : _form$formState6.errors]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (modalResult === _constants__WEBPACK_IMPORTED_MODULE_9__.MODAL_RESULT.OK) {
+      var _layoutState$shownMod, _layoutState$shownMod2;
+      if (typeof (layoutState === null || layoutState === void 0 ? void 0 : (_layoutState$shownMod = layoutState.shownModal) === null || _layoutState$shownMod === void 0 ? void 0 : (_layoutState$shownMod2 = _layoutState$shownMod.props) === null || _layoutState$shownMod2 === void 0 ? void 0 : _layoutState$shownMod2.onSubmit) === "function") {
+        var _layoutState$shownMod3, _layoutState$shownMod4;
+        layoutState === null || layoutState === void 0 ? void 0 : (_layoutState$shownMod3 = layoutState.shownModal) === null || _layoutState$shownMod3 === void 0 ? void 0 : (_layoutState$shownMod4 = _layoutState$shownMod3.props) === null || _layoutState$shownMod4 === void 0 ? void 0 : _layoutState$shownMod4.onSubmit(true);
+      }
+    } else if (modalResult === _constants__WEBPACK_IMPORTED_MODULE_9__.MODAL_RESULT.CANCEL) {
+      var _layoutState$shownMod5, _layoutState$shownMod6;
+      if (typeof (layoutState === null || layoutState === void 0 ? void 0 : (_layoutState$shownMod5 = layoutState.shownModal) === null || _layoutState$shownMod5 === void 0 ? void 0 : (_layoutState$shownMod6 = _layoutState$shownMod5.props) === null || _layoutState$shownMod6 === void 0 ? void 0 : _layoutState$shownMod6.onCancel) === "function") {
+        var _layoutState$shownMod7, _layoutState$shownMod8;
+        layoutState === null || layoutState === void 0 ? void 0 : (_layoutState$shownMod7 = layoutState.shownModal) === null || _layoutState$shownMod7 === void 0 ? void 0 : (_layoutState$shownMod8 = _layoutState$shownMod7.props) === null || _layoutState$shownMod8 === void 0 ? void 0 : _layoutState$shownMod8.onCancel();
+      }
+    }
+    setModalResult(undefined);
+  }, [modalResult]);
+  var onClose = function onClose() {
+    setMessage(null);
+    onReset();
+  };
+  var onSubmit = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(data) {
+      var result;
+      return _regeneratorRuntime().wrap(function _callee$(_context) {
+        while (1) switch (_context.prev = _context.next) {
+          case 0:
+            dispatch((0,_state_layout_layoutActions__WEBPACK_IMPORTED_MODULE_6__.setLoadingAction)(true));
+            dispatch((0,_state_message_messageActions__WEBPACK_IMPORTED_MODULE_7__.clearMessageAction)());
+            _context.next = 4;
+            return entity.getPaginate(0, data.nameTransferModal, data.familyTransferModal, data.nationalNoTransferModal, data.cardNoTransferModal);
+          case 4:
+            result = _context.sent;
+            dispatch((0,_state_layout_layoutActions__WEBPACK_IMPORTED_MODULE_6__.setLoadingAction)(false));
+            if (result === null) {
+              setItems(null);
+            } else {
+              setItems(result.items);
+            }
+          case 7:
+          case "end":
+            return _context.stop();
+        }
+      }, _callee);
+    }));
+    return function onSubmit(_x2) {
+      return _ref.apply(this, arguments);
+    };
+  }();
+  var onSelect = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(memberId) {
+      var _layoutState$shownMod9, _layoutState$shownMod10, _layoutState$shownMod11;
+      var memberRelation, result;
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) switch (_context2.prev = _context2.next) {
+          case 0:
+            dispatch((0,_state_layout_layoutActions__WEBPACK_IMPORTED_MODULE_6__.setLoadingAction)(true));
+            dispatch((0,_state_message_messageActions__WEBPACK_IMPORTED_MODULE_7__.clearMessageAction)());
+            memberRelation = new _http_entities__WEBPACK_IMPORTED_MODULE_8__.MemberRelation();
+            _context2.next = 5;
+            return memberRelation.transferMemberToMemberRelation(layoutState === null || layoutState === void 0 ? void 0 : (_layoutState$shownMod9 = layoutState.shownModal) === null || _layoutState$shownMod9 === void 0 ? void 0 : (_layoutState$shownMod10 = _layoutState$shownMod9.props) === null || _layoutState$shownMod10 === void 0 ? void 0 : (_layoutState$shownMod11 = _layoutState$shownMod10.member) === null || _layoutState$shownMod11 === void 0 ? void 0 : _layoutState$shownMod11.id, memberId, form.getValues("relationship"));
+          case 5:
+            result = _context2.sent;
+            dispatch((0,_state_layout_layoutActions__WEBPACK_IMPORTED_MODULE_6__.setLoadingAction)(false));
+            if (result) {
+              setModalResult(_constants__WEBPACK_IMPORTED_MODULE_9__.MODAL_RESULT.OK);
+            } else {
+              dispatch((0,_state_message_messageActions__WEBPACK_IMPORTED_MODULE_7__.setMessageAction)(memberRelation.errorMessage, _constants__WEBPACK_IMPORTED_MODULE_9__.MESSAGE_TYPES.ERROR, memberRelation.errorCode, true));
+              document.querySelector("#transferMemberToMemberRelationModal").querySelector(".modal-main").firstChild.scrollTo(0, 0);
             }
           case 8:
           case "end":
@@ -17204,56 +17764,56 @@ function TransferToNewMemberModal() {
   var onReset = function onReset() {
     form.reset();
     setItems(null);
-    document.querySelector("#transferToNewMemberModal").querySelector(".modal-main").firstChild.scrollTo(0, 0);
+    document.querySelector("#transferMemberToMemberRelationModal").querySelector(".modal-main").firstChild.scrollTo(0, 0);
   };
   var renderSearch = function renderSearch() {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
       className: "block pd-20",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
         className: "field-title",
         children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_3__.general.search
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(___WEBPACK_IMPORTED_MODULE_4__.InputRow, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(___WEBPACK_IMPORTED_MODULE_4__.InputTextColumn, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(___WEBPACK_IMPORTED_MODULE_4__.InputRow, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(___WEBPACK_IMPORTED_MODULE_4__.InputTextColumn, {
             field: "nameTransferModal",
-            strings: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_3__.transferToNewMemberModal,
+            strings: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_3__.transferMemberToMemberRelationModal,
             useForm: form,
             fullRow: false,
             icon: "icon-personalcard4"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(___WEBPACK_IMPORTED_MODULE_4__.InputTextColumn, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(___WEBPACK_IMPORTED_MODULE_4__.InputTextColumn, {
             field: "familyTransferModal",
-            strings: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_3__.transferToNewMemberModal,
+            strings: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_3__.transferMemberToMemberRelationModal,
             useForm: form,
             fullRow: false,
             icon: "icon-personalcard4"
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(___WEBPACK_IMPORTED_MODULE_4__.InputRow, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(___WEBPACK_IMPORTED_MODULE_4__.InputTextColumn, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(___WEBPACK_IMPORTED_MODULE_4__.InputRow, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(___WEBPACK_IMPORTED_MODULE_4__.InputTextColumn, {
             field: "nationalNoTransferModal",
             textAlign: "left",
-            strings: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_3__.transferToNewMemberModal,
+            strings: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_3__.transferMemberToMemberRelationModal,
             useForm: form,
             fullRow: false,
             icon: "icon-personalcard4"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(___WEBPACK_IMPORTED_MODULE_4__.InputTextColumn, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(___WEBPACK_IMPORTED_MODULE_4__.InputTextColumn, {
             field: "cardNoTransferModal",
             textAlign: "left",
-            strings: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_3__.transferToNewMemberModal,
+            strings: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_3__.transferMemberToMemberRelationModal,
             useForm: form,
             fullRow: false,
             icon: "icon-personalcard4"
           })]
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
         className: "btns d-flex mt-10",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("button", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
           className: "btn btn-primary mx-rdir-10",
           type: "button",
           disabled: layoutState === null || layoutState === void 0 ? void 0 : layoutState.loading,
           title: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_3__.general.search,
           onClick: form.handleSubmit(onSubmit),
           children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_3__.general.search
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("button", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
           className: "btn btn-border mx-rdir-10",
           type: "button",
           disabled: layoutState === null || layoutState === void 0 ? void 0 : layoutState.loading,
@@ -17265,66 +17825,74 @@ function TransferToNewMemberModal() {
     });
   };
   var renderHeader = function renderHeader() {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("tr", {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("th", {
-        children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_3__.transferToNewMemberModal.namdeFamilyTransferModal
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("th", {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("tr", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
+        children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_3__.transferMemberToMemberRelationModal.namdeFamilyTransferModal
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
         style: {
           maxWidth: "100px"
         },
-        children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_3__.transferToNewMemberModal.nationalNoTransferModal
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("th", {
+        children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_3__.transferMemberToMemberRelationModal.nationalNoTransferModal
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
         style: {
           maxWidth: "100px"
         },
-        children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_3__.transferToNewMemberModal.cardNoTransferModal
+        children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_3__.transferMemberToMemberRelationModal.cardNoTransferModal
       })]
     });
   };
   var renderItems = function renderItems() {
     var children = items === null || items === void 0 ? void 0 : items.map(function (item) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("tr", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("td", {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(___WEBPACK_IMPORTED_MODULE_4__.CustomLink, {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("tr", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("td", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(___WEBPACK_IMPORTED_MODULE_4__.CustomLink, {
               onClick: function onClick() {
                 return onSelect(item.id);
               },
               children: "".concat(item.name, " ").concat(item.family)
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("td", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("td", {
             children: item.nationalNo
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("td", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("td", {
             children: item.cardNo
           })]
         })
       }, item.id);
     });
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(___WEBPACK_IMPORTED_MODULE_4__.TableItems, {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(___WEBPACK_IMPORTED_MODULE_4__.TableItems, {
       columnsCount: columnsCount,
       children: children
     });
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(___WEBPACK_IMPORTED_MODULE_4__.Modal, {
-    id: "transferToNewMemberModal",
-    title: "".concat(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_3__.transferToNewMemberModal._title, " - [ ").concat(layoutState === null || layoutState === void 0 ? void 0 : (_layoutState$shownMod8 = layoutState.shownModal) === null || _layoutState$shownMod8 === void 0 ? void 0 : (_layoutState$shownMod9 = _layoutState$shownMod8.props) === null || _layoutState$shownMod9 === void 0 ? void 0 : (_layoutState$shownMod10 = _layoutState$shownMod9.memberRelation) === null || _layoutState$shownMod10 === void 0 ? void 0 : _layoutState$shownMod10.name, " ").concat(layoutState === null || layoutState === void 0 ? void 0 : (_layoutState$shownMod11 = layoutState.shownModal) === null || _layoutState$shownMod11 === void 0 ? void 0 : (_layoutState$shownMod12 = _layoutState$shownMod11.props) === null || _layoutState$shownMod12 === void 0 ? void 0 : (_layoutState$shownMod13 = _layoutState$shownMod12.memberRelation) === null || _layoutState$shownMod13 === void 0 ? void 0 : _layoutState$shownMod13.family, " ]"),
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(___WEBPACK_IMPORTED_MODULE_4__.Modal, {
+    id: "transferMemberToMemberRelationModal",
+    title: "".concat(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_3__.transferMemberToMemberRelationModal._title, " [ ").concat(layoutState === null || layoutState === void 0 ? void 0 : (_layoutState$shownMod12 = layoutState.shownModal) === null || _layoutState$shownMod12 === void 0 ? void 0 : (_layoutState$shownMod13 = _layoutState$shownMod12.props) === null || _layoutState$shownMod13 === void 0 ? void 0 : (_layoutState$shownMod14 = _layoutState$shownMod13.member) === null || _layoutState$shownMod14 === void 0 ? void 0 : _layoutState$shownMod14.name, " ").concat(layoutState === null || layoutState === void 0 ? void 0 : (_layoutState$shownMod15 = layoutState.shownModal) === null || _layoutState$shownMod15 === void 0 ? void 0 : (_layoutState$shownMod16 = _layoutState$shownMod15.props) === null || _layoutState$shownMod16 === void 0 ? void 0 : (_layoutState$shownMod17 = _layoutState$shownMod16.member) === null || _layoutState$shownMod17 === void 0 ? void 0 : _layoutState$shownMod17.family, " - ").concat(layoutState === null || layoutState === void 0 ? void 0 : (_layoutState$shownMod18 = layoutState.shownModal) === null || _layoutState$shownMod18 === void 0 ? void 0 : (_layoutState$shownMod19 = _layoutState$shownMod18.props) === null || _layoutState$shownMod19 === void 0 ? void 0 : (_layoutState$shownMod20 = _layoutState$shownMod19.member) === null || _layoutState$shownMod20 === void 0 ? void 0 : _layoutState$shownMod20.nationalNo, " ]"),
     onClose: onClose,
-    closeModal: closeModal,
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(___WEBPACK_IMPORTED_MODULE_4__.AlertMessage, {
+    modalResult: modalResult,
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(___WEBPACK_IMPORTED_MODULE_4__.AlertState, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(___WEBPACK_IMPORTED_MODULE_4__.AlertMessage, {
       message: message
-    }), renderSearch(), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("h3", {
+    }), renderSearch(), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(___WEBPACK_IMPORTED_MODULE_4__.InputRow, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(___WEBPACK_IMPORTED_MODULE_4__.InputSelectColumn, {
+        field: "relationship",
+        items: layoutState === null || layoutState === void 0 ? void 0 : (_layoutState$shownMod21 = layoutState.shownModal) === null || _layoutState$shownMod21 === void 0 ? void 0 : (_layoutState$shownMod22 = _layoutState$shownMod21.props) === null || _layoutState$shownMod22 === void 0 ? void 0 : _layoutState$shownMod22.relationships,
+        useForm: form,
+        fullRow: false,
+        strings: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_3__.transferMemberToMemberRelationModal
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("h3", {
       className: "mt-20 mx-20 text",
-      children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_3__.transferToNewMemberModal.members
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+      children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_3__.transferMemberToMemberRelationModal.members
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
       className: "block",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(___WEBPACK_IMPORTED_MODULE_4__.Table, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(___WEBPACK_IMPORTED_MODULE_4__.Table, {
         renderHeader: renderHeader,
         renderItems: renderItems
       })
     })]
   });
 }
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TransferToNewMemberModal);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TransferMemberToMemberRelationModal);
 
 /***/ }),
 
@@ -18072,7 +18640,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../constants/strings/fa */ "./resources/js/constants/strings/fa.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _state_page_pageActions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../state/page/pageActions */ "./resources/js/state/page/pageActions.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -18087,23 +18657,30 @@ var SearchBox = function SearchBox(_ref) {
   var layoutState = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.layoutReducer;
   });
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  var submit = function submit(data) {
+    dispatch((0,_state_page_pageActions__WEBPACK_IMPORTED_MODULE_3__.setPagePropsAction)({
+      pageNumber: 1
+    }));
+    onSubmit(data);
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     className: containerClassName ? "".concat(containerClassName) : "block pd-20",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
       className: "field-title",
       children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.general.search
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
       children: children
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       className: "btns d-flex mt-10",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
         className: "btn btn-primary mx-rdir-10",
         type: "button",
         disabled: layoutState === null || layoutState === void 0 ? void 0 : layoutState.loading,
         title: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.general.search,
-        onClick: pageUtils.useForm.handleSubmit(onSubmit),
+        onClick: pageUtils.useForm.handleSubmit(submit),
         children: _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.general.search
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
         className: "btn btn-border mx-rdir-10",
         type: "button",
         disabled: layoutState === null || layoutState === void 0 ? void 0 : layoutState.loading,
@@ -18743,7 +19320,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "TableFooter": () => (/* reexport safe */ _Table_TableFooter__WEBPACK_IMPORTED_MODULE_38__["default"]),
 /* harmony export */   "TableItems": () => (/* reexport safe */ _Table_TableItems__WEBPACK_IMPORTED_MODULE_37__["default"]),
 /* harmony export */   "TopLoadingBar": () => (/* reexport safe */ _Loading_TopLoadingBar__WEBPACK_IMPORTED_MODULE_21__["default"]),
-/* harmony export */   "TransferToNewMemberModal": () => (/* reexport safe */ _Modal_TransferToNewMemberModal__WEBPACK_IMPORTED_MODULE_25__["default"])
+/* harmony export */   "TransferMemberRelationToNewMemberModal": () => (/* reexport safe */ _Modal_TransferMemberRelationToNewMemberModal__WEBPACK_IMPORTED_MODULE_25__["default"])
 /* harmony export */ });
 /* harmony import */ var _Alert_AlertMessage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Alert/AlertMessage */ "./resources/js/resources/components/Alert/AlertMessage.jsx");
 /* harmony import */ var _Alert_AlertState__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Alert/AlertState */ "./resources/js/resources/components/Alert/AlertState.jsx");
@@ -18770,7 +19347,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Modal_Modal__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./Modal/Modal */ "./resources/js/resources/components/Modal/Modal.jsx");
 /* harmony import */ var _Modal_ProfileModal__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./Modal/ProfileModal */ "./resources/js/resources/components/Modal/ProfileModal/index.jsx");
 /* harmony import */ var _Modal_PromptModal__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./Modal/PromptModal */ "./resources/js/resources/components/Modal/PromptModal/index.jsx");
-/* harmony import */ var _Modal_TransferToNewMemberModal__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./Modal/TransferToNewMemberModal */ "./resources/js/resources/components/Modal/TransferToNewMemberModal/index.jsx");
+/* harmony import */ var _Modal_TransferMemberRelationToNewMemberModal__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./Modal/TransferMemberRelationToNewMemberModal */ "./resources/js/resources/components/Modal/TransferMemberRelationToNewMemberModal/index.jsx");
 /* harmony import */ var _Page_BlankPage__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./Page/BlankPage */ "./resources/js/resources/components/Page/BlankPage.jsx");
 /* harmony import */ var _Page_ListPage__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./Page/ListPage */ "./resources/js/resources/components/Page/ListPage.jsx");
 /* harmony import */ var _Page_FormPage__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./Page/FormPage */ "./resources/js/resources/components/Page/FormPage.jsx");
@@ -18975,8 +19552,8 @@ var renderAdministratorRoutes = function renderAdministratorRoutes() {
       path: "".concat(_constants__WEBPACK_IMPORTED_MODULE_2__.BASE_PATH, "/member_relations/edit/:memberRelationId"),
       element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Pages__WEBPACK_IMPORTED_MODULE_3__.EditMemberRelation, {})
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
-      path: "".concat(_constants__WEBPACK_IMPORTED_MODULE_2__.BASE_PATH, "/transfer/change_member_relation_to_member/:memberRelationId"),
-      element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Pages__WEBPACK_IMPORTED_MODULE_3__.ChangeMemberRelationToMember, {})
+      path: "".concat(_constants__WEBPACK_IMPORTED_MODULE_2__.BASE_PATH, "/member/transfer_member_relation_to_member/:memberRelationId"),
+      element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Pages__WEBPACK_IMPORTED_MODULE_3__.TransferMemberRelationToMember, {})
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
       path: "".concat(_constants__WEBPACK_IMPORTED_MODULE_2__.BASE_PATH, "/users/change_password/:userId"),
       element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Pages__WEBPACK_IMPORTED_MODULE_3__.ChangePasswordUser, {})
@@ -19310,9 +19887,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var nationalNoValidator = function nationalNoValidator(schema, field) {
   var required = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
-  schema = schema.matches(/^([0][0-9]{9})|([1-9][0-9]{9})+$/, _constants_strings_fa__WEBPACK_IMPORTED_MODULE_0__.validation.validMessage.replace(":field", field));
   if (required) {
+    schema = schema.matches(/^([0][0-9]{9})|([1-9][0-9]{9})+$/, _constants_strings_fa__WEBPACK_IMPORTED_MODULE_0__.validation.validMessage.replace(":field", field));
     schema = schema.required(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_0__.validation.requiredMessage.replace(":field", field));
+  } else {
+    schema = schema.matches(/^([0][0-9]{9})|([1-9][0-9]{9})*$/, _constants_strings_fa__WEBPACK_IMPORTED_MODULE_0__.validation.validMessage.replace(":field", field));
   }
   return schema;
 };
@@ -19334,20 +19913,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _constants_strings_fa__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../constants/strings/fa */ "./resources/js/constants/strings/fa.js");
 
 var numberValidator = function numberValidator(schema, field) {
+  var _result;
   var min = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
   var max = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
   var required = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : true;
-  if (min) {
-    schema = schema.min(min, _constants_strings_fa__WEBPACK_IMPORTED_MODULE_0__.validation.minNumberMessage.replace(":field", field).replace(":min", min));
-  }
-  if (max) {
-    schema = schema.max(max, _constants_strings_fa__WEBPACK_IMPORTED_MODULE_0__.validation.maxNumberMessage.replace(":field", field).replace(":max", max));
-  }
+  var result = null;
   if (required) {
-    schema = schema.typeError(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_0__.validation.numberMessage.replace(":field", field));
-    schema = schema.required(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_0__.validation.requiredMessage.replace(":field", field));
+    result = schema.number(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_0__.validation.numberMessage.replace(":field", field)).required(_constants_strings_fa__WEBPACK_IMPORTED_MODULE_0__.validation.requiredMessage.replace(":field", field));
   }
-  return schema;
+  if (!result && min) {
+    result = schema.number().min(min, _constants_strings_fa__WEBPACK_IMPORTED_MODULE_0__.validation.minNumberMessage.replace(":field", field).replace(":min", min));
+  }
+  if (!result && max) {
+    result = schema.number().max(max, _constants_strings_fa__WEBPACK_IMPORTED_MODULE_0__.validation.maxNumberMessage.replace(":field", field).replace(":max", max));
+  }
+  return (_result = result) !== null && _result !== void 0 ? _result : schema.string();
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (numberValidator);
 
@@ -19479,10 +20059,10 @@ var addMemberRelationSchema = yup__WEBPACK_IMPORTED_MODULE_0__.object().shape({
   name: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.nameValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.addMemberRelationPage.name, 2, 50),
   family: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.nameValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.addMemberRelationPage.family, 2, 50),
   nationalNo: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.nationalNoValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.addMemberRelationPage.nationalNo),
-  identityNo: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.number(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.addMemberRelationPage.identityNo, 0, 1000000),
+  identityNo: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__, _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.addMemberRelationPage.identityNo, 0, 1000000),
   birthDate: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.dateValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.addMemberRelationPage.birthDate),
-  gender: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.number(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.addMemberRelationPage.gender, 1, 2, true),
-  relationship: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.number(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.addMemberRelationPage.relationship, 1, null, true),
+  gender: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__, _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.addMemberRelationPage.gender, 1, 2, true),
+  relationship: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__, _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.addMemberRelationPage.relationship, 1, null, true),
   description: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.stringValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.addMemberRelationPage.description, null, 300, false)
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (addMemberRelationSchema);
@@ -19510,20 +20090,20 @@ var editMemberRelationSchema = yup__WEBPACK_IMPORTED_MODULE_0__.object().shape({
   name: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.nameValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.editMemberRelationPage.name, 2, 50),
   family: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.nameValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.editMemberRelationPage.family, 2, 50),
   nationalNo: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.nationalNoValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.editMemberRelationPage.nationalNo),
-  identityNo: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.number(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.editMemberRelationPage.identityNo, 0, 1000000),
+  identityNo: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__, _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.editMemberRelationPage.identityNo, 0, 1000000),
   birthDate: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.dateValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.editMemberRelationPage.birthDate),
-  gender: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.number(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.editMemberRelationPage.gender, 1, 2, true),
-  relationship: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.number(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.editMemberRelationPage.relationship, 1, null, true),
+  gender: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__, _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.editMemberRelationPage.gender, 1, 2, true),
+  relationship: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__, _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.editMemberRelationPage.relationship, 1, null, true),
   description: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.stringValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.editMemberRelationPage.description, null, 300, false)
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (editMemberRelationSchema);
 
 /***/ }),
 
-/***/ "./resources/js/resources/validations/MemberRelation/TransferToNewMemberSchema.js":
-/*!****************************************************************************************!*\
-  !*** ./resources/js/resources/validations/MemberRelation/TransferToNewMemberSchema.js ***!
-  \****************************************************************************************/
+/***/ "./resources/js/resources/validations/MemberRelation/TransferMemberToMemberRelationSchema.js":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/resources/validations/MemberRelation/TransferMemberToMemberRelationSchema.js ***!
+  \***************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -19537,13 +20117,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var transferToNewMemberSchema = yup__WEBPACK_IMPORTED_MODULE_0__.object().shape({
-  name: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.nameValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.editMemberRelationPage.name, null, 50, false),
-  family: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.nameValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.editMemberRelationPage.family, null, 50, false),
-  nationalNo: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.nationalNoValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.editMemberRelationPage.nationalNo, false),
-  cardNo: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.number(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.editMemberRelationPage.cardNo, null, 1000000, false)
+var transferMemberToMemberRelationSchema = yup__WEBPACK_IMPORTED_MODULE_0__.object().shape({
+  nameTransferModal: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.nameValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.transferMemberToMemberRelationModal.nameTransferModal, null, 50, false),
+  familyTransferModal: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.nameValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.transferMemberToMemberRelationModal.familyTransferModal, null, 50, false),
+  nationalNoTransferModal: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.nationalNoValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.transferMemberToMemberRelationModal.nationalNoTransferModal, false),
+  cardNoTransferModal: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__, "strings.cardNoTransferModal", null, null, false)
 });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (transferToNewMemberSchema);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (transferMemberToMemberRelationSchema);
 
 /***/ }),
 
@@ -19568,18 +20148,18 @@ var addMemberSchema = yup__WEBPACK_IMPORTED_MODULE_0__.object().shape({
   name: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.nameValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.addMemberPage.name, 2, 50),
   family: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.nameValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.addMemberPage.family, 2, 50),
   nationalNo: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.nationalNoValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.addMemberPage.nationalNo),
-  identityNo: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.number(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.addMemberPage.identityNo, 0, 1000000),
+  identityNo: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__, _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.addMemberPage.identityNo, 0, 1000000),
   fatherName: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.nameValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.addMemberPage.fatherName, 2, 50),
   birthDate: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.dateValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.addMemberPage.birthDate),
   membershipDate: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.dateValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.addMemberPage.membershipDate),
-  postalCode: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.number(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.addMemberPage.postalCode, 0, 9999999999, false),
-  gender: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.number(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.addMemberPage.gender, 1, 2, true),
-  village: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.number(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.addMemberPage.village, 1, null, true),
+  postalCode: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__, _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.addMemberPage.postalCode, 0, 9999999999, false),
+  gender: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__, _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.addMemberPage.gender, 1, 2, true),
+  village: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__, _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.addMemberPage.village, 1, null, true),
   tel: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.stringValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.addMemberPage.tel, null, 50, false),
   mobile: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.stringValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.addMemberPage.mobile, null, 50, false),
   address: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.stringValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.addMemberPage.address, null, 300, false),
   description: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.stringValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.addMemberPage.description, null, 300, false),
-  cardNo: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.number(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.addMemberPage.cardNo, 1, null, true)
+  cardNo: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__, _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.addMemberPage.cardNo, 1, null, true)
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (addMemberSchema);
 
@@ -19606,18 +20186,18 @@ var editMemberSchema = yup__WEBPACK_IMPORTED_MODULE_0__.object().shape({
   name: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.nameValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.editMemberPage.name, 2, 50),
   family: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.nameValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.editMemberPage.family, 2, 50),
   nationalNo: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.nationalNoValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.editMemberPage.nationalNo),
-  identityNo: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.number(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.editMemberPage.identityNo, 0, 1000000),
+  identityNo: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__, _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.editMemberPage.identityNo, 0, 1000000),
   fatherName: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.nameValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.editMemberPage.fatherName, 2, 50),
   birthDate: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.dateValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.editMemberPage.birthDate),
   membershipDate: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.dateValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.editMemberPage.membershipDate),
-  postalCode: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.number(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.editMemberPage.postalCode, 0, 9999999999, false),
-  gender: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.number(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.editMemberPage.gender, 1, 2, true),
-  village: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.number(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.editMemberPage.village, 1, null, true),
+  postalCode: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__, _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.editMemberPage.postalCode, 0, 9999999999, false),
+  gender: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__, _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.editMemberPage.gender, 1, 2, true),
+  village: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__, _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.editMemberPage.village, 1, null, true),
   tel: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.stringValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.editMemberPage.tel, null, 50, false),
   mobile: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.stringValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.editMemberPage.mobile, null, 50, false),
   address: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.stringValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.editMemberPage.address, null, 300, false),
   description: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.stringValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.editMemberPage.description, null, 300, false),
-  cardNo: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.number(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.editMemberPage.cardNo, 1, null, true)
+  cardNo: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__, _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.editMemberPage.cardNo, 1, null, true)
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (editMemberSchema);
 
@@ -19647,6 +20227,65 @@ var searchMemberSchema = yup__WEBPACK_IMPORTED_MODULE_0__.object().shape({
   cardNo: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.stringValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.membersPage.cardNo, null, 6, false)
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (searchMemberSchema);
+
+/***/ }),
+
+/***/ "./resources/js/resources/validations/Member/TransferMemberRelationToMemberSchema.js":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/resources/validations/Member/TransferMemberRelationToMemberSchema.js ***!
+  \*******************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! yup */ "./node_modules/yup/index.esm.js");
+/* harmony import */ var _CommonValidators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../CommonValidators */ "./resources/js/resources/validations/CommonValidators/index.js");
+/* harmony import */ var _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../constants/strings/fa */ "./resources/js/constants/strings/fa.js");
+
+
+
+var transferMemberRelationToMemberSchema = yup__WEBPACK_IMPORTED_MODULE_0__.object().shape({
+  fatherName: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.nameValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.transferMemberRelationToMemberPage.fatherName, 2, 50),
+  membershipDate: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.dateValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.transferMemberRelationToMemberPage.membershipDate),
+  postalCode: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__, _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.transferMemberRelationToMemberPage.postalCode, 0, 9999999999, false),
+  village: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__, _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.transferMemberRelationToMemberPage.village, 1, null, true),
+  tel: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.stringValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.transferMemberRelationToMemberPage.tel, null, 50, false),
+  mobile: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.stringValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.transferMemberRelationToMemberPage.mobile, null, 50, false),
+  address: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.stringValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.transferMemberRelationToMemberPage.address, null, 300, false),
+  description: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.stringValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.transferMemberRelationToMemberPage.description, null, 300, false),
+  cardNo: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__, _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.transferMemberRelationToMemberPage.cardNo, 1, null, true)
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (transferMemberRelationToMemberSchema);
+
+/***/ }),
+
+/***/ "./resources/js/resources/validations/Member/TransferMemberRelationToNewMemberSchema.js":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/resources/validations/Member/TransferMemberRelationToNewMemberSchema.js ***!
+  \**********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! yup */ "./node_modules/yup/index.esm.js");
+/* harmony import */ var _CommonValidators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../CommonValidators */ "./resources/js/resources/validations/CommonValidators/index.js");
+/* harmony import */ var _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../constants/strings/fa */ "./resources/js/constants/strings/fa.js");
+
+
+
+var transferMemberRelationToNewMemberSchema = yup__WEBPACK_IMPORTED_MODULE_0__.object().shape({
+  nameTransferModal: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.nameValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.transferMemberRelationToNewMemberModal.nameTransferModal, null, 50, false),
+  familyTransferModal: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.nameValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.transferMemberRelationToNewMemberModal.familyTransferModal, null, 50, false),
+  nationalNoTransferModal: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.nationalNoValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.transferMemberRelationToNewMemberModal.nationalNoTransferModal, false),
+  cardNoTransferModal: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__, _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.transferMemberRelationToNewMemberModal.cardNoTransferModal, null, 1000000, false)
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (transferMemberRelationToNewMemberSchema);
 
 /***/ }),
 
@@ -19846,7 +20485,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var addVillageSchema = yup__WEBPACK_IMPORTED_MODULE_0__.object().shape({
-  district: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.number(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.addVillagePage.district),
+  district: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__, _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.addVillagePage.district),
   name: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.stringValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.addVillagePage.name, 2, 50)
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (addVillageSchema);
@@ -19871,7 +20510,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var editVillageSchema = yup__WEBPACK_IMPORTED_MODULE_0__.object().shape({
-  district: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.number(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.editVillagePage.district),
+  district: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.numberValidator)(yup__WEBPACK_IMPORTED_MODULE_0__, _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.editVillagePage.district),
   name: (0,_CommonValidators__WEBPACK_IMPORTED_MODULE_1__.stringValidator)(yup__WEBPACK_IMPORTED_MODULE_0__.string(), _constants_strings_fa__WEBPACK_IMPORTED_MODULE_2__.editVillagePage.name, 2, 50)
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (editVillageSchema);
@@ -19905,7 +20544,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "loginUserSchema": () => (/* reexport safe */ _User_LoginUserSchema__WEBPACK_IMPORTED_MODULE_0__["default"]),
 /* harmony export */   "searchMemberSchema": () => (/* reexport safe */ _Member_SearchMemberSchema__WEBPACK_IMPORTED_MODULE_13__["default"]),
 /* harmony export */   "searchUserSchema": () => (/* reexport safe */ _User_SearchUserSchema__WEBPACK_IMPORTED_MODULE_1__["default"]),
-/* harmony export */   "transferToNewMemberSchema": () => (/* reexport safe */ _MemberRelation_TransferToNewMemberSchema__WEBPACK_IMPORTED_MODULE_18__["default"])
+/* harmony export */   "transferMemberRelationToMemberSchema": () => (/* reexport safe */ _Member_TransferMemberRelationToMemberSchema__WEBPACK_IMPORTED_MODULE_18__["default"]),
+/* harmony export */   "transferMemberRelationToNewMemberSchema": () => (/* reexport safe */ _Member_TransferMemberRelationToNewMemberSchema__WEBPACK_IMPORTED_MODULE_19__["default"]),
+/* harmony export */   "transferMemberToMemberRelationSchema": () => (/* reexport safe */ _MemberRelation_TransferMemberToMemberRelationSchema__WEBPACK_IMPORTED_MODULE_20__["default"])
 /* harmony export */ });
 /* harmony import */ var _User_LoginUserSchema__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./User/LoginUserSchema */ "./resources/js/resources/validations/User/LoginUserSchema.js");
 /* harmony import */ var _User_SearchUserSchema__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./User/SearchUserSchema */ "./resources/js/resources/validations/User/SearchUserSchema.js");
@@ -19925,7 +20566,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Member_EditMemberSchema__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./Member/EditMemberSchema */ "./resources/js/resources/validations/Member/EditMemberSchema.js");
 /* harmony import */ var _MemberRelation_AddMemberRelationSchema__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./MemberRelation/AddMemberRelationSchema */ "./resources/js/resources/validations/MemberRelation/AddMemberRelationSchema.js");
 /* harmony import */ var _MemberRelation_EditMemberRelationSchema__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./MemberRelation/EditMemberRelationSchema */ "./resources/js/resources/validations/MemberRelation/EditMemberRelationSchema.js");
-/* harmony import */ var _MemberRelation_TransferToNewMemberSchema__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./MemberRelation/TransferToNewMemberSchema */ "./resources/js/resources/validations/MemberRelation/TransferToNewMemberSchema.js");
+/* harmony import */ var _Member_TransferMemberRelationToMemberSchema__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./Member/TransferMemberRelationToMemberSchema */ "./resources/js/resources/validations/Member/TransferMemberRelationToMemberSchema.js");
+/* harmony import */ var _Member_TransferMemberRelationToNewMemberSchema__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./Member/TransferMemberRelationToNewMemberSchema */ "./resources/js/resources/validations/Member/TransferMemberRelationToNewMemberSchema.js");
+/* harmony import */ var _MemberRelation_TransferMemberToMemberRelationSchema__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./MemberRelation/TransferMemberToMemberRelationSchema */ "./resources/js/resources/validations/MemberRelation/TransferMemberToMemberRelationSchema.js");
+
+
 
 
 
@@ -21453,8 +22098,11 @@ var BasePageUtils = /*#__PURE__*/function () {
             case 3:
               result = _context3.sent;
               this.handleModifyResult(result);
+              this.dispatch((0,_state_page_pageActions__WEBPACK_IMPORTED_MODULE_4__.setPagePropsAction)({
+                pageNumber: 1
+              }));
               this.fillForm();
-            case 6:
+            case 7:
             case "end":
               return _context3.stop();
           }
@@ -83308,7 +83956,7 @@ function useForm(props = {}) {
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"relativePublicPath":"./../public","baseUrl":"http://127.0.0.1:8000","environment":"local","*relativePublicPath":"./../public_html","*baseUrl":"https://ganjinehdogharoon.ir","*environment":"production"}');
+module.exports = JSON.parse('{"relativePublicPath":"./../public","baseUrl":"http://127.0.0.1:8000","environment":"production","*relativePublicPath":"./../public_html","*baseUrl":"https://ganjinehdogharoon.ir","*environment":"production"}');
 
 /***/ })
 

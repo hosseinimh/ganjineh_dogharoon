@@ -34,7 +34,18 @@ class MemberRelationController extends Controller
 
     public function all(IndexMemberRelationsRequest $request): HttpJsonResponse
     {
-        return $this->onItems($this->service->getAll($request->_pn, $request->_pi), $this->service->countAll());
+        $villageService = new VillageService();
+        $villageId = is_int($request->village_id) && $request->village_id > 0 ? $request->village_id : null;
+        $villages = null;
+        $name = is_string($request->name) ? $request->name : null;
+        $family = is_string($request->family) ? $request->family : null;
+        $nationalNo = intval($request->national_no) > 0 ? $request->national_no : null;
+        $cardNo = intval($request->card_no) > 0 ? $request->card_no : null;
+        if ($request->_pn === 1) {
+            $villages = VillageResource::collection($villageService->getAll());
+        }
+        $items = MemberRelationResource::collection($this->service->getAll($villageId, $name, $family, $nationalNo, $cardNo, $request->_pn, $request->_pi));
+        return $this->onItems(['items' => $items, 'villages' => $villages], $this->service->countAll($villageId, $name, $family, $nationalNo, $cardNo));
     }
 
     public function show(Model $model): HttpJsonResponse

@@ -241,20 +241,6 @@ export const profileModal = {
     mobileModal: "موبایل",
 };
 
-export const transferToNewMemberModal = {
-    _title: "تغییر سرپرست",
-    members: "سهام‌داران (10 رکورد اخیر)",
-    nameTransferModal: "نام",
-    nameTransferModalPlaceholder: "نام",
-    familyTransferModal: "نام خانوادگی",
-    familyTransferModalPlaceholder: "نام خانوادگی",
-    nationalNoTransferModal: "شماره ملی",
-    nationalNoTransferModalPlaceholder: "شماره ملی",
-    cardNoTransferModal: "شماره کارت",
-    cardNoTransferModalPlaceholder: "شماره کارت",
-    namdeFamilyTransferModal: "نام و نام خانوادگی",
-};
-
 export const genderTypes = {
     male: "مرد",
     female: "زن",
@@ -281,7 +267,7 @@ export const banksPage = {
 
 export const addBankPage = {
     _title: "افزودن بانک",
-    _subTitle: "مشخصات بانک جدید را وارد نمایید.",
+    _subTitle: "مشخصات بانک جدید را وارد کنید.",
     name: "بانک",
     namePlaceholder: "بانک",
     submitted: "افزودن بانک با موفقیت انجام شد.",
@@ -289,7 +275,7 @@ export const addBankPage = {
 
 export const editBankPage = {
     _title: "ویرایش بانک",
-    _subTitle: "مشخصات بانک تعریف شده را ویرایش نمایید.",
+    _subTitle: "مشخصات بانک تعریف شده را ویرایش کنید.",
     name: "بانک",
     namePlaceholder: "بانک",
     submitted: "ویرایش بانک با موفقیت انجام شد.",
@@ -304,7 +290,7 @@ export const countriesPage = {
 
 export const addCountryPage = {
     _title: "افزودن کشور",
-    _subTitle: "مشخصات کشور جدید را وارد نمایید.",
+    _subTitle: "مشخصات کشور جدید را وارد کنید.",
     name: "کشور",
     namePlaceholder: "کشور",
     submitted: "افزودن مشخصات کشور با موفقیت انجام شد.",
@@ -312,7 +298,7 @@ export const addCountryPage = {
 
 export const editCountryPage = {
     _title: "ویرایش کشور",
-    _subTitle: "مشخصات کشور تعریف شده را ویرایش نمایید.",
+    _subTitle: "مشخصات کشور تعریف شده را ویرایش کنید.",
     name: "کشور",
     namePlaceholder: "کشور",
     submitted: "ویرایش مشخصات کشور با موفقیت انجام شد.",
@@ -334,7 +320,7 @@ export const villagesPage = {
 
 export const addVillagePage = {
     _title: "افزودن روستا",
-    _subTitle: "مشخصات روستای جدید را وارد نمایید.",
+    _subTitle: "مشخصات روستای جدید را وارد کنید.",
     district: "بخش",
     name: "روستا",
     namePlaceholder: "روستا",
@@ -343,7 +329,7 @@ export const addVillagePage = {
 
 export const editVillagePage = {
     _title: "ویرایش روستا",
-    _subTitle: "مشخصات روستا را ویرایش نمایید.",
+    _subTitle: "مشخصات روستا را ویرایش کنید.",
     district: "بخش",
     name: "روستا",
     namePlaceholder: "روستا",
@@ -359,7 +345,7 @@ export const relationshipsPage = {
 
 export const addRelationshipPage = {
     _title: "افزودن رابطه خویشاوندی",
-    _subTitle: "یک رابطه خویشاوندی جدید تعریف نمایید.",
+    _subTitle: "یک رابطه خویشاوندی جدید تعریف کنید.",
     name: "رابطه خویشاوندی",
     namePlaceholder: "رابطه خویشاوندی",
     submitted: "افزودن رابطه خویشاوندی با موفقیت انجام شد.",
@@ -367,7 +353,7 @@ export const addRelationshipPage = {
 
 export const editRelationshipPage = {
     _title: "ویرایش رابطه خویشاوندی",
-    _subTitle: "رابطه خویشاوندی تعریف شده را ویرایش نمایید.",
+    _subTitle: "رابطه خویشاوندی تعریف شده را ویرایش کنید.",
     name: "رابطه خویشاوندی",
     namePlaceholder: "رابطه خویشاوندی",
     submitted: "ویرایش رابطه خویشاوندی با موفقیت انجام شد.",
@@ -397,13 +383,14 @@ export const membersPage = {
     printWithMobile: "چاپ با شماره همراه",
     printWithoutMobile: "چاپ بدون شماره همراه",
     add: "افزودن سهام‌دار",
+    transferMemberToMemberRelation: "انتقال به تحت کفالت سهام‌دار",
     removeMessageTitle: "آیا مطمئن به حذف اطلاعات این سهام‌دار می‌باشید؟",
     submitted: "حذف اطلاعات سهام‌دار با موفقیت انجام شد.",
 };
 
 export const addMemberPage = {
     _title: "افزودن مشخصات سهام‌دار",
-    _subTitle: "مشخصات سهام‌دار جدید را وارد نمایید.",
+    _subTitle: "مشخصات سهام‌دار جدید را وارد کنید.",
     name: "نام",
     namePlaceholder: "نام",
     family: "نام خانوادگی",
@@ -438,7 +425,7 @@ export const addMemberPage = {
 
 export const editMemberPage = {
     _title: "ویرایش مشخصات سهام‌دار",
-    _subTitle: "مشخصات سهام‌دار را وارد نمایید.",
+    _subTitle: "مشخصات سهام‌دار را وارد کنید.",
     name: "نام",
     namePlaceholder: "نام",
     family: "نام خانوادگی",
@@ -481,13 +468,15 @@ export const memberRelationsPage = {
     relationship: "رابطه خویشاوندی",
     add: "افزودن فرد تحت تکفل",
     transfer: "انتقال",
-    transferAsMember: "به عنوان سرپرست",
-    transferAsMemberRelation: "تغییر سرپرست",
+    transferMemberRelationToMember: "انتقال به عنوان سهام‌دار جدید",
+    transferMemberRelationToNewMember: "تغییر سرپرست",
+    removeMessageTitle: "آیا مطمئن به حذف اطلاعات این فرد تحت تکفل می‌باشید؟",
+    submitted: "حذف اطلاعات فرد تحت تکفل با موفقیت انجام شد.",
 };
 
 export const addMemberRelationPage = {
     _title: "افزودن مشخصات فرد تحت تکفل",
-    _subTitle: "مشخصات فرد تحت تکفل سهام‌دار را وارد نمایید.",
+    _subTitle: "مشخصات فرد تحت تکفل سهام‌دار را وارد کنید.",
     name: "نام",
     namePlaceholder: "نام",
     family: "نام خانوادگی",
@@ -508,7 +497,7 @@ export const addMemberRelationPage = {
 
 export const editMemberRelationPage = {
     _title: "ویرایش مشخصات فرد تحت تکفل",
-    _subTitle: "مشخصات فرد تحت تکفل سهام‌دار را وارد نمایید.",
+    _subTitle: "مشخصات فرد تحت تکفل سهام‌دار را وارد کنید.",
     name: "نام",
     namePlaceholder: "نام",
     family: "نام خانوادگی",
@@ -530,20 +519,31 @@ export const editMemberRelationPage = {
 export const memberRelationsAllPage = {
     _title: "مشخصات افراد تحت تکفل",
     _subTitle: "فهرست مشخصات افراد تحت تکفل",
+    village: "روستا",
+    allVillages: "همه روستاها",
+    name: "نام",
+    namePlaceholder: "نام",
+    family: "نام خانوادگی",
+    familyPlaceholder: "نام خانوادگی",
+    nationalNo: "شماره ملی",
+    nationalNoPlaceholder: "شماره ملی",
+    cardNo: "شماره کارت",
+    cardNoPlaceholder: "شماره کارت",
     nameFamily: "نام و نام خانوادگی",
     memberNameFamily: "نام و نام خانوادگی - شماره ملی سرپرست",
-    nationalNo: "شماره ملی",
     identityNo: "شماره شناسنامه",
     birthDate: "تاریخ تولد",
     relationship: "رابطه خویشاوندی",
     transfer: "انتقال",
-    transferAsMember: "به عنوان سرپرست",
-    transferAsMemberRelation: "تغییر سرپرست",
+    transferMemberRelationToMember: "انتقال به عنوان سهام‌دار جدید",
+    transferMemberRelationToNewMember: "تغییر سرپرست",
+    removeMessageTitle: "آیا مطمئن به حذف اطلاعات این فرد تحت تکفل می‌باشید؟",
+    submitted: "حذف اطلاعات فرد تحت تکفل با موفقیت انجام شد.",
 };
 
-export const changeMemberRelationToMemberPage = {
+export const transferMemberRelationToMemberPage = {
     _title: "انتقال فرد تحت تکفل به عنوان سهام‌دار جدید",
-    _subTitle: "مشخصات سهام‌دار جدید را وارد نمایید.",
+    _subTitle: "مشخصات سهام‌دار جدید را وارد کنید.",
     name: "نام",
     namePlaceholder: "نام",
     family: "نام خانوادگی",
@@ -574,5 +574,34 @@ export const changeMemberRelationToMemberPage = {
     cardNoPlaceholder: "شماره کارت",
     maxCardNo: "آخرین شماره کارت صادره",
     noVillagesFound: "هیچ روستایی ثبت نشده است.",
-    submitted: "افزودن مشخصات سهام‌دار با موفقیت انجام شد.",
+    submitted: "انتقال مشخصات سهام‌دار با موفقیت انجام شد.",
+};
+
+export const transferMemberToMemberRelationModal = {
+    _title: "انتقال سرپرست به تحت کفالت",
+    members: "سهام‌داران (10 رکورد اخیر)",
+    nameTransferModal: "نام",
+    nameTransferModalPlaceholder: "نام",
+    familyTransferModal: "نام خانوادگی",
+    familyTransferModalPlaceholder: "نام خانوادگی",
+    nationalNoTransferModal: "شماره ملی",
+    nationalNoTransferModalPlaceholder: "شماره ملی",
+    cardNoTransferModal: "شماره کارت",
+    cardNoTransferModalPlaceholder: "شماره کارت",
+    relationship: "رابطه خویشاوندی",
+    namdeFamilyTransferModal: "نام و نام خانوادگی",
+};
+
+export const transferMemberRelationToNewMemberModal = {
+    _title: "تغییر سرپرست",
+    members: "سهام‌داران (10 رکورد اخیر)",
+    nameTransferModal: "نام",
+    nameTransferModalPlaceholder: "نام",
+    familyTransferModal: "نام خانوادگی",
+    familyTransferModalPlaceholder: "نام خانوادگی",
+    nationalNoTransferModal: "شماره ملی",
+    nationalNoTransferModalPlaceholder: "شماره ملی",
+    cardNoTransferModal: "شماره کارت",
+    cardNoTransferModalPlaceholder: "شماره کارت",
+    namdeFamilyTransferModal: "نام و نام خانوادگی",
 };

@@ -15,7 +15,7 @@ function ProfileModal() {
         >
             <InputTextColumn
                 field="nameModal"
-                readonly={true}
+                readOnly={true}
                 strings={strings}
                 showLabel
                 icon="icon-user"
@@ -24,7 +24,7 @@ function ProfileModal() {
             />
             <InputTextColumn
                 field="familyModal"
-                readonly={true}
+                readOnly={true}
                 strings={strings}
                 showLabel
                 icon="icon-user"
@@ -33,7 +33,7 @@ function ProfileModal() {
             />
             <InputTextColumn
                 field="mobileModal"
-                readonly={true}
+                readOnly={true}
                 strings={strings}
                 showLabel
                 textAlign="left"

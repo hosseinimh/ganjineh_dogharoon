@@ -5,9 +5,12 @@ import { Member, MemberRelation as Entity } from "../../../../http/entities";
 import { BasePageUtils } from "../../../../utils/BasePageUtils";
 import { BASE_PATH, MESSAGE_CODES, MESSAGE_TYPES } from "../../../../constants";
 import { setLoadingAction } from "../../../../state/layout/layoutActions";
-import { editMemberSchema as schema } from "../../../validations";
-import { changeMemberRelationToMemberPage as strings } from "../../../../constants/strings/fa";
-import { setPagePropsAction } from "../../../../state/page/pageActions";
+import { transferMemberRelationToMemberSchema as schema } from "../../../validations";
+import { transferMemberRelationToMemberPage as strings } from "../../../../constants/strings/fa";
+import {
+    setPagePropsAction,
+    setPageTitleAction,
+} from "../../../../state/page/pageActions";
 import { setMessageAction } from "../../../../state/message/messageActions";
 
 export class PageUtils extends BasePageUtils {
@@ -76,6 +79,12 @@ export class PageUtils extends BasePageUtils {
                 maxCardNo: result.maxCardNo,
             })
         );
+        this.dispatch(
+            setPageTitleAction(
+                `${strings._title} [ ${result.item.name} ${result.item.family} - ${result.item.nationalNo} ]`,
+                strings._subTitle
+            )
+        );
         this.useForm.setValue("name", result.item.name);
         this.useForm.setValue("family", result.item.family);
         this.useForm.setValue("nationalNo", result.item.nationalNo);
@@ -95,17 +104,11 @@ export class PageUtils extends BasePageUtils {
 
     async onSubmit(data) {
         const member = new Member();
-        const promise = member.changeMemberRelationToMemnber(
+        const promise = member.transferMemberRelationToMemnber(
             this.pageState.params.memberRelationId,
-            data.name,
-            data.family,
-            data.nationalNo,
-            data.identityNo,
             data.fatherName,
-            data.birthDate.replaceAll("/", ""),
             data.membershipDate.replaceAll("/", ""),
             data.postalCode,
-            data.gender,
             data.village,
             data.tel,
             data.mobile,

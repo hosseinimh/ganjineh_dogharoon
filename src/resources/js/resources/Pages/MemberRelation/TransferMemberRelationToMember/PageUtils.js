@@ -1,12 +1,12 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { MemberRelation as Entity } from "../../../../http/entities";
+import { Member, MemberRelation as Entity } from "../../../../http/entities";
 import { BasePageUtils } from "../../../../utils/BasePageUtils";
 import { BASE_PATH, MESSAGE_CODES, MESSAGE_TYPES } from "../../../../constants";
 import { setLoadingAction } from "../../../../state/layout/layoutActions";
-import { editMemberRelationSchema as schema } from "../../../validations";
-import { editMemberRelationPage as strings } from "../../../../constants/strings/fa";
+import { transferMemberRelationToMemberSchema as schema } from "../../../validations";
+import { transferMemberRelationToMemberPage as strings } from "../../../../constants/strings/fa";
 import {
     setPagePropsAction,
     setPageTitleAction,
@@ -18,14 +18,14 @@ export class PageUtils extends BasePageUtils {
         const form = useForm({
             resolver: yupResolver(schema),
         });
-        super("Members", strings, form);
+        super("MemberRelations", strings, form);
         this.entity = new Entity();
         this.initialPageProps = {
             item: null,
-            member: null,
-            relationships: null,
+            villages: null,
+            maxCardNo: 0,
         };
-        this.callbackUrl = `${BASE_PATH}/member_relations/${this.pageState?.props?.member?.id}`;
+        this.callbackUrl = `${BASE_PATH}/members`;
     }
 
     onLoad() {
@@ -51,34 +51,37 @@ export class PageUtils extends BasePageUtils {
     }
 
     async fetchItem(id) {
-        return await this.entity.getWithRelationships(id);
+        return await this.entity.getWithVillages(id);
     }
 
     handleFetchResult(result) {
-        if (result.relationships.length > 0) {
+        if (result.villages.length > 0) {
             this.dispatch(
                 setPagePropsAction({
-                    relationships: result.relationships.map((relationship) => {
-                        relationship.value = relationship.name;
-                        return relationship;
+                    villages: result.villages.map((village) => {
+                        village.value = village.name;
+                        return village;
                     }),
                 })
             );
         } else {
             this.dispatch(
                 setMessageAction(
-                    strings.noRelationshipsFound,
+                    strings.noVillagesFound,
                     MESSAGE_TYPES.ERROR,
                     MESSAGE_CODES.ITEM_NOT_FOUND
                 )
             );
         }
         this.dispatch(
-            setPagePropsAction({ item: result.item, member: result.member })
+            setPagePropsAction({
+                item: result.item,
+                maxCardNo: result.maxCardNo,
+            })
         );
         this.dispatch(
             setPageTitleAction(
-                `${strings._title} [ ${result.member.name} ${result.member.family} - ${result.member.nationalNo} ]`,
+                `${strings._title} [ ${result.item.name} ${result.item.family} - ${result.item.nationalNo} ]`,
                 strings._subTitle
             )
         );
@@ -86,24 +89,32 @@ export class PageUtils extends BasePageUtils {
         this.useForm.setValue("family", result.item.family);
         this.useForm.setValue("nationalNo", result.item.nationalNo);
         this.useForm.setValue("identityNo", result.item.identityNo);
+        this.useForm.setValue("fatherName", result.item.fatherName);
         this.useForm.setValue("birthDate", result.item.birthDate);
+        this.useForm.setValue("membershipDate", result.item.membershipDate);
         this.useForm.setValue("postalCode", result.item.postalCode);
         this.useForm.setValue("gender", result.item.gender);
-        this.useForm.setValue("relationship", result.item.relationshipId);
+        this.useForm.setValue("village", result.item.villageId);
+        this.useForm.setValue("tel", result.item.tel);
+        this.useForm.setValue("mobile", result.item.mobile);
+        this.useForm.setValue("address", result.item.address);
         this.useForm.setValue("description", result.item.description);
+        this.useForm.setValue("cardNo", result.maxCardNo + 1);
     }
 
     async onSubmit(data) {
-        const promise = this.entity.update(
+        const member = new Member();
+        const promise = member.transferMemberRelationToMemnber(
             this.pageState.params.memberRelationId,
-            data.name,
-            data.family,
-            data.nationalNo,
-            data.identityNo,
-            data.birthDate.replaceAll("/", ""),
-            data.gender,
-            data.relationship,
-            data.description
+            data.fatherName,
+            data.membershipDate.replaceAll("/", ""),
+            data.postalCode,
+            data.village,
+            data.tel,
+            data.mobile,
+            data.address,
+            data.description,
+            data.cardNo
         );
         super.onModifySubmit(promise);
     }

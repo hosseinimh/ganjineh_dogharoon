@@ -1,7 +1,8 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { general as strings } from "../../../constants/strings/fa";
+import { setPagePropsAction } from "../../../state/page/pageActions";
 
 const SearchBox = ({
     children,
@@ -11,6 +12,12 @@ const SearchBox = ({
     containerClassName,
 }) => {
     const layoutState = useSelector((state) => state.layoutReducer);
+    const dispatch = useDispatch();
+
+    const submit = (data) => {
+        dispatch(setPagePropsAction({ pageNumber: 1 }));
+        onSubmit(data);
+    };
 
     return (
         <div
@@ -26,7 +33,7 @@ const SearchBox = ({
                     type="button"
                     disabled={layoutState?.loading}
                     title={strings.search}
-                    onClick={pageUtils.useForm.handleSubmit(onSubmit)}
+                    onClick={pageUtils.useForm.handleSubmit(submit)}
                 >
                     {strings.search}
                 </button>

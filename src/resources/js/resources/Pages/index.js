@@ -22,42 +22,42 @@ import EditCountry from "./Country/EditCountry";
 import Members from "./Member/Members";
 import AddMember from "./Member/AddMember";
 import EditMember from "./Member/EditMember";
+import TransferMemberRelationToMember from "./Member/TransferMemberRelationToMember";
 import MemberRelations from "./MemberRelation/MemberRelations";
 import MemberRelationsAll from "./MemberRelation/MemberRelationsAll";
 import AddMemberRelation from "./MemberRelation/AddMemberRelation";
 import EditMemberRelation from "./MemberRelation/EditMemberRelation";
 import Notifications from "./Notification/Notifications";
-import ChangeMemberRelationToMember from "./TransferMember/ChangeMemberRelationToMember";
 
 export {
-  Dashboard,
-  Errors,
-  Login,
-  AddUser,
-  EditCurrentUser,
-  EditUser,
-  ChangePasswordCurrentUser,
-  ChangePasswordUser,
-  Users,
-  Villages,
-  AddVillage,
-  EditVillage,
-  Banks,
-  AddBank,
-  EditBank,
-  Relationships,
-  AddRelationship,
-  EditRelationship,
-  Countries,
-  AddCountry,
-  EditCountry,
-  Members,
-  AddMember,
-  EditMember,
-  MemberRelations,
-  MemberRelationsAll,
-  AddMemberRelation,
-  EditMemberRelation,
-  Notifications,
-  ChangeMemberRelationToMember,
+    Dashboard,
+    Errors,
+    Login,
+    AddUser,
+    EditCurrentUser,
+    EditUser,
+    ChangePasswordCurrentUser,
+    ChangePasswordUser,
+    Users,
+    Villages,
+    AddVillage,
+    EditVillage,
+    Banks,
+    AddBank,
+    EditBank,
+    Relationships,
+    AddRelationship,
+    EditRelationship,
+    Countries,
+    AddCountry,
+    EditCountry,
+    Members,
+    AddMember,
+    EditMember,
+    MemberRelations,
+    MemberRelationsAll,
+    AddMemberRelation,
+    EditMemberRelation,
+    Notifications,
+    TransferMemberRelationToMember,
 };

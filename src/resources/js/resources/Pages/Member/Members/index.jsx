@@ -23,6 +23,7 @@ import {
 import { USER_ROLES } from "../../../../constants";
 import utils from "../../../../utils/Utils";
 import { setDropDownElementAction } from "../../../../state/layout/layoutActions";
+import TransferMemberToMemberRelationModal from "../../../components/Modal/TransferMemberToMemberRelationModal";
 
 export const types = [
     { id: 1, value: genderTypes.male },
@@ -293,6 +294,26 @@ const Members = () => {
                                                     {strings.memberRelations}
                                                 </CustomLink>
                                             </li>
+                                            <li>
+                                                <div className="line-gr"></div>
+                                            </li>
+                                            <li>
+                                                <CustomLink
+                                                    onClick={(e) =>
+                                                        pageUtils.transferMemberToMemberRelationModal(
+                                                            e,
+                                                            item
+                                                        )
+                                                    }
+                                                    disabled={
+                                                        layoutState?.loading
+                                                    }
+                                                >
+                                                    {
+                                                        strings.transferMemberToMemberRelation
+                                                    }
+                                                </CustomLink>
+                                            </li>
                                         </ul>
                                     </div>
                                 </button>
@@ -319,6 +340,7 @@ const Members = () => {
             renderButtons={renderButtons}
         >
             <PromptModal />
+            <TransferMemberToMemberRelationModal />
         </ListPage>
     );
 };

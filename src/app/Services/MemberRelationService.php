@@ -3,9 +3,12 @@
 namespace App\Services;
 
 use App\Constants\ErrorCode;
+use App\Facades\Helper;
 use App\Models\Member;
 use App\Models\MemberRelation as Model;
+use App\Models\Relationship;
 use Exception;
+use Illuminate\Support\Facades\DB;
 
 class MemberRelationService
 {
@@ -26,7 +29,7 @@ class MemberRelationService
         return Model::join('tbl_relationships', 'tbl_member_relations.relationship_id', 'tbl_relationships.id')->where('member_id', $memberId)->select('tbl_member_relations.*', 'tbl_relationships.name AS relationship_name')->orderBy('family', 'ASC')->orderBy('tbl_member_relations.name', 'ASC')->orderBy('tbl_member_relations.id', 'ASC')->skip(($page - 1) * $pageItems)->take($pageItems)->get();
     }
 
-    public function getAll(int $page, int $pageItems, int|null $villageId = null, string|null $name = null, string|null $family = null,  string|null $nationalNo = null, int|null $cardNo = null): mixed
+    public function getAll(int|null $villageId, string|null $name, string|null $family,  string|null $nationalNo, int|null $cardNo, int $page, int $pageItems): mixed
     {
         $query = Model::query();
         if ($villageId) {
@@ -92,12 +95,64 @@ class MemberRelationService
         return $model->update($data);
     }
 
-    public function changeMember(Model $model, int $memberId): bool
+    public function transferMemberToMemberRelation(Member $member, Member $parentMember, Relationship $relationship): mixed
     {
+        $this->throwIfMemberAndParentMemberAreEqual($member, $parentMember->id);
+        $this->throwIfHasMemberRelation($member);
+        $description = $member->description . '
+
+----
+
+' . __('member_relation.transfer_member_to_member_relation_description');
+        $description = str_replace(':field_1', $parentMember->name . ' ' . $parentMember->family, $description);
+        $description = str_replace(':field_2', $parentMember->national_no, $description);
+        $description = str_replace(':field_3', Helper::faDate3(date("Y-m-d H:i:s")), $description);
         $data = [
-            'member_id' => $memberId,
+            'name' => $member->name,
+            'family' => $member->family,
+            'national_no' => $member->national_no,
+            'identity_no' => $member->identity_no,
+            'birth_date' => $member->birth_date,
+            'gender' => $member->gender,
+            'relationship_id' => $relationship->id,
+            'description' => $description ?? '',
+            'member_id' => $parentMember->id,
+        ];
+        DB::beginTransaction();
+        $model = Model::create($data);
+        if ($model && $member->delete()) {
+            DB::commit();
+            return $model;
+        }
+        DB::rollBack();
+        return null;
+    }
+
+    public function transferMemberRelationToNewMember(Model $model, Member $member): bool
+    {
+        if (intval($model->member_id) == $member->id) {
+            return true;
+        }
+        $description = $model->description . '
+
+----
+
+' . __('member_relation.transfer_member_relation_to_new_member_description');
+        $description = str_replace(':field_1', $model->member->name . ' ' . $model->member->family, $description);
+        $description = str_replace(':field_2', $model->member->national_no, $description);
+        $description = str_replace(':field_3', $member->name . ' ' . $member->family, $description);
+        $description = str_replace(':field_4', $member->national_no, $description);
+        $description = str_replace(':field_5', Helper::faDate3(date("Y-m-d H:i:s")), $description);
+        $data = [
+            'member_id' => $member->id,
+            'description' => $description,
         ];
         return $model->update($data);
+    }
+
+    public function delete(Model $model): bool
+    {
+        return $model->delete();
     }
 
     public function count(int $memberId): int
@@ -168,5 +223,21 @@ class MemberRelationService
             return;
         }
         throw new Exception(__('member_relation.national_no_unique'), ErrorCode::CUSTOM_ERROR);
+    }
+
+    private function throwIfMemberAndParentMemberAreEqual(Member $member, int $parentMemberId)
+    {
+        if ($member->id !== $parentMemberId) {
+            return;
+        }
+        throw new Exception(__('member_relation.member_and_parent_member_are_equal'), ErrorCode::CUSTOM_ERROR);
+    }
+
+    private function throwIfHasMemberRelation(Member $member)
+    {
+        if ($member->memberRelations->count() === 0) {
+            return;
+        }
+        throw new Exception(__('member.has_member_relations'), ErrorCode::CUSTOM_ERROR);
     }
 }

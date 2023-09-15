@@ -16,8 +16,21 @@ export class MemberRelation extends Entity {
         );
     }
 
-    async getAll(_pn = 1, _pi = PAGE_ITEMS) {
+    async getAll(
+        villageId,
+        name,
+        family,
+        nationalNo,
+        cardNo,
+        _pn = 1,
+        _pi = PAGE_ITEMS
+    ) {
         return await this.handlePost(`${BASE_URL}/u/member_relations`, {
+            village_id: villageId,
+            name,
+            family,
+            national_no: nationalNo,
+            card_no: cardNo,
             _pn,
             _pi,
         });
@@ -91,9 +104,21 @@ export class MemberRelation extends Entity {
         );
     }
 
-    async changeMember(id, memberId) {
+    async transferMemberRelationToNewMember(id, memberId) {
         return await this.handlePost(
-            `${BASE_URL}/a/member_relations/change_member/${id}/${memberId}`
+            `${BASE_URL}/a/member_relations/transfer_member_relation_to_new_member/${id}/${memberId}`
+        );
+    }
+
+    async transferMemberToMemberRelation(id, memberId, relationId) {
+        return await this.handlePost(
+            `${BASE_URL}/a/member_relations/transfer_member_to_member_relation/${id}/${memberId}/${relationId}`
+        );
+    }
+
+    async delete(id) {
+        return await this.handlePost(
+            `${BASE_URL}/a/member_relations/delete/${id}`
         );
     }
 }

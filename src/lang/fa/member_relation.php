@@ -20,4 +20,7 @@ return [
     'birth_date_numeric' => $numericMessage('تاریخ تولد'),
     'birth_date_gte' => $gteNumericMessage('تاریخ تولد', 13000101),
     'description_max' => $maxStringMessage('توضیحات', 300),
+    'transfer_member_relation_to_new_member_description' => 'انتقال از تحت کفالت [ :field_1 به شماره ملی :field_2 ] به سرپرست جدید [ :field_3 به شماره ملی :field_4 ] در تاریخ :field_5',
+    'transfer_member_to_member_relation_description' => 'انتقال سهام‌دار به تحت کفالت [ :field_1 به شماره ملی :field_2 ] در تاریخ :field_3',
+    'member_and_parent_member_are_equal' => 'سهام‌دار و سرپرست جدید نمی‌توانند یک نفر باشند.',
 ];

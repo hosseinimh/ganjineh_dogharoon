@@ -282,6 +282,7 @@ export class BasePageUtils {
         this.onSendRequest();
         const result = await promise;
         this.handleModifyResult(result);
+        this.dispatch(setPagePropsAction({ pageNumber: 1 }));
         this.fillForm();
     }
 

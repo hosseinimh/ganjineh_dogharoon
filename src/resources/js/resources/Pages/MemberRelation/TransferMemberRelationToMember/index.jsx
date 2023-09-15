@@ -11,9 +11,9 @@ import {
 } from "../../../components";
 import { PageUtils } from "./PageUtils";
 import { types } from "../Members";
-import { editMemberPage as strings } from "../../../../constants/strings/fa";
+import { transferMemberRelationToMemberPage as strings } from "../../../../constants/strings/fa";
 
-const EditMember = () => {
+const TransferMemberToMemberRelation = () => {
     const pageUtils = new PageUtils();
     const isPCScreen = useMediaQuery({
         query: "(min-width: 1224px)",
@@ -25,24 +25,28 @@ const EditMember = () => {
                 <InputTextColumn
                     field="name"
                     fullRow={false}
+                    readOnly={true}
                     showLabel
                     icon={"icon-personalcard4"}
                 />
                 <InputTextColumn
                     field="family"
                     fullRow={false}
+                    readOnly={true}
                     showLabel
                     icon={"icon-personalcard4"}
                 />
                 <InputTextColumn
                     field="nationalNo"
                     fullRow={false}
+                    readOnly={true}
                     showLabel
                     icon={"icon-personalcard4"}
                 />
                 <InputTextColumn
                     field="identityNo"
                     fullRow={false}
+                    readOnly={true}
                     type="number"
                     showLabel
                     icon={"icon-personalcard4"}
@@ -58,6 +62,7 @@ const EditMember = () => {
                 <InputDatePickerColumn
                     field="birthDate"
                     fullRow={false}
+                    readOnly={true}
                     showLabel
                 />
                 <InputDatePickerColumn
@@ -89,6 +94,7 @@ const EditMember = () => {
                     field="gender"
                     items={types}
                     fullRow={false}
+                    readOnly={true}
                     showLabel
                 />
                 <InputSelectColumn
@@ -126,8 +132,14 @@ const EditMember = () => {
                 />
                 {isPCScreen && <div style={{ flexGrow: "4" }}></div>}
             </InputRow>
+            <p className="input-info">
+                <span>{strings.maxCardNo}:</span>
+                <span className="text mx-10">
+                    {pageUtils?.pageState?.props?.maxCardNo}
+                </span>
+            </p>
         </FormPage>
     );
 };
 
-export default EditMember;
+export default TransferMemberToMemberRelation;

@@ -189,6 +189,13 @@ class Helper
         return $date[3] . ':' . $date[4] . ':' . $date[5] . ' ' . $date[2] . '-' . $date[1] . '-' . $date[0];
     }
 
+    public function faDate3($date)
+    {
+        $date = Helper::getFaDate($date);
+
+        return $date[3] . ':' . $date[4] . ':' . $date[5] . ' - ' . $date[0] . '/' . $date[1] . '/' . $date[2];
+    }
+
     public function logError($e)
     {
         try {

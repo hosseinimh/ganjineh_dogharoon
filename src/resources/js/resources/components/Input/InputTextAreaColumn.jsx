@@ -3,90 +3,93 @@ import { useSelector } from "react-redux";
 import InputRow from "./InputRow";
 
 const InputTextAreaColumn = ({
-  field,
-  useForm,
-  strings,
-  showLabel,
-  fullRow = true,
-  readonly = false,
-  value = null,
-  inputStyle = null,
+    field,
+    useForm,
+    strings,
+    showLabel,
+    fullRow = true,
+    readOnly = false,
+    value = null,
+    inputStyle = null,
 }) => {
-  const layoutState = useSelector((state) => state.layoutReducer);
-  const pageState = useSelector((state) => state.pageReducer);
-  const messageState = useSelector((state) => state.messageReducer);
-  const [label, setLabel] = useState(
-    strings && field in strings ? strings[field] : ""
-  );
-  const [placeholder, setPlaceholder] = useState(
-    strings && `${field}Placeholder` in strings
-      ? strings[`${field}Placeholder`]
-      : ""
-  );
-  const [form, setForm] = useState(useForm);
+    const layoutState = useSelector((state) => state.layoutReducer);
+    const pageState = useSelector((state) => state.pageReducer);
+    const messageState = useSelector((state) => state.messageReducer);
+    const [label, setLabel] = useState(
+        strings && field in strings ? strings[field] : ""
+    );
+    const [placeholder, setPlaceholder] = useState(
+        strings && `${field}Placeholder` in strings
+            ? strings[`${field}Placeholder`]
+            : ""
+    );
+    const [form, setForm] = useState(useForm);
 
-  useEffect(() => {
-    if (!strings) {
-      setLabel(
-        pageState?.pageUtils?.strings && field in pageState.pageUtils.strings
-          ? pageState?.pageUtils?.strings[field]
-          : ""
-      );
-      setPlaceholder(
-        pageState?.pageUtils?.strings &&
-          `${field}Placeholder` in pageState.pageUtils.strings
-          ? pageState.pageUtils.strings[`${field}Placeholder`]
-          : ""
-      );
+    useEffect(() => {
+        if (!strings) {
+            setLabel(
+                pageState?.pageUtils?.strings &&
+                    field in pageState.pageUtils.strings
+                    ? pageState?.pageUtils?.strings[field]
+                    : ""
+            );
+            setPlaceholder(
+                pageState?.pageUtils?.strings &&
+                    `${field}Placeholder` in pageState.pageUtils.strings
+                    ? pageState.pageUtils.strings[`${field}Placeholder`]
+                    : ""
+            );
+        }
+
+        if (!useForm) {
+            setForm(pageState?.pageUtils?.useForm);
+        }
+    }, [pageState]);
+
+    useEffect(() => {
+        if (form && value) {
+            form?.setValue(field, value);
+        }
+    }, [form]);
+
+    const renderItem = () => (
+        <div>
+            {showLabel && <div className="input-info">{label}</div>}
+            <div
+                className={`input-text input-bg input-border ${
+                    messageState?.messageField === field
+                        ? "error mb-40"
+                        : "mb-30"
+                }`}
+                style={{
+                    minHeight: "100px",
+                }}
+            >
+                <textarea
+                    {...form?.register(field)}
+                    id={field}
+                    className="textarea"
+                    style={{
+                        minHeight: "100px",
+                        paddingTop: "15px",
+                        paddingBottom: "15px",
+                        ...inputStyle,
+                    }}
+                    placeholder={placeholder}
+                    disabled={layoutState?.loading}
+                    readOnly={readOnly}
+                />
+                {messageState?.messageField === field && (
+                    <span className="error">{messageState?.message}</span>
+                )}
+            </div>
+        </div>
+    );
+
+    if (fullRow) {
+        return <InputRow>{renderItem()}</InputRow>;
     }
-
-    if (!useForm) {
-      setForm(pageState?.pageUtils?.useForm);
-    }
-  }, [pageState]);
-
-  useEffect(() => {
-    if (form && value) {
-      form?.setValue(field, value);
-    }
-  }, [form]);
-
-  const renderItem = () => (
-    <div>
-      {showLabel && <div className="input-info">{label}</div>}
-      <div
-        className={`input-text input-bg input-border ${
-          messageState?.messageField === field ? "error mb-40" : "mb-30"
-        }`}
-        style={{
-          minHeight: "100px",
-        }}
-      >
-        <textarea
-          {...form?.register(field)}
-          id={field}
-          className="textarea"
-          style={{
-            minHeight: "100px",
-            paddingTop: "15px",
-            paddingBottom: "15px",
-            ...inputStyle,
-          }}
-          placeholder={placeholder}
-          disabled={layoutState?.loading}
-          readOnly={readonly}
-        />
-        {messageState?.messageField === field && (
-          <span className="error">{messageState?.message}</span>
-        )}
-      </div>
-    </div>
-  );
-
-  if (fullRow) {
-    return <InputRow>{renderItem()}</InputRow>;
-  }
-  return renderItem();
+    return renderItem();
 };
 
 export default InputTextAreaColumn;

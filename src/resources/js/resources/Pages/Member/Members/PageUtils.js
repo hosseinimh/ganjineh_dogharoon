@@ -11,6 +11,7 @@ import {
 } from "../../../../constants/strings/fa";
 import { searchMemberSchema as schema } from "../../../validations";
 import { setShownModalAction } from "../../../../state/layout/layoutActions";
+import { setPagePropsAction } from "../../../../state/page/pageActions";
 
 export class PageUtils extends BasePageUtils {
     constructor() {
@@ -24,9 +25,12 @@ export class PageUtils extends BasePageUtils {
             item: null,
             items: null,
             villages: null,
+            relationships: null,
             action: null,
         };
         this.handlePromptSubmit = this.handlePromptSubmit.bind(this);
+        this.handleTransferMemberToMemberRelationSubmit =
+            this.handleTransferMemberToMemberRelationSubmit.bind(this);
     }
 
     onLoad() {
@@ -134,16 +138,40 @@ export class PageUtils extends BasePageUtils {
                 ],
                 itemsCount: result.count,
                 memberRelationsCount: result.memberRelationsCount,
+                relationships: result.relationships
+                    ? [
+                          ...result.relationships.map((relationship) => {
+                              relationship.value = relationship.name;
+                              return relationship;
+                          }),
+                      ]
+                    : this.pageState?.props?.relationships,
             };
         } catch {}
+    }
+
+    transferMemberToMemberRelationModal(e, item) {
+        e.stopPropagation();
+        this.dispatch(
+            setShownModalAction("transferMemberToMemberRelationModal", {
+                member: item,
+                relationships: this.pageState?.props?.relationships,
+                onSubmit: this.handleTransferMemberToMemberRelationSubmit,
+            })
+        );
     }
 
     handlePromptSubmit(result) {
         if (result === true) {
             const promise = this.entity.delete(this.promptItem?.id);
             super.onSelfSubmit(promise);
-        } else {
-            console.log("false");
+        }
+    }
+
+    handleTransferMemberToMemberRelationSubmit(result) {
+        if (result === true) {
+            this.dispatch(setPagePropsAction(this.initialPageProps));
+            this.fillForm();
         }
     }
 }

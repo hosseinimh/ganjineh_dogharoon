@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import {
     general,
-    transferToNewMemberModal as strings,
+    transferMemberToMemberRelationModal as strings,
 } from "../../../../constants/strings/fa";
 import {
     Modal,
@@ -15,16 +15,22 @@ import {
     Table,
     TableItems,
     CustomLink,
-} from "../../";
-import { transferToNewMemberSchema as schema } from "../../../validations";
+    InputSelectColumn,
+    AlertState,
+} from "../..";
+import { transferMemberToMemberRelationSchema as schema } from "../../../validations";
 import { setLoadingAction } from "../../../../state/layout/layoutActions";
-import { clearMessageAction } from "../../../../state/message/messageActions";
+import {
+    clearMessageAction,
+    setMessageAction,
+} from "../../../../state/message/messageActions";
 import { Member as Entity, MemberRelation } from "../../../../http/entities";
+import { MESSAGE_TYPES, MODAL_RESULT } from "../../../../constants";
 
-function TransferToNewMemberModal() {
+function TransferMemberToMemberRelationModal() {
     const layoutState = useSelector((state) => state.layoutReducer);
     const dispatch = useDispatch();
-    const [closeModal, setCloseModal] = useState(undefined);
+    const [modalResult, setModalResult] = useState(undefined);
     const [message, setMessage] = useState(null);
     const [items, setItems] = useState(null);
     const form = useForm({
@@ -46,7 +52,7 @@ function TransferToNewMemberModal() {
                     ].message
                 );
                 document
-                    .querySelector("#transferToNewMemberModal")
+                    .querySelector("#transferMemberToMemberRelationModal")
                     .querySelector(".modal-main")
                     .firstChild.scrollTo(0, 0);
             }
@@ -54,10 +60,21 @@ function TransferToNewMemberModal() {
     }, [form?.formState?.errors]);
 
     useEffect(() => {
-        if (closeModal === true) {
-            setCloseModal(undefined);
+        if (modalResult === MODAL_RESULT.OK) {
+            if (
+                typeof layoutState?.shownModal?.props?.onSubmit === "function"
+            ) {
+                layoutState?.shownModal?.props?.onSubmit(true);
+            }
+        } else if (modalResult === MODAL_RESULT.CANCEL) {
+            if (
+                typeof layoutState?.shownModal?.props?.onCancel === "function"
+            ) {
+                layoutState?.shownModal?.props?.onCancel();
+            }
         }
-    }, [closeModal]);
+        setModalResult(undefined);
+    }, [modalResult]);
 
     const onClose = () => {
         setMessage(null);
@@ -86,16 +103,27 @@ function TransferToNewMemberModal() {
         dispatch(setLoadingAction(true));
         dispatch(clearMessageAction());
         const memberRelation = new MemberRelation();
-        await memberRelation.changeMember(
-            layoutState?.shownModal?.props?.memberRelation?.id,
-            memberId
+        const result = await memberRelation.transferMemberToMemberRelation(
+            layoutState?.shownModal?.props?.member?.id,
+            memberId,
+            form.getValues("relationship")
         );
         dispatch(setLoadingAction(false));
-        setCloseModal(true);
-        if (
-            typeof layoutState?.shownModal?.props?.onCloseModal === "function"
-        ) {
-            layoutState?.shownModal?.props?.onCloseModal(true);
+        if (result) {
+            setModalResult(MODAL_RESULT.OK);
+        } else {
+            dispatch(
+                setMessageAction(
+                    memberRelation.errorMessage,
+                    MESSAGE_TYPES.ERROR,
+                    memberRelation.errorCode,
+                    true
+                )
+            );
+            document
+                .querySelector("#transferMemberToMemberRelationModal")
+                .querySelector(".modal-main")
+                .firstChild.scrollTo(0, 0);
         }
     };
 
@@ -103,7 +131,7 @@ function TransferToNewMemberModal() {
         form.reset();
         setItems(null);
         document
-            .querySelector("#transferToNewMemberModal")
+            .querySelector("#transferMemberToMemberRelationModal")
             .querySelector(".modal-main")
             .firstChild.scrollTo(0, 0);
     };
@@ -204,13 +232,23 @@ function TransferToNewMemberModal() {
 
     return (
         <Modal
-            id="transferToNewMemberModal"
-            title={`${strings._title} - [ ${layoutState?.shownModal?.props?.memberRelation?.name} ${layoutState?.shownModal?.props?.memberRelation?.family} ]`}
+            id="transferMemberToMemberRelationModal"
+            title={`${strings._title} [ ${layoutState?.shownModal?.props?.member?.name} ${layoutState?.shownModal?.props?.member?.family} - ${layoutState?.shownModal?.props?.member?.nationalNo} ]`}
             onClose={onClose}
-            closeModal={closeModal}
+            modalResult={modalResult}
         >
+            <AlertState />
             <AlertMessage message={message} />
             {renderSearch()}
+            <InputRow>
+                <InputSelectColumn
+                    field="relationship"
+                    items={layoutState?.shownModal?.props?.relationships}
+                    useForm={form}
+                    fullRow={false}
+                    strings={strings}
+                />
+            </InputRow>
             <h3 className="mt-20 mx-20 text">{strings.members}</h3>
             <div className="block">
                 <Table renderHeader={renderHeader} renderItems={renderItems} />
@@ -219,4 +257,4 @@ function TransferToNewMemberModal() {
     );
 }
 
-export default TransferToNewMemberModal;
+export default TransferMemberToMemberRelationModal;

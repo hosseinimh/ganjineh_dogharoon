@@ -42,10 +42,12 @@ Route::middleware(['auth:sanctum', 'auth.administrator'])->group(function () {
 
     Route::post('members/store/{village}', [MemberController::class, 'store']);
     Route::post('members/update/{model}/{village}', [MemberController::class, 'update']);
-    Route::post('members/change_member_relation_to_member/{relationModel}/{village}', [MemberController::class, 'changeMemberRelationToMember']);
+    Route::post('members/transfer_member_relation_to_member/{relationModel}/{village}', [MemberController::class, 'transferMemberRelationToMember']);
     Route::post('members/delete/{model}', [MemberController::class, 'delete']);
 
     Route::post('member_relations/store/{member}/{relationship}', [MemberRelationController::class, 'store']);
     Route::post('member_relations/update/{model}/{relationship}', [MemberRelationController::class, 'update']);
-    Route::post('member_relations/change_member/{model}/{member}', [MemberRelationController::class, 'changeMember']);
+    Route::post('member_relations/transfer_member_to_member_relation/{member}/{parentMember}/{relationship}', [MemberRelationController::class, 'transferMemberToMemberRelation']);
+    Route::post('member_relations/transfer_member_relation_to_new_member/{model}/{member}', [MemberRelationController::class, 'transferMemberRelationToNewMember']);
+    Route::post('member_relations/delete/{model}', [MemberRelationController::class, 'delete']);
 });

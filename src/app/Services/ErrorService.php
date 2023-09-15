@@ -8,7 +8,7 @@ class ErrorService
 {
     public function getPaginate(int $page, int $pageItems): mixed
     {
-        return Model::orderBy('id', 'ASC')->skip(($page - 1) * $pageItems)->take($pageItems)->get();
+        return Model::orderBy('created_at', 'DESC')->orderBy('id', 'DESC')->skip(($page - 1) * $pageItems)->take($pageItems)->get();
     }
 
     public function store(string $message): mixed

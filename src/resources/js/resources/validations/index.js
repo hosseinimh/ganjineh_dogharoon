@@ -16,7 +16,9 @@ import addMemberSchema from "./Member/AddMemberSchema";
 import editMemberSchema from "./Member/EditMemberSchema";
 import addMemberRelationSchema from "./MemberRelation/AddMemberRelationSchema";
 import editMemberRelationSchema from "./MemberRelation/EditMemberRelationSchema";
-import transferToNewMemberSchema from "./MemberRelation/TransferToNewMemberSchema";
+import transferMemberRelationToMemberSchema from "./Member/TransferMemberRelationToMemberSchema";
+import transferMemberRelationToNewMemberSchema from "./Member/TransferMemberRelationToNewMemberSchema";
+import transferMemberToMemberRelationSchema from "./MemberRelation/TransferMemberToMemberRelationSchema";
 
 export {
     loginUserSchema,
@@ -37,5 +39,7 @@ export {
     editMemberSchema,
     addMemberRelationSchema,
     editMemberRelationSchema,
-    transferToNewMemberSchema,
+    transferMemberRelationToMemberSchema,
+    transferMemberRelationToNewMemberSchema,
+    transferMemberToMemberRelationSchema,
 };

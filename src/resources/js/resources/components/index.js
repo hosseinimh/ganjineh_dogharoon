@@ -36,7 +36,7 @@ import TopLoadingBar from "./Loading/TopLoadingBar";
 import Modal from "./Modal/Modal";
 import ProfileModal from "./Modal/ProfileModal";
 import PromptModal from "./Modal/PromptModal";
-import TransferToNewMemberModal from "./Modal/TransferToNewMemberModal";
+import TransferMemberRelationToNewMemberModal from "./Modal/TransferMemberRelationToNewMemberModal";
 
 // Page
 import BlankPage from "./Page/BlankPage";
@@ -86,7 +86,7 @@ export {
     Modal,
     ProfileModal,
     PromptModal,
-    TransferToNewMemberModal,
+    TransferMemberRelationToNewMemberModal,
     BlankPage,
     ListPage,
     FormPage,

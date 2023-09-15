@@ -31,8 +31,18 @@ class MemberRelationController extends Controller
         return $this->onUpdate($this->service->update($model, $request->name, $request->family, $request->national_no, $request->identity_no, $request->birth_date, $gender, $relationship->id, $request->description));
     }
 
-    public function changeMember(Model $model, Member $member): HttpJsonResponse
+    public function transferMemberToMemberRelation(Member $member, Member $parentMember, Relationship $relationship): HttpJsonResponse
     {
-        return $this->onUpdate($this->service->changeMember($model, $member->id));
+        return $this->onStore($this->service->transferMemberToMemberRelation($member, $parentMember->id, $relationship));
+    }
+
+    public function transferMemberRelationToNewMember(Model $model, Member $member): HttpJsonResponse
+    {
+        return $this->onUpdate($this->service->transferMemberRelationToNewMember($model, $member));
+    }
+
+    public function delete(Model $model): HttpJsonResponse
+    {
+        return $this->onDelete($this->service->delete($model));
     }
 }
