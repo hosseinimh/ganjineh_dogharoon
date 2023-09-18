@@ -295,6 +295,17 @@ const Members = () => {
                                                 </CustomLink>
                                             </li>
                                             <li>
+                                                <CustomLink
+                                                    onClick={() =>
+                                                        pageUtils.onShareActions(
+                                                            item
+                                                        )
+                                                    }
+                                                >
+                                                    {strings.shares}
+                                                </CustomLink>
+                                            </li>
+                                            <li>
                                                 <div className="line-gr"></div>
                                             </li>
                                             <li>

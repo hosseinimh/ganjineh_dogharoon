@@ -35,7 +35,7 @@ export class PageUtils extends BasePageUtils {
     }
 
     navigateIfNotValidateParams() {
-        this.navigateIfNotValidId(this.pageState.params.memberRelationId);
+        this.navigateIfNotValidId(this.pageState?.params?.memberRelationId);
     }
 
     async fillForm(data) {
@@ -95,7 +95,7 @@ export class PageUtils extends BasePageUtils {
 
     async onSubmit(data) {
         const promise = this.entity.update(
-            this.pageState.params.memberRelationId,
+            this.pageState?.params?.memberRelationId,
             data.name,
             data.family,
             data.nationalNo,

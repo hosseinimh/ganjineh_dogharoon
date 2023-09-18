@@ -18,13 +18,13 @@ class MemberRelationResource extends JsonResource
             'gender' => intval($this->gender),
             'relationshipId' => intval($this->relationship_id),
             'relationshipName' => $this->relationship_name,
-            'description' => $this->description ?? '',
             'memberId' => intval($this->member_id),
             'memberName' => $this->member_name ?? '',
             'memberFamily' => $this->member_family ?? '',
             'memberNationalNo' => $this->member_national_no ?? '',
             'villageId' => intval($this->village_id),
             'villageName' => $this->village_name ?? '',
+            'description' => $this->description ?? '',
         ];
     }
 }

@@ -380,6 +380,7 @@ export const membersPage = {
     cardNo: "شماره کارت",
     cardNoPlaceholder: "شماره کارت",
     memberRelations: "افراد تحت تکفل",
+    shares: "گزارش سهام",
     printWithMobile: "چاپ با شماره همراه",
     printWithoutMobile: "چاپ بدون شماره همراه",
     add: "افزودن سهام‌دار",
@@ -604,4 +605,48 @@ export const transferMemberRelationToNewMemberModal = {
     cardNoTransferModal: "شماره کارت",
     cardNoTransferModalPlaceholder: "شماره کارت",
     namdeFamilyTransferModal: "نام و نام خانوادگی",
+};
+
+export const shareActionTypes = {
+    buy: "خرید",
+    sell: "فروش",
+};
+
+export const shareActionsPage = {
+    _title: "گزارش سهام سهام‌دار",
+    _subTitle: "گزارش خرید و فروش سهام سهام‌دار",
+    remainedShares: "موجودی سهام",
+    actionType: "نوع تراکنش",
+    actionDate: "تاریخ تراکنش",
+    count: "تعداد سهام",
+    description: "توضیحات",
+    add: "ثبت تراکنش سهام",
+};
+
+export const addShareActionPage = {
+    _title: "ثبت تراکنش سهام",
+    _subTitle: "مشخصات تراکنش انجام‌شده را وارد کنید.",
+    actionDate: "تاریخ تراکنش",
+    actionDatePlaceholder: "تاریخ تراکنش",
+    actionType: "نوع تراکنش",
+    actionTypePlaceholder: "نوع تراکنش",
+    count: "تعداد",
+    countPlaceholder: "تعداد",
+    description: "توضیحات",
+    descriptionPlaceholder: "توضیحات",
+    submitted: "ثبت تراکنش سهام با موفقیت انجام شد.",
+};
+
+export const editShareActionPage = {
+    _title: "ثبت تراکنش سهام",
+    _subTitle: "مشخصات تراکنش انجام‌شده را وارد کنید.",
+    actionDate: "تاریخ تراکنش",
+    actionDatePlaceholder: "تاریخ تراکنش",
+    actionType: "نوع تراکنش",
+    actionTypePlaceholder: "نوع تراکنش",
+    count: "تعداد",
+    countPlaceholder: "تعداد",
+    description: "توضیحات",
+    descriptionPlaceholder: "توضیحات",
+    submitted: "ثبت تراکنش سهام با موفقیت انجام شد.",
 };

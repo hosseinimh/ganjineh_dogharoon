@@ -26,6 +26,7 @@ class Member extends Model
         'mobile',
         'address',
         'description',
+        'shares',
         'member_no',
         'card_no',
     ];

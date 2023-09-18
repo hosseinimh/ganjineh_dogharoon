@@ -337,6 +337,9 @@ textarea {
 .bg-dark {
   background-color: var(--dark) !important;
 }
+.bg-body {
+  background-color: var(--body) !important;
+}
 img {
   display: block;
 }

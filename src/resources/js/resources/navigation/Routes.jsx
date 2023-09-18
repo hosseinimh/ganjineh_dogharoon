@@ -50,6 +50,10 @@ const renderAuthRoutes = () => (
             path={`${BASE_PATH}/users/change_password`}
             element={<Pages.ChangePasswordCurrentUser />}
         />
+        <Route
+            path={`${BASE_PATH}/share_actions/:memberId`}
+            element={<Pages.ShareActions />}
+        />
         <Route path={`${BASE_PATH}`} element={<Pages.Dashboard />} />
         <Route path="*" element={<Navigate to={BASE_PATH} />} />
     </>
@@ -106,6 +110,14 @@ const renderAdministratorRoutes = () => (
         <Route
             path={`${BASE_PATH}/member/transfer_member_relation_to_member/:memberRelationId`}
             element={<Pages.TransferMemberRelationToMember />}
+        />
+        <Route
+            path={`${BASE_PATH}/share_actions/add/:memberId`}
+            element={<Pages.AddShareAction />}
+        />{" "}
+        <Route
+            path={`${BASE_PATH}/share_actions/edit/:shareActionId`}
+            element={<Pages.EditShareAction />}
         />
         <Route
             path={`${BASE_PATH}/users/change_password/:userId`}

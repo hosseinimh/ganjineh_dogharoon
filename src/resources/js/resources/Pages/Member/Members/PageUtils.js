@@ -70,6 +70,14 @@ export class PageUtils extends BasePageUtils {
         );
     }
 
+    onMemberRelations(item) {
+        this.navigate(`${BASE_PATH}/member_relations/${item.id}`);
+    }
+
+    onShareActions(item) {
+        this.navigate(`${BASE_PATH}/share_actions/${item.id}`);
+    }
+
     addAction() {
         this.navigate(`${BASE_PATH}/members/add`);
     }

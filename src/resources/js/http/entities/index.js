@@ -8,16 +8,18 @@ import { Country } from "./Country";
 import { Notification } from "./Notification";
 import { Member } from "./Member";
 import { MemberRelation } from "./MemberRelation";
+import { ShareAction } from "./ShareAction";
 
 export {
-  Error,
-  Dashboard,
-  User,
-  Village,
-  Bank,
-  Relationship,
-  Country,
-  Notification,
-  Member,
-  MemberRelation,
+    Error,
+    Dashboard,
+    User,
+    Village,
+    Bank,
+    Relationship,
+    Country,
+    Notification,
+    Member,
+    MemberRelation,
+    ShareAction,
 };

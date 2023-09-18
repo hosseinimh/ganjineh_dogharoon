@@ -259,10 +259,6 @@ export class BasePageUtils {
         );
     }
 
-    onMemberRelations(item) {
-        this.navigate(`${BASE_PATH}/member_relations/${item.id}`);
-    }
-
     onSetFile(file) {
         this.dispatch(
             setPagePropsAction({

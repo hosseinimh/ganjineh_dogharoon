@@ -7,6 +7,7 @@ use App\Http\Controllers\User\MemberController;
 use App\Http\Controllers\User\MemberRelationController;
 use App\Http\Controllers\User\NotificationController;
 use App\Http\Controllers\User\RelationshipController;
+use App\Http\Controllers\User\ShareActionController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\User\VillageController;
 use Illuminate\Support\Facades\Route;
@@ -59,4 +60,7 @@ Route::middleware(['auth:sanctum', 'auth.logged'])->group(function () {
     Route::post('notifications/review', [NotificationController::class, 'review']);
     Route::post('notifications/seen/{model}', [NotificationController::class, 'seen']);
     Route::post('notifications/seen_review', [NotificationController::class, 'seenReview']);
+
+    Route::post('share_actions/{member}', [ShareActionController::class, 'index']);
+    Route::post('share_actions/show/{model}', [ShareActionController::class, 'show']);
 });

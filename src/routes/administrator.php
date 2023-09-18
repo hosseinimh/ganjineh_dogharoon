@@ -7,6 +7,7 @@ use App\Http\Controllers\Administrator\ErrorController;
 use App\Http\Controllers\Administrator\MemberController;
 use App\Http\Controllers\Administrator\MemberRelationController;
 use App\Http\Controllers\Administrator\RelationshipController;
+use App\Http\Controllers\Administrator\ShareActionController;
 use App\Http\Controllers\Administrator\UserController;
 use App\Http\Controllers\Administrator\VillageController;
 use Illuminate\Support\Facades\Route;
@@ -50,4 +51,7 @@ Route::middleware(['auth:sanctum', 'auth.administrator'])->group(function () {
     Route::post('member_relations/transfer_member_to_member_relation/{member}/{parentMember}/{relationship}', [MemberRelationController::class, 'transferMemberToMemberRelation']);
     Route::post('member_relations/transfer_member_relation_to_new_member/{model}/{member}', [MemberRelationController::class, 'transferMemberRelationToNewMember']);
     Route::post('member_relations/delete/{model}', [MemberRelationController::class, 'delete']);
+
+    Route::post('share_actions/store/{member}', [ShareActionController::class, 'store']);
+    Route::post('share_actions/update/{model}', [ShareActionController::class, 'update']);
 });

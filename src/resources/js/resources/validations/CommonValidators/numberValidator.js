@@ -11,6 +11,7 @@ const numberValidator = (
     if (required) {
         result = schema
             .number(validation.numberMessage.replace(":field", field))
+            .typeError(validation.numberMessage.replace(":field", field))
             .required(validation.requiredMessage.replace(":field", field));
     }
     if (!result && min) {

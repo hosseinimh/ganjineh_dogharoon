@@ -7,6 +7,7 @@ import { USER_ROLES } from "./userRoles";
 import { NOTIFICATION_CATEGORIES } from "./notificationCategories";
 import { NOTIFICATION_SUB_CATEGORIES } from "./notificationSubCategories";
 import { DISTRICT } from "./district";
+import { SHARE_ACTIONS } from "./shareActions";
 import {
     BASE_PATH,
     ASSETS_PATH,
@@ -36,4 +37,5 @@ export {
     NOTIFICATION_CATEGORIES,
     NOTIFICATION_SUB_CATEGORIES,
     DISTRICT,
+    SHARE_ACTIONS,
 };

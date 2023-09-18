@@ -4,10 +4,8 @@ namespace App\Services;
 
 use App\Constants\ErrorCode;
 use App\Facades\Helper;
-use App\Models\Error;
 use App\Models\Member as Model;
 use App\Models\MemberRelation;
-use DateTime;
 use Exception;
 use Illuminate\Support\Facades\DB;
 
@@ -141,24 +139,12 @@ class MemberService
         return $model->update($data);
     }
 
-    public function changeMemberToMemberRelation(Model $model, int $memberId, string $name, string $family, string $nationalNo, int $identityNo, string $birthDate, int $gender, int $relationshipId, string|null $description): mixed
+    public function updateShares(Model $model, int $shares): bool
     {
-        $this->throwIfNationalNoNotUnique($nationalNo);
-        $birthDate = substr($birthDate, 0, 4) . "/" . substr($birthDate, 4, 2) . "/" . substr($birthDate, 6);
         $data = [
-            'name' => $name,
-            'family' => $family,
-            'national_no' => $nationalNo,
-            'identity_no' => $identityNo,
-            'birth_date' => $birthDate,
-            'gender' => $gender,
-            'relationship_id' => $relationshipId,
-            'description' => $description ?? '',
-            'member_id' => $memberId,
+            'shares' => $shares,
         ];
-        $model = Model::create($data);
-
-        return $model ?? null;
+        return $model->update($data);
     }
 
     public function transferMemberRelationToMember(MemberRelation $relationModel, string $fatherName, string $membershipDate, int|null $postalCode, int $villageId, string|null $tel, string|null $mobile, string|null $address, string|null $description, int $cardNo): mixed

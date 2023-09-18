@@ -11,6 +11,7 @@ use App\Http\Controllers\Administrator\MemberController;
 use App\Http\Controllers\Administrator\MemberRelationController;
 use App\Http\Controllers\Administrator\NotificationController;
 use App\Http\Controllers\Administrator\RelationshipController;
+use App\Http\Controllers\Administrator\ShareActionController;
 use App\Http\Controllers\Administrator\UserController;
 use App\Http\Controllers\Administrator\VillageController;
 use App\Http\Controllers\User\BankController as UserBankController;
@@ -21,6 +22,7 @@ use App\Http\Controllers\User\MemberController as UserMemberController;
 use App\Http\Controllers\User\MemberRelationController as UserMemberRelationController;
 use App\Http\Controllers\User\NotificationController as UserNotificationController;
 use App\Http\Controllers\User\RelationshipController as UserRelationshipController;
+use App\Http\Controllers\User\ShareActionController as UserShareActionController;
 use App\Http\Controllers\User\UserController as UserUserController;
 use App\Http\Controllers\User\VillageController as UserVillageController;
 use App\Http\Resources\Bank\BankResource;
@@ -30,6 +32,7 @@ use App\Http\Resources\Member\MemberResource;
 use App\Http\Resources\MemberRelation\MemberRelationResource;
 use App\Http\Resources\Notification\NotificationResource;
 use App\Http\Resources\Relationship\RelationshipResource;
+use App\Http\Resources\ShareAction\ShareActionResource;
 use App\Http\Resources\User\UserResource;
 use App\Http\Resources\Village\VillageResource;
 use App\Packages\Helper;
@@ -42,6 +45,7 @@ use App\Services\MemberRelationService;
 use App\Services\MemberService;
 use App\Services\NotificationService;
 use App\Services\RelationshipService;
+use App\Services\ShareActionService;
 use App\Services\UserService;
 use App\Services\VillageService;
 use Illuminate\Support\Facades\View;
@@ -148,6 +152,14 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind(UserNotificationController::class, function ($app) {
             return new UserNotificationController(new JsonResponse(NotificationResource::class), $app->make(NotificationService::class));
+        });
+
+        $this->app->bind(ShareActionController::class, function ($app) {
+            return new ShareActionController(new JsonResponse(ShareActionResource::class), $app->make(ShareActionService::class));
+        });
+
+        $this->app->bind(UserShareActionController::class, function ($app) {
+            return new UserShareActionController(new JsonResponse(ShareActionResource::class), $app->make(ShareActionService::class));
         });
     }
 }

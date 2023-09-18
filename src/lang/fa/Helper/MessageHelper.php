@@ -13,6 +13,7 @@ $templateMessages = [
     'gtNumeric' => 'مقدار فیلد :field باید بزرگ‌تر از :value  باشد.',
     'gteNumeric' => 'مقدار فیلد :field باید برابر یا بزرگ‌تر از :value باشد.',
     'ltNumeric' => 'مقدار فیلد :field باید کوچک‌تر از :value باشد.',
+    'lteNumeric' => 'مقدار فیلد :field باید برابر یا کوچک‌تر از :value باشد.',
     'select' => 'لطفا یک :field را انتخاب نمایید.',
 ];
 
@@ -90,6 +91,13 @@ $ltNumericMessage = function ($field, $value) use ($templateMessages) {
 
 $gteNumericMessage = function ($field, $value) use ($templateMessages) {
     $message = $templateMessages['gteNumeric'];
+    $message = str_replace(':field', $field, $message);
+
+    return str_replace(':value', $value, $message);
+};
+
+$lteNumericMessage = function ($field, $value) use ($templateMessages) {
+    $message = $templateMessages['lteNumeric'];
     $message = str_replace(':field', $field, $message);
 
     return str_replace(':value', $value, $message);

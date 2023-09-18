@@ -19,6 +19,8 @@ import editMemberRelationSchema from "./MemberRelation/EditMemberRelationSchema"
 import transferMemberRelationToMemberSchema from "./Member/TransferMemberRelationToMemberSchema";
 import transferMemberRelationToNewMemberSchema from "./Member/TransferMemberRelationToNewMemberSchema";
 import transferMemberToMemberRelationSchema from "./MemberRelation/TransferMemberToMemberRelationSchema";
+import addShareActionSchema from "./ShareAction/AddShareActionSchema";
+import editShareActionSchema from "./ShareAction/EditShareActionSchema";
 
 export {
     loginUserSchema,
@@ -42,4 +44,6 @@ export {
     transferMemberRelationToMemberSchema,
     transferMemberRelationToNewMemberSchema,
     transferMemberToMemberRelationSchema,
+    addShareActionSchema,
+    editShareActionSchema,
 };

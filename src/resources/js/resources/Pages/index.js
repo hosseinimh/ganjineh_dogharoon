@@ -28,6 +28,9 @@ import MemberRelationsAll from "./MemberRelation/MemberRelationsAll";
 import AddMemberRelation from "./MemberRelation/AddMemberRelation";
 import EditMemberRelation from "./MemberRelation/EditMemberRelation";
 import Notifications from "./Notification/Notifications";
+import ShareActions from "./ShareAction/ShareActions";
+import AddShareAction from "./ShareAction/AddShareAction";
+import EditShareAction from "./ShareAction/EditShareAction";
 
 export {
     Dashboard,
@@ -60,4 +63,7 @@ export {
     EditMemberRelation,
     Notifications,
     TransferMemberRelationToMember,
+    ShareActions,
+    AddShareAction,
+    EditShareAction,
 };

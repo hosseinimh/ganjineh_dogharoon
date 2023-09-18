@@ -25,6 +25,7 @@ class MemberResource extends JsonResource
             'mobile' => $this->mobile ?? '',
             'address' => $this->address ?? '',
             'description' => $this->description ?? '',
+            'shares' => intval($this->shares),
             'cardNo' => intval($this->card_no),
             'memberRelationsCount' => intval($this->member_relations_count),
         ];
