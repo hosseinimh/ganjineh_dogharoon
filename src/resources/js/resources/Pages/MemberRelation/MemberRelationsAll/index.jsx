@@ -83,8 +83,9 @@ const MemberRelationsAll = () => {
                     field="cardNo"
                     textAlign="left"
                     fullRow={false}
-                    icon={"icon-personalcard4"}
+                    icon={"icon-card-pos4"}
                 />
+                <div></div>
             </InputRow>
         </SearchBox>
     );
@@ -126,8 +127,24 @@ const MemberRelationsAll = () => {
             return (
                 <React.Fragment key={item.id}>
                     <tr>
-                        <td>{`${item.name} ${item.family}`}</td>
-                        <td>{`${item.memberName} ${item.memberFamily} - ${item.memberNationalNo}`}</td>
+                        <td>
+                            <CustomLink
+                                onClick={() => pageUtils.onEdit(item)}
+                                disabled={layoutState?.loading}
+                            >
+                                {`${item.name} ${item.family}`}
+                            </CustomLink>
+                        </td>
+                        <td>
+                            <CustomLink
+                                onClick={() =>
+                                    pageUtils.onMemberRelations(item)
+                                }
+                                disabled={layoutState?.loading}
+                            >
+                                {`${item.memberName} ${item.memberFamily} - ${item.memberNationalNo}`}
+                            </CustomLink>
+                        </td>
                         <td>{item.nationalNo}</td>
                         <td>{item.identityNo}</td>
                         <td>{birthDate}</td>
@@ -173,8 +190,28 @@ const MemberRelationsAll = () => {
                                                             item
                                                         )
                                                     }
+                                                    disabled={
+                                                        layoutState?.loading
+                                                    }
                                                 >
                                                     {general.remove}
+                                                </CustomLink>
+                                            </li>
+                                            <li>
+                                                <div className="line-gr"></div>
+                                            </li>{" "}
+                                            <li>
+                                                <CustomLink
+                                                    onClick={() =>
+                                                        pageUtils.onShareActions(
+                                                            item
+                                                        )
+                                                    }
+                                                    disabled={
+                                                        layoutState?.loading
+                                                    }
+                                                >
+                                                    {strings.shares}
                                                 </CustomLink>
                                             </li>
                                             <li>

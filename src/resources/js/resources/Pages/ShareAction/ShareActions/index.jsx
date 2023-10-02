@@ -14,6 +14,7 @@ import utils from "../../../../utils/Utils";
 export const types = [
     { id: SHARE_ACTIONS.BUY, value: shareActionTypes.buy },
     { id: SHARE_ACTIONS.SELL, value: shareActionTypes.sell },
+    { id: SHARE_ACTIONS.REFUND, value: shareActionTypes.refund },
 ];
 
 const ShareActions = () => {
@@ -21,7 +22,7 @@ const ShareActions = () => {
     const userState = useSelector((state) => state.userReducer);
     const pageState = useSelector((state) => state.pageReducer);
     const columnsCount =
-        userState?.user?.role === USER_ROLES.ADMINISTRATOR ? 5 : 4;
+        userState?.user?.role === USER_ROLES.ADMINISTRATOR ? 4 : 3;
     const pageUtils = new PageUtils();
 
     const renderTopList = () => {
@@ -42,7 +43,6 @@ const ShareActions = () => {
     const renderHeader = () => (
         <tr>
             <th style={{ width: "100px" }}>{strings.actionType}</th>
-            <th style={{ width: "150px" }}>{strings.count}</th>
             <th style={{ width: "150px" }}>{strings.actionDate}</th>
             <th>{strings.description}</th>
             {userState?.user?.role === USER_ROLES.ADMINISTRATOR && (
@@ -63,15 +63,6 @@ const ShareActions = () => {
                         }
                     >
                         {item.actionTypeText}
-                    </td>
-                    <td
-                        className={
-                            item.actionType === SHARE_ACTIONS.BUY
-                                ? "success"
-                                : "danger"
-                        }
-                    >
-                        {utils.addCommas(item.count)}
                     </td>
                     <td>{item.actionDate}</td>
                     <td>

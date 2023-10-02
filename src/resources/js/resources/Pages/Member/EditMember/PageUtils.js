@@ -97,6 +97,10 @@ export class PageUtils extends BasePageUtils {
         this.useForm.setValue("mobile", result.item.mobile);
         this.useForm.setValue("address", result.item.address);
         this.useForm.setValue("description", result.item.description);
+        this.useForm.setValue(
+            "transferDescription",
+            result.item.transferDescription
+        );
         this.useForm.setValue("cardNo", result.item.cardNo);
     }
 

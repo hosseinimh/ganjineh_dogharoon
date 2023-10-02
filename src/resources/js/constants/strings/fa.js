@@ -28,6 +28,7 @@ export const general = {
     file: "فایل ضمیمه",
     print: "چاپ",
     currency: "تومان",
+    person: "نفر",
     itemNotFound: "آیتم یافت نشد.",
     noDataFound: "داده‌ای برای نمایش وجود ندارد.",
     noPermission: "شما مجوز ورود به این بخش را ندارید.",
@@ -124,7 +125,7 @@ export const sidebar = {
     countries: "کشورها",
     villages: "روستاها",
     relationships: "روابط خویشاوندی",
-    members: "سهام‌داران",
+    members: "سرپرستان خانوار",
     memberRelations: "افراد تحت تکفل",
     systemItems: "امکانات",
     users: "کاربران",
@@ -360,8 +361,8 @@ export const editRelationshipPage = {
 };
 
 export const membersPage = {
-    _title: "سهام‌داران شرکت",
-    _subTitle: "فهرست سهام‌داران شرکت",
+    _title: "سرپرستان خانوار",
+    _subTitle: "فهرست سرپرستان خانوار",
     village: "روستا",
     allVillages: "همه روستاها",
     name: "نام",
@@ -383,15 +384,16 @@ export const membersPage = {
     shares: "گزارش سهام",
     printWithMobile: "چاپ با شماره همراه",
     printWithoutMobile: "چاپ بدون شماره همراه",
-    add: "افزودن سهام‌دار",
-    transferMemberToMemberRelation: "انتقال به تحت کفالت سهام‌دار",
-    removeMessageTitle: "آیا مطمئن به حذف اطلاعات این سهام‌دار می‌باشید؟",
-    submitted: "حذف اطلاعات سهام‌دار با موفقیت انجام شد.",
+    add: "افزودن سرپرست خانوار",
+    transferMemberToMemberRelation: "انتقال به تحت کفالت سرپرست جدید",
+    memberHasRelations: "سرپرست خانوار دارای افراد تحت تکفل است.",
+    removeMessageTitle: "آیا مطمئن به حذف اطلاعات این سرپرست خانوار می‌باشید؟",
+    submitted: "حذف اطلاعات سرپرست خانوار با موفقیت انجام شد.",
 };
 
 export const addMemberPage = {
-    _title: "افزودن مشخصات سهام‌دار",
-    _subTitle: "مشخصات سهام‌دار جدید را وارد کنید.",
+    _title: "افزودن مشخصات سرپرست خانوار",
+    _subTitle: "مشخصات سرپرست خانوار جدید را وارد کنید.",
     name: "نام",
     namePlaceholder: "نام",
     family: "نام خانوادگی",
@@ -421,12 +423,12 @@ export const addMemberPage = {
     cardNo: "شماره کارت",
     cardNoPlaceholder: "شماره کارت",
     noVillagesFound: "هیچ روستایی ثبت نشده است.",
-    submitted: "افزودن مشخصات سهام‌دار با موفقیت انجام شد.",
+    submitted: "افزودن مشخصات سرپرست خانوار با موفقیت انجام شد.",
 };
 
 export const editMemberPage = {
-    _title: "ویرایش مشخصات سهام‌دار",
-    _subTitle: "مشخصات سهام‌دار را وارد کنید.",
+    _title: "ویرایش مشخصات سرپرست خانوار",
+    _subTitle: "مشخصات سرپرست خانوار را وارد کنید.",
     name: "نام",
     namePlaceholder: "نام",
     family: "نام خانوادگی",
@@ -453,23 +455,26 @@ export const editMemberPage = {
     addressPlaceholder: "آدرس",
     description: "توضیحات",
     descriptionPlaceholder: "توضیحات",
+    transferDescription: "توضیحات انتقال",
+    transferDescriptionPlaceholder: "توضیحات انتقال",
     cardNo: "شماره کارت",
     cardNoPlaceholder: "شماره کارت",
     noVillagesFound: "هیچ روستایی ثبت نشده است.",
-    submitted: "ویرایش مشخصات سهام‌دار با موفقیت انجام شد.",
+    submitted: "ویرایش مشخصات سرپرست خانوار با موفقیت انجام شد.",
 };
 
 export const memberRelationsPage = {
-    _title: "مشخصات افراد تحت تکفل سهام‌دار",
-    _subTitle: "فهرست مشخصات افراد تحت تکفل سهام‌دار",
+    _title: "مشخصات افراد تحت تکفل سرپرست خانوار",
+    _subTitle: "فهرست مشخصات افراد تحت تکفل سرپرست خانوار",
     nameFamily: "نام و نام خانوادگی",
     nationalNo: "شماره ملی",
     identityNo: "شماره شناسنامه",
     birthDate: "تاریخ تولد",
     relationship: "رابطه خویشاوندی",
     add: "افزودن فرد تحت تکفل",
+    shares: "گزارش سهام",
     transfer: "انتقال",
-    transferMemberRelationToMember: "انتقال به عنوان سهام‌دار جدید",
+    transferMemberRelationToMember: "انتقال به عنوان سرپرست خانوار جدید",
     transferMemberRelationToNewMember: "تغییر سرپرست",
     removeMessageTitle: "آیا مطمئن به حذف اطلاعات این فرد تحت تکفل می‌باشید؟",
     submitted: "حذف اطلاعات فرد تحت تکفل با موفقیت انجام شد.",
@@ -477,7 +482,7 @@ export const memberRelationsPage = {
 
 export const addMemberRelationPage = {
     _title: "افزودن مشخصات فرد تحت تکفل",
-    _subTitle: "مشخصات فرد تحت تکفل سهام‌دار را وارد کنید.",
+    _subTitle: "مشخصات فرد تحت تکفل سرپرست خانوار را وارد کنید.",
     name: "نام",
     namePlaceholder: "نام",
     family: "نام خانوادگی",
@@ -493,12 +498,12 @@ export const addMemberRelationPage = {
     description: "توضیحات",
     descriptionPlaceholder: "توضیحات",
     noRelationshipsFound: "هیچ رابطه خویشاوندی‌ای ثبت نشده است.",
-    submitted: "افزودن مشخصات فرد تحت تکفل سهام‌دار با موفقیت انجام شد.",
+    submitted: "افزودن مشخصات فرد تحت تکفل سرپرست خانوار با موفقیت انجام شد.",
 };
 
 export const editMemberRelationPage = {
     _title: "ویرایش مشخصات فرد تحت تکفل",
-    _subTitle: "مشخصات فرد تحت تکفل سهام‌دار را وارد کنید.",
+    _subTitle: "مشخصات فرد تحت تکفل سرپرست خانوار را وارد کنید.",
     name: "نام",
     namePlaceholder: "نام",
     family: "نام خانوادگی",
@@ -513,8 +518,10 @@ export const editMemberRelationPage = {
     relationship: "رابطه خویشاوندی",
     description: "توضیحات",
     descriptionPlaceholder: "توضیحات",
+    transferDescription: "توضیحات انتقال",
+    transferDescriptionPlaceholder: "توضیحات انتقال",
     noRelationshipsFound: "هیچ رابطه خویشاوندی‌ای ثبت نشده است.",
-    submitted: "ویرایش مشخصات فرد تحت تکفل سهام‌دار با موفقیت انجام شد.",
+    submitted: "ویرایش مشخصات فرد تحت تکفل سرپرست خانوار با موفقیت انجام شد.",
 };
 
 export const memberRelationsAllPage = {
@@ -535,16 +542,17 @@ export const memberRelationsAllPage = {
     identityNo: "شماره شناسنامه",
     birthDate: "تاریخ تولد",
     relationship: "رابطه خویشاوندی",
+    shares: "گزارش سهام",
     transfer: "انتقال",
-    transferMemberRelationToMember: "انتقال به عنوان سهام‌دار جدید",
+    transferMemberRelationToMember: "انتقال به عنوان سرپرست خانوار جدید",
     transferMemberRelationToNewMember: "تغییر سرپرست",
     removeMessageTitle: "آیا مطمئن به حذف اطلاعات این فرد تحت تکفل می‌باشید؟",
     submitted: "حذف اطلاعات فرد تحت تکفل با موفقیت انجام شد.",
 };
 
 export const transferMemberRelationToMemberPage = {
-    _title: "انتقال فرد تحت تکفل به عنوان سهام‌دار جدید",
-    _subTitle: "مشخصات سهام‌دار جدید را وارد کنید.",
+    _title: "انتقال فرد تحت تکفل به عنوان سرپرست خانوار جدید",
+    _subTitle: "مشخصات سرپرست خانوار جدید را وارد کنید.",
     name: "نام",
     namePlaceholder: "نام",
     family: "نام خانوادگی",
@@ -575,12 +583,12 @@ export const transferMemberRelationToMemberPage = {
     cardNoPlaceholder: "شماره کارت",
     maxCardNo: "آخرین شماره کارت صادره",
     noVillagesFound: "هیچ روستایی ثبت نشده است.",
-    submitted: "انتقال مشخصات سهام‌دار با موفقیت انجام شد.",
+    submitted: "انتقال مشخصات سرپرست خانوار با موفقیت انجام شد.",
 };
 
 export const transferMemberToMemberRelationModal = {
-    _title: "انتقال سرپرست به تحت کفالت",
-    members: "سهام‌داران (10 رکورد اخیر)",
+    _title: "انتقال سرپرست خانوار به تحت کفالت",
+    members: "سرپرستان خانوار (10 رکورد اخیر)",
     nameTransferModal: "نام",
     nameTransferModalPlaceholder: "نام",
     familyTransferModal: "نام خانوادگی",
@@ -591,11 +599,12 @@ export const transferMemberToMemberRelationModal = {
     cardNoTransferModalPlaceholder: "شماره کارت",
     relationship: "رابطه خویشاوندی",
     namdeFamilyTransferModal: "نام و نام خانوادگی",
+    relationshipNotSelected: "لطفا رابطه خویشاوندی را انتخاب کنید.",
 };
 
 export const transferMemberRelationToNewMemberModal = {
-    _title: "تغییر سرپرست",
-    members: "سهام‌داران (10 رکورد اخیر)",
+    _title: "تغییر سرپرست خانوار",
+    members: "سرپرستان خانوار (10 رکورد اخیر)",
     nameTransferModal: "نام",
     nameTransferModalPlaceholder: "نام",
     familyTransferModal: "نام خانوادگی",
@@ -610,15 +619,15 @@ export const transferMemberRelationToNewMemberModal = {
 export const shareActionTypes = {
     buy: "خرید",
     sell: "فروش",
+    refund: "استرداد",
 };
 
 export const shareActionsPage = {
     _title: "گزارش سهام سهام‌دار",
     _subTitle: "گزارش خرید و فروش سهام سهام‌دار",
     remainedShares: "موجودی سهام",
-    actionType: "نوع تراکنش",
-    actionDate: "تاریخ تراکنش",
-    count: "تعداد سهام",
+    actionType: "نوع درخواست",
+    actionDate: "تاریخ درخواست",
     description: "توضیحات",
     add: "ثبت تراکنش سهام",
 };
@@ -626,10 +635,10 @@ export const shareActionsPage = {
 export const addShareActionPage = {
     _title: "ثبت تراکنش سهام",
     _subTitle: "مشخصات تراکنش انجام‌شده را وارد کنید.",
-    actionDate: "تاریخ تراکنش",
-    actionDatePlaceholder: "تاریخ تراکنش",
-    actionType: "نوع تراکنش",
-    actionTypePlaceholder: "نوع تراکنش",
+    actionDate: "تاریخ درخواست",
+    actionDatePlaceholder: "تاریخ درخواست",
+    actionType: "نوع درخواست",
+    actionTypePlaceholder: "نوع درخواست",
     count: "تعداد",
     countPlaceholder: "تعداد",
     description: "توضیحات",
@@ -640,10 +649,10 @@ export const addShareActionPage = {
 export const editShareActionPage = {
     _title: "ثبت تراکنش سهام",
     _subTitle: "مشخصات تراکنش انجام‌شده را وارد کنید.",
-    actionDate: "تاریخ تراکنش",
-    actionDatePlaceholder: "تاریخ تراکنش",
-    actionType: "نوع تراکنش",
-    actionTypePlaceholder: "نوع تراکنش",
+    actionDate: "تاریخ درخواست",
+    actionDatePlaceholder: "تاریخ درخواست",
+    actionType: "نوع درخواست",
+    actionTypePlaceholder: "نوع درخواست",
     count: "تعداد",
     countPlaceholder: "تعداد",
     description: "توضیحات",

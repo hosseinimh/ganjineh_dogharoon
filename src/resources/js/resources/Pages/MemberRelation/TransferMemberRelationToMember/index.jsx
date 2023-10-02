@@ -128,7 +128,7 @@ const TransferMemberToMemberRelation = () => {
                     type="number"
                     fullRow={false}
                     showLabel
-                    icon={"icon-personalcard4"}
+                    icon={"icon-card-pos4"}
                 />
                 {isPCScreen && <div style={{ flexGrow: "4" }}></div>}
             </InputRow>

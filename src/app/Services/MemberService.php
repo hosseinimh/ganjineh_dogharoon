@@ -151,14 +151,10 @@ class MemberService
     {
         $this->throwIfNationalNoNotUnique($relationModel->national_no);
         $membershipDate = substr($membershipDate, 0, 4) . "/" . substr($membershipDate, 4, 2) . "/" . substr($membershipDate, 6);
-        $description = $description . '
-
-----
-
-' . __('member.transfer_member_relation_to_member_description');
-        $description = str_replace(':field_1', $relationModel->member->name . ' ' . $relationModel->member->family, $description);
-        $description = str_replace(':field_2', $relationModel->member->national_no, $description);
-        $description = str_replace(':field_3', Helper::faDate3(date("Y-m-d H:i:s")), $description);
+        $transferDescription = __('member.transfer_member_relation_to_member_description');
+        $transferDescription = str_replace(':field_1', $relationModel->member->name . ' ' . $relationModel->member->family, $transferDescription);
+        $transferDescription = str_replace(':field_2', $relationModel->member->national_no, $transferDescription);
+        $transferDescription = str_replace(':field_3', Helper::faDate3(date("Y-m-d H:i:s")), $transferDescription);
         $data = [
             'name' => $relationModel->name,
             'family' => $relationModel->family,
@@ -174,6 +170,7 @@ class MemberService
             'mobile' => $mobile ?? '',
             'address' => $address ?? '',
             'description' => $description ?? '',
+            'transfer_description' => $transferDescription ?? '',
             'card_no' => $cardNo,
         ];
         DB::beginTransaction();

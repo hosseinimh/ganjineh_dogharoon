@@ -6,9 +6,9 @@ export class ShareAction extends Entity {
         super();
     }
 
-    async getPaginate(memberId, _pn = 1, _pi = PAGE_ITEMS) {
+    async getPaginate(ownerId, isMember, _pn = 1, _pi = PAGE_ITEMS) {
         return await this.handlePost(
-            `${BASE_URL}/u/share_actions/${memberId}`,
+            `${BASE_URL}/u/share_actions/${ownerId}/${isMember}`,
             {
                 _pn,
                 _pi,

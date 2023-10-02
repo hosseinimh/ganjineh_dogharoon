@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('mobile');
             $table->string('address');
             $table->text('description');
+            $table->text('transfer_description');
             $table->unsignedBigInteger('shares')->default(0);
             $table->unsignedBigInteger('card_no')->unique();
             $table->unsignedBigInteger('card_no')->unique();

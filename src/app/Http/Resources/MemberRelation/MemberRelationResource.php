@@ -25,6 +25,7 @@ class MemberRelationResource extends JsonResource
             'villageId' => intval($this->village_id),
             'villageName' => $this->village_name ?? '',
             'description' => $this->description ?? '',
+            'transferDescription' => $this->transfer_description ?? '',
         ];
     }
 }

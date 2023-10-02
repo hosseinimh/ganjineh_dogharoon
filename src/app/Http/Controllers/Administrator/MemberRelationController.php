@@ -33,7 +33,7 @@ class MemberRelationController extends Controller
 
     public function transferMemberToMemberRelation(Member $member, Member $parentMember, Relationship $relationship): HttpJsonResponse
     {
-        return $this->onStore($this->service->transferMemberToMemberRelation($member, $parentMember->id, $relationship));
+        return $this->onStore($this->service->transferMemberToMemberRelation($member, $parentMember, $relationship));
     }
 
     public function transferMemberRelationToNewMember(Model $model, Member $member): HttpJsonResponse

@@ -81,10 +81,10 @@ function TransferMemberRelationToNewMemberModal() {
         dispatch(clearMessageAction());
         const result = await entity.getPaginate(
             0,
-            data.nameTransferModal,
-            data.familyTransferModal,
-            data.nationalNoTransferModal,
-            data.cardNoTransferModal
+            data?.nameTransferModal ?? "",
+            data?.familyTransferModal ?? "",
+            data?.nationalNoTransferModal ?? "",
+            data?.cardNoTransferModal ?? ""
         );
         dispatch(setLoadingAction(false));
         if (result === null) {
@@ -113,6 +113,7 @@ function TransferMemberRelationToNewMemberModal() {
             .querySelector("#transferMemberRelationToNewMemberModal")
             .querySelector(".modal-main")
             .firstChild.scrollTo(0, 0);
+        onSubmit();
     };
 
     const renderSearch = () => {
@@ -151,7 +152,7 @@ function TransferMemberRelationToNewMemberModal() {
                             strings={strings}
                             useForm={form}
                             fullRow={false}
-                            icon={"icon-personalcard4"}
+                            icon={"icon-card-pos4"}
                         />
                     </InputRow>
                 </div>
@@ -212,7 +213,7 @@ function TransferMemberRelationToNewMemberModal() {
     return (
         <Modal
             id="transferMemberRelationToNewMemberModal"
-            title={`${strings._title} - [ ${layoutState?.shownModal?.props?.memberRelation?.name} ${layoutState?.shownModal?.props?.memberRelation?.family} ]`}
+            title={`${strings._title} - [ ${layoutState?.shownModal?.props?.memberRelation?.name} ${layoutState?.shownModal?.props?.memberRelation?.family} - ${layoutState?.shownModal?.props?.memberRelation?.nationalNo} ]`}
             onClose={onClose}
             modalResult={modalResult}
         >

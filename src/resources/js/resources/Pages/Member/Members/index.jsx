@@ -109,8 +109,9 @@ const Members = () => {
                     field="cardNo"
                     textAlign="left"
                     fullRow={false}
-                    icon={"icon-personalcard4"}
+                    icon={"icon-card-pos4"}
                 />
+                <div></div>
             </InputRow>
         </SearchBox>
     );
@@ -170,6 +171,7 @@ const Members = () => {
                                 onClick={() =>
                                     pageUtils.printWithMobileAction()
                                 }
+                                disabled={layoutState?.loading}
                             >
                                 {strings.printWithMobile}
                             </CustomLink>
@@ -179,6 +181,7 @@ const Members = () => {
                                 onClick={() =>
                                     pageUtils.printWitouthMobileAction()
                                 }
+                                disabled={layoutState?.loading}
                             >
                                 {strings.printWithoutMobile}
                             </CustomLink>
@@ -231,12 +234,28 @@ const Members = () => {
                 <React.Fragment key={item.id}>
                     <tr>
                         <td>{item.cardNo}</td>
-                        <td>{`${item.name} ${item.family}`}</td>
+                        <td>
+                            <CustomLink
+                                onClick={() => pageUtils.onEdit(item)}
+                                disabled={layoutState?.loading}
+                            >
+                                {`${item.name} ${item.family}`}
+                            </CustomLink>
+                        </td>
                         <td>{item.nationalNo}</td>
                         <td>{item.identityNo}</td>
                         <td>{birthDate}</td>
                         <td>{item.fatherName}</td>
-                        <td>{item.memberRelationsCount}</td>
+                        <td>
+                            <CustomLink
+                                onClick={() =>
+                                    pageUtils.onMemberRelations(item)
+                                }
+                                disabled={layoutState?.loading}
+                            >
+                                {`${item.memberRelationsCount} ${general.person}`}
+                            </CustomLink>
+                        </td>
                         <td>{item.villageName}</td>
                         {userState?.user?.role === USER_ROLES.ADMINISTRATOR && (
                             <td>
@@ -264,6 +283,9 @@ const Members = () => {
                                                     onClick={() =>
                                                         pageUtils.onEdit(item)
                                                     }
+                                                    disabled={
+                                                        layoutState?.loading
+                                                    }
                                                 >
                                                     {general.edit}
                                                 </CustomLink>
@@ -275,6 +297,9 @@ const Members = () => {
                                                             e,
                                                             item
                                                         )
+                                                    }
+                                                    disabled={
+                                                        layoutState?.loading
                                                     }
                                                 >
                                                     {general.remove}
@@ -290,6 +315,9 @@ const Members = () => {
                                                             item
                                                         )
                                                     }
+                                                    disabled={
+                                                        layoutState?.loading
+                                                    }
                                                 >
                                                     {strings.memberRelations}
                                                 </CustomLink>
@@ -300,6 +328,9 @@ const Members = () => {
                                                         pageUtils.onShareActions(
                                                             item
                                                         )
+                                                    }
+                                                    disabled={
+                                                        layoutState?.loading
                                                     }
                                                 >
                                                     {strings.shares}

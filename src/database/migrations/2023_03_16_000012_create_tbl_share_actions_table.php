@@ -17,13 +17,16 @@ return new class extends Migration
             $table->id();
             $table->unsignedTinyInteger('action_type');
             $table->string('action_date');
-            $table->bigInteger('count');
-            $table->unsignedBigInteger('member_id');
+            $table->string('transaction_date')->default(null);
+            $table->string('invoice_no')->default(null);
+            $table->unsignedBigInteger('bank_id')->default(null);
+            $table->unsignedBigInteger('owner_id');
+            $table->unsignedTinyInteger('is_member');
             $table->text('description');
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('member_id')->references('id')->on('tbl_members');
+            $table->foreign('bank_id')->references('id')->on('tbl_banks');
         });
     }
 

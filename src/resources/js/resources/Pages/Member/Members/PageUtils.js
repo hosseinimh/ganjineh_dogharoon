@@ -3,7 +3,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import { Member as Entity } from "../../../../http/entities";
 import { BasePageUtils } from "../../../../utils/BasePageUtils";
-import { BASE_PATH, BASE_URL } from "../../../../constants";
+import {
+    BASE_PATH,
+    BASE_URL,
+    MESSAGE_CODES,
+    MESSAGE_TYPES,
+} from "../../../../constants";
 import utils from "../../../../utils/Utils";
 import {
     general,
@@ -12,6 +17,10 @@ import {
 import { searchMemberSchema as schema } from "../../../validations";
 import { setShownModalAction } from "../../../../state/layout/layoutActions";
 import { setPagePropsAction } from "../../../../state/page/pageActions";
+import {
+    clearMessageAction,
+    setMessageAction,
+} from "../../../../state/message/messageActions";
 
 export class PageUtils extends BasePageUtils {
     constructor() {
@@ -75,7 +84,7 @@ export class PageUtils extends BasePageUtils {
     }
 
     onShareActions(item) {
-        this.navigate(`${BASE_PATH}/share_actions/${item.id}`);
+        this.navigate(`${BASE_PATH}/share_actions/${item.id}/1`);
     }
 
     addAction() {
@@ -128,7 +137,7 @@ export class PageUtils extends BasePageUtils {
             data?.family ?? null,
             nationalNo,
             cardNo,
-            this.pageState.props?.pageNumber ?? 1
+            data?.pageNumber ?? this.pageState.props?.pageNumber ?? 1
         );
         super.fillForm(promise);
     }
@@ -159,6 +168,19 @@ export class PageUtils extends BasePageUtils {
     }
 
     transferMemberToMemberRelationModal(e, item) {
+        this.dispatch(clearMessageAction());
+        if (item?.memberRelationsCount > 0) {
+            window.scrollTo(0, 0);
+            this.dispatch(
+                setMessageAction(
+                    strings.memberHasRelations,
+                    MESSAGE_TYPES.ERROR,
+                    MESSAGE_CODES.FORM_INPUT_INVALID,
+                    true
+                )
+            );
+            return;
+        }
         e.stopPropagation();
         this.dispatch(
             setShownModalAction("transferMemberToMemberRelationModal", {
@@ -179,7 +201,7 @@ export class PageUtils extends BasePageUtils {
     handleTransferMemberToMemberRelationSubmit(result) {
         if (result === true) {
             this.dispatch(setPagePropsAction(this.initialPageProps));
-            this.fillForm();
+            this.fillForm({ pageNumber: 1 });
         }
     }
 }

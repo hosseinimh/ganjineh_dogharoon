@@ -25,7 +25,11 @@ import {
     setMessageAction,
 } from "../../../../state/message/messageActions";
 import { Member as Entity, MemberRelation } from "../../../../http/entities";
-import { MESSAGE_TYPES, MODAL_RESULT } from "../../../../constants";
+import {
+    MESSAGE_CODES,
+    MESSAGE_TYPES,
+    MODAL_RESULT,
+} from "../../../../constants";
 
 function TransferMemberToMemberRelationModal() {
     const layoutState = useSelector((state) => state.layoutReducer);
@@ -86,10 +90,10 @@ function TransferMemberToMemberRelationModal() {
         dispatch(clearMessageAction());
         const result = await entity.getPaginate(
             0,
-            data.nameTransferModal,
-            data.familyTransferModal,
-            data.nationalNoTransferModal,
-            data.cardNoTransferModal
+            data?.nameTransferModal ?? "",
+            data?.familyTransferModal ?? "",
+            data?.nationalNoTransferModal ?? "",
+            data?.cardNoTransferModal ?? ""
         );
         dispatch(setLoadingAction(false));
         if (result === null) {
@@ -100,6 +104,22 @@ function TransferMemberToMemberRelationModal() {
     };
 
     const onSelect = async (memberId) => {
+        if (!form.getValues("relationship")) {
+            dispatch(setLoadingAction(false));
+            dispatch(
+                setMessageAction(
+                    strings.relationshipNotSelected,
+                    MESSAGE_TYPES.ERROR,
+                    MESSAGE_CODES.FORM_INPUT_INVALID,
+                    true
+                )
+            );
+            document
+                .querySelector("#transferMemberToMemberRelationModal")
+                .querySelector(".modal-main")
+                .firstChild.scrollTo(0, 0);
+            return;
+        }
         dispatch(setLoadingAction(true));
         dispatch(clearMessageAction());
         const memberRelation = new MemberRelation();
@@ -134,6 +154,7 @@ function TransferMemberToMemberRelationModal() {
             .querySelector("#transferMemberToMemberRelationModal")
             .querySelector(".modal-main")
             .firstChild.scrollTo(0, 0);
+        onSubmit();
     };
 
     const renderSearch = () => {
@@ -172,7 +193,7 @@ function TransferMemberToMemberRelationModal() {
                             strings={strings}
                             useForm={form}
                             fullRow={false}
-                            icon={"icon-personalcard4"}
+                            icon={"icon-card-pos4"}
                         />
                     </InputRow>
                 </div>

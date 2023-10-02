@@ -23,6 +23,7 @@ return new class extends Migration
             $table->unsignedTinyInteger('gender');
             $table->unsignedBigInteger('relationship_id');
             $table->text('description');
+            $table->text('transfer_description');
             $table->unsignedBigInteger('member_no');
             $table->unsignedBigInteger('member_id');
             $table->timestamps();

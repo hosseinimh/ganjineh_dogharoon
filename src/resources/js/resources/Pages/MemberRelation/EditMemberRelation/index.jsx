@@ -70,6 +70,11 @@ const EditMemberRelation = () => {
                 </span>
             </InputRow>
             <InputTextAreaColumn field="description" showLabel />
+            <InputTextAreaColumn
+                field="transferDescription"
+                showLabel
+                readOnly
+            />
         </FormPage>
     );
 };

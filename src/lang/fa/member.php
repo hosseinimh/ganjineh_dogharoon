@@ -51,6 +51,6 @@ return [
     'mobile' => 'موبایل',
     'member_relations_count' => 'افراد تحت تکفل',
     'village' => 'روستا',
-    'has_member_relations' => 'سهام‌دار دارای افراد تحت تکفل است.',
-    'transfer_member_relation_to_member_description' => 'انتقال از تحت کفالت [ :field_1 به شماره ملی :field_2 ] به عنوان سرپرست جدید در تاریخ :field_3',
+    'has_member_relations' => 'سرپرست خانوار دارای افراد تحت تکفل است.',
+    'transfer_member_relation_to_member_description' => 'انتقال از تحت کفالت [ :field_1 به شماره ملی :field_2 ] به عنوان سرپرست خانوار جدید در تاریخ :field_3',
 ];

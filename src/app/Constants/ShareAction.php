@@ -9,6 +9,7 @@ abstract class ShareAction
 {
     const BUY = 1;
     const SELL = 2;
+    const REFUND = 3;
 
     public static function toArray()
     {

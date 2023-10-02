@@ -32,7 +32,7 @@ const AddShareAction = () => {
                     showLabel
                     type="number"
                     fullRow={false}
-                    icon={"icon-personalcard4"}
+                    icon={"icon-support"}
                 />
             </InputRow>
             <InputTextColumn

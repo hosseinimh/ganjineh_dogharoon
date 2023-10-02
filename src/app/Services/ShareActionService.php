@@ -16,13 +16,9 @@ class ShareActionService
         return Model::where('id', $id)->first();
     }
 
-    public function getPaginate(int|null $memberId, int $page, int $pageItems): mixed
+    public function getPaginate(int $ownerId, int $isMember, int $page, int $pageItems): mixed
     {
-        $query = Model::join('tbl_members', 'tbl_share_actions.member_id', 'tbl_members.id');
-        if ($memberId) {
-            $query->where('member_id', $memberId);
-        }
-        return $query->select('tbl_share_actions.*')->orderBy('action_date', 'DESC')->orderBy('tbl_share_actions.id', 'DESC')->skip(($page - 1) * $pageItems)->take($pageItems)->get();
+        return Model::where('owner_id', $ownerId)->where('is_member', $isMember)->select('tbl_share_actions.*')->orderBy('action_date', 'DESC')->orderBy('tbl_share_actions.id', 'DESC')->skip(($page - 1) * $pageItems)->take($pageItems)->get();
     }
 
     public function store(Member $member, string $actionDate, int $actionType, int $count, string|null $description): mixed
@@ -82,13 +78,9 @@ class ShareActionService
         return false;
     }
 
-    public function count(int|null $memberId): int
+    public function count(int $ownerId, int $isMember): int
     {
-        $query = Model::query();
-        if ($memberId) {
-            $query->where('member_id', $memberId);
-        }
-        return $query->count();
+        return Model::where('owner_id', $ownerId)->where('is_member', $isMember)->count();
     }
 
     private function totalSharesTillDate(string $actionDate, int|null $id = null): int

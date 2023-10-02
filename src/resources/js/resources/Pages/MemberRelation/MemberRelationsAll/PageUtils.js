@@ -46,6 +46,10 @@ export class PageUtils extends BasePageUtils {
         );
     }
 
+    onShareActions(item) {
+        this.navigate(`${BASE_PATH}/share_actions/${item.id}/0`);
+    }
+
     editAction({ id }) {
         if (utils.isId(id)) {
             this.navigate(`${BASE_PATH}/member_relations/edit/${id}`);

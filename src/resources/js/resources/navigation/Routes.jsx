@@ -51,7 +51,7 @@ const renderAuthRoutes = () => (
             element={<Pages.ChangePasswordCurrentUser />}
         />
         <Route
-            path={`${BASE_PATH}/share_actions/:memberId`}
+            path={`${BASE_PATH}/share_actions/:ownerId/:isMember`}
             element={<Pages.ShareActions />}
         />
         <Route path={`${BASE_PATH}`} element={<Pages.Dashboard />} />

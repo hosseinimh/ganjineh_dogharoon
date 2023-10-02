@@ -116,13 +116,18 @@ const EditMember = () => {
                 icon={"icon-location4"}
             />
             <InputTextAreaColumn field="description" showLabel />
+            <InputTextAreaColumn
+                field="transferDescription"
+                showLabel
+                readOnly
+            />
             <InputRow>
                 <InputTextColumn
                     field="cardNo"
                     type="number"
                     fullRow={false}
                     showLabel
-                    icon={"icon-personalcard4"}
+                    icon={"icon-card-pos4"}
                 />
                 {isPCScreen && <div style={{ flexGrow: "4" }}></div>}
             </InputRow>

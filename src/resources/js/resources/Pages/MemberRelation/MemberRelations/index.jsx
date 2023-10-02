@@ -81,7 +81,14 @@ const MemberRelations = () => {
             return (
                 <React.Fragment key={item.id}>
                     <tr>
-                        <td>{`${item.name} ${item.family}`}</td>
+                        <td>
+                            <CustomLink
+                                onClick={() => pageUtils.onEdit(item)}
+                                disabled={layoutState?.loading}
+                            >
+                                {`${item.name} ${item.family}`}
+                            </CustomLink>
+                        </td>
                         <td>{item.nationalNo}</td>
                         <td>{item.identityNo}</td>
                         <td>{birthDate}</td>
@@ -127,8 +134,28 @@ const MemberRelations = () => {
                                                             item
                                                         )
                                                     }
+                                                    disabled={
+                                                        layoutState?.loading
+                                                    }
                                                 >
                                                     {general.remove}
+                                                </CustomLink>
+                                            </li>
+                                            <li>
+                                                <div className="line-gr"></div>
+                                            </li>
+                                            <li>
+                                                <CustomLink
+                                                    onClick={() =>
+                                                        pageUtils.onShareActions(
+                                                            item
+                                                        )
+                                                    }
+                                                    disabled={
+                                                        layoutState?.loading
+                                                    }
+                                                >
+                                                    {strings.shares}
                                                 </CustomLink>
                                             </li>
                                             <li>
@@ -140,6 +167,9 @@ const MemberRelations = () => {
                                                         pageUtils.transferMemberRelationToMemberAction(
                                                             item
                                                         )
+                                                    }
+                                                    disabled={
+                                                        layoutState?.loading
                                                     }
                                                 >
                                                     {
@@ -154,6 +184,9 @@ const MemberRelations = () => {
                                                             e,
                                                             item
                                                         )
+                                                    }
+                                                    disabled={
+                                                        layoutState?.loading
                                                     }
                                                 >
                                                     {

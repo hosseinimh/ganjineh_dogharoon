@@ -21,6 +21,7 @@ class MemberRelation extends Model
         'gender',
         'relationship_id',
         'description',
+        'transfer_description',
         'member_no',
         'member_id',
     ];

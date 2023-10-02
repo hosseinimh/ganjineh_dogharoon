@@ -18,7 +18,7 @@ export class PageUtils extends BasePageUtils {
         const form = useForm({
             resolver: yupResolver(schema),
         });
-        super("Members", strings, form);
+        super("MemberRelations", strings, form);
         this.entity = new Entity();
         this.initialPageProps = {
             item: null,
@@ -91,6 +91,10 @@ export class PageUtils extends BasePageUtils {
         this.useForm.setValue("gender", result.item.gender);
         this.useForm.setValue("relationship", result.item.relationshipId);
         this.useForm.setValue("description", result.item.description);
+        this.useForm.setValue(
+            "transferDescription",
+            result.item.transferDescription
+        );
     }
 
     async onSubmit(data) {

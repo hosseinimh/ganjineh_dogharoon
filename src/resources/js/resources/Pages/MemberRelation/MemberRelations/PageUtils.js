@@ -18,7 +18,7 @@ import { setShownModalAction } from "../../../../state/layout/layoutActions";
 export class PageUtils extends BasePageUtils {
     constructor() {
         const form = useForm();
-        super("Members", strings, form);
+        super("MemberRelations", strings, form);
         this.entity = new Entity();
         this.initialPageProps = {
             pageNumber: 1,
@@ -50,6 +50,10 @@ export class PageUtils extends BasePageUtils {
                 onSubmit: this.handlePromptSubmit,
             })
         );
+    }
+
+    onShareActions(item) {
+        this.navigate(`${BASE_PATH}/share_actions/${item.id}/0`);
     }
 
     navigateIfNotValidateParams() {

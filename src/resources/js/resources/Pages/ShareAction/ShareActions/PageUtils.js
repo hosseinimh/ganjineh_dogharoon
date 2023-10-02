@@ -2,10 +2,14 @@ import { useForm } from "react-hook-form";
 
 import { ShareAction as Entity } from "../../../../http/entities";
 import { BasePageUtils } from "../../../../utils/BasePageUtils";
-import { BASE_PATH } from "../../../../constants";
+import { BASE_PATH, MESSAGE_CODES, MESSAGE_TYPES } from "../../../../constants";
 import utils from "../../../../utils/Utils";
-import { shareActionsPage as strings } from "../../../../constants/strings/fa";
+import {
+    general,
+    shareActionsPage as strings,
+} from "../../../../constants/strings/fa";
 import { setPageTitleAction } from "../../../../state/page/pageActions";
+import { setMessageAction } from "../../../../state/message/messageActions";
 
 export class PageUtils extends BasePageUtils {
     constructor() {
@@ -16,7 +20,7 @@ export class PageUtils extends BasePageUtils {
             pageNumber: 1,
             item: null,
             items: null,
-            member: null,
+            owner: null,
             action: null,
         };
     }
@@ -28,12 +32,24 @@ export class PageUtils extends BasePageUtils {
     }
 
     navigateIfNotValidateParams() {
-        this.navigateIfNotValidId(this.pageState?.params?.memberId);
+        this.navigateIfNotValidId(this.pageState?.params?.ownerId);
+        let isMember = parseInt(this.pageState?.params?.isMember);
+        if (isNaN(isMember) || ![0, 1].includes(isMember)) {
+            this.dispatch(
+                setMessageAction(
+                    general.itemNotFound,
+                    MESSAGE_TYPES.ERROR,
+                    MESSAGE_CODES.ITEM_NOT_FOUND,
+                    false
+                )
+            );
+            this.navigate(this.callbackUrl);
+        }
     }
 
     addAction() {
         this.navigate(
-            `${BASE_PATH}/share_actions/add/${this.pageState?.params?.memberId}`
+            `${BASE_PATH}/share_actions/add/${this.pageState?.params?.ownerId}/${this.pageState?.params?.isMember}`
         );
     }
 
@@ -45,7 +61,8 @@ export class PageUtils extends BasePageUtils {
 
     async fillForm() {
         const promise = this.entity.getPaginate(
-            this.pageState?.params?.memberId,
+            this.pageState?.params?.ownerId,
+            this.pageState?.params?.isMember,
             this.pageState.props?.pageNumber ?? 1
         );
         super.fillForm(promise);
@@ -55,13 +72,13 @@ export class PageUtils extends BasePageUtils {
         try {
             this.dispatch(
                 setPageTitleAction(
-                    `${strings._title} [ ${result.member.name} ${result.member.family} - ${result.member.nationalNo} ]`,
+                    `${strings._title} [ ${result.owner.name} ${result.owner.family} - ${result.owner.nationalNo} ]`,
                     strings._subTitle
                 )
             );
             return {
                 items: result.items,
-                member: result.member,
+                owner: result.owner,
                 itemsCount: result.count,
             };
         } catch {}

@@ -99,14 +99,12 @@ class MemberRelationService
     {
         $this->throwIfMemberAndParentMemberAreEqual($member, $parentMember->id);
         $this->throwIfHasMemberRelation($member);
-        $description = $member->description . '
-
-----
-
-' . __('member_relation.transfer_member_to_member_relation_description');
-        $description = str_replace(':field_1', $parentMember->name . ' ' . $parentMember->family, $description);
-        $description = str_replace(':field_2', $parentMember->national_no, $description);
-        $description = str_replace(':field_3', Helper::faDate3(date("Y-m-d H:i:s")), $description);
+        $transferDescription = $member->transfer_description ? $member->transfer_description . '
+****
+' . __('member_relation.transfer_member_to_member_relation_description') : __('member_relation.transfer_member_to_member_relation_description');
+        $transferDescription = str_replace(':field_1', $parentMember->name . ' ' . $parentMember->family, $transferDescription);
+        $transferDescription = str_replace(':field_2', $parentMember->national_no, $transferDescription);
+        $transferDescription = str_replace(':field_3', Helper::faDate3(date("Y-m-d H:i:s")), $transferDescription);
         $data = [
             'name' => $member->name,
             'family' => $member->family,
@@ -115,7 +113,7 @@ class MemberRelationService
             'birth_date' => $member->birth_date,
             'gender' => $member->gender,
             'relationship_id' => $relationship->id,
-            'description' => $description ?? '',
+            'transfer_description' => $transferDescription ?? '',
             'member_id' => $parentMember->id,
         ];
         DB::beginTransaction();
@@ -130,22 +128,20 @@ class MemberRelationService
 
     public function transferMemberRelationToNewMember(Model $model, Member $member): bool
     {
-        if (intval($model->member_id) == $member->id) {
+        if (intval($model->member_id) === intval($member->id)) {
             return true;
         }
-        $description = $model->description . '
-
-----
-
-' . __('member_relation.transfer_member_relation_to_new_member_description');
-        $description = str_replace(':field_1', $model->member->name . ' ' . $model->member->family, $description);
-        $description = str_replace(':field_2', $model->member->national_no, $description);
-        $description = str_replace(':field_3', $member->name . ' ' . $member->family, $description);
-        $description = str_replace(':field_4', $member->national_no, $description);
-        $description = str_replace(':field_5', Helper::faDate3(date("Y-m-d H:i:s")), $description);
+        $transferDescription = $model->transfer_description ? $model->transfer_description . '
+****
+' . __('member_relation.transfer_member_relation_to_new_member_description') : __('member_relation.transfer_member_relation_to_new_member_description');
+        $transferDescription = str_replace(':field_1', $model->member->name . ' ' . $model->member->family, $transferDescription);
+        $transferDescription = str_replace(':field_2', $model->member->national_no, $transferDescription);
+        $transferDescription = str_replace(':field_3', $member->name . ' ' . $member->family, $transferDescription);
+        $transferDescription = str_replace(':field_4', $member->national_no, $transferDescription);
+        $transferDescription = str_replace(':field_5', Helper::faDate3(date("Y-m-d H:i:s")), $transferDescription);
         $data = [
             'member_id' => $member->id,
-            'description' => $description,
+            'transfer_description' => $transferDescription,
         ];
         return $model->update($data);
     }

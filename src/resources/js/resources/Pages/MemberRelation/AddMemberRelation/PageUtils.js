@@ -19,7 +19,7 @@ export class PageUtils extends BasePageUtils {
         const form = useForm({
             resolver: yupResolver(schema),
         });
-        super("Members", strings, form);
+        super("MemberRelations", strings, form);
         this.entity = new Entity();
         this.initialPageProps = {
             relationships: null,
