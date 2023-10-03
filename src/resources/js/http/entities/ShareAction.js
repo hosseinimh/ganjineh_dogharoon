@@ -20,13 +20,32 @@ export class ShareAction extends Entity {
         return await this.handlePost(`${BASE_URL}/u/share_actions/show/${id}`);
     }
 
-    async store(memberId, actionDate, actionType, count, description) {
+    async getAddProps(ownerId, isMember) {
         return await this.handlePost(
-            `${BASE_URL}/a/share_actions/store/${memberId}`,
+            `${BASE_URL}/a/share_actions/add/props/${ownerId}/${isMember}`
+        );
+    }
+
+    async store(
+        ownerId,
+        isMember,
+        actionDate,
+        actionType,
+        transactionDate,
+        bank,
+        invoiceNo,
+        price,
+        description
+    ) {
+        return await this.handlePost(
+            `${BASE_URL}/a/share_actions/store/${ownerId}/${isMember}`,
             {
                 action_date: actionDate,
                 action_type: actionType,
-                count,
+                transaction_date: transactionDate,
+                bank_id: bank,
+                invoice_no: invoiceNo,
+                price,
                 description,
             }
         );

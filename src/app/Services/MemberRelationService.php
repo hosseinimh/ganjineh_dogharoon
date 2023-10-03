@@ -95,6 +95,14 @@ class MemberRelationService
         return $model->update($data);
     }
 
+    public function updateShares(Model $model, int $shares): bool
+    {
+        $data = [
+            'shares' => $shares,
+        ];
+        return $model->update($data);
+    }
+
     public function transferMemberToMemberRelation(Member $member, Member $parentMember, Relationship $relationship): mixed
     {
         $this->throwIfMemberAndParentMemberAreEqual($member, $parentMember->id);

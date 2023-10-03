@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\Administrator;
 
-use App\Constants\ShareAction;
+use App\Constants\ErrorCode;
+use App\Facades\ShareActionFacade;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ShareAction\StoreShareActionRequest;
 use App\Http\Requests\ShareAction\UpdateShareActionRequest;
-use App\Models\Member;
+use App\Http\Resources\Bank\BankResource;
 use App\Models\ShareAction as Model;
 use App\Packages\JsonResponse;
+use App\Services\BankService;
 use App\Services\ShareActionService;
 use Illuminate\Http\JsonResponse as HttpJsonResponse;
 
@@ -19,13 +21,38 @@ class ShareActionController extends Controller
         parent::__construct($response);
     }
 
-    public function store(StoreShareActionRequest $request, Member $member): HttpJsonResponse
+    public function getAddProps(int $ownerId, int $isMember): HttpJsonResponse
     {
-        return $this->onStore($this->service->store($member, $request->action_date, ShareAction::getValue($request->action_type), $request->count, $request->description));
+        $owner = ShareActionFacade::getOwnerResource($ownerId, $isMember);
+        if (!$owner) {
+            return $this->onError(['_error' => __('general.item_not_found'), '_errorCode' => ErrorCode::ITEM_NOT_FOUND]);
+        }
+        $bankService = new BankService();
+        $banks = BankResource::collection($bankService->getAll());
+        return $this->onItems(['banks' => $banks, 'owner' => $owner]);
+    }
+
+    public function store(StoreShareActionRequest $request, int $ownerId, int $isMember): HttpJsonResponse
+    {
+        $owner = ShareActionFacade::getOwner($ownerId, $isMember);
+        if (!$owner) {
+            return $this->onError(['_error' => __('general.item_not_found'), '_errorCode' => ErrorCode::ITEM_NOT_FOUND]);
+        }
+        $bankId = intval($request->bank_id);
+        if ($bankId > 0) {
+            $bankService = new BankService();
+            $bank = $bankService->get($bankId);
+            if (!$bank) {
+                return $this->onError(['_error' => __('general.item_not_found'), '_errorCode' => ErrorCode::ITEM_NOT_FOUND]);
+            }
+        } else {
+            $bank = null;
+        }
+        return $this->onStore($this->service->store($owner, $isMember, $request->action_date, $request->action_type, $request->transaction_date, $bank, $request->invoice_no, $request->price, $request->description));
     }
 
     public function update(UpdateShareActionRequest $request, Model $model): HttpJsonResponse
     {
-        return $this->onUpdate($this->service->update($model, $request->action_date, ShareAction::getValue($request->action_type), $request->count, $request->description));
+        return $this->onUpdate($this->service->update($model, $request->action_date, $request->action_type, $request->count, $request->description));
     }
 }

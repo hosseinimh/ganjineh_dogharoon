@@ -33,7 +33,7 @@ export class PageUtils extends BasePageUtils {
 
     navigateIfNotValidateParams() {
         this.navigateIfNotValidId(this.pageState?.params?.ownerId);
-        let isMember = parseInt(this.pageState?.params?.isMember);
+        const isMember = parseInt(this.pageState?.params?.isMember);
         if (isNaN(isMember) || ![0, 1].includes(isMember)) {
             this.dispatch(
                 setMessageAction(

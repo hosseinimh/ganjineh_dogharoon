@@ -30,7 +30,7 @@ const addMemberSchema = yup.object().shape({
         300,
         false
     ),
-    cardNo: numberValidator(yup, strings.cardNo, 1, null, true),
+    cardNo: numberValidator(yup, strings.cardNo, 1, null),
 });
 
 export default addMemberSchema;

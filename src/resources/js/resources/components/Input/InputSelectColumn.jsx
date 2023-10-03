@@ -54,8 +54,7 @@ const InputSelectColumn = ({
     }, [form]);
 
     useEffect(() => {
-        form?.setValue(field, form?.getValues(field));
-
+        form?.setValue(field, form?.getValues(field) ?? null);
         if (!form?.getValues(field) && noSelect) {
             const el = document.getElementById(field);
 

@@ -15,11 +15,12 @@ return new class extends Migration
     {
         Schema::create('tbl_share_actions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedTinyInteger('action_type');
             $table->string('action_date');
-            $table->string('transaction_date')->default(null);
-            $table->string('invoice_no')->default(null);
-            $table->unsignedBigInteger('bank_id')->default(null);
+            $table->unsignedTinyInteger('action_type');
+            $table->string('transaction_date')->nullable();
+            $table->unsignedBigInteger('bank_id')->nullable();
+            $table->string('invoice_no', 50)->nullable();
+            $table->unsignedBigInteger('price');
             $table->unsignedBigInteger('owner_id');
             $table->unsignedTinyInteger('is_member');
             $table->text('description');

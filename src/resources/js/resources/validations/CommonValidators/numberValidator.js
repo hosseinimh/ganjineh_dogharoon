@@ -5,37 +5,41 @@ const numberValidator = (
     field,
     min = null,
     max = null,
-    required = true
+    required = true,
+    customMinMessage = null,
+    customMaxMessage = null
 ) => {
-    let result = null;
-    if (required) {
-        result = schema
-            .number(validation.numberMessage.replace(":field", field))
-            .typeError(validation.numberMessage.replace(":field", field))
-            .required(validation.requiredMessage.replace(":field", field));
+    schema = schema
+        .number()
+        .typeError(validation.numberMessage.replace(":field", field))
+        .transform((_, val) => (val !== "" ? Number(val) : null));
+    if (!required) {
+        schema = schema.nullable();
+    } else {
+        schema = schema.nonNullable(
+            validation.requiredMessage.replace(":field", field)
+        );
     }
-    if (!result && min) {
-        result = schema
-            .number()
-            .min(
-                min,
+    if (min) {
+        schema = schema.min(
+            min,
+            customMinMessage ??
                 validation.minNumberMessage
                     .replace(":field", field)
                     .replace(":min", min)
-            );
+        );
     }
-    if (!result && max) {
-        result = schema
-            .number()
-            .max(
-                max,
+    if (max) {
+        schema = schema.max(
+            max,
+            customMaxMessage ??
                 validation.maxNumberMessage
                     .replace(":field", field)
                     .replace(":max", max)
-            );
+        );
     }
 
-    return result ?? schema.string();
+    return schema;
 };
 
 export default numberValidator;

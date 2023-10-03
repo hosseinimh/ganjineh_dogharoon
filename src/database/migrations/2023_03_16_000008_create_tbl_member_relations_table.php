@@ -24,6 +24,7 @@ return new class extends Migration
             $table->unsignedBigInteger('relationship_id');
             $table->text('description');
             $table->text('transfer_description');
+            $table->unsignedBigInteger('shares')->default(0);
             $table->unsignedBigInteger('member_no');
             $table->unsignedBigInteger('member_id');
             $table->timestamps();

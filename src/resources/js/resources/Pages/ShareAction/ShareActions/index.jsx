@@ -31,8 +31,8 @@ const ShareActions = () => {
                 <div className="d-flex mx-10 pd-20 bg-body rounded">
                     <span>{strings.remainedShares}:</span>
                     <span className="text mx-5">
-                        {pageState?.props?.member
-                            ? utils.addCommas(pageState?.props?.member?.shares)
+                        {pageState?.props?.owner
+                            ? utils.addCommas(pageState?.props?.owner?.shares)
                             : 0}
                     </span>
                 </div>

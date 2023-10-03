@@ -38,6 +38,7 @@ use App\Http\Resources\Village\VillageResource;
 use App\Packages\Helper;
 use App\Packages\JsonResponse;
 use App\Packages\Notification;
+use App\Packages\ShareAction;
 use App\Services\BankService;
 use App\Services\CountryService;
 use App\Services\ErrorService;
@@ -63,6 +64,10 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind('notification', function () {
             return new Notification();
+        });
+
+        $this->app->bind('share_action', function () {
+            return new ShareAction();
         });
     }
 

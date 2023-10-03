@@ -112,7 +112,7 @@ const renderAdministratorRoutes = () => (
             element={<Pages.TransferMemberRelationToMember />}
         />
         <Route
-            path={`${BASE_PATH}/share_actions/add/:memberId`}
+            path={`${BASE_PATH}/share_actions/add/:ownerId/:isMember`}
             element={<Pages.AddShareAction />}
         />{" "}
         <Route

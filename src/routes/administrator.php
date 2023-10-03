@@ -52,6 +52,7 @@ Route::middleware(['auth:sanctum', 'auth.administrator'])->group(function () {
     Route::post('member_relations/transfer_member_relation_to_new_member/{model}/{member}', [MemberRelationController::class, 'transferMemberRelationToNewMember']);
     Route::post('member_relations/delete/{model}', [MemberRelationController::class, 'delete']);
 
-    Route::post('share_actions/store/{member}', [ShareActionController::class, 'store']);
+    Route::post('share_actions/add/props/{ownerId}/{isMember}', [ShareActionController::class, 'getAddProps']);
+    Route::post('share_actions/store/{ownerId}/{isMember}', [ShareActionController::class, 'store']);
     Route::post('share_actions/update/{model}', [ShareActionController::class, 'update']);
 });

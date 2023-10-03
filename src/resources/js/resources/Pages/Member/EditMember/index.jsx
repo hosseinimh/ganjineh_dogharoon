@@ -1,5 +1,4 @@
 import React from "react";
-import { useMediaQuery } from "react-responsive";
 
 import {
     InputTextColumn,
@@ -15,9 +14,6 @@ import { editMemberPage as strings } from "../../../../constants/strings/fa";
 
 const EditMember = () => {
     const pageUtils = new PageUtils();
-    const isPCScreen = useMediaQuery({
-        query: "(min-width: 1224px)",
-    });
 
     return (
         <FormPage pageUtils={pageUtils}>
@@ -129,7 +125,9 @@ const EditMember = () => {
                     showLabel
                     icon={"icon-card-pos4"}
                 />
-                {isPCScreen && <div style={{ flexGrow: "4" }}></div>}
+                <div></div>
+                <div></div>
+                <div></div>
             </InputRow>
         </FormPage>
     );

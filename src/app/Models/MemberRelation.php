@@ -22,6 +22,7 @@ class MemberRelation extends Model
         'relationship_id',
         'description',
         'transfer_description',
+        'shares',
         'member_no',
         'member_id',
     ];

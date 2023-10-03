@@ -32,7 +32,6 @@ return new class extends Migration
             $table->text('transfer_description');
             $table->unsignedBigInteger('shares')->default(0);
             $table->unsignedBigInteger('card_no')->unique();
-            $table->unsignedBigInteger('card_no')->unique();
             $table->timestamps();
             $table->softDeletes();
 
