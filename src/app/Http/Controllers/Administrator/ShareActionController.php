@@ -45,14 +45,26 @@ class ShareActionController extends Controller
             if (!$bank) {
                 return $this->onError(['_error' => __('general.item_not_found'), '_errorCode' => ErrorCode::ITEM_NOT_FOUND]);
             }
+            $bankId = $bank->id;
         } else {
-            $bank = null;
+            $bankId = null;
         }
-        return $this->onStore($this->service->store($owner, $isMember, $request->action_date, $request->action_type, $request->transaction_date, $bank, $request->invoice_no, $request->price, $request->description));
+        return $this->onStore($this->service->store($owner, $isMember, $request->action_date, $request->action_type, $request->transaction_date, $bankId, $request->invoice_no, $request->price, $request->description));
     }
 
     public function update(UpdateShareActionRequest $request, Model $model): HttpJsonResponse
     {
-        return $this->onUpdate($this->service->update($model, $request->action_date, $request->action_type, $request->count, $request->description));
+        $bankId = intval($request->bank_id);
+        if ($bankId > 0) {
+            $bankService = new BankService();
+            $bank = $bankService->get($bankId);
+            if (!$bank) {
+                return $this->onError(['_error' => __('general.item_not_found'), '_errorCode' => ErrorCode::ITEM_NOT_FOUND]);
+            }
+            $bankId = $bank->id;
+        } else {
+            $bankId = null;
+        }
+        return $this->onUpdate($this->service->update($model, $request->transaction_date, $bankId, $request->invoice_no, $request->price, $request->description));
     }
 }

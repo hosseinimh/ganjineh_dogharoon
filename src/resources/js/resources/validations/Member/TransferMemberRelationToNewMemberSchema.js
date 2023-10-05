@@ -3,7 +3,7 @@ import * as yup from "yup";
 import {
     nameValidator,
     nationalNoValidator,
-    stringValidator,
+    numberValidator,
 } from "../CommonValidators";
 import { transferMemberRelationToNewMemberModal as strings } from "../../../constants/strings/fa";
 
@@ -27,8 +27,8 @@ const transferMemberRelationToNewMemberSchema = yup.object().shape({
         strings.nationalNoTransferModal,
         false
     ),
-    cardNoTransferModal: stringValidator(
-        yup.string(),
+    cardNoTransferModal: numberValidator(
+        yup,
         strings.cardNoTransferModal,
         null,
         6,

@@ -32,8 +32,8 @@ class ShareActionController extends Controller
 
     public function show(Model $model): HttpJsonResponse
     {
-        $item = new ShareActionResource($this->service->get($model->id));
-        $member = new MemberResource($item->member);
-        return $this->onOk(['item' => $item, 'member' => $member]);
+        $item = new ShareActionResource($model);
+        $owner = ShareActionFacade::getOwnerResource(intval($model->owner_id), intval($model->is_member));
+        return $this->onOk(['item' => $item, 'owner' => $owner]);
     }
 }

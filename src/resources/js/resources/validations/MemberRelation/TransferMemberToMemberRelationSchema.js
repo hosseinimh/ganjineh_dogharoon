@@ -29,7 +29,7 @@ const transferMemberToMemberRelationSchema = yup.object().shape({
     ),
     cardNoTransferModal: numberValidator(
         yup,
-        "strings.cardNoTransferModal",
+        strings.cardNoTransferModal,
         null,
         null,
         false

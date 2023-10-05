@@ -51,13 +51,14 @@ export class ShareAction extends Entity {
         );
     }
 
-    async update(id, actionDate, actionType, count, description) {
+    async update(id, transactionDate, bank, invoiceNo, price, description) {
         return await this.handlePost(
             `${BASE_URL}/a/share_actions/update/${id}`,
             {
-                action_date: actionDate,
-                action_type: actionType,
-                count,
+                transaction_date: transactionDate,
+                bank_id: bank,
+                invoice_no: invoiceNo,
+                price,
                 description,
             }
         );

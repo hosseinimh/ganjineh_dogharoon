@@ -5,12 +5,37 @@ import {
     numberValidator,
     dateValidator,
 } from "../CommonValidators";
-import { editShareActionPage as strings } from "../../../constants/strings/fa";
+import {
+    editShareActionPage as strings,
+    validation,
+} from "../../../constants/strings/fa";
+
+const bankMessage = validation.requiredMessage.replace(":field", strings.bank);
 
 const editShareActionSchema = yup.object().shape({
     actionDate: dateValidator(yup.string(), strings.actionDate),
-    actionType: numberValidator(yup, strings.actionType, 1, 2),
-    count: numberValidator(yup, strings.count, 1, 20),
+    transactionDate: dateValidator(
+        yup.string(),
+        strings.transactionDate,
+        false
+    ),
+    bank: numberValidator(
+        yup,
+        strings.bank,
+        null,
+        null,
+        false,
+        bankMessage,
+        bankMessage
+    ),
+    invoiceNo: stringValidator(
+        yup.string(),
+        strings.invoiceNo,
+        null,
+        50,
+        false
+    ),
+    price: numberValidator(yup, strings.price, null, 100000000, false),
     description: stringValidator(
         yup.string(),
         strings.description,

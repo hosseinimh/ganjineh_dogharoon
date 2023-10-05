@@ -21,11 +21,9 @@ export class PageUtils extends BasePageUtils {
         this.entity = new Entity();
         this.initialPageProps = {
             item: null,
-            member: null,
+            owner: null,
         };
-        this.callbackUrl = this.pageState?.props?.callbackUrl
-            ? this.pageState?.props?.callbackUrl
-            : `${BASE_PATH}/members`;
+        this.callbackUrl = `${BASE_PATH}/share_actions/${this.pageState?.props?.item?.ownerId}/${this.pageState?.props?.item?.isMember}`;
     }
 
     onLoad() {
@@ -35,7 +33,7 @@ export class PageUtils extends BasePageUtils {
     }
 
     navigateIfNotValidateParams() {
-        this.navigateIfNotValidId(this.pageState?.params?.shareActionId);
+        this.navigateIfNotValidId(this.pageState.params.shareActionId);
     }
 
     async fillForm(data) {
@@ -58,32 +56,33 @@ export class PageUtils extends BasePageUtils {
         this.dispatch(
             setPagePropsAction({
                 item: result.item,
-                member: result.member,
-                callbackUrl: `${BASE_PATH}/share_actions/${result?.member?.id}`,
+                owner: result.owner,
             })
         );
         this.dispatch(
             setPageTitleAction(
-                `${strings._title} [ ${result.member.name} ${result.member.family} - ${result.member.nationalNo} ]`,
+                `${strings._title} [ ${result.owner.name} ${result.owner.family} - ${result.owner.nationalNo} ] [ ${result.item.actionTypeText} ]`,
                 strings._subTitle
             )
         );
         this.useForm.setValue("actionDate", result.item.actionDate);
         this.useForm.setValue("actionType", result.item.actionType);
-        this.useForm.setValue("count", result.item.count);
+        this.useForm.setValue("transactionDate", result.item.transactionDate);
+        this.useForm.setValue("bank", result.item.bank);
+        this.useForm.setValue("invoiceNo", result.item.invoiceNo);
+        this.useForm.setValue("price", result.item.price);
         this.useForm.setValue("description", result.item.description);
-        this.callbackUrl = `${BASE_PATH}/share_actions/${result?.member?.id}`;
     }
 
     async onSubmit(data) {
         const promise = this.entity.update(
             this.pageState?.params?.shareActionId,
-            data.actionDate.replaceAll("/", ""),
-            data.actionType,
-            data.count,
+            data.transactionDate?.replaceAll("/", ""),
+            data.bank ?? null,
+            data.invoiceNo,
+            data.price ?? 0,
             data.description
         );
         super.onModifySubmit(promise);
-        this.callbackUrl = `${BASE_PATH}/share_actions/${this.pageState?.props?.member?.id}`;
     }
 }

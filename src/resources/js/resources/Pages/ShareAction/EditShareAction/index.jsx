@@ -20,19 +20,41 @@ const EditShareAction = () => {
                     field="actionDate"
                     showLabel
                     fullRow={false}
+                    readOnly
                 />
                 <InputSelectColumn
                     field="actionType"
                     showLabel
                     items={types}
                     fullRow={false}
+                    readOnly
+                />
+                <div></div>
+                <div></div>
+            </InputRow>
+            <InputRow>
+                <InputDatePickerColumn
+                    field="transactionDate"
+                    showLabel
+                    fullRow={false}
+                />
+                <InputSelectColumn
+                    field="bank"
+                    showLabel
+                    items={pageUtils?.pageState?.props?.banks}
+                    fullRow={false}
                 />
                 <InputTextColumn
-                    field="count"
+                    field="invoiceNo"
+                    showLabel
+                    icon={"icon-card-pos4"}
+                />
+                <InputTextColumn
+                    field="price"
                     showLabel
                     type="number"
-                    fullRow={false}
-                    icon={"icon-personalcard4"}
+                    textAlign="left"
+                    icon={"icon-dollar-square4"}
                 />
             </InputRow>
             <InputTextColumn

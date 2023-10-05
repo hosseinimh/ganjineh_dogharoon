@@ -6,13 +6,29 @@ import {
     nameValidator,
     dateValidator,
 } from "../CommonValidators";
-import { transferMemberRelationToMemberPage as strings } from "../../../constants/strings/fa";
+import {
+    transferMemberRelationToMemberPage as strings,
+    validation,
+} from "../../../constants/strings/fa";
+
+const villageMessage = validation.requiredMessage.replace(
+    ":field",
+    strings.village
+);
 
 const transferMemberRelationToMemberSchema = yup.object().shape({
     fatherName: nameValidator(yup.string(), strings.fatherName, 2, 50),
     membershipDate: dateValidator(yup.string(), strings.membershipDate),
     postalCode: numberValidator(yup, strings.postalCode, 0, 9999999999, false),
-    village: numberValidator(yup, strings.village, 1, null, true),
+    village: numberValidator(
+        yup,
+        strings.village,
+        1,
+        null,
+        true,
+        villageMessage,
+        villageMessage
+    ),
     tel: stringValidator(yup.string(), strings.tel, null, 50, false),
     mobile: stringValidator(yup.string(), strings.mobile, null, 50, false),
     address: stringValidator(yup.string(), strings.address, null, 300, false),

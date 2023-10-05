@@ -4,7 +4,6 @@ namespace App\Services;
 
 use App\Constants\ErrorCode;
 use App\Constants\ShareActionType;
-use App\Models\Bank;
 use App\Models\Member;
 use App\Models\MemberRelation;
 use App\Models\ShareAction as Model;
@@ -26,13 +25,16 @@ class ShareActionService
         return Model::join('tbl_member_relations', 'tbl_share_actions.owner_id', '=', 'tbl_member_relations.id')->where('owner_id', $ownerId)->where('is_member', $isMember)->select('tbl_share_actions.*', 'tbl_member_relations.shares')->orderBy('action_date', 'DESC')->orderBy('tbl_share_actions.id', 'DESC')->skip(($page - 1) * $pageItems)->take($pageItems)->get();
     }
 
-    public function store(Member|MemberRelation $owner, int $isMember, string $actionDate, int $actionType, string|null $transactionDate, Bank|null $bank, string|null $invoiceNo, int $price, string|null $description): mixed
+    public function store(Member|MemberRelation $owner, int $isMember, string $actionDate, int $actionType, string|null $transactionDate, int|null $bankId, string|null $invoiceNo, int $price, string|null $description): mixed
     {
+        $actionDate = substr($actionDate, 0, 4) . "/" . substr($actionDate, 4, 2) . "/" . substr($actionDate, 6);
+        $this->throwIfNotLast($actionDate);
+        $totalShares = $this->totalShares($owner->id, $isMember);
+        $totalShares += $actionType === ShareActionType::BUY ? 1 : -1;
+        $this->throwIfSharesExceedOrAlreadyAssigned($actionType, $totalShares);
         $memberService = new MemberService();
         $memberRelationService = new MemberRelationService();
-        $actionDate = substr($actionDate, 0, 4) . "/" . substr($actionDate, 4, 2) . "/" . substr($actionDate, 6);
         $transactionDate = $transactionDate ? substr($transactionDate, 0, 4) . "/" . substr($transactionDate, 4, 2) . "/" . substr($transactionDate, 6) : null;
-        $bankId = $bank ? $bank->id : null;
         $data = [
             'action_date' => $actionDate,
             'action_type' => $actionType,
@@ -44,10 +46,7 @@ class ShareActionService
             'is_member' => $isMember,
             'description' => $description ?? '',
         ];
-        $totalSharesBefore = $this->totalSharesTillDate($owner->id, $isMember, $actionDate);
-        $totalShares = $actionType === ShareActionType::BUY ? $totalSharesBefore + 1 : $totalSharesBefore - 1;
-        $totalShares += $this->totalSharesAfterDate($owner->id, $isMember, $actionDate);
-        $this->throwIfSharesExceedOrAlreadyAssigned($actionType, $totalShares);
+
         DB::beginTransaction();
         try {
             $inserted = Model::create($data);
@@ -64,32 +63,17 @@ class ShareActionService
         return false;
     }
 
-    public function update(Model $model, string $actionDate, int $actionType, int $count, string|null $description): bool
+    public function update(Model $model, string|null $transactionDate, int|null $bankId, string|null $invoiceNo, int $price, string|null $description): mixed
     {
-        // $memberService = new MemberService();
-        // $actionDate = substr($actionDate, 0, 4) . "/" . substr($actionDate, 4, 2) . "/" . substr($actionDate, 6);
-        // $data = [
-        //     'action_date' => $actionDate,
-        //     'action_type' => $actionType,
-        //     'count' => $count,
-        //     'description' => $description ?? '',
-        // ];
-        // $totalSharesBefore = $this->totalSharesTillDate($actionDate, $model->id);
-        // $totalShares = $actionType === ShareAction::BUY ? $totalSharesBefore + $count : $totalSharesBefore - $count;
-        // $totalShares += $this->totalSharesAfterDate($actionDate, $model->id);
-        // $this->throwIfSharesExceed($totalShares);
-        // DB::beginTransaction();
-        // try {
-        //     if ($model->update($data) && $memberService->updateShares($model->member, $totalShares)) {
-        //         DB::commit();
-        //         return true;
-        //     }
-        // } catch (Exception $e) {
-        //     DB::rollBack();
-        //     throw $e;
-        // }
-        // DB::rollBack();
-        return false;
+        $transactionDate = $transactionDate ? substr($transactionDate, 0, 4) . "/" . substr($transactionDate, 4, 2) . "/" . substr($transactionDate, 6) : null;
+        $data = [
+            'transaction_date' => $transactionDate,
+            'bank_id' => $bankId,
+            'invoice_no' => $invoiceNo,
+            'price' => $price,
+            'description' => $description ?? '',
+        ];
+        return $model->update($data);
     }
 
     public function count(int $ownerId, int $isMember): int
@@ -97,12 +81,14 @@ class ShareActionService
         return Model::where('owner_id', $ownerId)->where('is_member', $isMember)->count();
     }
 
-    private function totalSharesTillDate(int $ownerId, int $isMember, string $actionDate, int|null $id = null): int
+    private function getLast(): mixed
     {
-        $query = Model::where('owner_id', $ownerId)->where('is_member', $isMember)->where('action_date', '<=', $actionDate);
-        if ($id) {
-            $query->where('id', '<', $id);
-        }
+        return Model::orderBy('action_date', 'DESC')->orderBy('id', 'DESC')->first();
+    }
+
+    private function totalShares(int $ownerId, int $isMember): int
+    {
+        $query = Model::where('owner_id', $ownerId)->where('is_member', $isMember);
         $result = $query->selectRaw('SUM(CASE WHEN action_type=1 THEN 1 ELSE -1 END) AS shares')->orderBy('action_date', 'ASC')->orderBy('id', 'ASC')->first();
         if ($result) {
             return $result->shares ?? 0;
@@ -110,17 +96,13 @@ class ShareActionService
         return 0;
     }
 
-    private function totalSharesAfterDate(int $ownerId, int $isMember, string $actionDate, int|null $id = null): int
+    private function throwIfNotLast($actionDate)
     {
-        $query = Model::where('owner_id', $ownerId)->where('is_member', $isMember)->where('action_date', '>', $actionDate);
-        if ($id) {
-            $query->where('id', '>', $id);
+        $last = $this->getLast();
+        if ($last && $last['action_date'] > $actionDate) {
+            throw new Exception(str_replace(':field', $actionDate, __('share_action.share_not_last')), ErrorCode::CUSTOM_ERROR);
         }
-        $result = $query->selectRaw('SUM(CASE WHEN action_type=1 THEN 1 ELSE -1 END) AS shares')->orderBy('action_date', 'ASC')->orderBy('id', 'ASC')->first();
-        if ($result) {
-            return $result->shares ?? 0;
-        }
-        return 0;
+        return;
     }
 
     private function throwIfSharesExceedOrAlreadyAssigned(int $actionType, int $totalShares)

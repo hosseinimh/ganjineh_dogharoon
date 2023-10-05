@@ -61,6 +61,6 @@ Route::middleware(['auth:sanctum', 'auth.logged'])->group(function () {
     Route::post('notifications/seen/{model}', [NotificationController::class, 'seen']);
     Route::post('notifications/seen_review', [NotificationController::class, 'seenReview']);
 
-    Route::post('share_actions/{ownerId}/{isMember}', [ShareActionController::class, 'index']);
     Route::post('share_actions/show/{model}', [ShareActionController::class, 'show']);
+    Route::post('share_actions/{ownerId}/{isMember}', [ShareActionController::class, 'index']);
 });

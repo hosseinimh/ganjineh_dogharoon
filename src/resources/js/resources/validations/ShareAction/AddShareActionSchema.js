@@ -15,6 +15,8 @@ const actionTypeMessage = validation.requiredMessage.replace(
     strings.actionType
 );
 
+const bankMessage = validation.requiredMessage.replace(":field", strings.bank);
+
 const addShareActionSchema = yup.object().shape({
     actionDate: dateValidator(yup.string(), strings.actionDate),
     actionType: numberValidator(
@@ -30,7 +32,15 @@ const addShareActionSchema = yup.object().shape({
         strings.transactionDate,
         false
     ),
-    bank: numberValidator(yup, strings.bank, null, null, false),
+    bank: numberValidator(
+        yup,
+        strings.bank,
+        null,
+        null,
+        false,
+        bankMessage,
+        bankMessage
+    ),
     invoiceNo: stringValidator(
         yup.string(),
         strings.invoiceNo,

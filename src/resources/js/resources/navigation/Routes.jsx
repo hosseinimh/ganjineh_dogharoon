@@ -114,7 +114,7 @@ const renderAdministratorRoutes = () => (
         <Route
             path={`${BASE_PATH}/share_actions/add/:ownerId/:isMember`}
             element={<Pages.AddShareAction />}
-        />{" "}
+        />
         <Route
             path={`${BASE_PATH}/share_actions/edit/:shareActionId`}
             element={<Pages.EditShareAction />}

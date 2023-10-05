@@ -653,15 +653,21 @@ export const addShareActionPage = {
 };
 
 export const editShareActionPage = {
-    _title: "ثبت تراکنش سهام",
+    _title: "ویرایش تراکنش سهام",
     _subTitle: "مشخصات تراکنش انجام‌شده را وارد کنید.",
     actionDate: "تاریخ درخواست",
     actionDatePlaceholder: "تاریخ درخواست",
     actionType: "نوع درخواست",
     actionTypePlaceholder: "نوع درخواست",
-    count: "تعداد",
-    countPlaceholder: "تعداد",
+    hasTransaction: "پرداخت / دریافت",
+    transactionDate: "تاریخ پرداخت / دریافت",
+    transactionDatePlaceholder: "تاریخ پرداخت / دریافت",
+    bank: "بانک",
+    invoiceNo: "حواله بانکی",
+    invoiceNoPlaceholder: "حواله بانکی",
+    price: "مبلغ",
+    pricePlaceholder: "مبلغ",
     description: "توضیحات",
     descriptionPlaceholder: "توضیحات",
-    submitted: "ثبت تراکنش سهام با موفقیت انجام شد.",
+    submitted: "ویرایش تراکنش سهام با موفقیت انجام شد.",
 };
