@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\Administrator\DashboardController;
+use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\BankController;
 use App\Http\Controllers\User\CountryController;
+use App\Http\Controllers\User\ErrorController;
 use App\Http\Controllers\User\MemberController;
 use App\Http\Controllers\User\MemberRelationController;
 use App\Http\Controllers\User\NotificationController;
@@ -16,18 +17,20 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['cors'])->group(function () {
     Route::post('users/login', [UserController::class, 'login']);
     Route::post('users/logout', [UserController::class, 'logout']);
+
+    Route::post('errors/store', [ErrorController::class, 'store']);
 });
 
 // 'user' type users
 Route::middleware(['auth:sanctum', 'auth.user'])->group(function () {
-    Route::post('dashboard', [DashboardController::class, 'index']);
-
     Route::post('users/update', [UserController::class, 'update']);
     Route::post('users/change_password', [UserController::class, 'changePassword']);
 });
 
 // 'user' | 'administrator' type users
 Route::middleware(['auth:sanctum', 'auth.logged'])->group(function () {
+    Route::post('dashboard', [DashboardController::class, 'index']);
+
     Route::post('users/request_token', [UserController::class, 'requestToken']);
 
     Route::post('villages', [VillageController::class, 'index']);

@@ -13,11 +13,4 @@ class DashboardController extends Controller
     {
         parent::__construct($response);
     }
-
-    public function index(): HttpJsonResponse
-    {
-        $userService = new UserService();
-
-        return $this->onItems(['usersCount' => $userService->countAll()]);
-    }
 }

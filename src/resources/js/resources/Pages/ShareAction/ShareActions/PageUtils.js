@@ -10,6 +10,7 @@ import {
 } from "../../../../constants/strings/fa";
 import { setPageTitleAction } from "../../../../state/page/pageActions";
 import { setMessageAction } from "../../../../state/message/messageActions";
+import { setShownModalAction } from "../../../../state/layout/layoutActions";
 
 export class PageUtils extends BasePageUtils {
     constructor() {
@@ -23,6 +24,7 @@ export class PageUtils extends BasePageUtils {
             owner: null,
             action: null,
         };
+        this.handlePromptSubmit = this.handlePromptSubmit.bind(this);
     }
 
     onLoad() {
@@ -45,6 +47,20 @@ export class PageUtils extends BasePageUtils {
             );
             this.navigate(this.callbackUrl);
         }
+    }
+
+    onRemove(e, item) {
+        e.stopPropagation();
+        this.promptItem = item;
+        this.dispatch(
+            setShownModalAction("promptModal", {
+                title: strings.removeMessageTitle,
+                description: `${item.actionTypeText} - ${item.actionDate}`,
+                submitTitle: general.yes,
+                cancelTitle: general.no,
+                onSubmit: this.handlePromptSubmit,
+            })
+        );
     }
 
     addAction() {
@@ -82,5 +98,12 @@ export class PageUtils extends BasePageUtils {
                 itemsCount: result.count,
             };
         } catch {}
+    }
+
+    handlePromptSubmit(result) {
+        if (result === true) {
+            const promise = this.entity.delete(this.promptItem?.id);
+            super.onSelfSubmit(promise);
+        }
     }
 }

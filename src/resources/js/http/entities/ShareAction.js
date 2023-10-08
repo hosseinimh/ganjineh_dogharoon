@@ -63,4 +63,10 @@ export class ShareAction extends Entity {
             }
         );
     }
+
+    async delete(id) {
+        return await this.handlePost(
+            `${BASE_URL}/a/share_actions/delete/${id}`
+        );
+    }
 }

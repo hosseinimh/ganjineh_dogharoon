@@ -1,7 +1,15 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { slideDown, slideUp } from "es6-slide-up-down";
+import { easeOutQuint } from "es6-easings";
 
-import { ListPage, TableFooter, TableItems } from "../../../components";
+import {
+    CustomLink,
+    ListPage,
+    PromptModal,
+    TableFooter,
+    TableItems,
+} from "../../../components";
 import { PageUtils } from "./PageUtils";
 import {
     shareActionsPage as strings,
@@ -10,6 +18,8 @@ import {
 } from "../../../../constants/strings/fa";
 import { SHARE_ACTIONS, USER_ROLES } from "../../../../constants";
 import utils from "../../../../utils/Utils";
+
+import { setDropDownElementAction } from "../../../../state/layout/layoutActions";
 
 export const types = [
     { id: SHARE_ACTIONS.BUY, value: shareActionTypes.buy },
@@ -24,6 +34,24 @@ const ShareActions = () => {
     const columnsCount =
         userState?.user?.role === USER_ROLES.ADMINISTRATOR ? 4 : 3;
     const pageUtils = new PageUtils();
+    const dispatch = useDispatch();
+
+    const toggleActions = (e, id) => {
+        e.stopPropagation();
+        const element = document.querySelector(`#${id}`).lastChild;
+        if (layoutState?.dropDownElement) {
+            slideUp(layoutState.dropDownElement);
+            if (layoutState?.dropDownElement === element) {
+                dispatch(setDropDownElementAction(null));
+                return;
+            }
+        }
+        dispatch(setDropDownElementAction(element));
+        slideDown(element, {
+            duration: 400,
+            easing: easeOutQuint,
+        });
+    };
 
     const renderTopList = () => {
         return (
@@ -73,13 +101,46 @@ const ShareActions = () => {
                     {userState?.user?.role === USER_ROLES.ADMINISTRATOR && (
                         <td>
                             <button
+                                id={`actions-${item.id}`}
                                 type="button"
-                                className="btn btn-primary mx-5"
-                                onClick={() => pageUtils.onEdit(item)}
-                                title={general.edit}
+                                className="btn btn-primary btn-dropdown mx-rdir-10"
+                                onClick={(e) =>
+                                    toggleActions(e, `actions-${item.id}`)
+                                }
                                 disabled={layoutState?.loading}
                             >
-                                {general.edit}
+                                <div className="d-flex">
+                                    <span className="grow-1 mx-rdir-10">
+                                        {general.actions}
+                                    </span>
+                                    <div className="icon">
+                                        <i className="icon-arrow-down5"></i>
+                                    </div>
+                                </div>
+                                <div className="dropdown-menu dropdown-menu-end">
+                                    <ul>
+                                        <li>
+                                            <CustomLink
+                                                onClick={() =>
+                                                    pageUtils.onEdit(item)
+                                                }
+                                                disabled={layoutState?.loading}
+                                            >
+                                                {general.edit}
+                                            </CustomLink>
+                                        </li>
+                                        <li>
+                                            <CustomLink
+                                                onClick={(e) =>
+                                                    pageUtils.onRemove(e, item)
+                                                }
+                                                disabled={layoutState?.loading}
+                                            >
+                                                {general.remove}
+                                            </CustomLink>
+                                        </li>
+                                    </ul>
+                                </div>
                             </button>
                         </td>
                     )}
@@ -100,7 +161,9 @@ const ShareActions = () => {
             table={{ renderHeader, renderItems, renderFooter }}
             hasAdd={userState?.user?.role === USER_ROLES.ADMINISTRATOR}
             renderTopList={renderTopList}
-        ></ListPage>
+        >
+            <PromptModal />
+        </ListPage>
     );
 };
 

@@ -150,6 +150,7 @@ class MemberService
     public function transferMemberRelationToMember(MemberRelation $relationModel, string $fatherName, string $membershipDate, int|null $postalCode, int $villageId, string|null $tel, string|null $mobile, string|null $address, string|null $description, int $cardNo): mixed
     {
         $this->throwIfNationalNoNotUnique($relationModel->national_no);
+        $shareActionService = new ShareActionService();
         $membershipDate = substr($membershipDate, 0, 4) . "/" . substr($membershipDate, 4, 2) . "/" . substr($membershipDate, 6);
         $transferDescription = __('member.transfer_member_relation_to_member_description');
         $transferDescription = str_replace(':field_1', $relationModel->member->name . ' ' . $relationModel->member->family, $transferDescription);
@@ -171,11 +172,12 @@ class MemberService
             'address' => $address ?? '',
             'description' => $description ?? '',
             'transfer_description' => $transferDescription ?? '',
+            'shares' => $relationModel->shares ?? 0,
             'card_no' => $cardNo,
         ];
         DB::beginTransaction();
         $model = Model::create($data);
-        if ($model && $relationModel->delete()) {
+        if ($model && $shareActionService->updateOwner($relationModel->id, 0, $model->id, 1) && $relationModel->delete()) {
             DB::commit();
             return $model;
         }
@@ -219,6 +221,11 @@ class MemberService
     public function maxCardNo(): int
     {
         return Model::max('card_no');
+    }
+
+    public function totalShare(): int
+    {
+        return Model::sum('shares');
     }
 
     private function throwIfNationalNoNotUnique(string $nationalNo, Model|null $targetModel = null)

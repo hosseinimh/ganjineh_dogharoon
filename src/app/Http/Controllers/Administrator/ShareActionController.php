@@ -67,4 +67,9 @@ class ShareActionController extends Controller
         }
         return $this->onUpdate($this->service->update($model, $request->transaction_date, $bankId, $request->invoice_no, $request->price, $request->description));
     }
+
+    public function delete(Model $model): HttpJsonResponse
+    {
+        return $this->onDelete($this->service->delete($model));
+    }
 }

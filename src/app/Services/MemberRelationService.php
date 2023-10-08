@@ -107,6 +107,7 @@ class MemberRelationService
     {
         $this->throwIfMemberAndParentMemberAreEqual($member, $parentMember->id);
         $this->throwIfHasMemberRelation($member);
+        $shareActionService = new ShareActionService();
         $transferDescription = $member->transfer_description ? $member->transfer_description . '
 ****
 ' . __('member_relation.transfer_member_to_member_relation_description') : __('member_relation.transfer_member_to_member_relation_description');
@@ -122,11 +123,12 @@ class MemberRelationService
             'gender' => $member->gender,
             'relationship_id' => $relationship->id,
             'transfer_description' => $transferDescription ?? '',
+            'shares' => $member->shares ?? 0,
             'member_id' => $parentMember->id,
         ];
         DB::beginTransaction();
         $model = Model::create($data);
-        if ($model && $member->delete()) {
+        if ($model && $shareActionService->updateOwner($member->id, 1, $model->id, 0) && $member->delete()) {
             DB::commit();
             return $model;
         }
@@ -218,6 +220,11 @@ class MemberRelationService
                 $query->where('card_no', $cardNo);
             }
         })->count();
+    }
+
+    public function totalShare(): int
+    {
+        return Model::sum('shares');
     }
 
     private function throwIfNationalNoNotUnique(string $nationalNo, Model|null $targetModel = null)

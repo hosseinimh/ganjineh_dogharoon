@@ -6,11 +6,7 @@ export class Dashboard extends Entity {
         super();
     }
 
-    async getFromUser() {
+    async getReview() {
         return await this.handlePost(`${BASE_URL}/u/dashboard`);
-    }
-
-    async get() {
-        return await this.handlePost(`${BASE_URL}/a/dashboard`);
     }
 }

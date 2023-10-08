@@ -140,6 +140,8 @@ export const sidebar = {
 export const dashboardPage = {
     _title: "داشبورد",
     _subTitle: "سامانه در یک نگاه",
+    shares: "سهام",
+    shared: "سهام واگذارشده",
 };
 
 export const errorsPage = {
@@ -630,6 +632,7 @@ export const shareActionsPage = {
     actionDate: "تاریخ درخواست",
     description: "توضیحات",
     add: "ثبت تراکنش سهام",
+    removeMessageTitle: "آیا مطمئن به حذف اطلاعات این تراکنش سهام می‌باشید؟",
 };
 
 export const addShareActionPage = {
