@@ -633,6 +633,9 @@ export const shareActionsPage = {
     description: "توضیحات",
     add: "ثبت تراکنش سهام",
     removeMessageTitle: "آیا مطمئن به حذف اطلاعات این تراکنش سهام می‌باشید؟",
+    print: "چاپ برگه سهام",
+    printPage1: "صفحه اول",
+    printPage2: "صفحه دوم",
 };
 
 export const addShareActionPage = {

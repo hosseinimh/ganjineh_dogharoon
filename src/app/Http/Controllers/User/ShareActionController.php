@@ -36,4 +36,13 @@ class ShareActionController extends Controller
         $owner = ShareActionFacade::getOwnerResource(intval($model->owner_id), intval($model->is_member));
         return $this->onOk(['item' => $item, 'owner' => $owner]);
     }
+
+    public function printPage1(int $oid, int $m)
+    {
+        $owner = ShareActionFacade::getOwnerResource($oid, $m);
+        if (!$owner) {
+            return $this->onError(['_error' => __('general.item_not_found'), '_errorCode' => ErrorCode::ITEM_NOT_FOUND]);
+        }
+        return view('print.share_actions.page_1', ['owner' => $owner, 'isMember' => $m]);
+    }
 }

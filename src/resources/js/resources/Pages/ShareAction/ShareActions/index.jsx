@@ -53,6 +53,23 @@ const ShareActions = () => {
         });
     };
 
+    const togglePrint = (e) => {
+        e.stopPropagation();
+        const element = document.querySelector("#print").lastChild;
+        if (layoutState?.dropDownElement) {
+            slideUp(layoutState.dropDownElement);
+            if (layoutState?.dropDownElement === element) {
+                dispatch(setDropDownElementAction(null));
+                return;
+            }
+        }
+        dispatch(setDropDownElementAction(element));
+        slideDown(element, {
+            duration: 400,
+            easing: easeOutQuint,
+        });
+    };
+
     const renderTopList = () => {
         return (
             <>
@@ -67,6 +84,44 @@ const ShareActions = () => {
             </>
         );
     };
+
+    const renderButtons = () => (
+        <>
+            <button
+                id="print"
+                type="button"
+                className="btn btn-primary btn-dropdown mx-rdir-10"
+                onClick={(e) => togglePrint(e)}
+            >
+                <div className="d-flex">
+                    <span className="grow-1 mx-rdir-10">{strings.print}</span>
+                    <div className="icon">
+                        <i className="icon-arrow-down5"></i>
+                    </div>
+                </div>
+                <div className="dropdown-menu">
+                    <ul>
+                        <li>
+                            <CustomLink
+                                onClick={() => pageUtils.printPage1()}
+                                disabled={layoutState?.loading}
+                            >
+                                {strings.printPage1}
+                            </CustomLink>
+                        </li>
+                        <li>
+                            <CustomLink
+                                onClick={() => pageUtils.printPage2()}
+                                disabled={layoutState?.loading}
+                            >
+                                {strings.printPage2}
+                            </CustomLink>
+                        </li>
+                    </ul>
+                </div>
+            </button>
+        </>
+    );
 
     const renderHeader = () => (
         <tr>
@@ -161,6 +216,7 @@ const ShareActions = () => {
             table={{ renderHeader, renderItems, renderFooter }}
             hasAdd={userState?.user?.role === USER_ROLES.ADMINISTRATOR}
             renderTopList={renderTopList}
+            renderButtons={renderButtons}
         >
             <PromptModal />
         </ListPage>

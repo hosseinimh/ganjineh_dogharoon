@@ -10821,3 +10821,190 @@ div.dataTables_wrapper {
 .rounded {
   border-radius: 0.625rem;
 }
+
+.a4.landscape {
+  width: 842px;
+  height: 595px;
+  /* background: url("../images/barge.JPG"); */
+  display: flex;
+  flex-direction: row;
+}
+
+.a4.landscape .content p,
+
+.a4.landscape .content-sidebar p {
+  position: absolute;
+}
+
+.a4.landscape .content p span.data,
+.a4.landscape .content-sidebar p span.data {
+  position: absolute;
+}
+
+.a4.landscape .content p.line1 {
+  top: 88px;
+}
+
+.a4.landscape .content p span.data.field1 {
+  right: 90px;
+}
+
+.a4.landscape .content p span.data.field2 {
+  right: 450px;
+}
+
+.a4.landscape .content p.line2 {
+  top: 138px;
+}
+
+.a4.landscape .content p span.data.field3 {
+  right: 470px;
+}
+
+.a4.landscape .content p.line3 {
+  top: 168px;
+}
+
+.a4.landscape .content p span.data.field4 {
+  right: 220px;
+}
+
+.a4.landscape .content p.line4 {
+  top: 220px;
+}
+
+.a4.landscape .content p span.data.field5 {
+  right: 260px;
+}
+
+.a4.landscape .content p.line5 {
+  top: 280px;
+}
+
+.a4.landscape .content p span.data.field6 {
+  right: 140px;
+}
+
+.a4.landscape .content p span.data.field7 {
+  right: 330px;
+}
+
+.a4.landscape .content p span.data.field8 {
+  right: 420px;
+}
+
+.a4.landscape .content p.line6 {
+  top: 330px;
+}
+
+.a4.landscape .content p span.data.field9 {
+  right: 60px;
+}
+
+.a4.landscape .content p.line7 {
+  top: 380px;
+}
+
+.a4.landscape .content p span.data.field10 {
+  right: 140px;
+}
+
+.a4.landscape .content p span.data.field11 {
+  right: 280px;
+}
+
+.a4.landscape .content p span.data.field12 {
+  right: 400px;
+}
+
+.a4.landscape .content p span.data.field13 {
+  right: 495px;
+}
+
+.a4.landscape .content p.line8 {
+  top: 435px;
+}
+
+.a4.landscape .content p span.data.field14 {
+  right: 60px;
+}
+
+.a4.landscape .content p span.data.field15 {
+  right: 310px;
+}
+
+.a4.landscape .content p span.data.field16 {
+  right: 380px;
+}
+
+.a4.landscape .content-sidebar p.line1 {
+  top: 75px;
+}
+
+.a4.landscape .content-sidebar p span.data.field1 {
+  right: 680px;
+}
+
+.a4.landscape .content-sidebar p.line2 {
+  top: 127px;
+}
+
+.a4.landscape .content-sidebar p span.data.field2 {
+  right: 670px;
+}
+
+.a4.landscape .content-sidebar p.line3 {
+  top: 179px;
+}
+
+.a4.landscape .content-sidebar p span.data.field3 {
+  right: 690px;
+}
+
+.a4.landscape .content-sidebar p.line4 {
+  top: 280px;
+}
+
+.a4.landscape .content-sidebar p span.data.field4 {
+  right: 630px;
+}
+
+.a4.landscape .content-sidebar p.line5 {
+  top: 335px;
+}
+
+.a4.landscape .content-sidebar p span.data.field5 {
+  right: 655px;
+}
+
+.a4.landscape .content-sidebar p.line6 {
+  top: 385px;
+}
+
+.a4.landscape .content-sidebar p span.data.field6 {
+  right: 720px;
+}
+
+.a4.landscape .content-sidebar p.line7 {
+  top: 435px;
+}
+
+.a4.landscape .content-sidebar p span.data.field7 {
+  right: 680px;
+}
+
+.a4.landscape .content-sidebar p.line8 {
+  top: 490px;
+}
+
+.a4.landscape .content-sidebar p span.data.field8 {
+  right: 690px;
+}
+
+.a4.landscape .content-sidebar p.line9 {
+  top: 540px;
+}
+
+.a4.landscape .content-sidebar p span.data.field9 {
+  right: 730px;
+}

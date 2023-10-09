@@ -74,6 +74,6 @@ class MemberController extends Controller
         $memberRelationsCount = $memberRelationService->countInMembers($villageId, $name, $family, $nationalNo, $cardNo);
         $date = Helper::faDate(date("Y-m-d H:i:s"));
         $mobile = intval($request->mobile) === 1 ? 1 : 0;
-        return view('print.members', ['members' => $members, 'count' => $count, 'memberRelationsCount' => $memberRelationsCount, 'date' => $date, 'mobile' => $mobile]);
+        return view('print.members.members', ['members' => $members, 'count' => $count, 'memberRelationsCount' => $memberRelationsCount, 'date' => $date, 'mobile' => $mobile]);
     }
 }

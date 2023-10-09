@@ -2,7 +2,12 @@ import { useForm } from "react-hook-form";
 
 import { ShareAction as Entity } from "../../../../http/entities";
 import { BasePageUtils } from "../../../../utils/BasePageUtils";
-import { BASE_PATH, MESSAGE_CODES, MESSAGE_TYPES } from "../../../../constants";
+import {
+    BASE_PATH,
+    BASE_URL,
+    MESSAGE_CODES,
+    MESSAGE_TYPES,
+} from "../../../../constants";
 import utils from "../../../../utils/Utils";
 import {
     general,
@@ -105,5 +110,17 @@ export class PageUtils extends BasePageUtils {
             const promise = this.entity.delete(this.promptItem?.id);
             super.onSelfSubmit(promise);
         }
+    }
+
+    printPage1() {
+        window.open(
+            `${BASE_URL}/share_actions/print/page1/${this.pageState?.params?.ownerId}/${this.pageState?.params?.isMember}`
+        );
+    }
+
+    printPage2() {
+        // window.open(
+        //     `${BASE_URL}/share_actions/print/page2/${this.pageState?.params?.ownerId}/${this.pageState?.params?.isMember}`
+        // );
     }
 }
