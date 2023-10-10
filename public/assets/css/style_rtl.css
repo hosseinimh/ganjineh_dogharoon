@@ -10823,15 +10823,15 @@ div.dataTables_wrapper {
 }
 
 .a4.landscape {
-  width: 842px;
-  height: 595px;
-  /* background: url("../images/barge.JPG"); */
+  background: url("../images/barge.JPG");
+  background-size: cover;
   display: flex;
   flex-direction: row;
+  width: 297mm;
+  height: 210mm;
 }
 
 .a4.landscape .content p,
-
 .a4.landscape .content-sidebar p {
   position: absolute;
 }
@@ -10842,169 +10842,169 @@ div.dataTables_wrapper {
 }
 
 .a4.landscape .content p.line1 {
-  top: 88px;
+  top: 115px;
 }
 
 .a4.landscape .content p span.data.field1 {
-  right: 90px;
+  right: 170px;
 }
 
 .a4.landscape .content p span.data.field2 {
-  right: 450px;
+  right: 615px;
 }
 
 .a4.landscape .content p.line2 {
-  top: 138px;
+  top: 180px;
 }
 
 .a4.landscape .content p span.data.field3 {
-  right: 470px;
+  right: 650px;
 }
 
 .a4.landscape .content p.line3 {
-  top: 168px;
-}
-
-.a4.landscape .content p span.data.field4 {
-  right: 220px;
-}
-
-.a4.landscape .content p.line4 {
   top: 220px;
 }
 
-.a4.landscape .content p span.data.field5 {
-  right: 260px;
-}
-
-.a4.landscape .content p.line5 {
-  top: 280px;
-}
-
-.a4.landscape .content p span.data.field6 {
-  right: 140px;
-}
-
-.a4.landscape .content p span.data.field7 {
+.a4.landscape .content p span.data.field4 {
   right: 330px;
 }
 
+.a4.landscape .content p.line4 {
+  top: 285px;
+}
+
+.a4.landscape .content p span.data.field5 {
+  right: 360px;
+}
+
+.a4.landscape .content p.line5 {
+  top: 360px;
+}
+
+.a4.landscape .content p span.data.field6 {
+  right: 240px;
+}
+
+.a4.landscape .content p span.data.field7 {
+  right: 470px;
+}
+
 .a4.landscape .content p span.data.field8 {
-  right: 420px;
+  right: 590px;
 }
 
 .a4.landscape .content p.line6 {
-  top: 330px;
+  top: 425px;
 }
 
 .a4.landscape .content p span.data.field9 {
-  right: 60px;
+  right: 135px;
 }
 
 .a4.landscape .content p.line7 {
-  top: 380px;
-}
-
-.a4.landscape .content p span.data.field10 {
-  right: 140px;
-}
-
-.a4.landscape .content p span.data.field11 {
-  right: 280px;
-}
-
-.a4.landscape .content p span.data.field12 {
-  right: 400px;
-}
-
-.a4.landscape .content p span.data.field13 {
-  right: 495px;
-}
-
-.a4.landscape .content p.line8 {
-  top: 435px;
-}
-
-.a4.landscape .content p span.data.field14 {
-  right: 60px;
-}
-
-.a4.landscape .content p span.data.field15 {
-  right: 310px;
-}
-
-.a4.landscape .content p span.data.field16 {
-  right: 380px;
-}
-
-.a4.landscape .content-sidebar p.line1 {
-  top: 75px;
-}
-
-.a4.landscape .content-sidebar p span.data.field1 {
-  right: 680px;
-}
-
-.a4.landscape .content-sidebar p.line2 {
-  top: 127px;
-}
-
-.a4.landscape .content-sidebar p span.data.field2 {
-  right: 670px;
-}
-
-.a4.landscape .content-sidebar p.line3 {
-  top: 179px;
-}
-
-.a4.landscape .content-sidebar p span.data.field3 {
-  right: 690px;
-}
-
-.a4.landscape .content-sidebar p.line4 {
-  top: 280px;
-}
-
-.a4.landscape .content-sidebar p span.data.field4 {
-  right: 630px;
-}
-
-.a4.landscape .content-sidebar p.line5 {
-  top: 335px;
-}
-
-.a4.landscape .content-sidebar p span.data.field5 {
-  right: 655px;
-}
-
-.a4.landscape .content-sidebar p.line6 {
-  top: 385px;
-}
-
-.a4.landscape .content-sidebar p span.data.field6 {
-  right: 720px;
-}
-
-.a4.landscape .content-sidebar p.line7 {
-  top: 435px;
-}
-
-.a4.landscape .content-sidebar p span.data.field7 {
-  right: 680px;
-}
-
-.a4.landscape .content-sidebar p.line8 {
   top: 490px;
 }
 
-.a4.landscape .content-sidebar p span.data.field8 {
+.a4.landscape .content p span.data.field10 {
+  right: 240px;
+}
+
+.a4.landscape .content p span.data.field11 {
+  right: 420px;
+}
+
+.a4.landscape .content p span.data.field12 {
+  right: 570px;
+}
+
+.a4.landscape .content p span.data.field13 {
   right: 690px;
 }
 
+.a4.landscape .content p.line8 {
+  top: 555px;
+}
+
+.a4.landscape .content p span.data.field14 {
+  right: 125px;
+}
+
+.a4.landscape .content p span.data.field15 {
+  right: 450px;
+}
+
+.a4.landscape .content p span.data.field16 {
+  right: 540px;
+}
+
+.a4.landscape .content-sidebar p.line1 {
+  top: 100px;
+}
+
+.a4.landscape .content-sidebar p span.data.field1 {
+  right: 920px;
+}
+
+.a4.landscape .content-sidebar p.line2 {
+  top: 165px;
+}
+
+.a4.landscape .content-sidebar p span.data.field2 {
+  right: 900px;
+}
+
+.a4.landscape .content-sidebar p.line3 {
+  top: 230px;
+}
+
+.a4.landscape .content-sidebar p span.data.field3 {
+  right: 930px;
+}
+
+.a4.landscape .content-sidebar p.line4 {
+  top: 360px;
+}
+
+.a4.landscape .content-sidebar p span.data.field4 {
+  right: 855px;
+}
+
+.a4.landscape .content-sidebar p.line5 {
+  top: 425px;
+}
+
+.a4.landscape .content-sidebar p span.data.field5 {
+  right: 890px;
+}
+
+.a4.landscape .content-sidebar p.line6 {
+  top: 490px;
+}
+
+.a4.landscape .content-sidebar p span.data.field6 {
+  right: 965px;
+}
+
+.a4.landscape .content-sidebar p.line7 {
+  top: 555px;
+}
+
+.a4.landscape .content-sidebar p span.data.field7 {
+  right: 920px;
+}
+
+.a4.landscape .content-sidebar p.line8 {
+  top: 620px;
+}
+
+.a4.landscape .content-sidebar p span.data.field8 {
+  right: 940px;
+}
+
 .a4.landscape .content-sidebar p.line9 {
-  top: 540px;
+  top: 685px;
 }
 
 .a4.landscape .content-sidebar p span.data.field9 {
-  right: 730px;
+  right: 980px;
 }

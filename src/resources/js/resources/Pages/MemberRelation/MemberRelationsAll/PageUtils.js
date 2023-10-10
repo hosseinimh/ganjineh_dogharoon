@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 import { MemberRelation as Entity } from "../../../../http/entities";
 import { BasePageUtils } from "../../../../utils/BasePageUtils";
@@ -10,10 +11,13 @@ import {
 } from "../../../../constants/strings/fa";
 import { setShownModalAction } from "../../../../state/layout/layoutActions";
 import { setPagePropsAction } from "../../../../state/page/pageActions";
+import { searchMemberRelationSchema as schema } from "../../../validations";
 
 export class PageUtils extends BasePageUtils {
     constructor() {
-        const form = useForm();
+        const form = useForm({
+            resolver: yupResolver(schema),
+        });
         super("MemberRelations", strings, form);
         this.entity = new Entity();
         this.initialPageProps = {

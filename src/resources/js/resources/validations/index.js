@@ -14,6 +14,7 @@ import editRelationshipSchema from "./Relationship/EditRelationshipSchema";
 import searchMemberSchema from "./Member/SearchMemberSchema";
 import addMemberSchema from "./Member/AddMemberSchema";
 import editMemberSchema from "./Member/EditMemberSchema";
+import searchMemberRelationSchema from "./MemberRelation/SearchMemberRelationSchema";
 import addMemberRelationSchema from "./MemberRelation/AddMemberRelationSchema";
 import editMemberRelationSchema from "./MemberRelation/EditMemberRelationSchema";
 import transferMemberRelationToMemberSchema from "./Member/TransferMemberRelationToMemberSchema";
@@ -39,6 +40,7 @@ export {
     searchMemberSchema,
     addMemberSchema,
     editMemberSchema,
+    searchMemberRelationSchema,
     addMemberRelationSchema,
     editMemberRelationSchema,
     transferMemberRelationToMemberSchema,
