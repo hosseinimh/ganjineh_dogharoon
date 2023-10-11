@@ -22,6 +22,7 @@ export class PageUtils extends BasePageUtils {
         this.initialPageProps = {
             item: null,
             owner: null,
+            banks: null,
         };
         this.callbackUrl = `${BASE_PATH}/share_actions/${this.pageState?.props?.item?.ownerId}/${this.pageState?.props?.item?.isMember}`;
     }
@@ -49,7 +50,7 @@ export class PageUtils extends BasePageUtils {
     }
 
     async fetchItem(id) {
-        return await this.entity.get(id);
+        return await this.entity.getEditProps(id);
     }
 
     handleFetchResult(result) {
@@ -57,6 +58,10 @@ export class PageUtils extends BasePageUtils {
             setPagePropsAction({
                 item: result.item,
                 owner: result.owner,
+                banks: result.banks.map((bank) => {
+                    bank.value = bank.name;
+                    return bank;
+                }),
             })
         );
         this.dispatch(

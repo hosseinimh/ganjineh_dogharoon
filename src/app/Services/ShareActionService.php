@@ -17,6 +17,11 @@ class ShareActionService
         return Model::where('id', $id)->first();
     }
 
+    public function getLast(int $ownerId, int $isMember): mixed
+    {
+        return Model::where('owner_id', $ownerId)->where('is_member', $isMember)->orderBy('action_date', 'DESC')->orderBy('id', 'DESC')->first();
+    }
+
     public function getPaginate(int $ownerId, int $isMember, int $page, int $pageItems): mixed
     {
         if ($isMember) {
@@ -28,7 +33,7 @@ class ShareActionService
     public function store(Member|MemberRelation $owner, int $isMember, string $actionDate, int $actionType, string|null $transactionDate, int|null $bankId, string|null $invoiceNo, int $price, string|null $description): mixed
     {
         $actionDate = substr($actionDate, 0, 4) . "/" . substr($actionDate, 4, 2) . "/" . substr($actionDate, 6);
-        $this->throwIfNotLastDate($actionDate);
+        $this->throwIfNotLastDate($actionDate, $owner->id, $isMember);
         $totalShares = $this->totalShares($owner->id, $isMember);
         $totalShares += $actionType === ShareActionType::BUY ? 1 : -1;
         $this->throwIfSharesExceedOrAlreadyAssigned($actionType, $totalShares);
@@ -39,9 +44,9 @@ class ShareActionService
             'action_date' => $actionDate,
             'action_type' => $actionType,
             'transaction_date' => $transactionDate,
-            'bank_id' => $bankId,
-            'invoice_no' => $invoiceNo,
-            'price' => $price,
+            'bank_id' => $transactionDate ? $bankId : null,
+            'invoice_no' => $transactionDate ? $invoiceNo : null,
+            'price' => $transactionDate ? $price : 0,
             'owner_id' => $owner->id,
             'is_member' => $isMember,
             'description' => $description ?? '',
@@ -65,14 +70,14 @@ class ShareActionService
     public function update(Model $model, string|null $transactionDate, int|null $bankId, string|null $invoiceNo, int $price, string|null $description): mixed
     {
         $transactionDate = $transactionDate ? substr($transactionDate, 0, 4) . "/" . substr($transactionDate, 4, 2) . "/" . substr($transactionDate, 6) : null;
-        if ($transactionDate < $model['action_date']) {
+        if ($transactionDate && $transactionDate < $model['action_date']) {
             throw new Exception(str_replace(':field', $model['action_date'], __('share_action.share_not_same_date')), ErrorCode::CUSTOM_ERROR);
         }
         $data = [
             'transaction_date' => $transactionDate,
-            'bank_id' => $bankId,
-            'invoice_no' => $invoiceNo,
-            'price' => $price,
+            'bank_id' => $transactionDate ? $bankId : null,
+            'invoice_no' => $transactionDate ? $invoiceNo : null,
+            'price' => $transactionDate ? $price : 0,
             'description' => $description ?? '',
         ];
         return $model->update($data);
@@ -89,7 +94,7 @@ class ShareActionService
 
     public function delete(Model $model): bool
     {
-        $this->throwIfNotLast($model);
+        $this->throwIfNotLast($model, $model->owner_id, $model->is_member);
         $memberService = new MemberService();
         $memberRelationService = new MemberRelationService();
         DB::beginTransaction();
@@ -116,11 +121,6 @@ class ShareActionService
         return Model::where('owner_id', $ownerId)->where('is_member', $isMember)->count();
     }
 
-    private function getLast(): mixed
-    {
-        return Model::orderBy('action_date', 'DESC')->orderBy('id', 'DESC')->first();
-    }
-
     private function totalShares(int $ownerId, int $isMember): int
     {
         $query = Model::where('owner_id', $ownerId)->where('is_member', $isMember);
@@ -131,18 +131,18 @@ class ShareActionService
         return 0;
     }
 
-    private function throwIfNotLast(Model $model)
+    private function throwIfNotLast(Model $model, int $ownerId, int $isMember)
     {
-        $last = $this->getLast();
+        $last = $this->getLast($ownerId, $isMember);
         if ($last && intval($last['id']) !== intval($model->id)) {
             throw new Exception(str_replace(':field', $last['action_date'], __('share_action.share_not_last')), ErrorCode::CUSTOM_ERROR);
         }
         return;
     }
 
-    private function throwIfNotLastDate($actionDate)
+    private function throwIfNotLastDate(string $actionDate, int $ownerId, int $isMember)
     {
-        $last = $this->getLast();
+        $last = $this->getLast($ownerId, $isMember);
         if ($last && $last['action_date'] > $actionDate) {
             throw new Exception(str_replace(':field', $last['action_date'], __('share_action.share_not_last_date')), ErrorCode::CUSTOM_ERROR);
         }

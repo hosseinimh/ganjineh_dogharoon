@@ -121,6 +121,7 @@ export const sidebar = {
     errors: "خطاها",
     quickItems: "دسترسی سریع",
     baseItems: "اطلاعات پایه",
+    setttings: "تنظیمات",
     banks: "بانک‌ها",
     countries: "کشورها",
     villages: "روستاها",
@@ -142,6 +143,20 @@ export const dashboardPage = {
     _subTitle: "سامانه در یک نگاه",
     shares: "سهام",
     shared: "سهام واگذارشده",
+};
+
+export const editSettingsPage = {
+    _title: "ویرایش تنظیمات پایه",
+    _subTitle: "تنظیمات سامانه را ویرایش کنید.",
+    companyName: "نام شرکت",
+    companyNamePlaceholder: "نام شرکت",
+    serialNo: "شماره مسلسل",
+    serialNoPlaceholder: "شماره مسلسل",
+    registryBookNo: "شماره دفتر سهام‌داران",
+    registryBookNoPlaceholder: "شماره دفتر سهام‌داران",
+    registerNo: "شماره ثبت شرکت",
+    registerNoPlaceholder: "شماره ثبت شرکت",
+    submitted: "ویرایش تنظیمات پایه با موفقیت انجام شد.",
 };
 
 export const errorsPage = {

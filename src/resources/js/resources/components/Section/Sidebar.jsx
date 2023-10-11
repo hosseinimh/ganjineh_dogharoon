@@ -21,6 +21,12 @@ const menuItems = {
         icon: "icon-category4",
         label: strings.errors,
     },
+    SETTINGS: {
+        page: "Settings",
+        path: `${BASE_PATH}/settings/edit`,
+        icon: "icon-setting-24",
+        label: strings.setttings,
+    },
     BANKS: {
         page: "Banks",
         path: `${BASE_PATH}/banks`,
@@ -137,6 +143,7 @@ function Sidebar() {
         <>
             <div className="menu-title">{strings.baseItems}</div>
             <ul>
+                {renderMenuItem(menuItems.SETTINGS)}
                 {renderMenuItem(menuItems.BANKS)}
                 {renderMenuItem(menuItems.COUNTRIES)}
                 {renderMenuItem(menuItems.VILLAGES)}

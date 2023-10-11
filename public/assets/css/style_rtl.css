@@ -10839,6 +10839,7 @@ div.dataTables_wrapper {
 .a4.landscape .content p span.data,
 .a4.landscape .content-sidebar p span.data {
   position: absolute;
+  width: max-content;
 }
 
 .a4.landscape .content p.line1 {
@@ -10862,7 +10863,7 @@ div.dataTables_wrapper {
 }
 
 .a4.landscape .content p.line3 {
-  top: 220px;
+  top: 215px;
 }
 
 .a4.landscape .content p span.data.field4 {
@@ -10982,7 +10983,7 @@ div.dataTables_wrapper {
 }
 
 .a4.landscape .content-sidebar p span.data.field6 {
-  right: 965px;
+  right: 970px;
 }
 
 .a4.landscape .content-sidebar p.line7 {
@@ -10999,12 +11000,4 @@ div.dataTables_wrapper {
 
 .a4.landscape .content-sidebar p span.data.field8 {
   right: 940px;
-}
-
-.a4.landscape .content-sidebar p.line9 {
-  top: 685px;
-}
-
-.a4.landscape .content-sidebar p span.data.field9 {
-  right: 980px;
 }

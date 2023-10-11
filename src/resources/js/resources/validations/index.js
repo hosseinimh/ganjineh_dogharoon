@@ -1,3 +1,4 @@
+import editSettingsSchema from "./Settings/EditSettingsSchema";
 import loginUserSchema from "./User/LoginUserSchema";
 import searchUserSchema from "./User/SearchUserSchema";
 import addUserSchema from "./User/AddUserSchema";
@@ -24,6 +25,7 @@ import addShareActionSchema from "./ShareAction/AddShareActionSchema";
 import editShareActionSchema from "./ShareAction/EditShareActionSchema";
 
 export {
+    editSettingsSchema,
     loginUserSchema,
     searchUserSchema,
     addUserSchema,

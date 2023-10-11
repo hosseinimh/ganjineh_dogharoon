@@ -62,6 +62,10 @@ const renderAuthRoutes = () => (
 const renderAdministratorRoutes = () => (
     <>
         <Route path={`${BASE_PATH}/errors`} element={<Pages.Errors />} />
+        <Route
+            path={`${BASE_PATH}/settings/edit`}
+            element={<Pages.EditSettings />}
+        />
         <Route path={`${BASE_PATH}/banks/add`} element={<Pages.AddBank />} />
         <Route
             path={`${BASE_PATH}/banks/edit/:bankId`}

@@ -1,5 +1,6 @@
 import { Error } from "./Error";
 import { Dashboard } from "./Dashboard";
+import { Settings } from "./Settings";
 import { User } from "./User";
 import { Village } from "./Village";
 import { Bank } from "./Bank";
@@ -13,6 +14,7 @@ import { ShareAction } from "./ShareAction";
 export {
     Error,
     Dashboard,
+    Settings,
     User,
     Village,
     Bank,

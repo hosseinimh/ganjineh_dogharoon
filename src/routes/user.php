@@ -8,6 +8,7 @@ use App\Http\Controllers\User\MemberController;
 use App\Http\Controllers\User\MemberRelationController;
 use App\Http\Controllers\User\NotificationController;
 use App\Http\Controllers\User\RelationshipController;
+use App\Http\Controllers\User\SettingsController;
 use App\Http\Controllers\User\ShareActionController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\User\VillageController;
@@ -32,6 +33,8 @@ Route::middleware(['auth:sanctum', 'auth.logged'])->group(function () {
     Route::post('dashboard', [DashboardController::class, 'index']);
 
     Route::post('users/request_token', [UserController::class, 'requestToken']);
+
+    Route::post('settings/show', [SettingsController::class, 'show']);
 
     Route::post('villages', [VillageController::class, 'index']);
     Route::post('villages/all', [VillageController::class, 'showAll']);

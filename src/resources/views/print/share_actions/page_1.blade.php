@@ -45,16 +45,16 @@
             <span class="data field1">field1</span>
         </p>
         <p class="line1">
-            <span class="data field2">field2</span>
+            <span class="data field2">{{$settings->serial_no}}</span>
         </p>
         <p class="line2">
-            <span class="data field3">field3</span>
+            <span class="data field3">{{$settings->registry_book_no}}</span>
         </p>
         <p class="line3">
-            <span class="data field4">field4</span>
+            <span class="data field4">{{$settings->company_name}}</span>
         </p>
         <p class="line4">
-            <span class="data field5">field5</span>
+            <span class="data field5">{{$settings->register_no}}</span>
         </p>
         <p class="line5">
             <span class="data field6">field6</span>
@@ -65,44 +65,41 @@
             <span class="data field9">field9</span>
         </p>
         <p class="line7">
-            <span class="data field10">field10</span>
-            <span class="data field11">field11</span>
-            <span class="data field12">field12</span>
+            <span class="data field10">{{$owner->name}} {{$owner->family}}</span>
+            <span class="data field11">{{$isMember ? $owner->father_name : ''}}</span>
+            <span class="data field12">{{$owner->identity_no}}</span>
             <span class="data field13">field13</span>
         </p>
         <p class="line8">
-            <span class="data field14">field14</span>
-            <span class="data field15">field15</span>
-            <span class="data field16">field16</span>
+            <span class="data field14">{{$owner->national_no}}</span>
+            <span class="data field15">{{$owner->shares}}</span>
+            <span class="data field16">{{number_format($price)}}</span>
         </p>
        </div>
        <div class="content-sidebar">
         <p class="line1">
-            <span class="data field1">field1</span>
+            <span class="data field1">{{$settings->company_name}}</span>
         </p>
         <p class="line2">
-            <span class="data field2">field2</span>
+            <span class="data field2">{{$settings->serial_no}}</span>
         </p>
         <p class="line3">
-            <span class="data field3">field3</span>
+            <span class="data field3">{{$settings->registry_book_no}}</span>
         </p>
         <p class="line4">
-            <span class="data field4">field4</span>
+            <span class="data field4">{{$owner->name}} {{$owner->family}}</span>
         </p>
         <p class="line5">
-            <span class="data field5">field5</span>
+            <span class="data field5">{{$owner->national_no}}</span>
         </p>
         <p class="line6">
-            <span class="data field6">field6</span>
+            <span class="data field6">{{number_format($price)}}</span>
         </p>
         <p class="line7">
             <span class="data field7">field7</span>
         </p>
         <p class="line8">
             <span class="data field8">field8</span>
-        </p>
-        <p class="line9">
-            <span class="data field9">field9</span>
         </p>
     </div>
 </body>

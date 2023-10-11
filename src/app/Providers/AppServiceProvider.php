@@ -11,6 +11,7 @@ use App\Http\Controllers\Administrator\MemberController;
 use App\Http\Controllers\Administrator\MemberRelationController;
 use App\Http\Controllers\Administrator\NotificationController;
 use App\Http\Controllers\Administrator\RelationshipController;
+use App\Http\Controllers\Administrator\SettingsController;
 use App\Http\Controllers\Administrator\ShareActionController;
 use App\Http\Controllers\Administrator\UserController;
 use App\Http\Controllers\Administrator\VillageController;
@@ -22,6 +23,7 @@ use App\Http\Controllers\User\MemberController as UserMemberController;
 use App\Http\Controllers\User\MemberRelationController as UserMemberRelationController;
 use App\Http\Controllers\User\NotificationController as UserNotificationController;
 use App\Http\Controllers\User\RelationshipController as UserRelationshipController;
+use App\Http\Controllers\User\SettingsController as UserSettingsController;
 use App\Http\Controllers\User\ShareActionController as UserShareActionController;
 use App\Http\Controllers\User\UserController as UserUserController;
 use App\Http\Controllers\User\VillageController as UserVillageController;
@@ -32,6 +34,7 @@ use App\Http\Resources\Member\MemberResource;
 use App\Http\Resources\MemberRelation\MemberRelationResource;
 use App\Http\Resources\Notification\NotificationResource;
 use App\Http\Resources\Relationship\RelationshipResource;
+use App\Http\Resources\Settings\SettingsResource;
 use App\Http\Resources\ShareAction\ShareActionResource;
 use App\Http\Resources\User\UserResource;
 use App\Http\Resources\Village\VillageResource;
@@ -46,6 +49,7 @@ use App\Services\MemberRelationService;
 use App\Services\MemberService;
 use App\Services\NotificationService;
 use App\Services\RelationshipService;
+use App\Services\SettingsService;
 use App\Services\ShareActionService;
 use App\Services\UserService;
 use App\Services\VillageService;
@@ -93,6 +97,14 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind(UserDashboardController::class, function ($app) {
             return new UserDashboardController($app->make(JsonResponse::class));
+        });
+
+        $this->app->bind(SettingsController::class, function ($app) {
+            return new SettingsController(new JsonResponse(SettingsResource::class), $app->make(SettingsService::class));
+        });
+
+        $this->app->bind(UserSettingsController::class, function ($app) {
+            return new UserSettingsController(new JsonResponse(SettingsResource::class), $app->make(SettingsService::class));
         });
 
         $this->app->bind(UserController::class, function ($app) {

@@ -1,5 +1,6 @@
 import Dashboard from "./Dashboard";
 import Errors from "./Error/Errors";
+import EditSettings from "./Settings/EditSettings";
 import Login from "./User/Login";
 import AddUser from "./User/AddUser";
 import EditCurrentUser from "./User/EditUser/EditCurrentUser";
@@ -35,6 +36,7 @@ import EditShareAction from "./ShareAction/EditShareAction";
 export {
     Dashboard,
     Errors,
+    EditSettings,
     Login,
     AddUser,
     EditCurrentUser,

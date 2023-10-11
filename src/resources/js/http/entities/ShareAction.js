@@ -26,6 +26,12 @@ export class ShareAction extends Entity {
         );
     }
 
+    async getEditProps(id) {
+        return await this.handlePost(
+            `${BASE_URL}/a/share_actions/edit/props/${id}`
+        );
+    }
+
     async store(
         ownerId,
         isMember,

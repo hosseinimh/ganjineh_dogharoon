@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ShareAction\StoreShareActionRequest;
 use App\Http\Requests\ShareAction\UpdateShareActionRequest;
 use App\Http\Resources\Bank\BankResource;
+use App\Http\Resources\ShareAction\ShareActionResource;
 use App\Models\ShareAction as Model;
 use App\Packages\JsonResponse;
 use App\Services\BankService;
@@ -29,7 +30,16 @@ class ShareActionController extends Controller
         }
         $bankService = new BankService();
         $banks = BankResource::collection($bankService->getAll());
-        return $this->onItems(['banks' => $banks, 'owner' => $owner]);
+        return $this->onItems(['owner' => $owner, 'banks' => $banks]);
+    }
+
+    public function getEditProps(Model $model): HttpJsonResponse
+    {
+        $item = new ShareActionResource($model);
+        $owner = ShareActionFacade::getOwnerResource($model->owner_id, $model->is_member);
+        $bankService = new BankService();
+        $banks = BankResource::collection($bankService->getAll());
+        return $this->onOk(['item' => $item, 'owner' => $owner, 'banks' => $banks]);
     }
 
     public function store(StoreShareActionRequest $request, int $ownerId, int $isMember): HttpJsonResponse

@@ -6,6 +6,7 @@ use App\Http\Controllers\Administrator\ErrorController;
 use App\Http\Controllers\Administrator\MemberController;
 use App\Http\Controllers\Administrator\MemberRelationController;
 use App\Http\Controllers\Administrator\RelationshipController;
+use App\Http\Controllers\Administrator\SettingsController;
 use App\Http\Controllers\Administrator\ShareActionController;
 use App\Http\Controllers\Administrator\UserController;
 use App\Http\Controllers\Administrator\VillageController;
@@ -25,6 +26,8 @@ Route::middleware(['auth:sanctum', 'auth.administrator'])->group(function () {
     Route::post('users/store', [UserController::class, 'store']);
     Route::post('users/update/{model}', [UserController::class, 'update']);
     Route::post('users/change_password/{model}', [UserController::class, 'changePassword']);
+
+    Route::post('settings/update', [SettingsController::class, 'update']);
 
     Route::post('villages/store', [VillageController::class, 'store']);
     Route::post('villages/update/{model}', [VillageController::class, 'update']);
@@ -51,6 +54,7 @@ Route::middleware(['auth:sanctum', 'auth.administrator'])->group(function () {
 
     Route::post('share_actions/add/props/{ownerId}/{isMember}', [ShareActionController::class, 'getAddProps']);
     Route::post('share_actions/store/{ownerId}/{isMember}', [ShareActionController::class, 'store']);
+    Route::post('share_actions/edit/props/{model}', [ShareActionController::class, 'getEditProps']);
     Route::post('share_actions/update/{model}', [ShareActionController::class, 'update']);
     Route::post('share_actions/delete/{model}', [ShareActionController::class, 'delete']);
 });
