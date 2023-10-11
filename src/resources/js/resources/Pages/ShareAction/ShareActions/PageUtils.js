@@ -30,6 +30,7 @@ export class PageUtils extends BasePageUtils {
             action: null,
         };
         this.handlePromptSubmit = this.handlePromptSubmit.bind(this);
+        this.onPrintShareActions = this.onPrintShareActions.bind(this);
     }
 
     onLoad() {
@@ -65,6 +66,12 @@ export class PageUtils extends BasePageUtils {
                 cancelTitle: general.no,
                 onSubmit: this.handlePromptSubmit,
             })
+        );
+    }
+
+    onPrintShareActions() {
+        this.navigate(
+            `${BASE_PATH}/print_share_actions/${this.pageState?.params?.ownerId}/${this.pageState?.params?.isMember}`
         );
     }
 

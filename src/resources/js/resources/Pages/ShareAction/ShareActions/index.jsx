@@ -120,6 +120,15 @@ const ShareActions = () => {
                     </ul>
                 </div>
             </button>
+            <button
+                className="btn btn-primary mx-rdir-10"
+                type="button"
+                title={strings.printShareActions}
+                onClick={pageUtils.onPrintShareActions}
+                disabled={layoutState?.loading}
+            >
+                {strings.printShareActions}
+            </button>
         </>
     );
 

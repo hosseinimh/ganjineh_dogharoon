@@ -10,6 +10,7 @@ import { Notification } from "./Notification";
 import { Member } from "./Member";
 import { MemberRelation } from "./MemberRelation";
 import { ShareAction } from "./ShareAction";
+import { PrintShareAction } from "./PrintShareAction";
 
 export {
     Error,
@@ -24,4 +25,5 @@ export {
     Member,
     MemberRelation,
     ShareAction,
+    PrintShareAction,
 };

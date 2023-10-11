@@ -7,6 +7,7 @@ use App\Http\Controllers\User\ErrorController;
 use App\Http\Controllers\User\MemberController;
 use App\Http\Controllers\User\MemberRelationController;
 use App\Http\Controllers\User\NotificationController;
+use App\Http\Controllers\User\PrintShareActionController;
 use App\Http\Controllers\User\RelationshipController;
 use App\Http\Controllers\User\SettingsController;
 use App\Http\Controllers\User\ShareActionController;
@@ -69,4 +70,6 @@ Route::middleware(['auth:sanctum', 'auth.logged'])->group(function () {
 
     Route::post('share_actions/show/{model}', [ShareActionController::class, 'show']);
     Route::post('share_actions/{ownerId}/{isMember}', [ShareActionController::class, 'index']);
+
+    Route::post('print_share_actions/{ownerId}/{isMember}', [PrintShareActionController::class, 'index']);
 });

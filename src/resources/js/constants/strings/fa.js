@@ -651,6 +651,7 @@ export const shareActionsPage = {
     print: "چاپ برگه سهام",
     printPage1: "صفحه اول",
     printPage2: "صفحه دوم",
+    printShareActions: "گزارش چاپ برگه سهام",
 };
 
 export const addShareActionPage = {
@@ -691,4 +692,11 @@ export const editShareActionPage = {
     description: "توضیحات",
     descriptionPlaceholder: "توضیحات",
     submitted: "ویرایش تراکنش سهام با موفقیت انجام شد.",
+};
+
+export const printShareActionsPage = {
+    _title: "گزارش چاپ برگه سهام سهام‌دار",
+    _subTitle: "گزارش چاپ برگه سهام سهام‌دار",
+    user: "کاربر",
+    createdAt: "تاریخ چاپ",
 };

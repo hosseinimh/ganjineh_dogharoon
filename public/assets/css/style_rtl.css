@@ -10824,6 +10824,7 @@ div.dataTables_wrapper {
 
 .a4.landscape {
   background: url("../images/barge.JPG");
+  border: 1px solid #000;
   background-size: cover;
   display: flex;
   flex-direction: row;

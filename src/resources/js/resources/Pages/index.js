@@ -32,6 +32,7 @@ import Notifications from "./Notification/Notifications";
 import ShareActions from "./ShareAction/ShareActions";
 import AddShareAction from "./ShareAction/AddShareAction";
 import EditShareAction from "./ShareAction/EditShareAction";
+import PrintShareActions from "./PrintShareAction/PrintShareActions";
 
 export {
     Dashboard,
@@ -68,4 +69,5 @@ export {
     ShareActions,
     AddShareAction,
     EditShareAction,
+    PrintShareActions,
 };

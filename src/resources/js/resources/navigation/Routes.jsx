@@ -54,6 +54,10 @@ const renderAuthRoutes = () => (
             path={`${BASE_PATH}/share_actions/:ownerId/:isMember`}
             element={<Pages.ShareActions />}
         />
+        <Route
+            path={`${BASE_PATH}/print_share_actions/:ownerId/:isMember`}
+            element={<Pages.PrintShareActions />}
+        />
         <Route path={`${BASE_PATH}`} element={<Pages.Dashboard />} />
         <Route path="*" element={<Navigate to={BASE_PATH} />} />
     </>

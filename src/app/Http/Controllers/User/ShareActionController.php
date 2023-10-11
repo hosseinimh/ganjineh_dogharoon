@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Constants\ErrorCode;
+use App\Facades\PrintShareActionFacade;
 use App\Facades\ShareActionFacade;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ShareAction\IndexShareActionsRequest;
@@ -48,6 +49,7 @@ class ShareActionController extends Controller
         $price = $shareAction ? $shareAction->price : 0;
         $settingsService = new SettingsService();
         $settings = $settingsService->get();
+        PrintShareActionFacade::store($oid, $m);
         return view('print.share_actions.page_1', ['owner' => $owner, 'isMember' => $m, 'price' => $price, 'settings' => $settings]);
     }
 }
