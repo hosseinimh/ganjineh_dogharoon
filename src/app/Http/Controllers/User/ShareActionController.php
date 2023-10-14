@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Constants\ErrorCode;
-use App\Facades\PrintShareActionFacade;
+use App\Events\ShareActionPrinted;
 use App\Facades\ShareActionFacade;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ShareAction\IndexShareActionsRequest;
@@ -46,10 +46,11 @@ class ShareActionController extends Controller
         }
         $shareActionService = new ShareActionService();
         $shareAction = $shareActionService->getLast($oid, $m);
+        $actionDate = $shareAction ? $shareAction->action_date : '';
         $price = $shareAction ? $shareAction->price : 0;
         $settingsService = new SettingsService();
         $settings = $settingsService->get();
-        PrintShareActionFacade::store($oid, $m);
-        return view('print.share_actions.page_1', ['owner' => $owner, 'isMember' => $m, 'price' => $price, 'settings' => $settings]);
+        ShareActionPrinted::dispatch($oid, $m);
+        return view('print.share_actions.page_1', ['owner' => $owner, 'isMember' => $m, 'actionDate' => $actionDate, 'price' => $price, 'settings' => $settings]);
     }
 }

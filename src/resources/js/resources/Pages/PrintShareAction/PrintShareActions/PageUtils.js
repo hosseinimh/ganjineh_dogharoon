@@ -7,7 +7,10 @@ import {
     general,
     printShareActionsPage as strings,
 } from "../../../../constants/strings/fa";
-import { setPageTitleAction } from "../../../../state/page/pageActions";
+import {
+    setPageAction,
+    setPageTitleAction,
+} from "../../../../state/page/pageActions";
 import { setMessageAction } from "../../../../state/message/messageActions";
 
 export class PageUtils extends BasePageUtils {
@@ -25,6 +28,11 @@ export class PageUtils extends BasePageUtils {
 
     onLoad() {
         this.navigateIfNotValidateParams();
+        this.dispatch(
+            setPageAction(
+                this.pageState?.params?.isMember ? "Members" : "MemberRelations"
+            )
+        );
         super.onLoad();
         this.fillForm();
     }

@@ -4,8 +4,10 @@ namespace App\Services;
 
 use App\Constants\ErrorCode;
 use App\Constants\ShareActionType;
+use App\Facades\Helper;
 use App\Models\Member;
 use App\Models\MemberRelation;
+use App\Models\PrintShareAction;
 use App\Models\ShareAction as Model;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -119,6 +121,20 @@ class ShareActionService
     public function count(int $ownerId, int $isMember): int
     {
         return Model::where('owner_id', $ownerId)->where('is_member', $isMember)->count();
+    }
+
+    public function onShareActionPrinted(int $ownerId, int $isMember): void
+    {
+        try {
+            $data = [
+                'owner_id' => $ownerId,
+                'is_member' => $isMember,
+                'user_id' => auth()->user()->id,
+            ];
+            PrintShareAction::create($data);
+        } catch (Exception $e) {
+            Helper::logError($e);
+        }
     }
 
     private function totalShares(int $ownerId, int $isMember): int

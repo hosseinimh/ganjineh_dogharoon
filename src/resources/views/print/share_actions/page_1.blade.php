@@ -42,7 +42,7 @@
     <div class="a4 landscape">
        <div class="content">
         <p class="line1">
-            <span class="data field1">field1</span>
+            <span class="data field1">{{$actionDate}}</span>
         </p>
         <p class="line1">
             <span class="data field2">{{$settings->serial_no}}</span>
