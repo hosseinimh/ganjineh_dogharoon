@@ -3,6 +3,8 @@
 require_once __DIR__ . '/Helper/MessageHelper.php';
 
 return [
+    'village_id_numeric' => $numericMessage('روستا'),
+    'village_id_gte' => $gteNumericMessage('روستا', 0),
     'name_required' => $requiredMessage('نام'),
     'name_min' => $minStringMessage('نام', 2),
     'name_max' => $maxStringMessage('نام', 50),
@@ -12,6 +14,8 @@ return [
     'national_no_required' => $requiredMessage('شماره ملی'),
     'national_no_digits' => $digitsMessage('شماره ملی'),
     'national_no_unique' => 'این شماره ملی قبلا ثبت شده است.',
+    'national_no_max_digits' => $maxDigitsMessage('شماره ملی', 10),
+    'card_no_max_digits' => $maxDigitsMessage('شماره کارت', 6),
     'identity_no_required' => $requiredMessage('شماره شناسنامه'),
     'identity_no_numeric' => $numericMessage('شماره شناسنامه'),
     'identity_no_gte' => $gteNumericMessage('شماره شناسنامه', 0),

@@ -19,11 +19,24 @@ class IndexMemberRelationsRequest extends FormRequest
 
     public function rules()
     {
-        return [];
+        return [
+            'village_id' => 'numeric|gte:0',
+            'name' => 'max:50',
+            'family' => 'max:50',
+            'national_no' => 'max_digits:10',
+            'card_no' => 'max_digits:6',
+        ];
     }
 
     public function messages()
     {
-        return [];
+        return [
+            'village_id.numeric' => __('member_relation.village_id_numeric'),
+            'village_id.gte' => __('member_relation.village_id_gte'),
+            'name.max' => __('member_relation.name_max'),
+            'family.max' => __('member_relation.family_max'),
+            'national_no.max_digits' => __('member_relation.national_no_max_digits'),
+            'card_no.max_digits' => __('member_relation.card_no_max_digits'),
+        ];
     }
 }

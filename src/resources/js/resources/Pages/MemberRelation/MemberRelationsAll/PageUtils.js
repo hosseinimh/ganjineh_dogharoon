@@ -81,17 +81,22 @@ export class PageUtils extends BasePageUtils {
 
     propsIfOK(result) {
         try {
-            return {
-                items: result.items,
-                villages: [
-                    { id: 0, value: strings.allVillages },
-                    ...result.villages.map((village) => {
-                        village.value = village.name;
-                        return village;
-                    }),
-                ],
-                itemsCount: result.count,
-            };
+            return result.villages?.length > 0
+                ? {
+                      items: result.items,
+                      villages: [
+                          { id: 0, value: strings.allVillages },
+                          ...result.villages.map((village) => {
+                              village.value = village.name;
+                              return village;
+                          }),
+                      ],
+                      itemsCount: result.count,
+                  }
+                : {
+                      items: result.items,
+                      itemsCount: result.count,
+                  };
         } catch {}
     }
 

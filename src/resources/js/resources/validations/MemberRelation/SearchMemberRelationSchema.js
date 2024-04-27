@@ -13,7 +13,7 @@ const searchMemberRelationSchema = yup.object().shape({
         9999999999,
         false
     ),
-    cardNo: numberValidator(yup, strings.cardNo, null, 6, false),
+    cardNo: numberValidator(yup, strings.cardNo, null, 999999, false),
 });
 
 export default searchMemberRelationSchema;

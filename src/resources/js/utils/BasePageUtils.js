@@ -36,6 +36,7 @@ export class BasePageUtils {
     async fillForm(promise) {
         this.dispatch(setLoadingAction(true));
         const result = await promise;
+        console.log(result);
         this.handleFetchResult(
             result,
             this.propsIfOK(result),
